@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" font-family='system-ui, -apple-system, "Segoe UI", sans-serif'>
+<rect width="1600" height="900" fill="#14161F"/>
+<rect width="1600" height="10" fill="#F5D600"/>
+<text x="70.0" y="110.0" font-size="56" font-weight="650" fill="#F4F4F6" text-anchor="start">Qwen3.8-27B on a Mac Studio M5 Ultra</text>
+<text x="70.0" y="162.0" font-size="30" font-weight="400" fill="#C5C9D6" text-anchor="start">Writing speed, one user, 512 GB, the same 4-bit MLX weights</text>
+<text x="1530.0" y="150.0" font-size="120" font-weight="650" fill="#F4F4F6" text-anchor="end">3.3×</text>
+<text x="1530.0" y="196.0" font-size="26" font-weight="400" fill="#C5C9D6" text-anchor="end">Apple's mlx-lm, 1K prompt</text>
+<rect x="70.0" y="226" width="26" height="26" rx="4" fill="#8E93A3"/>
+<text x="108.0" y="248.0" font-size="28" font-weight="400" fill="#C5C9D6" text-anchor="start">mlx-lm 0.32.2, no draft</text>
+<rect x="518.5" y="226" width="26" height="26" rx="4" fill="#35D6DC"/>
+<text x="556.5" y="248.0" font-size="28" font-weight="400" fill="#C5C9D6" text-anchor="start">TensorFold 1.2.7</text>
+<rect x="858.5" y="226" width="26" height="26" rx="4" fill="#F5D600"/>
+<text x="896.5" y="248.0" font-size="28" font-weight="400" fill="#C5C9D6" text-anchor="start">TensorFold + DFlash2 draft</text>
+<line x1="300" y1="300" x2="300" y2="770" stroke="#2B3040" stroke-width="2"/>
+<text x="276.0" y="428.5" font-size="32" font-weight="500" fill="#F4F4F6" text-anchor="end">1K prompt</text>
+<path d="M300.0,347.5 h321.4 a8.0,8.0 0 0 1 8.0,8.0 v28.0 a8.0,8.0 0 0 1 -8.0,8.0 h-321.4 z" fill="#8E93A3"/>
+<text x="643.4" y="380.5" font-size="32" font-weight="400" fill="#C5C9D6" text-anchor="start">44.5</text>
+<path d="M300.0,395.5 h352.6 a8.0,8.0 0 0 1 8.0,8.0 v28.0 a8.0,8.0 0 0 1 -8.0,8.0 h-352.6 z" fill="#35D6DC"/>
+<text x="674.6" y="428.5" font-size="32" font-weight="400" fill="#C5C9D6" text-anchor="start">48.7</text>
+<path d="M300.0,443.5 h1072.0 a8.0,8.0 0 0 1 8.0,8.0 v28.0 a8.0,8.0 0 0 1 -8.0,8.0 h-1072.0 z" fill="#F5D600"/>
+<text x="1394.0" y="476.5" font-size="32" font-weight="650" fill="#F4F4F6" text-anchor="start">145.7</text>
+<text x="276.0" y="663.5" font-size="32" font-weight="500" fill="#F4F4F6" text-anchor="end">32K prompt</text>
+<path d="M300.0,582.5 h284.8 a8.0,8.0 0 0 1 8.0,8.0 v28.0 a8.0,8.0 0 0 1 -8.0,8.0 h-284.8 z" fill="#8E93A3"/>
+<text x="606.8" y="615.5" font-size="32" font-weight="400" fill="#C5C9D6" text-anchor="start">39.5</text>
+<path d="M300.0,630.5 h313.4 a8.0,8.0 0 0 1 8.0,8.0 v28.0 a8.0,8.0 0 0 1 -8.0,8.0 h-313.4 z" fill="#35D6DC"/>
+<text x="635.4" y="663.5" font-size="32" font-weight="400" fill="#C5C9D6" text-anchor="start">43.4</text>
+<path d="M300.0,678.5 h871.4 a8.0,8.0 0 0 1 8.0,8.0 v28.0 a8.0,8.0 0 0 1 -8.0,8.0 h-871.4 z" fill="#F5D600"/>
+<text x="1193.4" y="711.5" font-size="32" font-weight="650" fill="#F4F4F6" text-anchor="start">118.7</text>
+<text x="1530.0" y="282.0" font-size="24" font-weight="400" fill="#8E93A3" text-anchor="end">tok/s</text>
+<text x="70.0" y="848.0" font-size="23" font-weight="400" fill="#8E93A3" text-anchor="start">Mac Studio M5 Ultra 512 GB · TensorFold 1.2.7 · mlx-lm 0.32.2 · median of 5 runs · sampled, 512-token answers · 13 Nov 2026</text>
+<text x="1530.0" y="848.0" font-size="26" font-weight="600" fill="#42FCF9" text-anchor="end">@LazyLocalLLM</text>
+</svg>

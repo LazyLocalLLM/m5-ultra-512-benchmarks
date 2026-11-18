@@ -1,0 +1,55 @@
+run_id,started,source,machine,engine,engine_version,model,family,weights,settings,thinking,notes,os_version,power_mode,build_id,format,bits,effort,sampling,corpus_id,tool_version,engine_commit,no_seed,quick
+f6775745e273,2026-11-13 19:58:32 SGT,measured here,"Apple M5 Ultra, 80-core GPU, 512 GB, macOS 27.2",tensorfold-dflash2,tensorfold-native 1.2.7,qwen38-27b-tf-mlx-4bit,Qwen3.8-27B,TensorFold/Qwen3.8-27B-MLX-4bit,defaults,off,,"ProductName:		macOS
+ProductVersion:		27.2
+BuildVersion:		26B118",low power mode off,qwen38-27b-tf-mlx-4bit,mlx,4-bit,,"{""temperature"": 0.7, ""top_p"": 0.8, ""top_k"": 20, ""chat_template_kwargs"": {""enable_thinking"": false}, ""presence_penalty"": 0, ""frequency_penalty"": 0}",23f31f1d8feb,2.0,,0,0
+62b5bbbbc2b9,2026-11-13 20:01:47 SGT,measured here,"Apple M5 Ultra, 80-core GPU, 512 GB, macOS 27.2",tensorfold-dflash2,tensorfold-native 1.2.7,qwen38-27b-tf-mlx-4bit,Qwen3.8-27B,TensorFold/Qwen3.8-27B-MLX-4bit,defaults,off,,"ProductName:		macOS
+ProductVersion:		27.2
+BuildVersion:		26B118",low power mode off,qwen38-27b-tf-mlx-4bit,mlx,4-bit,,"{""temperature"": 0.7, ""top_p"": 0.8, ""top_k"": 20, ""chat_template_kwargs"": {""enable_thinking"": false}, ""presence_penalty"": 0, ""frequency_penalty"": 0}",23f31f1d8feb,2.0,,0,0
+b00cab7f6c32,2026-11-13 20:10:37 SGT,measured here,"Apple M5 Ultra, 80-core GPU, 512 GB, macOS 27.2",tensorfold-dflash2,tensorfold-native 1.2.7,qwen38-27b-tf-mlx-4bit,Qwen3.8-27B,TensorFold/Qwen3.8-27B-MLX-4bit,no seed,off,,"ProductName:		macOS
+ProductVersion:		27.2
+BuildVersion:		26B118",low power mode off,qwen38-27b-tf-mlx-4bit,mlx,4-bit,,"{""temperature"": 0.7, ""top_p"": 0.8, ""top_k"": 20, ""chat_template_kwargs"": {""enable_thinking"": false}, ""presence_penalty"": 0, ""frequency_penalty"": 0}",23f31f1d8feb,2.0,,1,0
+17b97bf6f3cf,2026-11-13 20:20:02 SGT,measured here,"Apple M5 Ultra, 80-core GPU, 512 GB, macOS 27.2",tensorfold-dflash2,tensorfold-native 1.2.7,qwen38-27b-tf-mlx-4bit,Qwen3.8-27B,TensorFold/Qwen3.8-27B-MLX-4bit,defaults,off,,"ProductName:		macOS
+ProductVersion:		27.2
+BuildVersion:		26B118",low power mode off,qwen38-27b-tf-mlx-4bit,mlx,4-bit,,"{""temperature"": 0.7, ""top_p"": 0.8, ""top_k"": 20, ""chat_template_kwargs"": {""enable_thinking"": false}, ""presence_penalty"": 0, ""frequency_penalty"": 0}",23f31f1d8feb,2.0,,0,0
+eabffb505d52,2026-11-13 20:22:14 SGT,measured here,"Apple M5 Ultra, 80-core GPU, 512 GB, macOS 27.2",tensorfold,tensorfold-native 1.2.7,qwen38-27b-tf-mlx-4bit,Qwen3.8-27B,TensorFold/Qwen3.8-27B-MLX-4bit,defaults,off,,"ProductName:		macOS
+ProductVersion:		27.2
+BuildVersion:		26B118",low power mode off,qwen38-27b-tf-mlx-4bit,mlx,4-bit,,"{""temperature"": 0.7, ""top_p"": 0.8, ""top_k"": 20, ""chat_template_kwargs"": {""enable_thinking"": false}, ""presence_penalty"": 0, ""frequency_penalty"": 0}",23f31f1d8feb,2.0,,0,0
+be444f0d9b7d,2026-11-13 20:27:13 SGT,measured here,"Apple M5 Ultra, 80-core GPU, 512 GB, macOS 27.2",tensorfold,tensorfold-native 1.2.7,qwen38-27b-tf-mlx-4bit,Qwen3.8-27B,TensorFold/Qwen3.8-27B-MLX-4bit,defaults,off,,"ProductName:		macOS
+ProductVersion:		27.2
+BuildVersion:		26B118",low power mode off,qwen38-27b-tf-mlx-4bit,mlx,4-bit,,"{""temperature"": 0.7, ""top_p"": 0.8, ""top_k"": 20, ""chat_template_kwargs"": {""enable_thinking"": false}, ""presence_penalty"": 0, ""frequency_penalty"": 0}",23f31f1d8feb,2.0,,0,0
+12e147f8731e,2026-11-13 20:39:57 SGT,measured here,"Apple M5 Ultra, 80-core GPU, 512 GB, macOS 27.2",tensorfold,tensorfold-native 1.2.7,qwen38-27b-tf-mlx-4bit,Qwen3.8-27B,TensorFold/Qwen3.8-27B-MLX-4bit,no seed,off,,"ProductName:		macOS
+ProductVersion:		27.2
+BuildVersion:		26B118",low power mode off,qwen38-27b-tf-mlx-4bit,mlx,4-bit,,"{""temperature"": 0.7, ""top_p"": 0.8, ""top_k"": 20, ""chat_template_kwargs"": {""enable_thinking"": false}, ""presence_penalty"": 0, ""frequency_penalty"": 0}",23f31f1d8feb,2.0,,1,0
+f8f1ec1036d9,2026-11-13 20:51:05 SGT,measured here,"Apple M5 Ultra, 80-core GPU, 512 GB, macOS 27.2",tensorfold,tensorfold-native 1.2.7,qwen38-27b-tf-mlx-4bit,Qwen3.8-27B,TensorFold/Qwen3.8-27B-MLX-4bit,defaults,off,,"ProductName:		macOS
+ProductVersion:		27.2
+BuildVersion:		26B118",low power mode off,qwen38-27b-tf-mlx-4bit,mlx,4-bit,,"{""temperature"": 0.7, ""top_p"": 0.8, ""top_k"": 20, ""chat_template_kwargs"": {""enable_thinking"": false}, ""presence_penalty"": 0, ""frequency_penalty"": 0}",23f31f1d8feb,2.0,,0,0
+3ad3a150c4d0,2026-11-13 20:57:05 SGT,measured here,"Apple M5 Ultra, 80-core GPU, 512 GB, macOS 27.2",mlx-lm,0.32.2,./m5_models/qwen38-27b-tf-mlx-4bit,Qwen3.8-27B,TensorFold/Qwen3.8-27B-MLX-4bit,defaults,off,,"ProductName:		macOS
+ProductVersion:		27.2
+BuildVersion:		26B118",low power mode off,qwen38-27b-tf-mlx-4bit,mlx,4-bit,,"{""temperature"": 0.7, ""top_p"": 0.8, ""top_k"": 20, ""chat_template_kwargs"": {""enable_thinking"": false}}",23f31f1d8feb,2.0,,0,0
+f153458d5e44,2026-11-13 22:56:54 SGT,measured here,"Apple M5 Ultra, 80-core GPU, 512 GB, macOS 27.2",tensorfold-dflash2,tensorfold-native 1.2.7,qwen38-27b-tf-mlx-4bit,Qwen3.8-27B,TensorFold/Qwen3.8-27B-MLX-4bit,defaults,off,,"ProductName:		macOS
+ProductVersion:		27.2
+BuildVersion:		26B118",low power mode off,qwen38-27b-tf-mlx-4bit,mlx,4-bit,,"{""temperature"": 0.7, ""top_p"": 0.8, ""top_k"": 20, ""chat_template_kwargs"": {""enable_thinking"": false}, ""presence_penalty"": 0, ""frequency_penalty"": 0}",23f31f1d8feb,2.0,,0,0
+7a70d741eadd,2026-11-13 23:00:00 SGT,measured here,"Apple M5 Ultra, 80-core GPU, 512 GB, macOS 27.2",tensorfold,tensorfold-native 1.2.7,qwen38-27b-tf-mlx-4bit,Qwen3.8-27B,TensorFold/Qwen3.8-27B-MLX-4bit,defaults,off,,"ProductName:		macOS
+ProductVersion:		27.2
+BuildVersion:		26B118",low power mode off,qwen38-27b-tf-mlx-4bit,mlx,4-bit,,"{""temperature"": 0.7, ""top_p"": 0.8, ""top_k"": 20, ""chat_template_kwargs"": {""enable_thinking"": false}, ""presence_penalty"": 0, ""frequency_penalty"": 0}",23f31f1d8feb,2.0,,0,0
+b84e7f743dd8,2026-11-13 23:04:51 SGT,measured here,"Apple M5 Ultra, 80-core GPU, 512 GB, macOS 27.2",mlx-lm,0.32.2,./m5_models/qwen38-27b-tf-mlx-4bit,Qwen3.8-27B,TensorFold/Qwen3.8-27B-MLX-4bit,defaults,off,,"ProductName:		macOS
+ProductVersion:		27.2
+BuildVersion:		26B118",low power mode off,qwen38-27b-tf-mlx-4bit,mlx,4-bit,,"{""temperature"": 0.7, ""top_p"": 0.8, ""top_k"": 20, ""chat_template_kwargs"": {""enable_thinking"": false}}",23f31f1d8feb,2.0,,0,0
+50eb84cfaaf0,2026-11-13 23:10:03 SGT,measured here,"Apple M5 Ultra, 80-core GPU, 512 GB, macOS 27.2",tensorfold-dflash2,tensorfold-native 1.2.7,qwen38-27b-tf-mlx-4bit,Qwen3.8-27B,TensorFold/Qwen3.8-27B-MLX-4bit,defaults,off,,"ProductName:		macOS
+ProductVersion:		27.2
+BuildVersion:		26B118",low power mode off,qwen38-27b-tf-mlx-4bit,mlx,4-bit,,"{""temperature"": 0.7, ""top_p"": 0.8, ""top_k"": 20, ""chat_template_kwargs"": {""enable_thinking"": false}, ""presence_penalty"": 0, ""frequency_penalty"": 0}",23f31f1d8feb,2.0,,0,0
+e48fa9016692,2026-11-13 23:18:21 SGT,measured here,"Apple M5 Ultra, 80-core GPU, 512 GB, macOS 27.2",tensorfold,tensorfold-native 1.2.7,qwen38-27b-tf-mlx-4bit,Qwen3.8-27B,TensorFold/Qwen3.8-27B-MLX-4bit,defaults,off,,"ProductName:		macOS
+ProductVersion:		27.2
+BuildVersion:		26B118",low power mode off,qwen38-27b-tf-mlx-4bit,mlx,4-bit,,"{""temperature"": 0.7, ""top_p"": 0.8, ""top_k"": 20, ""chat_template_kwargs"": {""enable_thinking"": false}, ""presence_penalty"": 0, ""frequency_penalty"": 0}",23f31f1d8feb,2.0,,0,0
+7792789e7960,2026-11-13 23:30:28 SGT,measured here,"Apple M5 Ultra, 80-core GPU, 512 GB, macOS 27.2",tensorfold-dflash2,tensorfold-native 1.2.7,qwen38-27b-tf-mlx-4bit,Qwen3.8-27B,TensorFold/Qwen3.8-27B-MLX-4bit,no seed,off,,"ProductName:		macOS
+ProductVersion:		27.2
+BuildVersion:		26B118",low power mode off,qwen38-27b-tf-mlx-4bit,mlx,4-bit,,"{""temperature"": 0.7, ""top_p"": 0.8, ""top_k"": 20, ""chat_template_kwargs"": {""enable_thinking"": false}, ""presence_penalty"": 0, ""frequency_penalty"": 0}",23f31f1d8feb,2.0,,1,0
+0fdcfa951511,2026-11-13 23:39:00 SGT,measured here,"Apple M5 Ultra, 80-core GPU, 512 GB, macOS 27.2",tensorfold,tensorfold-native 1.2.7,qwen38-27b-tf-mlx-4bit,Qwen3.8-27B,TensorFold/Qwen3.8-27B-MLX-4bit,no seed,off,,"ProductName:		macOS
+ProductVersion:		27.2
+BuildVersion:		26B118",low power mode off,qwen38-27b-tf-mlx-4bit,mlx,4-bit,,"{""temperature"": 0.7, ""top_p"": 0.8, ""top_k"": 20, ""chat_template_kwargs"": {""enable_thinking"": false}, ""presence_penalty"": 0, ""frequency_penalty"": 0}",23f31f1d8feb,2.0,,1,0
+3501535d1370,2026-11-13 23:49:39 SGT,measured here,"Apple M5 Ultra, 80-core GPU, 512 GB, macOS 27.2",tensorfold-dflash2,tensorfold-native 1.2.7,qwen38-27b-tf-mlx-4bit,Qwen3.8-27B,TensorFold/Qwen3.8-27B-MLX-4bit,defaults,off,,"ProductName:		macOS
+ProductVersion:		27.2
+BuildVersion:		26B118",low power mode off,qwen38-27b-tf-mlx-4bit,mlx,4-bit,,"{""temperature"": 0.7, ""top_p"": 0.8, ""top_k"": 20, ""chat_template_kwargs"": {""enable_thinking"": false}, ""presence_penalty"": 0, ""frequency_penalty"": 0}",23f31f1d8feb,2.0,,0,0
+6330c73d7055,2026-11-13 23:51:51 SGT,measured here,"Apple M5 Ultra, 80-core GPU, 512 GB, macOS 27.2",tensorfold,tensorfold-native 1.2.7,qwen38-27b-tf-mlx-4bit,Qwen3.8-27B,TensorFold/Qwen3.8-27B-MLX-4bit,defaults,off,,"ProductName:		macOS
+ProductVersion:		27.2
+BuildVersion:		26B118",low power mode off,qwen38-27b-tf-mlx-4bit,mlx,4-bit,,"{""temperature"": 0.7, ""top_p"": 0.8, ""top_k"": 20, ""chat_template_kwargs"": {""enable_thinking"": false}, ""presence_penalty"": 0, ""frequency_penalty"": 0}",23f31f1d8feb,2.0,,0,0

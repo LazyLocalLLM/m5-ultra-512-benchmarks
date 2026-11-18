@@ -1,0 +1,213 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" font-family='system-ui, -apple-system, "Segoe UI", sans-serif'><rect width="1600" height="900" fill="#14161F"/>
+<text x="64.0" y="76.0" font-size="40" font-weight="600" fill="#F4F4F6" text-anchor="start">Decode speed as the prompt grows</text>
+<text x="64.0" y="116.0" font-size="22" font-weight="400" fill="#C5C9D6" text-anchor="start">Mac Studio M5 Ultra 512 GB. One user, 512-token replies. Median of 5 runs to 128K, of 3 at 512K and 1M.</text>
+<text x="120.0" y="174.0" font-size="21" font-weight="600" fill="#F4F4F6" text-anchor="start">DeepSeek V4.1 Flash</text>
+<line x1="120.0" y1="412.0" x2="376.0" y2="412.0" stroke="#2B3040" stroke-width="1"/>
+<text x="110.0" y="418.0" font-size="16" font-weight="400" fill="#8E93A3" text-anchor="end">0</text>
+<line x1="120.0" y1="346.4" x2="376.0" y2="346.4" stroke="#20242F" stroke-width="1"/>
+<text x="110.0" y="352.4" font-size="16" font-weight="400" fill="#8E93A3" text-anchor="end">50</text>
+<line x1="120.0" y1="280.8" x2="376.0" y2="280.8" stroke="#20242F" stroke-width="1"/>
+<text x="110.0" y="286.8" font-size="16" font-weight="400" fill="#8E93A3" text-anchor="end">100</text>
+<line x1="120.0" y1="215.1" x2="376.0" y2="215.1" stroke="#20242F" stroke-width="1"/>
+<text x="110.0" y="221.1" font-size="16" font-weight="400" fill="#8E93A3" text-anchor="end">150</text>
+<text x="134.0" y="434.0" font-size="15" font-weight="400" fill="#8E93A3" text-anchor="middle">4K</text>
+<text x="191.0" y="434.0" font-size="15" font-weight="400" fill="#8E93A3" text-anchor="middle">32K</text>
+<text x="248.0" y="434.0" font-size="15" font-weight="400" fill="#8E93A3" text-anchor="middle">128K</text>
+<text x="305.0" y="434.0" font-size="15" font-weight="400" fill="#8E93A3" text-anchor="middle">512K</text>
+<text x="362.0" y="434.0" font-size="15" font-weight="400" fill="#8E93A3" text-anchor="middle">1M</text>
+<line x1="134.0" y1="335.5" x2="191.0" y2="337.2" stroke="#F5D600" stroke-width="2" stroke-linecap="round"/>
+<line x1="191.0" y1="337.2" x2="248.0" y2="338.1" stroke="#F5D600" stroke-width="2" stroke-linecap="round"/>
+<line x1="248.0" y1="338.1" x2="305.0" y2="339.8" stroke="#F5D600" stroke-width="2" stroke-linecap="round"/>
+<line x1="305.0" y1="339.8" x2="362.0" y2="339.4" stroke="#F5D600" stroke-width="2" stroke-linecap="round"/>
+<circle cx="134.0" cy="335.5" r="5" fill="#F5D600" stroke="#14161F" stroke-width="2"/>
+<circle cx="191.0" cy="337.2" r="5" fill="#F5D600" stroke="#14161F" stroke-width="2"/>
+<circle cx="248.0" cy="338.1" r="5" fill="#F5D600" stroke="#14161F" stroke-width="2"/>
+<circle cx="305.0" cy="339.8" r="5" fill="#F5D600" stroke="#14161F" stroke-width="2"/>
+<circle cx="362.0" cy="339.4" r="5" fill="#F5D600" stroke="#14161F" stroke-width="2"/>
+<text x="130.0" y="323.5" font-size="16" font-weight="600" fill="#C5C9D6" text-anchor="start">58.3</text>
+<text x="366.0" y="327.4" font-size="16" font-weight="600" fill="#C5C9D6" text-anchor="end">55.3</text>
+<text x="410.0" y="174.0" font-size="21" font-weight="600" fill="#F4F4F6" text-anchor="start">GLM-5.3 4-bit</text>
+<line x1="410.0" y1="412.0" x2="666.0" y2="412.0" stroke="#2B3040" stroke-width="1"/>
+<line x1="410.0" y1="346.4" x2="666.0" y2="346.4" stroke="#20242F" stroke-width="1"/>
+<line x1="410.0" y1="280.8" x2="666.0" y2="280.8" stroke="#20242F" stroke-width="1"/>
+<line x1="410.0" y1="215.1" x2="666.0" y2="215.1" stroke="#20242F" stroke-width="1"/>
+<text x="424.0" y="434.0" font-size="15" font-weight="400" fill="#8E93A3" text-anchor="middle">4K</text>
+<text x="481.0" y="434.0" font-size="15" font-weight="400" fill="#8E93A3" text-anchor="middle">32K</text>
+<text x="538.0" y="434.0" font-size="15" font-weight="400" fill="#8E93A3" text-anchor="middle">128K</text>
+<text x="595.0" y="434.0" font-size="15" font-weight="400" fill="#8E93A3" text-anchor="middle">512K</text>
+<text x="652.0" y="434.0" font-size="15" font-weight="400" fill="#8E93A3" text-anchor="middle">1M</text>
+<line x1="424.0" y1="380.1" x2="481.0" y2="380.9" stroke="#F5D600" stroke-width="2" stroke-linecap="round"/>
+<line x1="481.0" y1="380.9" x2="538.0" y2="384.4" stroke="#F5D600" stroke-width="2" stroke-linecap="round"/>
+<circle cx="424.0" cy="380.1" r="5" fill="#F5D600" stroke="#14161F" stroke-width="2"/>
+<circle cx="481.0" cy="380.9" r="5" fill="#F5D600" stroke="#14161F" stroke-width="2"/>
+<circle cx="538.0" cy="384.4" r="5" fill="#F5D600" stroke="#14161F" stroke-width="2"/>
+<text x="420.0" y="368.1" font-size="16" font-weight="600" fill="#C5C9D6" text-anchor="start">24.3</text>
+<text x="548.0" y="390.4" font-size="16" font-weight="600" fill="#C5C9D6" text-anchor="start">21.0</text>
+<text x="652.0" y="307.0" font-size="15" font-weight="400" fill="#8E93A3" text-anchor="end">out of memory</text>
+<text x="700.0" y="174.0" font-size="21" font-weight="600" fill="#F4F4F6" text-anchor="start">GLM-5.3 Flash 6-bit</text>
+<line x1="700.0" y1="412.0" x2="956.0" y2="412.0" stroke="#2B3040" stroke-width="1"/>
+<line x1="700.0" y1="346.4" x2="956.0" y2="346.4" stroke="#20242F" stroke-width="1"/>
+<line x1="700.0" y1="280.8" x2="956.0" y2="280.8" stroke="#20242F" stroke-width="1"/>
+<line x1="700.0" y1="215.1" x2="956.0" y2="215.1" stroke="#20242F" stroke-width="1"/>
+<text x="714.0" y="434.0" font-size="15" font-weight="400" fill="#8E93A3" text-anchor="middle">4K</text>
+<text x="771.0" y="434.0" font-size="15" font-weight="400" fill="#8E93A3" text-anchor="middle">32K</text>
+<text x="828.0" y="434.0" font-size="15" font-weight="400" fill="#8E93A3" text-anchor="middle">128K</text>
+<text x="885.0" y="434.0" font-size="15" font-weight="400" fill="#8E93A3" text-anchor="middle">512K</text>
+<text x="942.0" y="434.0" font-size="15" font-weight="400" fill="#8E93A3" text-anchor="middle">1M</text>
+<line x1="714.0" y1="336.1" x2="771.0" y2="339.7" stroke="#F5D600" stroke-width="2" stroke-linecap="round"/>
+<line x1="771.0" y1="339.7" x2="828.0" y2="342.6" stroke="#F5D600" stroke-width="2" stroke-linecap="round"/>
+<line x1="828.0" y1="342.6" x2="885.0" y2="348.9" stroke="#F5D600" stroke-width="2" stroke-linecap="round"/>
+<line x1="885.0" y1="348.9" x2="942.0" y2="361.2" stroke="#F5D600" stroke-width="2" stroke-linecap="round"/>
+<circle cx="714.0" cy="336.1" r="5" fill="#F5D600" stroke="#14161F" stroke-width="2"/>
+<circle cx="771.0" cy="339.7" r="5" fill="#F5D600" stroke="#14161F" stroke-width="2"/>
+<circle cx="828.0" cy="342.6" r="5" fill="#F5D600" stroke="#14161F" stroke-width="2"/>
+<circle cx="885.0" cy="348.9" r="5" fill="#F5D600" stroke="#14161F" stroke-width="2"/>
+<circle cx="942.0" cy="361.2" r="5" fill="#F5D600" stroke="#14161F" stroke-width="2"/>
+<text x="710.0" y="324.1" font-size="16" font-weight="600" fill="#C5C9D6" text-anchor="start">57.8</text>
+<text x="946.0" y="387.2" font-size="16" font-weight="600" fill="#C5C9D6" text-anchor="end">38.7</text>
+<text x="990.0" y="174.0" font-size="21" font-weight="600" fill="#F4F4F6" text-anchor="start">GLM-5.3 Flash 4-bit</text>
+<line x1="990.0" y1="412.0" x2="1246.0" y2="412.0" stroke="#2B3040" stroke-width="1"/>
+<line x1="990.0" y1="346.4" x2="1246.0" y2="346.4" stroke="#20242F" stroke-width="1"/>
+<line x1="990.0" y1="280.8" x2="1246.0" y2="280.8" stroke="#20242F" stroke-width="1"/>
+<line x1="990.0" y1="215.1" x2="1246.0" y2="215.1" stroke="#20242F" stroke-width="1"/>
+<text x="1004.0" y="434.0" font-size="15" font-weight="400" fill="#8E93A3" text-anchor="middle">4K</text>
+<text x="1061.0" y="434.0" font-size="15" font-weight="400" fill="#8E93A3" text-anchor="middle">32K</text>
+<text x="1118.0" y="434.0" font-size="15" font-weight="400" fill="#8E93A3" text-anchor="middle">128K</text>
+<text x="1175.0" y="434.0" font-size="15" font-weight="400" fill="#8E93A3" text-anchor="middle">512K</text>
+<text x="1232.0" y="434.0" font-size="15" font-weight="400" fill="#8E93A3" text-anchor="middle">1M</text>
+<line x1="1004.0" y1="321.7" x2="1061.0" y2="320.1" stroke="#F5D600" stroke-width="2" stroke-linecap="round"/>
+<line x1="1061.0" y1="320.1" x2="1118.0" y2="325.9" stroke="#F5D600" stroke-width="2" stroke-linecap="round"/>
+<line x1="1118.0" y1="325.9" x2="1175.0" y2="340.3" stroke="#F5D600" stroke-width="2" stroke-linecap="round"/>
+<line x1="1175.0" y1="340.3" x2="1232.0" y2="352.7" stroke="#F5D600" stroke-width="2" stroke-linecap="round"/>
+<circle cx="1004.0" cy="321.7" r="5" fill="#F5D600" stroke="#14161F" stroke-width="2"/>
+<circle cx="1061.0" cy="320.1" r="5" fill="#F5D600" stroke="#14161F" stroke-width="2"/>
+<circle cx="1118.0" cy="325.9" r="5" fill="#F5D600" stroke="#14161F" stroke-width="2"/>
+<circle cx="1175.0" cy="340.3" r="5" fill="#F5D600" stroke="#14161F" stroke-width="2"/>
+<circle cx="1232.0" cy="352.7" r="5" fill="#F5D600" stroke="#14161F" stroke-width="2"/>
+<text x="1000.0" y="347.7" font-size="16" font-weight="600" fill="#C5C9D6" text-anchor="start">68.8</text>
+<text x="1236.0" y="378.7" font-size="16" font-weight="600" fill="#C5C9D6" text-anchor="end">45.2</text>
+<text x="1280.0" y="174.0" font-size="21" font-weight="600" fill="#F4F4F6" text-anchor="start">Inkling 2 Small</text>
+<line x1="1280.0" y1="412.0" x2="1536.0" y2="412.0" stroke="#2B3040" stroke-width="1"/>
+<line x1="1280.0" y1="346.4" x2="1536.0" y2="346.4" stroke="#20242F" stroke-width="1"/>
+<line x1="1280.0" y1="280.8" x2="1536.0" y2="280.8" stroke="#20242F" stroke-width="1"/>
+<line x1="1280.0" y1="215.1" x2="1536.0" y2="215.1" stroke="#20242F" stroke-width="1"/>
+<text x="1294.0" y="434.0" font-size="15" font-weight="400" fill="#8E93A3" text-anchor="middle">4K</text>
+<text x="1351.0" y="434.0" font-size="15" font-weight="400" fill="#8E93A3" text-anchor="middle">32K</text>
+<text x="1408.0" y="434.0" font-size="15" font-weight="400" fill="#8E93A3" text-anchor="middle">128K</text>
+<text x="1465.0" y="434.0" font-size="15" font-weight="400" fill="#8E93A3" text-anchor="middle">512K</text>
+<text x="1522.0" y="434.0" font-size="15" font-weight="400" fill="#8E93A3" text-anchor="middle">1M</text>
+<line x1="1294.0" y1="357.8" x2="1351.0" y2="360.7" stroke="#F5D600" stroke-width="2" stroke-linecap="round"/>
+<line x1="1351.0" y1="360.7" x2="1408.0" y2="377.7" stroke="#F5D600" stroke-width="2" stroke-linecap="round"/>
+<circle cx="1294.0" cy="357.8" r="5" fill="#F5D600" stroke="#14161F" stroke-width="2"/>
+<circle cx="1351.0" cy="360.7" r="5" fill="#F5D600" stroke="#14161F" stroke-width="2"/>
+<circle cx="1408.0" cy="377.7" r="5" fill="#F5D600" stroke="#14161F" stroke-width="2"/>
+<text x="1290.0" y="345.8" font-size="16" font-weight="600" fill="#C5C9D6" text-anchor="start">41.3</text>
+<text x="1418.0" y="383.7" font-size="16" font-weight="600" fill="#C5C9D6" text-anchor="start">26.1</text>
+<text x="1522.0" y="307.0" font-size="15" font-weight="400" fill="#8E93A3" text-anchor="end">out of memory</text>
+<text x="120.0" y="516.0" font-size="21" font-weight="600" fill="#F4F4F6" text-anchor="start">Qwen3.8 27B 4-bit</text>
+<line x1="120.0" y1="754.0" x2="376.0" y2="754.0" stroke="#2B3040" stroke-width="1"/>
+<text x="110.0" y="760.0" font-size="16" font-weight="400" fill="#8E93A3" text-anchor="end">0</text>
+<line x1="120.0" y1="688.4" x2="376.0" y2="688.4" stroke="#20242F" stroke-width="1"/>
+<text x="110.0" y="694.4" font-size="16" font-weight="400" fill="#8E93A3" text-anchor="end">50</text>
+<line x1="120.0" y1="622.8" x2="376.0" y2="622.8" stroke="#20242F" stroke-width="1"/>
+<text x="110.0" y="628.8" font-size="16" font-weight="400" fill="#8E93A3" text-anchor="end">100</text>
+<line x1="120.0" y1="557.1" x2="376.0" y2="557.1" stroke="#20242F" stroke-width="1"/>
+<text x="110.0" y="563.1" font-size="16" font-weight="400" fill="#8E93A3" text-anchor="end">150</text>
+<text x="134.0" y="776.0" font-size="15" font-weight="400" fill="#8E93A3" text-anchor="middle">4K</text>
+<text x="191.0" y="776.0" font-size="15" font-weight="400" fill="#8E93A3" text-anchor="middle">32K</text>
+<text x="248.0" y="776.0" font-size="15" font-weight="400" fill="#8E93A3" text-anchor="middle">128K</text>
+<text x="305.0" y="776.0" font-size="15" font-weight="400" fill="#8E93A3" text-anchor="middle">512K</text>
+<text x="362.0" y="776.0" font-size="15" font-weight="400" fill="#8E93A3" text-anchor="middle">1M</text>
+<line x1="134.0" y1="551.6" x2="191.0" y2="606.7" stroke="#F5D600" stroke-width="2" stroke-linecap="round"/>
+<line x1="191.0" y1="606.7" x2="248.0" y2="651.0" stroke="#F5D600" stroke-width="2" stroke-linecap="round"/>
+<circle cx="134.0" cy="551.6" r="5" fill="#F5D600" stroke="#14161F" stroke-width="2"/>
+<circle cx="191.0" cy="606.7" r="5" fill="#F5D600" stroke="#14161F" stroke-width="2"/>
+<circle cx="248.0" cy="651.0" r="5" fill="#F5D600" stroke="#14161F" stroke-width="2"/>
+<text x="130.0" y="539.6" font-size="16" font-weight="600" fill="#C5C9D6" text-anchor="start">154.2</text>
+<text x="258.0" y="657.0" font-size="16" font-weight="600" fill="#C5C9D6" text-anchor="start">78.5</text>
+<text x="362.0" y="558.0" font-size="15" font-weight="400" fill="#8E93A3" text-anchor="end">512K and 1M not shown</text>
+<text x="410.0" y="516.0" font-size="21" font-weight="600" fill="#F4F4F6" text-anchor="start">Qwen3.8 27B BF16</text>
+<line x1="410.0" y1="754.0" x2="666.0" y2="754.0" stroke="#2B3040" stroke-width="1"/>
+<line x1="410.0" y1="688.4" x2="666.0" y2="688.4" stroke="#20242F" stroke-width="1"/>
+<line x1="410.0" y1="622.8" x2="666.0" y2="622.8" stroke="#20242F" stroke-width="1"/>
+<line x1="410.0" y1="557.1" x2="666.0" y2="557.1" stroke="#20242F" stroke-width="1"/>
+<text x="424.0" y="776.0" font-size="15" font-weight="400" fill="#8E93A3" text-anchor="middle">4K</text>
+<text x="481.0" y="776.0" font-size="15" font-weight="400" fill="#8E93A3" text-anchor="middle">32K</text>
+<text x="538.0" y="776.0" font-size="15" font-weight="400" fill="#8E93A3" text-anchor="middle">128K</text>
+<text x="595.0" y="776.0" font-size="15" font-weight="400" fill="#8E93A3" text-anchor="middle">512K</text>
+<text x="652.0" y="776.0" font-size="15" font-weight="400" fill="#8E93A3" text-anchor="middle">1M</text>
+<line x1="424.0" y1="742.5" x2="481.0" y2="742.5" stroke="#F5D600" stroke-width="2" stroke-linecap="round"/>
+<line x1="481.0" y1="742.5" x2="538.0" y2="741.9" stroke="#F5D600" stroke-width="2" stroke-linecap="round"/>
+<circle cx="424.0" cy="742.5" r="5" fill="#F5D600" stroke="#14161F" stroke-width="2"/>
+<circle cx="481.0" cy="742.5" r="5" fill="#F5D600" stroke="#14161F" stroke-width="2"/>
+<circle cx="538.0" cy="741.9" r="5" fill="#F5D600" stroke="#14161F" stroke-width="2"/>
+<text x="420.0" y="730.5" font-size="16" font-weight="600" fill="#C5C9D6" text-anchor="start">8.8</text>
+<text x="548.0" y="747.9" font-size="16" font-weight="600" fill="#C5C9D6" text-anchor="start">9.2</text>
+<text x="652.0" y="558.0" font-size="15" font-weight="400" fill="#8E93A3" text-anchor="end">512K and 1M not shown</text>
+<text x="700.0" y="516.0" font-size="21" font-weight="600" fill="#F4F4F6" text-anchor="start">Flash Next 4-bit</text>
+<line x1="700.0" y1="754.0" x2="956.0" y2="754.0" stroke="#2B3040" stroke-width="1"/>
+<line x1="700.0" y1="688.4" x2="956.0" y2="688.4" stroke="#20242F" stroke-width="1"/>
+<line x1="700.0" y1="622.8" x2="956.0" y2="622.8" stroke="#20242F" stroke-width="1"/>
+<line x1="700.0" y1="557.1" x2="956.0" y2="557.1" stroke="#20242F" stroke-width="1"/>
+<text x="714.0" y="776.0" font-size="15" font-weight="400" fill="#8E93A3" text-anchor="middle">4K</text>
+<text x="771.0" y="776.0" font-size="15" font-weight="400" fill="#8E93A3" text-anchor="middle">32K</text>
+<text x="828.0" y="776.0" font-size="15" font-weight="400" fill="#8E93A3" text-anchor="middle">128K</text>
+<text x="885.0" y="776.0" font-size="15" font-weight="400" fill="#8E93A3" text-anchor="middle">512K</text>
+<text x="942.0" y="776.0" font-size="15" font-weight="400" fill="#8E93A3" text-anchor="middle">1M</text>
+<line x1="714.0" y1="584.4" x2="771.0" y2="593.5" stroke="#F5D600" stroke-width="2" stroke-linecap="round"/>
+<line x1="771.0" y1="593.5" x2="828.0" y2="591.1" stroke="#F5D600" stroke-width="2" stroke-linecap="round"/>
+<line x1="828.0" y1="591.1" x2="885.0" y2="610.1" stroke="#F5D600" stroke-width="2" stroke-linecap="round"/>
+<line x1="885.0" y1="610.1" x2="942.0" y2="631.7" stroke="#F5D600" stroke-width="2" stroke-linecap="round"/>
+<circle cx="714.0" cy="584.4" r="5" fill="#F5D600" stroke="#14161F" stroke-width="2"/>
+<circle cx="771.0" cy="593.5" r="5" fill="#F5D600" stroke="#14161F" stroke-width="2"/>
+<circle cx="828.0" cy="591.1" r="5" fill="#F5D600" stroke="#14161F" stroke-width="2"/>
+<circle cx="885.0" cy="610.1" r="5" fill="#F5D600" stroke="#14161F" stroke-width="2"/>
+<circle cx="942.0" cy="631.7" r="5" fill="#F5D600" stroke="#14161F" stroke-width="2"/>
+<text x="710.0" y="572.4" font-size="16" font-weight="600" fill="#C5C9D6" text-anchor="start">129.2</text>
+<text x="946.0" y="657.7" font-size="16" font-weight="600" fill="#C5C9D6" text-anchor="end">93.2</text>
+<text x="990.0" y="516.0" font-size="21" font-weight="600" fill="#F4F4F6" text-anchor="start">Flash Next 6-bit</text>
+<line x1="990.0" y1="754.0" x2="1246.0" y2="754.0" stroke="#2B3040" stroke-width="1"/>
+<line x1="990.0" y1="688.4" x2="1246.0" y2="688.4" stroke="#20242F" stroke-width="1"/>
+<line x1="990.0" y1="622.8" x2="1246.0" y2="622.8" stroke="#20242F" stroke-width="1"/>
+<line x1="990.0" y1="557.1" x2="1246.0" y2="557.1" stroke="#20242F" stroke-width="1"/>
+<text x="1004.0" y="776.0" font-size="15" font-weight="400" fill="#8E93A3" text-anchor="middle">4K</text>
+<text x="1061.0" y="776.0" font-size="15" font-weight="400" fill="#8E93A3" text-anchor="middle">32K</text>
+<text x="1118.0" y="776.0" font-size="15" font-weight="400" fill="#8E93A3" text-anchor="middle">128K</text>
+<text x="1175.0" y="776.0" font-size="15" font-weight="400" fill="#8E93A3" text-anchor="middle">512K</text>
+<text x="1232.0" y="776.0" font-size="15" font-weight="400" fill="#8E93A3" text-anchor="middle">1M</text>
+<line x1="1004.0" y1="604.4" x2="1061.0" y2="601.8" stroke="#F5D600" stroke-width="2" stroke-linecap="round"/>
+<line x1="1061.0" y1="601.8" x2="1118.0" y2="612.6" stroke="#F5D600" stroke-width="2" stroke-linecap="round"/>
+<line x1="1118.0" y1="612.6" x2="1175.0" y2="620.0" stroke="#F5D600" stroke-width="2" stroke-linecap="round"/>
+<line x1="1175.0" y1="620.0" x2="1232.0" y2="641.9" stroke="#F5D600" stroke-width="2" stroke-linecap="round"/>
+<circle cx="1004.0" cy="604.4" r="5" fill="#F5D600" stroke="#14161F" stroke-width="2"/>
+<circle cx="1061.0" cy="601.8" r="5" fill="#F5D600" stroke="#14161F" stroke-width="2"/>
+<circle cx="1118.0" cy="612.6" r="5" fill="#F5D600" stroke="#14161F" stroke-width="2"/>
+<circle cx="1175.0" cy="620.0" r="5" fill="#F5D600" stroke="#14161F" stroke-width="2"/>
+<circle cx="1232.0" cy="641.9" r="5" fill="#F5D600" stroke="#14161F" stroke-width="2"/>
+<text x="1000.0" y="630.4" font-size="16" font-weight="600" fill="#C5C9D6" text-anchor="start">114.0</text>
+<text x="1236.0" y="667.9" font-size="16" font-weight="600" fill="#C5C9D6" text-anchor="end">85.4</text>
+<text x="1280.0" y="516.0" font-size="21" font-weight="600" fill="#F4F4F6" text-anchor="start">Flash Next BF16</text>
+<line x1="1280.0" y1="754.0" x2="1536.0" y2="754.0" stroke="#2B3040" stroke-width="1"/>
+<line x1="1280.0" y1="688.4" x2="1536.0" y2="688.4" stroke="#20242F" stroke-width="1"/>
+<line x1="1280.0" y1="622.8" x2="1536.0" y2="622.8" stroke="#20242F" stroke-width="1"/>
+<line x1="1280.0" y1="557.1" x2="1536.0" y2="557.1" stroke="#20242F" stroke-width="1"/>
+<text x="1294.0" y="776.0" font-size="15" font-weight="400" fill="#8E93A3" text-anchor="middle">4K</text>
+<text x="1351.0" y="776.0" font-size="15" font-weight="400" fill="#8E93A3" text-anchor="middle">32K</text>
+<text x="1408.0" y="776.0" font-size="15" font-weight="400" fill="#8E93A3" text-anchor="middle">128K</text>
+<text x="1465.0" y="776.0" font-size="15" font-weight="400" fill="#8E93A3" text-anchor="middle">512K</text>
+<text x="1522.0" y="776.0" font-size="15" font-weight="400" fill="#8E93A3" text-anchor="middle">1M</text>
+<line x1="1294.0" y1="708.2" x2="1351.0" y2="708.2" stroke="#F5D600" stroke-width="2" stroke-linecap="round"/>
+<line x1="1351.0" y1="708.2" x2="1408.0" y2="714.8" stroke="#F5D600" stroke-width="2" stroke-linecap="round"/>
+<line x1="1408.0" y1="714.8" x2="1465.0" y2="717.6" stroke="#F5D600" stroke-width="2" stroke-linecap="round"/>
+<line x1="1465.0" y1="717.6" x2="1522.0" y2="720.4" stroke="#F5D600" stroke-width="2" stroke-linecap="round"/>
+<circle cx="1294.0" cy="708.2" r="5" fill="#F5D600" stroke="#14161F" stroke-width="2"/>
+<circle cx="1351.0" cy="708.2" r="5" fill="#F5D600" stroke="#14161F" stroke-width="2"/>
+<circle cx="1408.0" cy="714.8" r="5" fill="#F5D600" stroke="#14161F" stroke-width="2"/>
+<circle cx="1465.0" cy="717.6" r="5" fill="#F5D600" stroke="#14161F" stroke-width="2"/>
+<circle cx="1522.0" cy="720.4" r="5" fill="#F5D600" stroke="#14161F" stroke-width="2"/>
+<text x="1290.0" y="696.2" font-size="16" font-weight="600" fill="#C5C9D6" text-anchor="start">34.9</text>
+<text x="1526.0" y="746.4" font-size="16" font-weight="600" fill="#C5C9D6" text-anchor="end">25.6</text>
+<text x="64.0" y="830.0" font-size="18" font-weight="400" fill="#8E93A3" text-anchor="start">Decode is tokens per second from the first reply token to the last. The Qwen3.8 27B engines here serve it to 262,144 tokens, so 512K and 1M are not shown.</text>
+<text x="64.0" y="866.0" font-size="18" font-weight="400" fill="#8E93A3" text-anchor="start">Each model at the best setup I found. mlx-serve 26.11.2, oMLX 0.7.3 and main 624cff0e, TensorFold 1.2.8. Runs 16 to 18 Nov 2026.</text>
+<text x="1536.0" y="866.0" font-size="20" font-weight="600" fill="#42FCF9" text-anchor="end">@LazyLocalLLM</text>
+</svg>

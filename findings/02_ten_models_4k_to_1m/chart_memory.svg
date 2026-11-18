@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" font-family='system-ui, -apple-system, "Segoe UI", sans-serif'><rect width="1600" height="900" fill="#14161F"/>
+<text x="64.0" y="76.0" font-size="40" font-weight="600" fill="#F4F4F6" text-anchor="start">Peak memory at 128K and 1M prompts</text>
+<text x="64.0" y="116.0" font-size="22" font-weight="400" fill="#C5C9D6" text-anchor="start">Mac Studio M5 Ultra 512 GB. One user, 512-token replies. Highest block peak across 5 runs at 128K and 3 at 1M.</text>
+<rect x="364" y="140" width="16" height="16" rx="3" fill="#35D6DC"/>
+<text x="388.0" y="154.0" font-size="18" font-weight="400" fill="#C5C9D6" text-anchor="start">128K prompt</text>
+<rect x="534" y="140" width="16" height="16" rx="3" fill="#F5D600"/>
+<text x="558.0" y="154.0" font-size="18" font-weight="400" fill="#C5C9D6" text-anchor="start">1M prompt</text>
+<line x1="364.0" y1="186.0" x2="364.0" y2="756.0" stroke="#2B3040" stroke-width="1"/>
+<text x="364.0" y="782.0" font-size="16" font-weight="400" fill="#8E93A3" text-anchor="middle">0 GiB</text>
+<line x1="549.8" y1="186.0" x2="549.8" y2="756.0" stroke="#20242F" stroke-width="1"/>
+<text x="549.8" y="782.0" font-size="16" font-weight="400" fill="#8E93A3" text-anchor="middle">100 GiB</text>
+<line x1="735.6" y1="186.0" x2="735.6" y2="756.0" stroke="#20242F" stroke-width="1"/>
+<text x="735.6" y="782.0" font-size="16" font-weight="400" fill="#8E93A3" text-anchor="middle">200 GiB</text>
+<line x1="921.5" y1="186.0" x2="921.5" y2="756.0" stroke="#20242F" stroke-width="1"/>
+<text x="921.5" y="782.0" font-size="16" font-weight="400" fill="#8E93A3" text-anchor="middle">300 GiB</text>
+<line x1="1107.3" y1="186.0" x2="1107.3" y2="756.0" stroke="#20242F" stroke-width="1"/>
+<text x="1107.3" y="782.0" font-size="16" font-weight="400" fill="#8E93A3" text-anchor="middle">400 GiB</text>
+<line x1="1293.1" y1="186.0" x2="1293.1" y2="756.0" stroke="#20242F" stroke-width="1"/>
+<text x="1293.1" y="782.0" font-size="16" font-weight="400" fill="#8E93A3" text-anchor="middle">500 GiB</text>
+<line x1="1315.4" y1="186.0" x2="1315.4" y2="756.0" stroke="#C5C9D6" stroke-width="1"/>
+<text x="1323.4" y="200.0" font-size="16" font-weight="400" fill="#C5C9D6" text-anchor="start">512 GiB in the Mac</text>
+<text x="348.0" y="231.0" font-size="21" font-weight="600" fill="#F4F4F6" text-anchor="end">DeepSeek V4.1 Flash</text>
+<path d="M364.0,204.0 H927.7 Q931.7,204.0 931.7,208.0 V218.0 Q931.7,222.0 927.7,222.0 H364.0 Z" fill="#35D6DC"/>
+<text x="939.7" y="219.0" font-size="16" font-weight="600" fill="#C5C9D6" text-anchor="start">305.5</text>
+<path d="M364.0,224.0 H970.2 Q974.2,224.0 974.2,228.0 V238.0 Q974.2,242.0 970.2,242.0 H364.0 Z" fill="#F5D600"/>
+<text x="982.2" y="239.0" font-size="16" font-weight="600" fill="#C5C9D6" text-anchor="start">328.4</text>
+<text x="348.0" y="287.0" font-size="21" font-weight="600" fill="#F4F4F6" text-anchor="end">GLM-5.3 4-bit</text>
+<path d="M364.0,260.0 H1146.2 Q1150.2,260.0 1150.2,264.0 V274.0 Q1150.2,278.0 1146.2,278.0 H364.0 Z" fill="#35D6DC"/>
+<text x="1158.2" y="275.0" font-size="16" font-weight="600" fill="#C5C9D6" text-anchor="start">423.1</text>
+<text x="372.0" y="295.0" font-size="16" font-weight="400" fill="#8E93A3" text-anchor="start">1M not tried, 512K was out of memory</text>
+<text x="348.0" y="343.0" font-size="21" font-weight="600" fill="#F4F4F6" text-anchor="end">GLM-5.3 Flash 6-bit</text>
+<path d="M364.0,316.0 H841.3 Q845.3,316.0 845.3,320.0 V330.0 Q845.3,334.0 841.3,334.0 H364.0 Z" fill="#35D6DC"/>
+<text x="853.3" y="331.0" font-size="16" font-weight="600" fill="#C5C9D6" text-anchor="start">259.0</text>
+<path d="M364.0,336.0 H883.3 Q887.3,336.0 887.3,340.0 V350.0 Q887.3,354.0 883.3,354.0 H364.0 Z" fill="#F5D600"/>
+<text x="895.3" y="351.0" font-size="16" font-weight="600" fill="#C5C9D6" text-anchor="start">281.6</text>
+<text x="348.0" y="399.0" font-size="21" font-weight="600" fill="#F4F4F6" text-anchor="end">GLM-5.3 Flash 4-bit</text>
+<path d="M364.0,372.0 H705.8 Q709.8,372.0 709.8,376.0 V386.0 Q709.8,390.0 705.8,390.0 H364.0 Z" fill="#35D6DC"/>
+<text x="717.8" y="387.0" font-size="16" font-weight="600" fill="#C5C9D6" text-anchor="start">186.1</text>
+<path d="M364.0,392.0 H752.8 Q756.8,392.0 756.8,396.0 V406.0 Q756.8,410.0 752.8,410.0 H364.0 Z" fill="#F5D600"/>
+<text x="764.8" y="407.0" font-size="16" font-weight="600" fill="#C5C9D6" text-anchor="start">211.4</text>
+<text x="348.0" y="455.0" font-size="21" font-weight="600" fill="#F4F4F6" text-anchor="end">Inkling 2 Small</text>
+<path d="M364.0,428.0 H1156.0 Q1160.0,428.0 1160.0,432.0 V442.0 Q1160.0,446.0 1156.0,446.0 H364.0 Z" fill="#35D6DC"/>
+<text x="1168.0" y="443.0" font-size="16" font-weight="600" fill="#C5C9D6" text-anchor="start">428.4</text>
+<text x="372.0" y="463.0" font-size="16" font-weight="400" fill="#8E93A3" text-anchor="start">1M not tried, 512K was out of memory</text>
+<text x="348.0" y="511.0" font-size="21" font-weight="600" fill="#F4F4F6" text-anchor="end">Qwen3.8 27B 4-bit</text>
+<path d="M364.0,484.0 H760.8 Q764.8,484.0 764.8,488.0 V498.0 Q764.8,502.0 760.8,502.0 H364.0 Z" fill="#35D6DC"/>
+<text x="772.8" y="499.0" font-size="16" font-weight="600" fill="#C5C9D6" text-anchor="start">215.7</text>
+<text x="372.0" y="519.0" font-size="16" font-weight="400" fill="#8E93A3" text-anchor="start">1M not shown, its engines here stop at 262,144 tokens</text>
+<text x="348.0" y="567.0" font-size="21" font-weight="600" fill="#F4F4F6" text-anchor="end">Qwen3.8 27B BF16</text>
+<path d="M364.0,540.0 H526.9 Q530.9,540.0 530.9,544.0 V554.0 Q530.9,558.0 526.9,558.0 H364.0 Z" fill="#35D6DC"/>
+<text x="538.9" y="555.0" font-size="16" font-weight="600" fill="#C5C9D6" text-anchor="start">89.8</text>
+<text x="372.0" y="575.0" font-size="16" font-weight="400" fill="#8E93A3" text-anchor="start">1M not shown, its engines here stop at 262,144 tokens</text>
+<text x="348.0" y="623.0" font-size="21" font-weight="600" fill="#F4F4F6" text-anchor="end">Flash Next 4-bit</text>
+<path d="M364.0,596.0 H682.6 Q686.6,596.0 686.6,600.0 V610.0 Q686.6,614.0 682.6,614.0 H364.0 Z" fill="#35D6DC"/>
+<text x="694.6" y="611.0" font-size="16" font-weight="600" fill="#C5C9D6" text-anchor="start">173.6</text>
+<path d="M364.0,616.0 H676.4 Q680.4,616.0 680.4,620.0 V630.0 Q680.4,634.0 676.4,634.0 H364.0 Z" fill="#F5D600"/>
+<text x="688.4" y="631.0" font-size="16" font-weight="600" fill="#C5C9D6" text-anchor="start">170.3</text>
+<text x="348.0" y="679.0" font-size="21" font-weight="600" fill="#F4F4F6" text-anchor="end">Flash Next 6-bit</text>
+<path d="M364.0,652.0 H760.8 Q764.8,652.0 764.8,656.0 V666.0 Q764.8,670.0 760.8,670.0 H364.0 Z" fill="#35D6DC"/>
+<text x="772.8" y="667.0" font-size="16" font-weight="600" fill="#C5C9D6" text-anchor="start">215.7</text>
+<path d="M364.0,672.0 H755.4 Q759.4,672.0 759.4,676.0 V686.0 Q759.4,690.0 755.4,690.0 H364.0 Z" fill="#F5D600"/>
+<text x="767.4" y="687.0" font-size="16" font-weight="600" fill="#C5C9D6" text-anchor="start">212.8</text>
+<text x="348.0" y="735.0" font-size="21" font-weight="600" fill="#F4F4F6" text-anchor="end">Flash Next BF16</text>
+<path d="M364.0,708.0 H1020.2 Q1024.2,708.0 1024.2,712.0 V722.0 Q1024.2,726.0 1020.2,726.0 H364.0 Z" fill="#35D6DC"/>
+<text x="1032.2" y="723.0" font-size="16" font-weight="600" fill="#C5C9D6" text-anchor="start">355.3</text>
+<path d="M364.0,728.0 H1100.5 Q1104.5,728.0 1104.5,732.0 V742.0 Q1104.5,746.0 1100.5,746.0 H364.0 Z" fill="#F5D600"/>
+<text x="1112.5" y="743.0" font-size="16" font-weight="600" fill="#C5C9D6" text-anchor="start">398.5</text>
+<text x="64.0" y="830.0" font-size="18" font-weight="400" fill="#8E93A3" text-anchor="start">Peak wired memory of the whole Mac during each block, macOS and engine caches included.</text>
+<text x="64.0" y="866.0" font-size="18" font-weight="400" fill="#8E93A3" text-anchor="start">Each model at the best setup I found. mlx-serve 26.11.2, oMLX 0.7.3 and main 624cff0e, TensorFold 1.2.8. Runs 16 to 18 Nov 2026.</text>
+<text x="1536.0" y="866.0" font-size="20" font-weight="600" fill="#42FCF9" text-anchor="end">@LazyLocalLLM</text>
+</svg>
