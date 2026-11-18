@@ -8,7 +8,7 @@ ELI5: I ran ten popular open-weight model builds on one Mac, each at the best se
 
 ELI5: Four pictures of the same results. How fast each model reads and writes as the prompt grows, how long you wait at 1M, and how much memory it takes.
 
-![Ten small line charts of prefill speed in tokens per second at 4K, 32K, 128K, 512K and 1M prompts. Qwen3.8 Flash Next reads fastest, 4,046.2 at 4K and 2,529.3 at 1M at 4-bit. DeepSeek V4.1 Flash reads 2,851.8 at 4K and 1,642.7 at 1M. GLM-5.3 4-bit reads 645.7 at 4K. The two Qwen3.8 27B builds are shown up to 128K only.](chart_prefill.png)
+![Ten small line charts of prefill speed in tokens per second at 4K, 32K, 128K, 512K and 1M prompts. Qwen3.8 Flash Next reads fastest at every size, 4,046.2 at 4K on the 4-bit build and 2,705.6 at 1M on the BF16 build. DeepSeek V4.1 Flash reads 2,851.8 at 4K and 1,642.7 at 1M. GLM-5.3 4-bit reads 645.7 at 4K. The two Qwen3.8 27B builds are shown up to 128K only.](chart_prefill.png)
 
 ![Ten small line charts, one per model, of decode speed in tokens per second at prompts of 4K, 32K, 128K, 512K and 1M tokens on a Mac Studio M5 Ultra 512 GB. DeepSeek V4.1 Flash holds 58.3 to 55.3. GLM-5.3 4-bit writes 24.3 to 21.0 and is out of memory from 512K. GLM-5.3 Flash 6-bit falls from 57.8 to 38.7 and the 4-bit from 68.8 to 45.2. Inkling 2 Small falls from 41.3 to 26.1 and is out of memory from 512K. Qwen3.8 27B 4-bit falls from 154.2 to 78.5 by 128K and the BF16 build holds 8.8 to 9.2, both shown up to 128K only. Qwen3.8 Flash Next falls from 129.2 to 93.2 at 4-bit, 114.0 to 85.4 at 6-bit and 34.9 to 25.6 at BF16.](chart_decode.png)
 
