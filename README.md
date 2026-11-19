@@ -4,6 +4,10 @@ ELI5: I'm a learner with one Mac Studio M5 Ultra 512 GB, and I time local AI mod
 
 I post these as [@LazyLocalLLM](https://x.com/LazyLocalLLM) on X.
 
+## Benchmark summary
+
+The best speed I have measured for each model, on one page, with a max and a median figure. See [benchmark_summary](benchmark_summary).
+
 ## Findings
 
 Newest first.
