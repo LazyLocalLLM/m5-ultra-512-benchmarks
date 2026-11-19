@@ -11,7 +11,7 @@ import sys
 
 COLUMNS = ["run id", "started", "engine", "engine version", "settings", "test",
            "content", "prompt tokens", "users", "n", "writing tok/s", "total tok/s",
-           "first token seconds"]
+           "first token seconds", "reply tokens", "sampler"]
 
 
 def read_csv(folder, name):
@@ -35,9 +35,21 @@ def table_line(values):
     return "| " + " | ".join(markdown(value) for value in values) + " |"
 
 
+def sampler(row):
+    """greedy for temperature 0, sampled for any other, blank when the row does not say."""
+    try:
+        temperature = (json.loads(row.get("extra") or "{}").get("sampling") or {}).get("temperature")
+    except (ValueError, AttributeError):
+        return ""
+    if temperature is None:
+        return ""
+    return "greedy" if float(temperature) == 0 else "sampled"
+
+
 def group_order(key):
-    test, content, prompt, users = key
-    return test, content, float(prompt) if prompt else 0, float(users) if users else 0
+    test, content, prompt, users, reply, kind = key
+    return (test, content, float(prompt) if prompt else 0, float(users) if users else 0,
+            float(reply) if reply else 0, kind)
 
 
 def summarize(folder):
@@ -58,7 +70,9 @@ def summarize(folder):
             if "item" in extra:
                 items.setdefault(extra["item"], set()).add(extra["sha256"])
         else:
+            # Reply length and sampler are part of the key, so a greedy block never pools with a sampled one.
             key = tuple(row[field] for field in ("test", "content", "prompt_target", "users"))
+            key += (row.get("answer_tokens") or "", sampler(row))
             groups.setdefault(run_id, {}).setdefault(key, []).append(row)
     run_order = sorted(runs, key=lambda run_id: (runs[run_id]["started"], run_id))
     lines = [table_line(COLUMNS), table_line(["---"] * len(COLUMNS))]
@@ -67,9 +81,10 @@ def summarize(folder):
         for key in sorted(groups.get(run_id, {}), key=group_order):
             samples = groups[run_id][key]
             cells = [run_id, run["started"], run["engine"], run["engine_version"], run["settings"]]
-            cells.extend(key)
+            cells.extend(key[:4])
             cells.extend([len(samples), measure(samples, "write_tps", 1),
                           measure(samples, "total_tps", 1), measure(samples, "first_s", 2)])
+            cells.extend(key[4:])
             lines.append(table_line(cells))
     if identities:
         lines.extend(["", "## Identity", ""])

@@ -2,7 +2,7 @@
 
 ELI5: One page with the best speed I have measured for each model on one Mac Studio M5 Ultra 512 GB. Every line links to the finding folder that holds the report and the raw rows.
 
-Updated 20 Nov 2026 06:12 SGT. All figures are decode speed in tok/s for one user.
+Updated 20 Nov 2026 06:25 SGT. All figures are decode speed in tok/s for one user.
 
 ## Two speeds per model
 
