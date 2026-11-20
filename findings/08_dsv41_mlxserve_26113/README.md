@@ -2,7 +2,9 @@
 
 ELI5: mlx-serve 26.11.3 came out on 20 Nov 2026. I ran DeepSeek V4.1 Flash on it the same day, with the new warm-up flag its help recommends for benchmarks. I asked three different things of it on two server starts, and I tried one pinned draft depth.
 
-**mlx-serve 26.11.3 wrote 93.8 and 95.3 tok/s on DeepSeek V4.1 Flash 1017 on two server starts while writing new code, greedy at temperature 0, at its defaults with replies of up to 2,048 tokens at a 4K prompt. With the model's own sampler on mixed text at 4K it wrote 57.5 and 56.4 tok/s. Copying code out of the prompt it wrote 167.0 tok/s, and counting from 1 it wrote 121.5. The defaults are not bit-exact. The server log says the output head is requantized to 8-bit. Mac Studio M5 Ultra 512 GB, the ddalcu Lossless pack, one user, median of 5 runs, 20 Nov 2026.**
+**mlx-serve 26.11.3 wrote 93.8 and 95.3 tok/s on DeepSeek V4.1 Flash 1017 on two server starts while writing new code, greedy at temperature 0, at its defaults with replies of up to 2,048 tokens at a 4K prompt. With the model's own sampler on mixed text at 4K it wrote 57.5 and 56.4 tok/s. Copying code out of the prompt it wrote 167.0 tok/s, and counting from 1 it wrote 121.5. The defaults are not bit-exact. The server log says the output head is requantized to 8-bit. With the head kept dense it wrote 91.6 tok/s on the same code test and 57.9 sampled, on one start. Mac Studio M5 Ultra 512 GB, the ddalcu Lossless pack, one user, median of 5 runs, 20 and 21 Nov 2026.**
+
+Updated 21 Nov 2026 03:50 SGT. Added one start with the output head kept dense, and one start of Qwen3.8 27B full without the warm-up flag.
 
 ## Chart
 
@@ -27,7 +29,7 @@ Decode tok/s. The first start is run `ddee83910540`. The second start, run `4d0f
 - **Max.** 93.8 and 95.3 tok/s on the two starts, greedy on new code with replies of up to 2,048 tokens at 4K.
 - **Median.** 57.5 and 56.4 tok/s, temperature 1.0 and top-p 1.0 on mixed text at 4K.
 - **The two starts agree.** Text by text the middle ratio of the second over the first is 0.98 to 1.01 on every test.
-- **The defaults are not bit-exact.** The log of every start reads "lm head requantized to 8-bit (MLX_SERVE_DSV41_HEAD8=0 keeps it dense)". I did not run with the head kept dense.
+- **The defaults are not bit-exact.** The log of both starts reads "lm head requantized to 8-bit (MLX_SERVE_DSV41_HEAD8=0 keeps it dense)". The section "The output head kept dense" below has one start with that switch set.
 - **`--no-decode-attn-quant` changed nothing I can measure on this pack.** The help says that flag's default serves decode from requantized copies of dense attention weights and marks it LOSSY. On this pack the log prints no line for it on either start, where on the BF16 Qwen model below it prints "engaged". So I treat the second start as a repeat of the first.
 - **The pack is named Lossless** because it keeps the precision DeepSeek ships. That name describes the weights and not how the engine decodes them by default.
 - **Two starts did not give all the same short answers.** 246 of 250 greedy answers of 64 tokens match between them. Drafts are on in both.
@@ -66,6 +68,27 @@ Greedy at temperature 0, new code, tok/s at a 1K and a 4K prompt.
 - **The pin took effect.** The log reads "mtp=enabled (streaming, depth=5)" on that start and "depth=6" on the other two.
 - **248 of 250 short greedy answers match the first start.**
 
+## The output head kept dense
+
+ELI5: By default this release squeezes the model's last layer, the output head, to 8-bit. Its log names a switch that keeps the head as the pack ships it. I ran one start with that switch to see what it costs and whether the answers change.
+
+Tok/s, the middle of 5 runs. The dense-head start is run `18b1cdba2631`, 21 Nov 2026 03:17 SGT. The default is the first start, run `ddee83910540`.
+
+| Test | Prompt | Default, 8-bit head | Head kept dense |
+|---|---|---|---|
+| Greedy, new code, replies up to 2,048 tokens | 1K | 91.9 (84.1 to 98.6) | 90.2 (85.2 to 97.7) |
+| Greedy, new code, replies up to 2,048 tokens | 4K | 93.8 (86.1 to 99.8) | 91.6 (87.7 to 96.7) |
+| Greedy, new code, 512-token replies | 1K | 86.4 (75.2 to 95.6) | 80.4 (65.1 to 85.7) |
+| Greedy, new code, 512-token replies | 4K | 84.0 (76.0 to 97.9) | 85.2 (68.4 to 90.8) |
+| Own sampler, mixed text, 512-token replies | 4K | 57.5 (50.9 to 65.6) | 57.9 (49.7 to 59.2) |
+
+- **The switch took.** The log of this start reads "lm head dense, as shipped". The default starts read "lm head requantized to 8-bit".
+- **The speed cost is small.** Text by text the middle ratio of dense over default is 0.98 on the long replies, 0.93 on the 512-token replies and 0.98 on the sampled test. That is one start against one start.
+- **The short answers differ more.** 179 of 250 greedy answers of 64 tokens match the first default start, and 181 of 250 match the second. The two default starts match each other on 246 of 250.
+- **This is not a bit-exact run.** I also set `MLX_SERVE_DSV41_EXACT=1`, a switch named in the binary and not in the docs. The log says that check "is proven only where every verify row takes the fused decode kernels (a NAX GPU)" and that it was "left off". So drafts were on and the exact check was off.
+- **Which answers are right I can't say.** I have no plain-decode reference for this pack on this engine. I only show that the head setting changes about 28% of these short answers. 250 − 179 = 71, and 71 / 250 = 28%.
+- **The start also passed `--warmup-full` and `--no-decode-attn-quant`.** The log prints no line for the second flag on this pack.
+
 ## Against 26.11.2
 
 ELI5: Finding 2 ran the same pack on the release before. Only the sampled test is on both.
@@ -86,6 +109,7 @@ Decode tok/s, defaults with `--warmup-full`, run `8594b4fe926a`.
 | Greedy, new code, 512-token replies | 4K | 6.9 (6.5 to 7.4) |
 
 - **Finding 2 measured 8.8 tok/s on the sampled test** on 17 Nov 2026 with mlx-serve 26.11.2. Today it is 6.8.
+- **Without the warm-up flag it wrote 7.1 tok/s** (6.6 to 7.6) on the sampled test, run `5619fdacb103` on 21 Nov 2026 03:29 SGT at plain defaults. So the flag does not explain the gap to 8.8.
 - **I would not read that as a version change yet.** It is one start on each version, three days apart, and today's start had `--warmup-full`. The 4-bit build showed a gap of the same kind today that turned out to be spread between starts.
 - **The default decode here is lossy.** The log reads "[decode-attn-quant] engaged" and describes int8 side copies of the dense attention projections, used for decode only, with `--no-decode-attn-quant` to restore the dense weights. I did not run with that flag off on this model.
 - **For speed on this model use the 4-bit build.** Finding 7 measured 148.2 tok/s on the same sampled test with TensorFold 1.3.0.
@@ -100,7 +124,7 @@ ELI5: Apple's own server does not load this model, so there is no baseline bar. 
 
 ## The setup
 
-ELI5: One engine at its newest release, started fresh four times.
+ELI5: One engine at its newest release, started fresh six times.
 
 - **Engine.** [mlx-serve](https://github.com/ddalcu/mlx-serve) 26.11.3, released 20 Nov 2026 12:14 SGT, installed from the project's Homebrew formula. The formula's SHA-256 equals the digest GitHub lists for `mlx-serve-bin-macos-arm64.tar.gz`. `mlx-serve --version` prints 26.11.3.
 - **Weights.** [ddalcu/DeepSeek-V4.1-Flash-1017-MLX-Serve-Lossless](https://huggingface.co/ddalcu/DeepSeek-V4.1-Flash-1017-MLX-Serve-Lossless) @ 85002f89, and [mlx-community/Qwen3.8-27B-bf16](https://huggingface.co/mlx-community/Qwen3.8-27B-bf16) @ 379e7084.
@@ -113,16 +137,19 @@ mlx-serve --model <model folder> --serve --host 127.0.0.1 --port <port> --ctx-si
 - **`--warmup-full`** is new in 26.11.3. Its help says it compiles a model's Metal kernels before the server reports ready and calls it strongly recommended when benchmarking.
 - **The second start** adds `--no-decode-attn-quant`. **Depth pinned at 5** adds `--mtp-min-depth 5 --mtp-max-depth 5`.
 - **The full warm-up ran once.** The log of the first start reads "Warm requests complete (20 of 20, 16898 ms)". The help says it runs only the first time a build loads a model.
-- **Qwen3.8 27B** used `--ctx-size 262144`.
+- **The dense-head start** is the second start's command with `MLX_SERVE_DSV41_HEAD8=0` and `MLX_SERVE_DSV41_EXACT=1` set in the server's environment.
+- **Qwen3.8 27B** used `--ctx-size 262144`. Its second start left out `--warmup-full`.
 - **Everything else at defaults**, which includes prompt lookup drafts on.
 - **Thinking** off.
 
-| Run id | Model | Setup | Started, SGT, 20 Nov 2026 |
+| Run id | Model | Setup | Started, SGT |
 |---|---|---|---|
-| `ddee83910540` | DeepSeek V4.1 Flash | Defaults, first start | 22:17 |
-| `4d0f49b9ac43` | DeepSeek V4.1 Flash | Defaults with `--no-decode-attn-quant`, second start | 22:31 |
-| `31a7274d722a` | DeepSeek V4.1 Flash | Depth pinned at 5 | 22:45 |
-| `8594b4fe926a` | Qwen3.8 27B full | Defaults | 22:57 |
+| `ddee83910540` | DeepSeek V4.1 Flash | Defaults, first start | 20 Nov, 22:17 |
+| `4d0f49b9ac43` | DeepSeek V4.1 Flash | Defaults with `--no-decode-attn-quant`, second start | 20 Nov, 22:31 |
+| `31a7274d722a` | DeepSeek V4.1 Flash | Depth pinned at 5 | 20 Nov, 22:45 |
+| `8594b4fe926a` | Qwen3.8 27B full | Defaults | 20 Nov, 22:57 |
+| `18b1cdba2631` | DeepSeek V4.1 Flash | Output head kept dense, `--no-decode-attn-quant` | 21 Nov, 03:17 |
+| `5619fdacb103` | Qwen3.8 27B full | Defaults without `--warmup-full` | 21 Nov, 03:29 |
 
 ## How I measured
 
@@ -144,8 +171,8 @@ ELI5: Same Mac, same harness and same three questions as findings 5, 6 and 7.
 
 ELI5: Every timed request is in this folder. You can redo every median.
 
-- **`rows.csv`.** 161 raw rows from the bench database. The 145 timed requests and the 16 warm-ups.
-- **`runs.csv`.** The 4 runs behind them, with engine, version, start time, settings and sampling.
+- **`rows.csv`.** 195 raw rows from the bench database. The 175 timed requests and the 20 warm-ups.
+- **`runs.csv`.** The 6 runs behind them, with engine, version, start time, settings and sampling.
 
 From the top of this repository.
 
@@ -155,10 +182,12 @@ python3 tools/summarize.py findings/08_dsv41_mlxserve_26113
 
 ## What I did not verify
 
-- **A bit-exact run.** That needs the output head kept dense (`MLX_SERVE_DSV41_HEAD8=0`), and the tap history names an exact draft check (`MLX_SERVE_DSV41_EXACT`). I ran neither.
+- **A bit-exact run.** The head was kept dense on one start. The exact draft check (`MLX_SERVE_DSV41_EXACT`) was left off by the server, by its log.
+- **A second start with the head kept dense**, and its copy and counting speeds.
+- **A plain-decode reference** for the 250 short answers on this engine.
 - **Whether `--no-decode-attn-quant` does anything on this pack.** The log is silent on it.
 - **A second start of the pinned depth or of Qwen3.8 27B full.**
-- **mlx-serve without `--warmup-full`** on 26.11.3.
+- **mlx-serve without `--warmup-full`** on 26.11.3 on the DeepSeek pack.
 - **Whether Qwen3.8 27B full is slower on 26.11.3**, or why.
 - **Prompts longer than 4K** on these tests. Finding 2 ran this pack to 1M tokens on 26.11.2.
 - **Answer quality.** I timed the replies and did not score them.
