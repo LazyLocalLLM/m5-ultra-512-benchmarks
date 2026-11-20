@@ -37,6 +37,7 @@ Greedy at temperature 0, code, 128-token replies, tok/s.
 - **Ceiling 8 ran as ceiling 5.** oMLX limits draft depth to the build's `dspark_block_size`, which is 5 in this build's `config.json`. The limit is at line 68 of `omlx/patches/deepseek_v41/mtp.py` in 0.8.0. The log of that start shows no draft deeper than 5. So the second and third rows are one setting run twice.
 - **Those two starts differ by 7%.** Their means are 68.6 and 73.6, and 73.6 / 68.6 = 1.07 times. That is the noise between server starts here.
 - **No tuned setting clearly beats the default.** The best tuned mean is 73.6 against the default's 70.0. That is 73.6 / 70.0 = 1.05 times, inside the 7% above.
+- **Update, 20 Nov 2026 18:13 SGT.** [Finding 5](../05_dsv41_omlx_080_max_push) ran fixed depth 5 on four more server starts. With replies of up to 2,048 tokens it wrote 81.3 and 84.1 tok/s on new code at 1K, against 76.2 and 77.2 at the default depth.
 - **Short replies wrote slower in every setting.** At the default, 58.2 against 71.2 at 1K. That is 58.2 / 71.2 = 0.82 times.
 - **Drafts were accepted less often in short replies.** oMLX's log shows 73.3%, 71.8% and 70.2% of drafts accepted in the 128-token replies of the three tuned starts, and 82.8%, 85.2% and 82.2% in their 512-token replies. Each figure is the mean of 15 requests.
 - **Answers did not change with depth.** Each tuned start gave the same 250 greedy answers as the default, 250 of 250 by hash.
