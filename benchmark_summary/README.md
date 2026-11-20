@@ -2,7 +2,7 @@
 
 ELI5: One page with the best speed I have measured for each model on one Mac Studio M5 Ultra 512 GB. Every line links to the finding folder that holds the report and the raw rows.
 
-Updated 20 Nov 2026 06:25 SGT. All figures are decode speed in tok/s for one user.
+Updated 20 Nov 2026 15:26 SGT. All figures are decode speed in tok/s for one user.
 
 ## Two speeds per model
 
@@ -29,6 +29,7 @@ ELI5: The fastest setup I found for each model, one line each.
 | Qwen3.8 Flash Next, 4-bit | not run yet |  | **129.2** | TensorFold 1.2.8, MTP on, recipe line. 4K prompt, mixed, 512-token reply, 5 runs, 2026-11-17 | [2](../findings/02_ten_models_4k_to_1m) |
 | Qwen3.8 Flash Next, 6-bit | not run yet |  | **114.0** | TensorFold 1.2.8, MTP on, recipe line. 4K prompt, mixed, 512-token reply, 5 runs, 2026-11-17 | [2](../findings/02_ten_models_4k_to_1m) |
 | Qwen3.8 Flash Next, full | not run yet |  | **34.9** | oMLX 0.7.3 with its kernels, MTP on (built-in head). 4K prompt, mixed, 512-token reply, 5 runs, 2026-11-17 | [2](../findings/02_ten_models_4k_to_1m) |
+| DeepSeek V4.1 Flash 1017, oQ4e-mtp | **71.2** | oMLX 0.8.0 with its kernels, MTP drafts on, default depth. 1K prompt, code, 512-token reply, 5 runs, 2026-11-20 | **56.5** | oMLX 0.8.0 with its kernels, MTP drafts on, default depth. 4K prompt, mixed, 512-token reply, 5 runs, 2026-11-20 | [3](../findings/03_dsv41_omlx_080) |
 
 ## Every setup measured
 
@@ -49,6 +50,9 @@ ELI5: Everything behind the table above, including the setups that were not the 
 | Qwen3.8 Flash Next, 4-bit | median | TensorFold 1.2.8, MTP on, recipe line | temperature 0.7, top-p 0.8, top-k 20 | 4K mixed | 512 | 129.2 | 123.9 to 139.2 | 5 | 2026-11-17 | `72fae37b87f0` | [2](../findings/02_ten_models_4k_to_1m) |
 | Qwen3.8 Flash Next, 6-bit | median | TensorFold 1.2.8, MTP on, recipe line | temperature 0.7, top-p 0.8, top-k 20 | 4K mixed | 512 | 114.0 | 108.6 to 125.6 | 5 | 2026-11-17 | `ea26b8919e88` | [2](../findings/02_ten_models_4k_to_1m) |
 | Qwen3.8 Flash Next, full | median | oMLX 0.7.3 with its kernels, MTP on (built-in head) | temperature 0.7, top-p 0.8, top-k 20 | 4K mixed | 512 | 34.9 | 32.2 to 35.9 | 5 | 2026-11-17 | `c4bbe7d3230c` | [2](../findings/02_ten_models_4k_to_1m) |
+| DeepSeek V4.1 Flash 1017, oQ4e-mtp | max | oMLX 0.8.0 with its kernels, MTP drafts on, default depth | greedy, temperature 0 | 1K code | 512 | 71.2 | 65.7 to 73.1 | 5 | 2026-11-20 | `800dd0f8839c` | [3](../findings/03_dsv41_omlx_080) |
+| DeepSeek V4.1 Flash 1017, oQ4e-mtp | max | oMLX 0.8.0 with its kernels, MTP drafts on, default depth | greedy, temperature 0 | 1K code | 128 | 58.2 | 52.4 to 60.1 | 5 | 2026-11-20 | `800dd0f8839c` | [3](../findings/03_dsv41_omlx_080) |
+| DeepSeek V4.1 Flash 1017, oQ4e-mtp | median | oMLX 0.8.0 with its kernels, MTP drafts on, default depth | temperature 1.0, top-p 1.0 | 4K mixed | 512 | 56.5 | 55.1 to 58.5 | 5 | 2026-11-20 | `800dd0f8839c` | [3](../findings/03_dsv41_omlx_080) |
 
 ## Check it yourself
 
