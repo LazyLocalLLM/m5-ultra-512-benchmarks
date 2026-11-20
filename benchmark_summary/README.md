@@ -2,7 +2,7 @@
 
 ELI5: One page with the best speed I have measured for each model on one Mac Studio M5 Ultra 512 GB. Every line links to the finding folder that holds the report and the raw rows.
 
-Updated 20 Nov 2026 18:20 SGT. All figures are decode speed in tok/s for one user.
+Updated 20 Nov 2026 19:29 SGT. All figures are decode speed in tok/s for one user.
 
 ## Two speeds per model
 
@@ -31,7 +31,7 @@ ELI5: The fastest setup I found for each model, one line each.
 | Qwen3.8 Flash Next, 6-bit | not run yet |  | **114.0** | TensorFold 1.2.8, MTP on, recipe line. 4K prompt, mixed, replies up to 512 tokens, 5 runs, 2026-11-17 | [2](../findings/02_ten_models_4k_to_1m) |
 | Qwen3.8 Flash Next, full | not run yet |  | **34.9** | oMLX 0.7.3 with its kernels, MTP on (built-in head). 4K prompt, mixed, replies up to 512 tokens, 5 runs, 2026-11-17 | [2](../findings/02_ten_models_4k_to_1m) |
 | DeepSeek V4.1 Flash 1017, oQ4e-mtp | **84.1** | oMLX 0.8.0 with its kernels, MTP drafts on, fixed depth 5. 1K prompt, code, replies up to 2,048 tokens, 5 runs, 2026-11-20 | **56.5** | oMLX 0.8.0 with its kernels, MTP drafts on, default depth. 4K prompt, mixed, replies up to 512 tokens, 5 runs, 2026-11-20 | [5](../findings/05_dsv41_omlx_080_max_push), [3](../findings/03_dsv41_omlx_080) |
-| DeepSeek V4.1 Flash 1017, maker's files | **70.5** | TensorFold 1.3.0, drafts at defaults (DSpark and copies). 1K prompt, code, replies up to 512 tokens, 5 runs, 2026-11-20 | **44.5** | TensorFold 1.3.0, drafts at defaults (DSpark and copies). 4K prompt, mixed, replies up to 512 tokens, 5 runs, 2026-11-20 | [4](../findings/04_dsv41_tensorfold_130) |
+| DeepSeek V4.1 Flash 1017, maker's files | **76.4** | TensorFold 1.3.0, drafts at defaults (DSpark and copies). 4K prompt, code, replies up to 2,048 tokens, 5 runs, 2026-11-20 | **44.5** | TensorFold 1.3.0, drafts at defaults (DSpark and copies). 4K prompt, mixed, replies up to 512 tokens, 5 runs, 2026-11-20 | [6](../findings/06_dsv41_tensorfold_130_max_push), [4](../findings/04_dsv41_tensorfold_130) |
 
 ## Ceiling on easy text
 
@@ -44,6 +44,7 @@ ELI5: Some tests hand the model text it can guess almost perfectly. The drafts l
 | Model | Copy task tok/s | Copy task setup | Counting toy tok/s | Counting toy setup | Finding |
 |---|---|---|---|---|---|
 | DeepSeek V4.1 Flash 1017, oQ4e-mtp | **118.3** | oMLX 0.8.0 with its kernels, MTP drafts on, fixed depth 5. 4K prompt, code, replies up to 512 tokens, 5 runs, 2026-11-20 | **114.0** | oMLX 0.8.0 with its kernels, MTP drafts on, fixed depth 5. 4K prompt, code, replies up to 512 tokens, 5 runs, 2026-11-20 | [5](../findings/05_dsv41_omlx_080_max_push) |
+| DeepSeek V4.1 Flash 1017, maker's files | **159.1** | TensorFold 1.3.0, drafts at defaults (DSpark and copies). 1K prompt, code, replies up to 512 tokens, 5 runs, 2026-11-20 | **106.9** | TensorFold 1.3.0, drafts at defaults (DSpark and copies). 1K prompt, code, replies up to 512 tokens, 5 runs, 2026-11-20 | [6](../findings/06_dsv41_tensorfold_130_max_push) |
 
 ## Every setup measured
 
@@ -76,8 +77,14 @@ ELI5: Everything behind the table above, including the setups that were not the 
 | DeepSeek V4.1 Flash 1017, oQ4e-mtp | counting toy | oMLX 0.8.0 with its kernels, MTP drafts on, fixed depth 5 | greedy, temperature 0 | 1K code | 512 | 113.0 | 111.9 to 114.0 | 5 | 2026-11-20 | `b1703d1d52b6` | [5](../findings/05_dsv41_omlx_080_max_push) |
 | DeepSeek V4.1 Flash 1017, oQ4e-mtp | counting toy | oMLX 0.8.0 with its kernels, MTP drafts on, default depth | greedy, temperature 0 | 4K code | 512 | 90.6 | 90.4 to 90.8 | 5 | 2026-11-20 | `526b05fc2a44` | [5](../findings/05_dsv41_omlx_080_max_push) |
 | DeepSeek V4.1 Flash 1017, oQ4e-mtp | median | oMLX 0.8.0 with its kernels, MTP drafts on, default depth | temperature 1.0, top-p 1.0 | 4K mixed | 512 | 56.5 | 55.1 to 58.5 | 5 | 2026-11-20 | `800dd0f8839c` | [3](../findings/03_dsv41_omlx_080) |
+| DeepSeek V4.1 Flash 1017, maker's files | max | TensorFold 1.3.0, drafts at defaults (DSpark and copies) | greedy, temperature 0 | 4K code | 2,048 | 76.4 | 67.5 to 80.5 | 5 | 2026-11-20 | `605b3e0a7834` | [6](../findings/06_dsv41_tensorfold_130_max_push) |
+| DeepSeek V4.1 Flash 1017, maker's files | max | TensorFold 1.3.0, drafts at defaults (DSpark and copies) | greedy, temperature 0 | 1K code | 2,048 | 74.1 | 69.2 to 75.0 | 5 | 2026-11-20 | `605b3e0a7834` | [6](../findings/06_dsv41_tensorfold_130_max_push) |
 | DeepSeek V4.1 Flash 1017, maker's files | max | TensorFold 1.3.0, drafts at defaults (DSpark and copies) | greedy, temperature 0 | 1K code | 512 | 70.5 | 65.9 to 73.9 | 5 | 2026-11-20 | `778e5c808b88` | [4](../findings/04_dsv41_tensorfold_130) |
 | DeepSeek V4.1 Flash 1017, maker's files | max | TensorFold 1.3.0, drafts at defaults (DSpark and copies) | greedy, temperature 0 | 1K code | 128 | 62.6 | 56.7 to 66.0 | 5 | 2026-11-20 | `778e5c808b88` | [4](../findings/04_dsv41_tensorfold_130) |
+| DeepSeek V4.1 Flash 1017, maker's files | copy task | TensorFold 1.3.0, drafts at defaults (DSpark and copies) | greedy, temperature 0 | 1K code | 512 | 159.1 | 149.3 to 163.1 | 5 | 2026-11-20 | `605b3e0a7834` | [6](../findings/06_dsv41_tensorfold_130_max_push) |
+| DeepSeek V4.1 Flash 1017, maker's files | copy task | TensorFold 1.3.0, drafts at defaults (DSpark and copies) | greedy, temperature 0 | 4K code | 512 | 146.3 | 125.7 to 149.7 | 5 | 2026-11-20 | `605b3e0a7834` | [6](../findings/06_dsv41_tensorfold_130_max_push) |
+| DeepSeek V4.1 Flash 1017, maker's files | counting toy | TensorFold 1.3.0, drafts at defaults (DSpark and copies) | greedy, temperature 0 | 1K code | 512 | 106.9 | 103.1 to 114.0 | 5 | 2026-11-20 | `605b3e0a7834` | [6](../findings/06_dsv41_tensorfold_130_max_push) |
+| DeepSeek V4.1 Flash 1017, maker's files | counting toy | TensorFold 1.3.0, drafts at defaults (DSpark and copies) | greedy, temperature 0 | 4K code | 512 | 105.3 | 102.2 to 111.2 | 5 | 2026-11-20 | `605b3e0a7834` | [6](../findings/06_dsv41_tensorfold_130_max_push) |
 | DeepSeek V4.1 Flash 1017, maker's files | median | TensorFold 1.3.0, drafts at defaults (DSpark and copies) | temperature 1.0, top-p 1.0 | 4K mixed | 512 | 44.5 | 41.1 to 48.2 | 5 | 2026-11-20 | `778e5c808b88` | [4](../findings/04_dsv41_tensorfold_130) |
 
 ## Check it yourself
