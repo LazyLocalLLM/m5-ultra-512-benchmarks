@@ -14,6 +14,7 @@ Newest first.
 
 | # | Runs | Finding | Headline |
 |---|---|---|---|
+| 4 | 20 Nov 2026 | [DeepSeek V4.1 Flash on TensorFold 1.3.0 against 1.2.10](findings/04_dsv41_tensorfold_130) | On one server start each, TensorFold 1.3.0 read prompts 3% to 10% faster than 1.2.10 and wrote at the same speed, 70.5 against 69.5 tok/s greedy on code. 11 of 48 replies on 1.3.0 held one pause of 0.25 to 0.58 s, and none did on 1.2.10. |
 | 3 | 20 Nov 2026 | [DeepSeek V4.1 Flash on oMLX 0.8.0, max and median speed](findings/03_dsv41_omlx_080) | oMLX 0.8.0 wrote 71.2 tok/s on DeepSeek V4.1 Flash oQ4e-mtp, greedy on code at its default draft depth, and 56.5 with the model's own sampler on mixed text. Deeper draft settings gave 65.8 to 78.7, inside the noise between server starts. |
 | 2 | 16 to 18 Nov 2026 | [Ten open-weight models, from 4K to 1M tokens](findings/02_ten_models_4k_to_1m) | Qwen3.8 Flash Next 4-bit wrote 124.1 tok/s at a 128K prompt and 93.2 at 1M. DeepSeek V4.1 Flash 1017 Lossless wrote 55.0 to 58.3 tok/s at every length from 4K to 1M. |
 | 1 | 13 Nov 2026 | [TensorFold with a draft model on Qwen3.8-27B 4-bit](findings/01_tensorfold_qwen38-27b_4bit) | TensorFold 1.2.7 with the DFlash2 draft wrote 145.7 tok/s at a 1K prompt. `mlx-lm` 0.32.2 wrote 44.5 on the same weights. That is 3.3 times. |
