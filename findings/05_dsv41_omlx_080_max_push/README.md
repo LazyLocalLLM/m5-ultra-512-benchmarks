@@ -4,6 +4,8 @@ ELI5: Finding 3 measured this model on oMLX at its default settings. Here I trie
 
 **oMLX 0.8.0 wrote 84.1 tok/s on DeepSeek V4.1 Flash 1017 oQ4e-mtp while writing new code, greedy at temperature 0, with draft depth fixed at 5 and replies of up to 2,048 tokens at a 1K prompt. The other fixed-depth start gave 81.3. The default depth gave 77.2 and 76.2 on the same test. With 512-token replies at a 4K prompt, fixed depth 5 wrote 118.3 tok/s copying code out of the prompt and 114.0 counting up from 1. Mac Studio M5 Ultra 512 GB, one user, median of 5 runs, 20 Nov 2026.**
 
+Updated 20 Nov 2026 22:10 SGT. Fixed depth 5 is a top-speed setting for greedy code and not a daily one. With the model's own sampler on mixed text at 4K it wrote 50.5 tok/s against 57.9 at the default depth. A third fixed-depth start wrote 84.4 on new code at 1K.
+
 ## Chart
 
 ELI5: One setup and three questions. Grey is the model writing something new. The two blues are text the drafts can guess almost every time.
@@ -22,10 +24,11 @@ Greedy at temperature 0, code, replies of up to 2,048 tokens, tok/s.
 | Fixed depth 5 | `b4b4f8bb5ecb` | 17:50 | 81.3 (78.0 to 88.8) | 83.9 (79.8 to 89.1) |
 | Default depth | `7ece67645192` | 17:56 | 77.2 (72.5 to 78.7) | 72.9 (70.3 to 80.7) |
 | Fixed depth 5 | `7513746c2ce0` | 18:02 | 84.1 (78.5 to 84.8) | 82.7 (77.7 to 85.7) |
+| Fixed depth 5 | `c15a39cf630a` | 21:48 | 84.4 (78.2 to 85.5) | 86.2 (73.8 to 86.8) |
 
-- **Fixed depth 5 won on both of its starts.** Its four cells run from 81.3 to 84.1. The default's four run from 72.9 to 77.2.
+- **Fixed depth 5 won on all three of its starts.** Its six cells run from 81.3 to 86.2. The default's four run from 72.9 to 77.2.
 - **Text by text, fixed depth 5 was faster on 19 of 20.** Each fixed-depth start got the same code text as the default start at 17:56. The middle ratio was 1.10 for the first start and 1.09 for the second. One pair was level.
-- **The summary line uses the last start of the setting**, run `7513746c2ce0`, at 84.1. The other start gave 81.3.
+- **The summary line uses the last start of the setting**, run `c15a39cf630a`, at 84.4 for 1K and 86.2 for 4K. The other two starts gave 81.3 and 84.1 at 1K.
 - **Half the replies ended before the cap.** 20 of the 40 replies ran to 2,048 tokens. The model ended the other 20 itself, the shortest at 1,064 tokens. Speed is tokens written over the time from the first token to the last.
 
 Greedy at temperature 0, code, 512-token replies, tok/s.
@@ -42,6 +45,22 @@ Greedy at temperature 0, code, 512-token replies, tok/s.
 - **Longer replies wrote faster.** At the default depth, 76.2 at 2,048 tokens against 72.5 at 512, both at 1K in run `526b05fc2a44`. That is 76.2 / 72.5 = 1.05 times.
 - **Burst decode aggressive showed no change.** 72.4 against 72.5 at the default depth. The server log has no line that names the burst mode, so I can't confirm the setting applied.
 - **Activation fp16 wrote slower here.** With `activation_fp16_enabled` true the run wrote 44.2 and 41.2 tok/s. The first token took 1.37 s at 1K against 0.67 s. 15 of its 250 greedy test answers matched the default's. The switch is off by default, at line 451 of `omlx/model_settings.py` in 0.8.0. I did not look into the cause.
+
+## The model's own sampler
+
+ELI5: Greedy decoding is the best case for drafts. With the model's own sampler the next token is partly random, so deep drafts miss more often. I ran the everyday test at both depths.
+
+Temperature 1.0 and top-p 1.0, mixed text, 512-token replies, 4K prompt, tok/s.
+
+| Draft setting | Run | Started, SGT | 4K prompt |
+|---|---|---|---|
+| Fixed depth 5 | `c15a39cf630a` | 21:48 | 50.5 (48.1 to 57.3) |
+| Default depth | `cfff183a181f` | 21:54 | 57.9 (53.3 to 59.8) |
+
+- **Fixed depth 5 was slower on sampled text.** 50.5 / 57.9 = 0.87 times. It was slower on 4 of the 5 same texts, with a middle ratio of 0.89.
+- **The default agrees with finding 3**, which measured 56.5 on this test.
+- **So the two best lines use different settings.** Fixed depth 5 for the max, and the default depth for the median.
+- **One start each**, and the ranges overlap.
 
 ## Ceiling on easy text
 
@@ -116,6 +135,8 @@ omlx serve --model-dir <models> --host 127.0.0.1 --port 8180 --max-concurrent-re
 | `b4b4f8bb5ecb` | Fixed depth 5 | 17:50 |
 | `7ece67645192` | Default depth | 17:56 |
 | `7513746c2ce0` | Fixed depth 5 | 18:02 |
+| `c15a39cf630a` | Fixed depth 5 | 21:48 |
+| `cfff183a181f` | Default depth | 21:54 |
 
 ## How I measured
 
@@ -138,15 +159,15 @@ ELI5: Same Mac, same harness and same text rules as findings 3 and 4. Two new qu
 ELI5: A speed is only comparable with another speed measured the same way.
 
 - **Ask what the test asked.** A benchmark that feeds the model repeated or copyable text is measuring the ceiling, not the max. On this setup the two differ by 1.43 to 1.58 times.
-- **Max is not what a chat feels like.** The model's own sampler on mixed text gave 56.5 tok/s at the default depth in finding 3. I have not run that test at fixed depth 5.
+- **Max is not what a chat feels like.** The model's own sampler on mixed text gave 57.9 tok/s at the default depth and 50.5 at fixed depth 5.
 - **One build.** oQ4e-mtp is a 4-bit quant with the model's draft head kept. I did not score its answers against the maker's files.
 
 ## Check it yourself
 
 ELI5: Every timed request is in this folder. You can redo every median.
 
-- **`rows.csv`.** 209 raw rows from the bench database. The 190 timed requests and the 19 warm-ups.
-- **`runs.csv`.** The 8 runs behind them, with engine, version, start time, settings and sampling.
+- **`rows.csv`.** 232 raw rows from the bench database. The 210 timed requests and the 22 warm-ups.
+- **`runs.csv`.** The 10 runs behind them, with engine, version, start time, settings and sampling.
 
 From the top of this repository.
 
@@ -160,7 +181,7 @@ It prints one line per run, text kind, prompt size, reply length and sampler, wi
 
 - **Whether burst decode aggressive applied.** The log does not name the mode.
 - **Why activation fp16 wrote slower and changed answers.**
-- **The model's own sampler at fixed depth 5.** So the median speed for this setting is not known.
+- **A second start of the sampled test** at either depth.
 - **Prompts longer than 4K** at fixed depth 5 with long replies. Finding 3 ran fixed depth 5 at 32K with 512-token replies and measured 69.1.
 - **That a 2,048-token greedy reply is the same text at both depths.** The answer test uses 64-token replies.
 - **Answer quality** of the oQ4e-mtp build.
