@@ -116,6 +116,28 @@ Three draft settings, one start each, tok/s at 1K and 4K.
 - **No setting beat the defaults.** Text by text, the middle ratios are between 0.95 and 1.05. The default greedy draft count is 8.
 - **I can't confirm from the log that these settings applied.** Each variable was in the server's process environment.
 
+## Qwen3.8 Flash Next 6-bit
+
+ELI5: The same model with 6-bit weights, which keep more precision than the 4-bit build and cost some speed. Added 21 Nov 2026 01:07 SGT.
+
+Decode tok/s, TensorFold 1.3.0 at defaults, run `2bc45b1272e8`, started 21 Nov 2026 00:59 SGT.
+
+| Test | 1K prompt | 4K prompt |
+|---|---|---|
+| Greedy, new code, replies up to 2,048 tokens | 193.0 (178.5 to 212.3) | 191.4 (171.1 to 207.8) |
+| Greedy, new code, 512-token replies | 188.2 (177.9 to 192.6) | 184.9 (151.6 to 195.6) |
+| Own sampler, mixed text, 512-token replies | not run | 117.4 (112.0 to 122.0) |
+| Copy the prompt, 512-token replies | 254.4 (208.5 to 276.9) | 251.1 (195.8 to 323.1) |
+| Copy the prompt, 2,048-token replies | not run | 247.7 (223.1 to 268.9) |
+| Count from 1, 512-token replies | 290.0 (283.9 to 290.3) | 283.0 (282.1 to 284.7) |
+
+- **Max.** 193.0 tok/s, greedy on new code with replies of up to 2,048 tokens at 1K. The 4-bit build wrote 204.4 on the same test.
+- **Median.** 117.4 tok/s with the model's own sampler on mixed text at 4K. The 4-bit build wrote 126.7.
+- **So 6-bit costs about 6% to 7% here.** 193.0 / 204.4 = 0.94 times and 117.4 / 126.7 = 0.93 times, one start of each build.
+- **7 of the 10 long replies ran to 2,048 tokens.**
+- **Replies checked.** One extra copy request returned 56 lines, all 56 in the prompt word for word. One extra counting request returned 155 lines in order.
+- **Weights.** [TensorFold/Qwen3.8-Flash-Next-MLX-6bit-MTP](https://huggingface.co/TensorFold/Qwen3.8-Flash-Next-MLX-6bit-MTP), served with the same recipe line as the 4-bit build.
+
 ## The setup
 
 ELI5: One engine at its newest release, two sets of weights, and the serve lines the project documents.
@@ -153,6 +175,7 @@ tensorfold serve <model folder> --name <name> --host 127.0.0.1 --port <port> --c
 | `c097b7bf5f73` | Flash Next | TensorFold 1.3.0, `TF_FLASHNEXT_DRAFTS_GREEDY=15` | 20:45 |
 | `4b503ee09910` | Flash Next | TensorFold 1.3.0, greedy drafts 15 and wide 8 | 20:51 |
 | `37a4c93bd874` | Flash Next | TensorFold 1.3.0, defaults, long copy block | 21:09 |
+| `2bc45b1272e8` | Flash Next 6-bit | TensorFold 1.3.0, defaults | 00:59 on 21 Nov |
 | `83b6db5a6d68` | 27B | TensorFold 1.2.8, defaults | 19:32 |
 | `220f4546bd8e` | 27B | TensorFold 1.2.8, `TF_MTP_DRAFTS=8` | 19:38 |
 | `9fb18e8990a7` | 27B | TensorFold 1.2.8, `TF_MTP_DRAFTS=15` | 19:43 |
@@ -179,8 +202,8 @@ ELI5: Same Mac, same harness and same three questions as findings 5 and 6.
 
 ELI5: Every timed request is in this folder. You can redo every median.
 
-- **`rows.csv`.** 674 raw rows from the bench database. The 610 timed requests and the 64 warm-ups.
-- **`runs.csv`.** The 17 runs behind them, with engine, version, start time, settings and sampling.
+- **`rows.csv`.** 730 raw rows from the bench database. The 660 timed requests and the 70 warm-ups.
+- **`runs.csv`.** The 18 runs behind them, with engine, version, start time, settings and sampling.
 
 From the top of this repository.
 
@@ -194,7 +217,7 @@ python3 tools/summarize.py findings/07_qwen38_tensorfold_130
 - **The reverse order for 1.3.0 against 1.2.8.**
 - **Whether the draft-count settings took effect.**
 - **Answer quality** of either build.
-- **Flash Next 6-bit and the full BF16 build** on 1.3.0.
+- **The full BF16 build of Flash Next** on 1.3.0.
 - **Prompts longer than 4K** on these tests.
 - **Two users at once.** Flash Next was served with two slots, as the recipe says, and tested with one user.
 - **Peak memory.** These runs did not log it.
