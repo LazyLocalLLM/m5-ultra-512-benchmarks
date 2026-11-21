@@ -1,0 +1,193 @@
+run_id,build,mode,prompt,kind,rep,tokens,prompt_tokens,decode_tok_s,first_token_s,pieces,text_sha256
+292c0952255a,"TensorFold 1.3.0, start a",greedy,quicksort-raw,completion,0,512,17,108.16,0.130,77,877cab55699b795a
+292c0952255a,"TensorFold 1.3.0, start a",greedy,rust-reverse-words,chat,0,512,21,69.72,0.140,130,10874a3ac821a022
+292c0952255a,"TensorFold 1.3.0, start a",greedy,multiply-17-23,chat,0,512,16,77.73,0.123,118,a327b82864e66d8d
+292c0952255a,"TensorFold 1.3.0, start a",greedy,sleep-tips,chat,0,512,12,59.73,0.122,182,e0931bf291a9f49d
+292c0952255a,"TensorFold 1.3.0, start a",greedy,js-debounce-raw,completion,0,512,20,121.90,0.138,67,a89cc5deac8ac4c9
+292c0952255a,"TensorFold 1.3.0, start a",greedy,linear-equation,chat,0,512,38,61.43,0.178,172,03b78486ed0d5bfb
+292c0952255a,"TensorFold 1.3.0, start a",greedy,fishing-village,chat,0,512,14,40.56,0.122,322,22dc6e258133a23f
+292c0952255a,"TensorFold 1.3.0, start a",greedy,sql-left-join,chat,0,512,24,70.63,0.147,153,9184807274348199
+292c0952255a,"TensorFold 1.3.0, start a",greedy,rectangle,chat,0,512,28,78.67,0.146,125,226fd24529ff266b
+292c0952255a,"TensorFold 1.3.0, start a",greedy,dinner-idea,chat,0,512,18,56.14,0.135,210,1413b493596985fc
+292c0952255a,"TensorFold 1.3.0, start a",greedy,c-primes-raw,completion,0,512,19,68.03,0.133,165,6a8fbf2533a067b3
+292c0952255a,"TensorFold 1.3.0, start a",greedy,prime-221,chat,0,512,13,94.66,0.119,97,2e34f7d776ac502a
+292c0952255a,"TensorFold 1.3.0, start a",greedy,heist-story,chat,0,512,35,48.49,0.174,260,383b557282a4f6c0
+292c0952255a,"TensorFold 1.3.0, start a",greedy,bash-line-count,chat,0,512,28,93.34,0.155,95,d0319cc5bde1ab00
+292c0952255a,"TensorFold 1.3.0, start a",greedy,sum-1-250,chat,0,512,17,73.83,0.131,134,50caccc4ff2cb951
+292c0952255a,"TensorFold 1.3.0, start a",greedy,blue-sky,chat,0,512,17,70.25,0.136,162,14d9eba8442a6213
+292c0952255a,"TensorFold 1.3.0, start a",greedy,quicksort-raw,completion,1,512,17,103.25,0.007,77,877cab55699b795a
+292c0952255a,"TensorFold 1.3.0, start a",greedy,rust-reverse-words,chat,1,512,21,69.77,0.007,130,10874a3ac821a022
+292c0952255a,"TensorFold 1.3.0, start a",greedy,multiply-17-23,chat,1,512,16,77.72,0.006,118,a327b82864e66d8d
+292c0952255a,"TensorFold 1.3.0, start a",greedy,sleep-tips,chat,1,512,12,63.80,0.006,182,e0931bf291a9f49d
+292c0952255a,"TensorFold 1.3.0, start a",greedy,js-debounce-raw,completion,1,512,20,121.47,0.006,67,a89cc5deac8ac4c9
+292c0952255a,"TensorFold 1.3.0, start a",greedy,linear-equation,chat,1,512,38,64.30,0.008,172,03b78486ed0d5bfb
+292c0952255a,"TensorFold 1.3.0, start a",greedy,fishing-village,chat,1,512,14,42.53,0.006,322,22dc6e258133a23f
+292c0952255a,"TensorFold 1.3.0, start a",greedy,sql-left-join,chat,1,512,24,70.69,0.007,153,9184807274348199
+292c0952255a,"TensorFold 1.3.0, start a",greedy,rectangle,chat,1,512,28,78.87,0.007,125,226fd24529ff266b
+292c0952255a,"TensorFold 1.3.0, start a",greedy,dinner-idea,chat,1,512,18,58.98,0.007,210,1413b493596985fc
+292c0952255a,"TensorFold 1.3.0, start a",greedy,c-primes-raw,completion,1,512,19,67.81,0.008,165,6a8fbf2533a067b3
+292c0952255a,"TensorFold 1.3.0, start a",greedy,prime-221,chat,1,512,13,94.85,0.006,97,2e34f7d776ac502a
+292c0952255a,"TensorFold 1.3.0, start a",greedy,heist-story,chat,1,512,35,48.99,0.007,260,383b557282a4f6c0
+292c0952255a,"TensorFold 1.3.0, start a",greedy,bash-line-count,chat,1,512,28,93.28,0.007,95,d0319cc5bde1ab00
+292c0952255a,"TensorFold 1.3.0, start a",greedy,sum-1-250,chat,1,512,17,73.55,0.006,134,50caccc4ff2cb951
+292c0952255a,"TensorFold 1.3.0, start a",greedy,blue-sky,chat,1,512,17,70.31,0.006,162,14d9eba8442a6213
+292c0952255a,"TensorFold 1.3.0, start a","sampled, temperature 1.0, seed 1234",quicksort-raw,completion,0,512,17,42.66,0.008,281,7d446d830efd932a
+292c0952255a,"TensorFold 1.3.0, start a","sampled, temperature 1.0, seed 1234",rust-reverse-words,chat,0,512,21,69.41,0.008,137,a61df042f3bd0d9a
+292c0952255a,"TensorFold 1.3.0, start a","sampled, temperature 1.0, seed 1234",multiply-17-23,chat,0,512,16,79.43,0.007,120,938d7753b616cb6c
+292c0952255a,"TensorFold 1.3.0, start a","sampled, temperature 1.0, seed 1234",sleep-tips,chat,0,512,12,57.46,0.007,189,aa88066259544d30
+292c0952255a,"TensorFold 1.3.0, start a","sampled, temperature 1.0, seed 1234",js-debounce-raw,completion,0,512,20,69.69,0.008,143,208a9199932a0ea6
+292c0952255a,"TensorFold 1.3.0, start a","sampled, temperature 1.0, seed 1234",linear-equation,chat,0,512,38,62.05,0.009,165,58ebd1fc983990cd
+292c0952255a,"TensorFold 1.3.0, start a","sampled, temperature 1.0, seed 1234",fishing-village,chat,0,512,14,39.51,0.008,332,08bb5b4dc7e7c13a
+292c0952255a,"TensorFold 1.3.0, start a","sampled, temperature 1.0, seed 1234",sql-left-join,chat,0,512,24,66.69,0.008,153,2ba8440b915ae25f
+292c0952255a,"TensorFold 1.3.0, start a","sampled, temperature 1.0, seed 1234",rectangle,chat,0,512,28,78.41,0.008,109,a9115030ac39fc10
+292c0952255a,"TensorFold 1.3.0, start a","sampled, temperature 1.0, seed 1234",dinner-idea,chat,0,512,18,45.76,0.008,267,25161d5a6a92aff7
+292c0952255a,"TensorFold 1.3.0, start a","sampled, temperature 1.0, seed 1234",c-primes-raw,completion,0,512,19,53.64,0.008,220,da05f38abfa03874
+292c0952255a,"TensorFold 1.3.0, start a","sampled, temperature 1.0, seed 1234",prime-221,chat,0,512,13,68.61,0.007,134,7884242651ee2165
+292c0952255a,"TensorFold 1.3.0, start a","sampled, temperature 1.0, seed 1234",heist-story,chat,0,512,35,45.23,0.009,266,e85482b9b9ba13f7
+292c0952255a,"TensorFold 1.3.0, start a","sampled, temperature 1.0, seed 1234",bash-line-count,chat,0,512,28,64.21,0.009,150,2bec13479580b79c
+292c0952255a,"TensorFold 1.3.0, start a","sampled, temperature 1.0, seed 1234",sum-1-250,chat,0,512,17,74.16,0.008,124,ee6453c4b38e8192
+292c0952255a,"TensorFold 1.3.0, start a","sampled, temperature 1.0, seed 1234",blue-sky,chat,0,512,17,55.66,0.008,203,25cbc27ae7e9ab93
+3b5a26f59c1c,"TensorFold main at 1093b795, start a",greedy,quicksort-raw,completion,0,512,17,141.32,0.129,70,877cab55699b795a
+3b5a26f59c1c,"TensorFold main at 1093b795, start a",greedy,rust-reverse-words,chat,0,512,21,100.80,0.141,116,10874a3ac821a022
+3b5a26f59c1c,"TensorFold main at 1093b795, start a",greedy,multiply-17-23,chat,0,512,16,114.75,0.127,99,a327b82864e66d8d
+3b5a26f59c1c,"TensorFold main at 1093b795, start a",greedy,sleep-tips,chat,0,512,12,84.43,0.120,171,e0931bf291a9f49d
+3b5a26f59c1c,"TensorFold main at 1093b795, start a",greedy,js-debounce-raw,completion,0,512,20,156.08,0.137,62,a89cc5deac8ac4c9
+3b5a26f59c1c,"TensorFold main at 1093b795, start a",greedy,linear-equation,chat,0,512,38,86.89,0.177,159,03b78486ed0d5bfb
+3b5a26f59c1c,"TensorFold main at 1093b795, start a",greedy,fishing-village,chat,0,512,14,63.52,0.120,265,22dc6e258133a23f
+3b5a26f59c1c,"TensorFold main at 1093b795, start a",greedy,sql-left-join,chat,0,512,24,95.46,0.145,136,9184807274348199
+3b5a26f59c1c,"TensorFold main at 1093b795, start a",greedy,rectangle,chat,0,512,28,110.27,0.146,109,226fd24529ff266b
+3b5a26f59c1c,"TensorFold main at 1093b795, start a",greedy,dinner-idea,chat,0,512,18,87.34,0.137,172,1413b493596985fc
+3b5a26f59c1c,"TensorFold main at 1093b795, start a",greedy,c-primes-raw,completion,0,512,19,88.70,0.132,157,6a8fbf2533a067b3
+3b5a26f59c1c,"TensorFold main at 1093b795, start a",greedy,prime-221,chat,0,512,13,128.06,0.117,88,2e34f7d776ac502a
+3b5a26f59c1c,"TensorFold main at 1093b795, start a",greedy,heist-story,chat,0,512,35,66.92,0.174,240,383b557282a4f6c0
+3b5a26f59c1c,"TensorFold main at 1093b795, start a",greedy,bash-line-count,chat,0,512,28,121.40,0.155,88,d0319cc5bde1ab00
+3b5a26f59c1c,"TensorFold main at 1093b795, start a",greedy,sum-1-250,chat,0,512,17,101.35,0.129,120,50caccc4ff2cb951
+3b5a26f59c1c,"TensorFold main at 1093b795, start a",greedy,blue-sky,chat,0,512,17,88.21,0.135,159,14d9eba8442a6213
+3b5a26f59c1c,"TensorFold main at 1093b795, start a",greedy,quicksort-raw,completion,1,512,17,142.46,0.005,69,877cab55699b795a
+3b5a26f59c1c,"TensorFold main at 1093b795, start a",greedy,rust-reverse-words,chat,1,512,21,100.33,0.005,116,10874a3ac821a022
+3b5a26f59c1c,"TensorFold main at 1093b795, start a",greedy,multiply-17-23,chat,1,512,16,114.72,0.004,99,a327b82864e66d8d
+3b5a26f59c1c,"TensorFold main at 1093b795, start a",greedy,sleep-tips,chat,1,512,12,84.47,0.004,171,e0931bf291a9f49d
+3b5a26f59c1c,"TensorFold main at 1093b795, start a",greedy,js-debounce-raw,completion,1,512,20,156.10,0.005,62,a89cc5deac8ac4c9
+3b5a26f59c1c,"TensorFold main at 1093b795, start a",greedy,linear-equation,chat,1,512,38,86.97,0.005,159,03b78486ed0d5bfb
+3b5a26f59c1c,"TensorFold main at 1093b795, start a",greedy,fishing-village,chat,1,512,14,63.56,0.004,265,22dc6e258133a23f
+3b5a26f59c1c,"TensorFold main at 1093b795, start a",greedy,sql-left-join,chat,1,512,24,95.56,0.005,136,9184807274348199
+3b5a26f59c1c,"TensorFold main at 1093b795, start a",greedy,rectangle,chat,1,512,28,110.12,0.005,109,226fd24529ff266b
+3b5a26f59c1c,"TensorFold main at 1093b795, start a",greedy,dinner-idea,chat,1,512,18,87.22,0.005,172,1413b493596985fc
+3b5a26f59c1c,"TensorFold main at 1093b795, start a",greedy,c-primes-raw,completion,1,512,19,88.49,0.005,157,6a8fbf2533a067b3
+3b5a26f59c1c,"TensorFold main at 1093b795, start a",greedy,prime-221,chat,1,512,13,128.21,0.004,88,2e34f7d776ac502a
+3b5a26f59c1c,"TensorFold main at 1093b795, start a",greedy,heist-story,chat,1,512,35,66.85,0.005,240,383b557282a4f6c0
+3b5a26f59c1c,"TensorFold main at 1093b795, start a",greedy,bash-line-count,chat,1,512,28,121.52,0.005,88,d0319cc5bde1ab00
+3b5a26f59c1c,"TensorFold main at 1093b795, start a",greedy,sum-1-250,chat,1,512,17,101.56,0.005,120,50caccc4ff2cb951
+3b5a26f59c1c,"TensorFold main at 1093b795, start a",greedy,blue-sky,chat,1,512,17,88.35,0.005,159,14d9eba8442a6213
+3b5a26f59c1c,"TensorFold main at 1093b795, start a","sampled, temperature 1.0, seed 1234",quicksort-raw,completion,0,512,17,68.97,0.005,211,7d446d830efd932a
+3b5a26f59c1c,"TensorFold main at 1093b795, start a","sampled, temperature 1.0, seed 1234",rust-reverse-words,chat,0,512,21,105.82,0.006,119,a61df042f3bd0d9a
+3b5a26f59c1c,"TensorFold main at 1093b795, start a","sampled, temperature 1.0, seed 1234",multiply-17-23,chat,0,512,16,107.48,0.005,115,938d7753b616cb6c
+3b5a26f59c1c,"TensorFold main at 1093b795, start a","sampled, temperature 1.0, seed 1234",sleep-tips,chat,0,512,12,80.92,0.006,173,aa88066259544d30
+3b5a26f59c1c,"TensorFold main at 1093b795, start a","sampled, temperature 1.0, seed 1234",js-debounce-raw,completion,0,512,20,99.79,0.006,129,208a9199932a0ea6
+3b5a26f59c1c,"TensorFold main at 1093b795, start a","sampled, temperature 1.0, seed 1234",linear-equation,chat,0,512,38,86.84,0.006,158,58ebd1fc983990cd
+3b5a26f59c1c,"TensorFold main at 1093b795, start a","sampled, temperature 1.0, seed 1234",fishing-village,chat,0,512,14,63.67,0.006,263,08bb5b4dc7e7c13a
+3b5a26f59c1c,"TensorFold main at 1093b795, start a","sampled, temperature 1.0, seed 1234",sql-left-join,chat,0,512,24,94.61,0.006,140,2ba8440b915ae25f
+3b5a26f59c1c,"TensorFold main at 1093b795, start a","sampled, temperature 1.0, seed 1234",rectangle,chat,0,512,28,111.35,0.006,102,a9115030ac39fc10
+3b5a26f59c1c,"TensorFold main at 1093b795, start a","sampled, temperature 1.0, seed 1234",dinner-idea,chat,0,512,18,71.35,0.005,218,25161d5a6a92aff7
+3b5a26f59c1c,"TensorFold main at 1093b795, start a","sampled, temperature 1.0, seed 1234",c-primes-raw,completion,0,512,19,74.16,0.005,204,da05f38abfa03874
+3b5a26f59c1c,"TensorFold main at 1093b795, start a","sampled, temperature 1.0, seed 1234",prime-221,chat,0,512,13,96.58,0.006,126,7884242651ee2165
+3b5a26f59c1c,"TensorFold main at 1093b795, start a","sampled, temperature 1.0, seed 1234",heist-story,chat,0,512,35,65.00,0.006,234,e85482b9b9ba13f7
+3b5a26f59c1c,"TensorFold main at 1093b795, start a","sampled, temperature 1.0, seed 1234",bash-line-count,chat,0,512,28,90.05,0.006,142,2bec13479580b79c
+3b5a26f59c1c,"TensorFold main at 1093b795, start a","sampled, temperature 1.0, seed 1234",sum-1-250,chat,0,512,17,109.54,0.005,110,ee6453c4b38e8192
+3b5a26f59c1c,"TensorFold main at 1093b795, start a","sampled, temperature 1.0, seed 1234",blue-sky,chat,0,512,17,72.75,0.005,201,25cbc27ae7e9ab93
+58aa0c134b88,"TensorFold main at 1093b795, start b",greedy,quicksort-raw,completion,0,512,17,141.50,0.129,70,877cab55699b795a
+58aa0c134b88,"TensorFold main at 1093b795, start b",greedy,rust-reverse-words,chat,0,512,21,100.87,0.142,116,10874a3ac821a022
+58aa0c134b88,"TensorFold main at 1093b795, start b",greedy,multiply-17-23,chat,0,512,16,114.80,0.127,99,a327b82864e66d8d
+58aa0c134b88,"TensorFold main at 1093b795, start b",greedy,sleep-tips,chat,0,512,12,84.59,0.122,171,e0931bf291a9f49d
+58aa0c134b88,"TensorFold main at 1093b795, start b",greedy,js-debounce-raw,completion,0,512,20,156.35,0.137,62,a89cc5deac8ac4c9
+58aa0c134b88,"TensorFold main at 1093b795, start b",greedy,linear-equation,chat,0,512,38,87.01,0.176,159,03b78486ed0d5bfb
+58aa0c134b88,"TensorFold main at 1093b795, start b",greedy,fishing-village,chat,0,512,14,63.49,0.120,265,22dc6e258133a23f
+58aa0c134b88,"TensorFold main at 1093b795, start b",greedy,sql-left-join,chat,0,512,24,95.37,0.146,136,9184807274348199
+58aa0c134b88,"TensorFold main at 1093b795, start b",greedy,rectangle,chat,0,512,28,110.14,0.146,109,226fd24529ff266b
+58aa0c134b88,"TensorFold main at 1093b795, start b",greedy,dinner-idea,chat,0,512,18,87.18,0.133,172,1413b493596985fc
+58aa0c134b88,"TensorFold main at 1093b795, start b",greedy,c-primes-raw,completion,0,512,19,88.66,0.134,157,6a8fbf2533a067b3
+58aa0c134b88,"TensorFold main at 1093b795, start b",greedy,prime-221,chat,0,512,13,128.03,0.117,88,2e34f7d776ac502a
+58aa0c134b88,"TensorFold main at 1093b795, start b",greedy,heist-story,chat,0,512,35,66.84,0.174,240,383b557282a4f6c0
+58aa0c134b88,"TensorFold main at 1093b795, start b",greedy,bash-line-count,chat,0,512,28,121.40,0.155,88,d0319cc5bde1ab00
+58aa0c134b88,"TensorFold main at 1093b795, start b",greedy,sum-1-250,chat,0,512,17,101.33,0.129,120,50caccc4ff2cb951
+58aa0c134b88,"TensorFold main at 1093b795, start b",greedy,blue-sky,chat,0,512,17,88.21,0.132,159,14d9eba8442a6213
+58aa0c134b88,"TensorFold main at 1093b795, start b",greedy,quicksort-raw,completion,1,512,17,142.60,0.005,69,877cab55699b795a
+58aa0c134b88,"TensorFold main at 1093b795, start b",greedy,rust-reverse-words,chat,1,512,21,100.34,0.005,116,10874a3ac821a022
+58aa0c134b88,"TensorFold main at 1093b795, start b",greedy,multiply-17-23,chat,1,512,16,115.08,0.004,99,a327b82864e66d8d
+58aa0c134b88,"TensorFold main at 1093b795, start b",greedy,sleep-tips,chat,1,512,12,84.58,0.004,171,e0931bf291a9f49d
+58aa0c134b88,"TensorFold main at 1093b795, start b",greedy,js-debounce-raw,completion,1,512,20,156.16,0.005,62,a89cc5deac8ac4c9
+58aa0c134b88,"TensorFold main at 1093b795, start b",greedy,linear-equation,chat,1,512,38,86.96,0.005,159,03b78486ed0d5bfb
+58aa0c134b88,"TensorFold main at 1093b795, start b",greedy,fishing-village,chat,1,512,14,63.60,0.004,265,22dc6e258133a23f
+58aa0c134b88,"TensorFold main at 1093b795, start b",greedy,sql-left-join,chat,1,512,24,95.58,0.005,136,9184807274348199
+58aa0c134b88,"TensorFold main at 1093b795, start b",greedy,rectangle,chat,1,512,28,110.14,0.005,109,226fd24529ff266b
+58aa0c134b88,"TensorFold main at 1093b795, start b",greedy,dinner-idea,chat,1,512,18,87.24,0.005,172,1413b493596985fc
+58aa0c134b88,"TensorFold main at 1093b795, start b",greedy,c-primes-raw,completion,1,512,19,88.57,0.005,157,6a8fbf2533a067b3
+58aa0c134b88,"TensorFold main at 1093b795, start b",greedy,prime-221,chat,1,512,13,128.21,0.004,88,2e34f7d776ac502a
+58aa0c134b88,"TensorFold main at 1093b795, start b",greedy,heist-story,chat,1,512,35,66.82,0.005,240,383b557282a4f6c0
+58aa0c134b88,"TensorFold main at 1093b795, start b",greedy,bash-line-count,chat,1,512,28,121.53,0.005,88,d0319cc5bde1ab00
+58aa0c134b88,"TensorFold main at 1093b795, start b",greedy,sum-1-250,chat,1,512,17,101.44,0.005,120,50caccc4ff2cb951
+58aa0c134b88,"TensorFold main at 1093b795, start b",greedy,blue-sky,chat,1,512,17,88.42,0.005,159,14d9eba8442a6213
+58aa0c134b88,"TensorFold main at 1093b795, start b","sampled, temperature 1.0, seed 1234",quicksort-raw,completion,0,512,17,68.93,0.005,211,7d446d830efd932a
+58aa0c134b88,"TensorFold main at 1093b795, start b","sampled, temperature 1.0, seed 1234",rust-reverse-words,chat,0,512,21,105.76,0.006,119,a61df042f3bd0d9a
+58aa0c134b88,"TensorFold main at 1093b795, start b","sampled, temperature 1.0, seed 1234",multiply-17-23,chat,0,512,16,107.52,0.005,115,938d7753b616cb6c
+58aa0c134b88,"TensorFold main at 1093b795, start b","sampled, temperature 1.0, seed 1234",sleep-tips,chat,0,512,12,81.04,0.006,173,aa88066259544d30
+58aa0c134b88,"TensorFold main at 1093b795, start b","sampled, temperature 1.0, seed 1234",js-debounce-raw,completion,0,512,20,99.86,0.005,129,208a9199932a0ea6
+58aa0c134b88,"TensorFold main at 1093b795, start b","sampled, temperature 1.0, seed 1234",linear-equation,chat,0,512,38,86.87,0.007,158,58ebd1fc983990cd
+58aa0c134b88,"TensorFold main at 1093b795, start b","sampled, temperature 1.0, seed 1234",fishing-village,chat,0,512,14,63.69,0.006,263,08bb5b4dc7e7c13a
+58aa0c134b88,"TensorFold main at 1093b795, start b","sampled, temperature 1.0, seed 1234",sql-left-join,chat,0,512,24,94.63,0.006,140,2ba8440b915ae25f
+58aa0c134b88,"TensorFold main at 1093b795, start b","sampled, temperature 1.0, seed 1234",rectangle,chat,0,512,28,111.39,0.006,102,a9115030ac39fc10
+58aa0c134b88,"TensorFold main at 1093b795, start b","sampled, temperature 1.0, seed 1234",dinner-idea,chat,0,512,18,71.39,0.005,218,25161d5a6a92aff7
+58aa0c134b88,"TensorFold main at 1093b795, start b","sampled, temperature 1.0, seed 1234",c-primes-raw,completion,0,512,19,74.15,0.005,204,da05f38abfa03874
+58aa0c134b88,"TensorFold main at 1093b795, start b","sampled, temperature 1.0, seed 1234",prime-221,chat,0,512,13,96.54,0.006,126,7884242651ee2165
+58aa0c134b88,"TensorFold main at 1093b795, start b","sampled, temperature 1.0, seed 1234",heist-story,chat,0,512,35,65.04,0.006,234,e85482b9b9ba13f7
+58aa0c134b88,"TensorFold main at 1093b795, start b","sampled, temperature 1.0, seed 1234",bash-line-count,chat,0,512,28,90.09,0.006,142,2bec13479580b79c
+58aa0c134b88,"TensorFold main at 1093b795, start b","sampled, temperature 1.0, seed 1234",sum-1-250,chat,0,512,17,109.56,0.006,110,ee6453c4b38e8192
+58aa0c134b88,"TensorFold main at 1093b795, start b","sampled, temperature 1.0, seed 1234",blue-sky,chat,0,512,17,72.70,0.005,201,25cbc27ae7e9ab93
+2e72378f2ddd,"TensorFold 1.3.0, start b",greedy,quicksort-raw,completion,0,512,17,108.11,0.130,77,877cab55699b795a
+2e72378f2ddd,"TensorFold 1.3.0, start b",greedy,rust-reverse-words,chat,0,512,21,69.71,0.140,130,10874a3ac821a022
+2e72378f2ddd,"TensorFold 1.3.0, start b",greedy,multiply-17-23,chat,0,512,16,77.55,0.123,118,a327b82864e66d8d
+2e72378f2ddd,"TensorFold 1.3.0, start b",greedy,sleep-tips,chat,0,512,12,61.20,0.124,182,e0931bf291a9f49d
+2e72378f2ddd,"TensorFold 1.3.0, start b",greedy,js-debounce-raw,completion,0,512,20,121.92,0.138,67,a89cc5deac8ac4c9
+2e72378f2ddd,"TensorFold 1.3.0, start b",greedy,linear-equation,chat,0,512,38,63.38,0.178,172,03b78486ed0d5bfb
+2e72378f2ddd,"TensorFold 1.3.0, start b",greedy,fishing-village,chat,0,512,14,40.21,0.122,322,22dc6e258133a23f
+2e72378f2ddd,"TensorFold 1.3.0, start b",greedy,sql-left-join,chat,0,512,24,70.49,0.146,153,9184807274348199
+2e72378f2ddd,"TensorFold 1.3.0, start b",greedy,rectangle,chat,0,512,28,78.74,0.146,125,226fd24529ff266b
+2e72378f2ddd,"TensorFold 1.3.0, start b",greedy,dinner-idea,chat,0,512,18,58.32,0.135,210,1413b493596985fc
+2e72378f2ddd,"TensorFold 1.3.0, start b",greedy,c-primes-raw,completion,0,512,19,67.76,0.135,165,6a8fbf2533a067b3
+2e72378f2ddd,"TensorFold 1.3.0, start b",greedy,prime-221,chat,0,512,13,94.56,0.119,97,2e34f7d776ac502a
+2e72378f2ddd,"TensorFold 1.3.0, start b",greedy,heist-story,chat,0,512,35,48.46,0.174,260,383b557282a4f6c0
+2e72378f2ddd,"TensorFold 1.3.0, start b",greedy,bash-line-count,chat,0,512,28,93.29,0.156,95,d0319cc5bde1ab00
+2e72378f2ddd,"TensorFold 1.3.0, start b",greedy,sum-1-250,chat,0,512,17,73.52,0.131,134,50caccc4ff2cb951
+2e72378f2ddd,"TensorFold 1.3.0, start b",greedy,blue-sky,chat,0,512,17,70.24,0.134,162,14d9eba8442a6213
+2e72378f2ddd,"TensorFold 1.3.0, start b",greedy,quicksort-raw,completion,1,512,17,104.51,0.006,77,877cab55699b795a
+2e72378f2ddd,"TensorFold 1.3.0, start b",greedy,rust-reverse-words,chat,1,512,21,69.93,0.007,130,10874a3ac821a022
+2e72378f2ddd,"TensorFold 1.3.0, start b",greedy,multiply-17-23,chat,1,512,16,77.66,0.006,118,a327b82864e66d8d
+2e72378f2ddd,"TensorFold 1.3.0, start b",greedy,sleep-tips,chat,1,512,12,63.83,0.006,182,e0931bf291a9f49d
+2e72378f2ddd,"TensorFold 1.3.0, start b",greedy,js-debounce-raw,completion,1,512,20,121.63,0.006,67,a89cc5deac8ac4c9
+2e72378f2ddd,"TensorFold 1.3.0, start b",greedy,linear-equation,chat,1,512,38,64.28,0.007,172,03b78486ed0d5bfb
+2e72378f2ddd,"TensorFold 1.3.0, start b",greedy,fishing-village,chat,1,512,14,42.53,0.006,322,22dc6e258133a23f
+2e72378f2ddd,"TensorFold 1.3.0, start b",greedy,sql-left-join,chat,1,512,24,71.01,0.007,153,9184807274348199
+2e72378f2ddd,"TensorFold 1.3.0, start b",greedy,rectangle,chat,1,512,28,78.55,0.007,125,226fd24529ff266b
+2e72378f2ddd,"TensorFold 1.3.0, start b",greedy,dinner-idea,chat,1,512,18,58.91,0.007,210,1413b493596985fc
+2e72378f2ddd,"TensorFold 1.3.0, start b",greedy,c-primes-raw,completion,1,512,19,67.72,0.007,165,6a8fbf2533a067b3
+2e72378f2ddd,"TensorFold 1.3.0, start b",greedy,prime-221,chat,1,512,13,94.74,0.006,97,2e34f7d776ac502a
+2e72378f2ddd,"TensorFold 1.3.0, start b",greedy,heist-story,chat,1,512,35,48.96,0.007,260,383b557282a4f6c0
+2e72378f2ddd,"TensorFold 1.3.0, start b",greedy,bash-line-count,chat,1,512,28,93.42,0.007,95,d0319cc5bde1ab00
+2e72378f2ddd,"TensorFold 1.3.0, start b",greedy,sum-1-250,chat,1,512,17,73.36,0.006,134,50caccc4ff2cb951
+2e72378f2ddd,"TensorFold 1.3.0, start b",greedy,blue-sky,chat,1,512,17,70.38,0.006,162,14d9eba8442a6213
+2e72378f2ddd,"TensorFold 1.3.0, start b","sampled, temperature 1.0, seed 1234",quicksort-raw,completion,0,512,17,42.63,0.008,281,7d446d830efd932a
+2e72378f2ddd,"TensorFold 1.3.0, start b","sampled, temperature 1.0, seed 1234",rust-reverse-words,chat,0,512,21,69.40,0.008,137,a61df042f3bd0d9a
+2e72378f2ddd,"TensorFold 1.3.0, start b","sampled, temperature 1.0, seed 1234",multiply-17-23,chat,0,512,16,79.25,0.007,120,938d7753b616cb6c
+2e72378f2ddd,"TensorFold 1.3.0, start b","sampled, temperature 1.0, seed 1234",sleep-tips,chat,0,512,12,57.43,0.008,189,aa88066259544d30
+2e72378f2ddd,"TensorFold 1.3.0, start b","sampled, temperature 1.0, seed 1234",js-debounce-raw,completion,0,512,20,69.73,0.008,143,208a9199932a0ea6
+2e72378f2ddd,"TensorFold 1.3.0, start b","sampled, temperature 1.0, seed 1234",linear-equation,chat,0,512,38,61.90,0.009,165,58ebd1fc983990cd
+2e72378f2ddd,"TensorFold 1.3.0, start b","sampled, temperature 1.0, seed 1234",fishing-village,chat,0,512,14,39.48,0.008,332,08bb5b4dc7e7c13a
+2e72378f2ddd,"TensorFold 1.3.0, start b","sampled, temperature 1.0, seed 1234",sql-left-join,chat,0,512,24,66.88,0.008,153,2ba8440b915ae25f
+2e72378f2ddd,"TensorFold 1.3.0, start b","sampled, temperature 1.0, seed 1234",rectangle,chat,0,512,28,77.84,0.008,109,a9115030ac39fc10
+2e72378f2ddd,"TensorFold 1.3.0, start b","sampled, temperature 1.0, seed 1234",dinner-idea,chat,0,512,18,45.73,0.008,267,25161d5a6a92aff7
+2e72378f2ddd,"TensorFold 1.3.0, start b","sampled, temperature 1.0, seed 1234",c-primes-raw,completion,0,512,19,53.62,0.008,220,da05f38abfa03874
+2e72378f2ddd,"TensorFold 1.3.0, start b","sampled, temperature 1.0, seed 1234",prime-221,chat,0,512,13,68.33,0.007,134,7884242651ee2165
+2e72378f2ddd,"TensorFold 1.3.0, start b","sampled, temperature 1.0, seed 1234",heist-story,chat,0,512,35,45.14,0.009,266,e85482b9b9ba13f7
+2e72378f2ddd,"TensorFold 1.3.0, start b","sampled, temperature 1.0, seed 1234",bash-line-count,chat,0,512,28,64.01,0.009,150,2bec13479580b79c
+2e72378f2ddd,"TensorFold 1.3.0, start b","sampled, temperature 1.0, seed 1234",sum-1-250,chat,0,512,17,73.80,0.008,124,ee6453c4b38e8192
+2e72378f2ddd,"TensorFold 1.3.0, start b","sampled, temperature 1.0, seed 1234",blue-sky,chat,0,512,17,55.51,0.008,203,25cbc27ae7e9ab93
