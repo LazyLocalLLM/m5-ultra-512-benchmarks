@@ -8,14 +8,14 @@ ELI5: I'm a learner with one Mac Studio M5 Ultra 512 GB, and I time local AI mod
 
 ELI5: The page in seven lines. Every figure here is recomputed from the raw rows each time the page is built.
 
-Updated 22 Nov 2026 02:44 SGT. Decode speed in tok/s, one user, one Mac.
+Updated 22 Nov 2026 02:47 SGT. Decode speed in tok/s, one user, one Mac.
 
 - **Fastest on new code.** Qwen3.8 27B, 4-bit wrote 328.9 tok/s on TensorFold 1.3.2. Next are Qwen3.8 Flash Next, 4-bit at 206.8 and Qwen3.8 Flash Next, 6-bit at 200.1.
 - **Fastest in daily use.** Qwen3.8 27B, 4-bit wrote 161.3 tok/s on TensorFold 1.3.2. Next are Qwen3.8 Flash Next, 4-bit at 129.7 and Qwen3.8 Flash Next, 6-bit at 114.1.
 - **Two speeds per model.** Max is greedy at temperature 0 while the model writes new code. Median is the model's own sampler on mixed text, which is closer to daily use.
 - **Prefill too.** The table also has how fast each model read a cold prompt, with the prompt size.
 - **Coverage.** 19 models, 210 setups and 16 findings.
-- **Newest finding.** Finding 16, 21 Nov 2026. [Five models on oMLX 0.8.2, a version refresh](findings/16_omlx_082_refresh).
+- **Newest finding.** Finding 16, 21 and 22 Nov 2026. [Five models on oMLX 0.8.2, a version refresh](findings/16_omlx_082_refresh).
 - **Check it.** Every figure links to a folder with the rows it came from. If I have set an engine up wrong, [open an issue](https://github.com/LazyLocalLLM/m5-ultra-512-benchmarks/issues).
 
 ## Benchmark summary
@@ -53,7 +53,7 @@ The exact setup behind each figure is one click away, under "Every setup measure
 | [Hy4-flash, 4-bit](https://huggingface.co/TensorFold/Hy4-flash-MLX-4bit-MTP) | **71.5** | **51.3** | **1,647.4**, 1K code prompt | reasoning | TensorFold 1.3.2 | [10](findings/10_hy4_flash_tensorfold_132) |
 | [Hy4-flash, 8-bit](https://huggingface.co/TensorFold/Hy4-flash-MLX-8bit-MTP) | **53.4** | **40.9** | **1,233.6**, 1K code prompt | reasoning | TensorFold 1.3.2 | [10](findings/10_hy4_flash_tensorfold_132) |
 | [Hy4-flash, oQ4h](https://huggingface.co/Jundot/Hy4-flash-oQ4h-mtp) | **76.8** | **54.0** | **1,529.9**, 4K code prompt | answer for max, reasoning for median | oMLX 0.8.2 with its kernels for max, oMLX 0.8.1 with its kernels for median | [16](findings/16_omlx_082_refresh), [12](findings/12_hy4_flash_omlx_081) |
-| [Inkling 2 Mini, oQ4e](https://huggingface.co/mlx-community/Inkling-2-Mini-oQ4e-mtp) | **83.5** | **65.8** | **2,840.1**, 4K code prompt | reasoning | oMLX 0.8.2 with its kernels | [16](findings/16_omlx_082_refresh) |
+| [Inkling 2 Mini, oQ4e](https://huggingface.co/mlx-community/Inkling-2-Mini-oQ4e-mtp) | **88.5** | **66.2** | **2,791.3**, 4K code prompt | reasoning | oMLX 0.8.2 with its kernels | [16](findings/16_omlx_082_refresh) |
 | [Inkling 2 Mini, oQ3e](https://huggingface.co/mlx-community/Inkling-2-Mini-oQ3e-mtp) | **105.1** | **67.1** | **2,850.7**, 4K code prompt | reasoning | oMLX 0.8.1 with its kernels | [14](findings/14_inkling2_mini_omlx_081) |
 
 ### Ceiling on easy text
@@ -417,13 +417,13 @@ ELI5: Everything behind the tables above, including the setups that were not the
 | Kind | Engine and setup | Sampler | Prompt | Reply tokens | Decode tok/s | Range | Runs | Date | Run | Finding |
 |---|---|---|---|---|---|---|---|---|---|---|
 | max | oMLX 0.8.1 with its kernels, DSpark draft on, default depth, reply is reasoning text, older release | greedy, temperature 0 | 1K code | 2,048 | 96.3 | 83.1 to 97.3 | 5 | 2026-11-21 | `a3cf6857c4b5` | [14](findings/14_inkling2_mini_omlx_081) |
-| max | oMLX 0.8.2 with its kernels, DSpark draft on, default depth, reply is reasoning text | greedy, temperature 0 | 4K code | 2,048 | 83.5 | 76.0 to 88.3 | 5 | 2026-11-21 | `ff41df9ec565` | [16](findings/16_omlx_082_refresh) |
+| max | oMLX 0.8.2 with its kernels, DSpark draft on, default depth, reply is reasoning text, second start | greedy, temperature 0 | 1K code | 2,048 | 88.5 | 83.8 to 95.0 | 5 | 2026-11-22 | `2d6bd492fd78` | [16](findings/16_omlx_082_refresh) |
+| max | oMLX 0.8.2 with its kernels, DSpark draft on, default depth, reply is reasoning text, second start | greedy, temperature 0 | 4K code | 2,048 | 85.3 | 82.7 to 96.8 | 5 | 2026-11-22 | `2d6bd492fd78` | [16](findings/16_omlx_082_refresh) |
 | max | oMLX 0.8.1 with its kernels, DSpark draft on, default depth, reply is reasoning text, older release | greedy, temperature 0 | 4K code | 2,048 | 80.1 | 79.5 to 98.3 | 5 | 2026-11-21 | `a3cf6857c4b5` | [14](findings/14_inkling2_mini_omlx_081) |
-| max | oMLX 0.8.2 with its kernels, DSpark draft on, default depth, reply is reasoning text | greedy, temperature 0 | 1K code | 2,048 | 78.7 | 76.9 to 96.7 | 5 | 2026-11-21 | `ff41df9ec565` | [16](findings/16_omlx_082_refresh) |
 | max | oMLX 0.8.1 with its kernels, DSpark draft off, reply is reasoning text | greedy, temperature 0 | 1K code | 2,048 | 54.5 | 54.3 to 54.5 | 5 | 2026-11-21 | `fe2a52ddebd0` | [14](findings/14_inkling2_mini_omlx_081) |
 | max | oMLX 0.8.1 with its kernels, DSpark draft off, reply is reasoning text | greedy, temperature 0 | 4K code | 2,048 | 53.7 | 53.6 to 53.9 | 5 | 2026-11-21 | `fe2a52ddebd0` | [14](findings/14_inkling2_mini_omlx_081) |
+| median | oMLX 0.8.2 with its kernels, DSpark draft on, default depth, reply is reasoning text, second start | temperature 1.0, top-p 1.0 | 4K mixed | 512 | 66.2 | 59.6 to 68.2 | 5 | 2026-11-22 | `2d6bd492fd78` | [16](findings/16_omlx_082_refresh) |
 | median | oMLX 0.8.1 with its kernels, DSpark draft on, default depth, reply is reasoning text, older release | temperature 1.0, top-p 1.0 | 4K mixed | 512 | 65.9 | 59.2 to 67.7 | 5 | 2026-11-21 | `a3cf6857c4b5` | [14](findings/14_inkling2_mini_omlx_081) |
-| median | oMLX 0.8.2 with its kernels, DSpark draft on, default depth, reply is reasoning text | temperature 1.0, top-p 1.0 | 4K mixed | 512 | 65.8 | 63.1 to 74.1 | 5 | 2026-11-21 | `ff41df9ec565` | [16](findings/16_omlx_082_refresh) |
 | median | oMLX 0.8.1 with its kernels, DSpark draft off, reply is reasoning text | temperature 1.0, top-p 1.0 | 4K mixed | 512 | 54.4 | 54.3 to 54.6 | 5 | 2026-11-21 | `fe2a52ddebd0` | [14](findings/14_inkling2_mini_omlx_081) |
 
 </details>
@@ -445,12 +445,12 @@ ELI5: Each finding is one question, one run of an hour or two, and one report. N
 
 ### 16. [Five models on oMLX 0.8.2, a version refresh](findings/16_omlx_082_refresh)
 
-Runs of 21 Nov 2026. I see no speed change on oMLX 0.8.2 on any of the five models. Text by text against the earlier start, the middle ratio sits between 0.95 and 1.05 in every test. Hy4-flash oQ4h wrote the same text as on 0.8.1 on 100 of 100 short replies, and Qwen3.8 Flash Next full wrote the same answers as on 0.8.0 on 250 of 250. One line moved a lot by my own rule and I do not read it as a change. Inkling 2 Mini's max is 83.5 tok/s on this start against 96.3 on the 0.8.1 start, with overlapping ranges.
+Runs of 21 and 22 Nov 2026. I see no speed change on oMLX 0.8.2 on any of the five models. Text by text against the earlier start, the middle ratio sits between 0.95 and 1.05 in every test. Hy4-flash oQ4h wrote the same text as on 0.8.1 on 100 of 100 short replies, and Qwen3.8 Flash Next full wrote the same answers as on 0.8.0 on 250 of 250. One line moved a lot by my own rule and I do not read it as a change. Inkling 2 Mini's max is 83.5 and then 88.5 tok/s on two 0.8.2 starts against 96.3 on the 0.8.1 start, with overlapping ranges.
 
 <details>
 <summary>Chart</summary>
 
-![Bars of writing speed in tokens per second, greedy at temperature 0, new code, replies of up to 2,048 tokens, 1K prompt, drafts on at the default depth. On oMLX 0.8.2 against the earlier start. GLM-5.3 Flash oQ4e 76.0 against 78.7. Hy4-flash oQ4h 76.8 against 75.6. Inkling 2 Mini 78.7 against 96.3. Inkling 2 Small 52.7 against 51.6. Qwen3.8 Flash Next full 50.8 against 49.4.](findings/16_omlx_082_refresh/chart_max.png)
+![Bars of writing speed in tokens per second, greedy at temperature 0, new code, replies of up to 2,048 tokens, 1K prompt, drafts on at the default depth. On oMLX 0.8.2 against the earlier start. GLM-5.3 Flash oQ4e 76.0 against 78.7. Hy4-flash oQ4h 76.8 against 75.6. Inkling 2 Mini, second start, 88.5 against 96.3. Inkling 2 Small 52.7 against 51.6. Qwen3.8 Flash Next full 50.8 against 49.4.](findings/16_omlx_082_refresh/chart_max.png)
 
 </details>
 

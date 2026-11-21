@@ -21,8 +21,8 @@
 <text x="276.0" y="546.0" font-size="32" font-weight="500" fill="#f0efec" text-anchor="end">Inkling 2 Mini</text>
 <path d="M300.0,508.0 h1072.0 a8.0,8.0 0 0 1 8.0,8.0 v9.0 a8.0,8.0 0 0 1 -8.0,8.0 h-1072.0 z" fill="#898781"/>
 <text x="1394.0" y="531.5" font-size="32" font-weight="400" fill="#c3c2b7" text-anchor="start">96.3</text>
-<path d="M300.0,537.0 h874.6 a8.0,8.0 0 0 1 8.0,8.0 v9.0 a8.0,8.0 0 0 1 -8.0,8.0 h-874.6 z" fill="#3987e5"/>
-<text x="1196.6" y="560.5" font-size="32" font-weight="650" fill="#f0efec" text-anchor="start">78.7</text>
+<path d="M300.0,537.0 h984.5 a8.0,8.0 0 0 1 8.0,8.0 v9.0 a8.0,8.0 0 0 1 -8.0,8.0 h-984.5 z" fill="#3987e5"/>
+<text x="1306.5" y="560.5" font-size="32" font-weight="650" fill="#f0efec" text-anchor="start">88.5</text>
 <text x="276.0" y="640.0" font-size="32" font-weight="500" fill="#f0efec" text-anchor="end">Inkling 2 Small</text>
 <path d="M300.0,602.0 h570.7 a8.0,8.0 0 0 1 8.0,8.0 v9.0 a8.0,8.0 0 0 1 -8.0,8.0 h-570.7 z" fill="#898781"/>
 <text x="892.7" y="625.5" font-size="32" font-weight="400" fill="#c3c2b7" text-anchor="start">51.6</text>
@@ -34,5 +34,5 @@
 <path d="M300.0,725.0 h561.7 a8.0,8.0 0 0 1 8.0,8.0 v9.0 a8.0,8.0 0 0 1 -8.0,8.0 h-561.7 z" fill="#3987e5"/>
 <text x="883.7" y="748.5" font-size="32" font-weight="650" fill="#f0efec" text-anchor="start">50.8</text>
 <text x="1530.0" y="282.0" font-size="24" font-weight="400" fill="#898781" text-anchor="end">tok/s</text>
-<text x="70.0" y="848.0" font-size="23" font-weight="400" fill="#898781" text-anchor="start">Median of 5, one start a bar. Inkling 2 Mini ranged 76.9 to 96.7 on 0.8.2 and 83.1 to 97.3 on 0.8.1.</text>
+<text x="70.0" y="848.0" font-size="23" font-weight="400" fill="#898781" text-anchor="start">Median of 5, one start a bar. Inkling 2 Mini is its second 0.8.2 start. Its first wrote 78.7.</text>
 </svg>

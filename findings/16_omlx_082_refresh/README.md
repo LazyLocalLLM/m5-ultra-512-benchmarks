@@ -4,13 +4,15 @@ By Local LLM L-Plate. Follow [@LazyLocalLLM on X](https://x.com/LazyLocalLLM) fo
 
 ELI5: oMLX 0.8.2 came out on 21 Nov 2026 at 12:20 SGT. Its notes call it a hotfix for click positions on screenshots and say everything else is the same as 0.8.1. My rule is to run the newest stable release, so I reran my default oMLX lines on it. One fresh server start a setting, with the same settings and the same texts as before. Max is greedy at temperature 0 while writing new code. Median is the model's own sampler on mixed text.
 
-**I see no speed change on oMLX 0.8.2 on any of the five models. Text by text against the earlier start, the middle ratio sits between 0.95 and 1.05 in every test. Hy4-flash oQ4h wrote the same text as on 0.8.1 on 100 of 100 short replies, and Qwen3.8 Flash Next full wrote the same answers as on 0.8.0 on 250 of 250. One line moved a lot by my own rule and I do not read it as a change. Inkling 2 Mini's max is 83.5 tok/s on this start against 96.3 on the 0.8.1 start, with overlapping ranges. Mac Studio M5 Ultra 512 GB, one user, median of 5 runs, 21 Nov 2026.**
+**I see no speed change on oMLX 0.8.2 on any of the five models. Text by text against the earlier start, the middle ratio sits between 0.95 and 1.05 in every test. Hy4-flash oQ4h wrote the same text as on 0.8.1 on 100 of 100 short replies, and Qwen3.8 Flash Next full wrote the same answers as on 0.8.0 on 250 of 250. One line moved a lot by my own rule and I do not read it as a change. Inkling 2 Mini's max is 83.5 and then 88.5 tok/s on two 0.8.2 starts against 96.3 on the 0.8.1 start, with overlapping ranges. Mac Studio M5 Ultra 512 GB, one user, median of 5 runs, 21 and 22 Nov 2026.**
+
+Updated on 22 Nov 2026 at 02:47 SGT with the second Inkling 2 Mini start.
 
 | Model and build | Max on 0.8.2 | Max before | Median on 0.8.2 | Median before | Earlier release |
 |---|---|---|---|---|---|
 | GLM-5.3 Flash, oQ4e | 76.0 | 78.7 | 70.9 | 69.7 | 0.8.1 |
 | Hy4-flash, oQ4h, thinking off | 76.8 | 75.6 | 52.1 | 53.7 | 0.8.1 |
-| Inkling 2 Mini, oQ4e | 83.5 | 96.3 | 65.8 | 65.9 | 0.8.1 |
+| Inkling 2 Mini, oQ4e, second start | 88.5 | 96.3 | 66.2 | 65.9 | 0.8.1 |
 | Inkling 2 Small, oQ4e | 52.7 | 51.6 | 41.3 | 42.2 | 0.8.0 |
 | Qwen3.8 Flash Next, full, default depth | 50.8 | 49.4 | 34.6 | 33.2 | 0.8.0 |
 | Qwen3.8 Flash Next, full, fixed depth 4 | 54.3 | 54.2 | 33.3 | 33.6 | 0.8.0 |
@@ -25,10 +27,10 @@ ELI5: oMLX 0.8.2 came out on 21 Nov 2026 at 12:20 SGT. Its notes call it a hotfi
 
 ELI5: The same test on the new release and on the release each line ran on before. One pair of bars a model.
 
-![Bars of writing speed in tokens per second, greedy at temperature 0, new code, replies of up to 2,048 tokens, 1K prompt, drafts on at the default depth. On oMLX 0.8.2 against the earlier start. GLM-5.3 Flash oQ4e 76.0 against 78.7. Hy4-flash oQ4h 76.8 against 75.6. Inkling 2 Mini 78.7 against 96.3. Inkling 2 Small 52.7 against 51.6. Qwen3.8 Flash Next full 50.8 against 49.4.](chart_max.png)
+![Bars of writing speed in tokens per second, greedy at temperature 0, new code, replies of up to 2,048 tokens, 1K prompt, drafts on at the default depth. On oMLX 0.8.2 against the earlier start. GLM-5.3 Flash oQ4e 76.0 against 78.7. Hy4-flash oQ4h 76.8 against 75.6. Inkling 2 Mini, second start, 88.5 against 96.3. Inkling 2 Small 52.7 against 51.6. Qwen3.8 Flash Next full 50.8 against 49.4.](chart_max.png)
 
-- **The chart is the 1K prompt only.** Inkling 2 Mini's max in the table above is its 4K cell, 83.5.
-- **Inkling 2 Mini's two bars overlap in range.** The five 0.8.2 runs went from 76.9 to 96.7 and the five 0.8.1 runs from 83.1 to 97.3. The section "Inkling 2 Mini, the line that moved" has the rest.
+- **The chart is the 1K prompt only.**
+- **Inkling 2 Mini's bar is its second 0.8.2 start.** Its five runs went from 83.8 to 95.0, and the five 0.8.1 runs from 83.1 to 97.3. The first 0.8.2 start wrote 78.7 there. The section "Inkling 2 Mini, the line that moved" has the rest.
 
 ## Same-text pairs
 
@@ -54,22 +56,29 @@ New over old. "Faster on" counts the pairs where 0.8.2 wrote faster. The middle 
 
 ELI5: The summary page shows the latest start by rule, not the best one. On this model the new start's top cell came in lower. The evidence does not say the release is slower.
 
-Decode tok/s, oQ4e build, drafts on at the default depth. Run `ff41df9ec565` on 0.8.2 and `a3cf6857c4b5` on 0.8.1.
+Decode tok/s, oQ4e build, drafts on at the default depth. Run `a3cf6857c4b5` on 0.8.1. Runs `ff41df9ec565` and `2d6bd492fd78` on 0.8.2, the second from 02:38 SGT on 22 Nov 2026.
 
-| Test | Prompt | oMLX 0.8.1 | oMLX 0.8.2 |
-|---|---|---|---|
-| Greedy, new code, replies up to 2,048 tokens | 1K | 96.3 (83.1 to 97.3) | 78.7 (76.9 to 96.7) |
-| Greedy, new code, replies up to 2,048 tokens | 4K | 80.1 (79.5 to 98.3) | 83.5 (76.0 to 88.3) |
-| Greedy, new code, 512-token replies | 1K | 79.9 (50.6 to 89.6) | 80.8 (68.9 to 88.8) |
-| Greedy, new code, 512-token replies | 4K | 80.4 (69.7 to 87.2) | 74.3 (68.4 to 94.3) |
-| Own sampler, mixed text, 512-token replies | 4K | 65.9 (59.2 to 67.7) | 65.8 (63.1 to 74.1) |
+| Test | Prompt | oMLX 0.8.1 | oMLX 0.8.2, first start | oMLX 0.8.2, second start |
+|---|---|---|---|---|
+| Greedy, new code, replies up to 2,048 tokens | 1K | 96.3 (83.1 to 97.3) | 78.7 (76.9 to 96.7) | 88.5 (83.8 to 95.0) |
+| Greedy, new code, replies up to 2,048 tokens | 4K | 80.1 (79.5 to 98.3) | 83.5 (76.0 to 88.3) | 85.3 (82.7 to 96.8) |
+| Greedy, new code, 512-token replies | 1K | 79.9 (50.6 to 89.6) | 80.8 (68.9 to 88.8) | 83.8 (73.7 to 90.5) |
+| Greedy, new code, 512-token replies | 4K | 80.4 (69.7 to 87.2) | 74.3 (68.4 to 94.3) | 77.9 (69.5 to 83.3) |
+| Own sampler, mixed text, 512-token replies | 4K | 65.9 (59.2 to 67.7) | 65.8 (63.1 to 74.1) | 66.2 (59.6 to 68.2) |
+
+- **The second 0.8.2 start, added 22 Nov 2026.** It wrote 88.5 at 1K, between the first start's 78.7 and the 96.3 on 0.8.1. So one cell read 78.7 and 88.5 on two starts of one release.
+- **Against 0.8.1 the second start is level.** Faster on 6 of 10 long replies with a middle ratio of 1.02, on 6 of 10 short replies with 1.02, and on 3 of 5 sampled replies with 1.00.
+- **The two 0.8.2 starts against each other.** The second was faster on 8 of 10 long replies with a middle ratio of 1.06, and level on short and sampled replies at 1.01 and 0.99.
+- **So it is start spread.** The summary page now shows the second start, 88.5, by the same rule that showed 83.5.
+
+What the first start alone showed, as written on 21 Nov 2026.
 
 - **The max by my rule fell from 96.3 to 83.5.** The 1K cell fell and the 4K cell rose.
 - **The ranges overlap in every cell.** The fastest 1K run on 0.8.2 was 96.7, next to 97.3 on 0.8.1.
 - **The pairs are mixed.** Long replies were faster on 3 of 10 with a middle ratio of 0.95. Short replies were faster on 5 of 10 with 1.00. The sampler cell is 65.8 against 65.9.
 - **Drafted speed on this model spreads widely.** Finding 14 showed one 0.8.1 cell running from 50.6 to 89.6.
-- **The greedy text is not fixed on this model with drafts on.** Inside one start, the second pass of 50 short questions gave the first pass's text on 46 of 50 on 0.8.2 and on 47 of 50 on 0.8.1. A different text takes a different time.
-- **So I call it start spread, and I have one start to show for it.** A second 0.8.2 start is queued on this Mac behind another job. The summary page shows 83.5 until then, and the 0.8.1 line stays in the full table marked as an older release.
+- **The greedy text is not fixed on this model with drafts on.** Inside one start, the second pass of 50 short questions gave the first pass's text on 46 of 50 and 48 of 50 on the two 0.8.2 starts, and on 47 of 50 on 0.8.1. A different text takes a different time.
+- **I called it start spread on one start.** The second start above bears that out. The 0.8.1 line stays in the full table marked as an older release.
 
 ## The other four models
 
@@ -166,7 +175,7 @@ ELI5: A new release is only a fair swap if it writes the same words. I ask short
 |---|---|---|---|
 | Hy4-flash, oQ4h | 50 questions asked twice, thinking and answer text together | 100 of 100 | 50 of 50 on both releases |
 | GLM-5.3 Flash, oQ4e | the same check | 98 of 100 | 49 of 50 on both releases |
-| Inkling 2 Mini, oQ4e | the same check | 95 of 100 | 46 of 50 on 0.8.2, 47 of 50 on 0.8.1 |
+| Inkling 2 Mini, oQ4e | the same check | 95 of 100 on each 0.8.2 start | 46 and 48 of 50 on 0.8.2, 47 of 50 on 0.8.1 |
 | Inkling 2 Small, oQ4e | the same check | no 0.8.0 file to compare | 49 of 50 on 0.8.2 |
 | Qwen3.8 Flash Next, default depth | 250 questions, answer text | 250 of 250 | not asked twice |
 
@@ -217,6 +226,7 @@ omlx serve --model-dir <models> --host 127.0.0.1 --port 8198 --max-concurrent-re
 | `fd37c30fd993` | Inkling 2 Small, oQ4e | Default depth | 17:44 |
 | `fbc94b62491c` | Qwen3.8 Flash Next, full | Default depth | 18:03 |
 | `8f063cd2f425` | Qwen3.8 Flash Next, full | Fixed depth 4 | 18:27 |
+| `2d6bd492fd78` | Inkling 2 Mini, oQ4e, second start | Default depth | 02:38 on 22 Nov |
 
 ## How I measured
 
@@ -235,7 +245,7 @@ ELI5: Same Mac, same harness, same texts and same three questions as the earlier
 
 ELI5: A speed is only comparable with another speed measured the same way.
 
-- **One start a release.** A gap of a few percent between two starts is not a version change.
+- **One start a release, two for Inkling 2 Mini.** A gap of a few percent between two starts is not a version change.
 - **One order only.** Every 0.8.2 start ran after the start it is compared with, between 17:13 and 18:47 SGT on 21 Nov 2026. The earlier starts ran between 01:33 and 16:43 SGT that day.
 - **Thinking text is not answer text.** Three of these five models wrote thinking text.
 - **Max is not what a chat feels like.** The median is the everyday figure.
@@ -245,8 +255,8 @@ ELI5: A speed is only comparable with another speed measured the same way.
 
 ELI5: Every timed request is in this folder. You can redo every median.
 
-- **`rows.csv`.** 234 raw rows from the bench database. 210 timed requests and 24 warm-ups.
-- **`runs.csv`.** The 6 runs behind them, with engine, version, start time, settings and sampling.
+- **`rows.csv`.** 262 raw rows from the bench database. 235 timed requests and 27 warm-ups.
+- **`runs.csv`.** The 7 runs behind them, with engine, version, start time, settings and sampling.
 - **The earlier rows** are in findings 9, 12, 14 and 15.
 
 From the top of this repository.
@@ -257,7 +267,7 @@ python3 tools/summarize.py findings/16_omlx_082_refresh
 
 ## What I did not verify
 
-- **A second start on 0.8.2** of any setting. One is queued for Inkling 2 Mini.
+- **A second start on 0.8.2** of any setting but Inkling 2 Mini.
 - **The hotfix itself.** It is for image input and I sent text only.
 - **The lines listed under "oMLX lines I did not rerun".**
 - **What the timed replies say.** I read back none of them on 0.8.2.

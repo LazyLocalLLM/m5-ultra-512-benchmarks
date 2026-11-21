@@ -100,7 +100,7 @@ ELI5: My usual baseline is Apple's `mlx-lm` on the same weights. I did not try i
 
 ELI5: One engine, two ready builds, and a fresh server start for every setting.
 
-- **Added 21 Nov 2026 17:07 SGT.** oMLX 0.8.2 came out at 12:20 SGT that day, two hours before these runs began at 14:21 SGT. I had not seen it. Its notes call it a hotfix for click positions on screenshots and say everything else is the same as 0.8.1. These runs are on 0.8.1. The oQ4e drafts-on start was rerun on 0.8.2 that evening, in [finding 16](../16_omlx_082_refresh). Its max came in at 83.5 against the 96.3 here, with overlapping ranges, and that page says why I read it as start spread.
+- **Added 21 Nov 2026 17:07 SGT.** oMLX 0.8.2 came out at 12:20 SGT that day, two hours before these runs began at 14:21 SGT. I had not seen it. Its notes call it a hotfix for click positions on screenshots and say everything else is the same as 0.8.1. These runs are on 0.8.1. The oQ4e drafts-on start was rerun on 0.8.2 that evening, in [finding 16](../16_omlx_082_refresh). Its max came in at 83.5 and then 88.5 on two starts against the 96.3 here, with overlapping ranges, and that page says why I read it as start spread.
 
 - **Engine.** [oMLX](https://github.com/jundot/omlx) 0.8.1, released 21 Nov 2026 09:17 SGT, installed from the tagged source with its custom kernels built (`OMLX_WITH_CUSTOM_KERNEL=1`).
 - **Serve command.**
