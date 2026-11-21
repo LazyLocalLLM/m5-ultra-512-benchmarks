@@ -2,7 +2,7 @@
 <rect width="1600" height="900" fill="#1a1a19"/>
 <rect width="1600" height="10" fill="#f5c400"/>
 <text x="70.0" y="110.0" font-size="56" font-weight="650" fill="#f0efec" text-anchor="start">Three Qwen builds on TensorFold 1.3.2, max speed</text>
-<text x="70.0" y="162.0" font-size="30" font-weight="400" fill="#c3c2b7" text-anchor="start">Greedy at temperature 0, new code, replies of up to 2,048 tokens. Median of 5 runs, one server start a build.</text>
+<text x="70.0" y="162.0" font-size="30" font-weight="400" fill="#c3c2b7" text-anchor="start">Greedy at temperature 0, new code, replies of up to 2,048 tokens. Median of 5 runs, the second of two server starts.</text>
 <rect x="70.0" y="226" width="26" height="26" rx="4" fill="#898781"/>
 <text x="108.0" y="248.0" font-size="28" font-weight="400" fill="#c3c2b7" text-anchor="start">Qwen3.8 27B, 4-bit</text>
 <rect x="441.0" y="226" width="26" height="26" rx="4" fill="#1c5cab"/>
@@ -12,18 +12,18 @@
 <line x1="300" y1="300" x2="300" y2="770" stroke="#383835" stroke-width="2"/>
 <text x="276.0" y="428.5" font-size="32" font-weight="500" fill="#f0efec" text-anchor="end">1K prompt</text>
 <path d="M300.0,347.5 h1072.0 a8.0,8.0 0 0 1 8.0,8.0 v28.0 a8.0,8.0 0 0 1 -8.0,8.0 h-1072.0 z" fill="#898781"/>
-<text x="1394.0" y="380.5" font-size="32" font-weight="400" fill="#c3c2b7" text-anchor="start">315.1</text>
-<path d="M300.0,395.5 h744.0 a8.0,8.0 0 0 1 8.0,8.0 v28.0 a8.0,8.0 0 0 1 -8.0,8.0 h-744.0 z" fill="#1c5cab"/>
-<text x="1066.0" y="428.5" font-size="32" font-weight="400" fill="#c3c2b7" text-anchor="start">219.4</text>
-<path d="M300.0,443.5 h676.8 a8.0,8.0 0 0 1 8.0,8.0 v28.0 a8.0,8.0 0 0 1 -8.0,8.0 h-676.8 z" fill="#3987e5"/>
-<text x="998.8" y="476.5" font-size="32" font-weight="650" fill="#f0efec" text-anchor="start">199.8</text>
+<text x="1394.0" y="380.5" font-size="32" font-weight="400" fill="#c3c2b7" text-anchor="start">328.9</text>
+<path d="M300.0,395.5 h671.1 a8.0,8.0 0 0 1 8.0,8.0 v28.0 a8.0,8.0 0 0 1 -8.0,8.0 h-671.1 z" fill="#1c5cab"/>
+<text x="993.1" y="428.5" font-size="32" font-weight="400" fill="#c3c2b7" text-anchor="start">206.8</text>
+<path d="M300.0,443.5 h649.1 a8.0,8.0 0 0 1 8.0,8.0 v28.0 a8.0,8.0 0 0 1 -8.0,8.0 h-649.1 z" fill="#3987e5"/>
+<text x="971.1" y="476.5" font-size="32" font-weight="650" fill="#f0efec" text-anchor="start">200.1</text>
 <text x="276.0" y="663.5" font-size="32" font-weight="500" fill="#f0efec" text-anchor="end">4K prompt</text>
-<path d="M300.0,582.5 h926.0 a8.0,8.0 0 0 1 8.0,8.0 v28.0 a8.0,8.0 0 0 1 -8.0,8.0 h-926.0 z" fill="#898781"/>
-<text x="1248.0" y="615.5" font-size="32" font-weight="400" fill="#c3c2b7" text-anchor="start">272.5</text>
-<path d="M300.0,630.5 h642.9 a8.0,8.0 0 0 1 8.0,8.0 v28.0 a8.0,8.0 0 0 1 -8.0,8.0 h-642.9 z" fill="#1c5cab"/>
-<text x="964.9" y="663.5" font-size="32" font-weight="400" fill="#c3c2b7" text-anchor="start">189.9</text>
-<path d="M300.0,678.5 h655.9 a8.0,8.0 0 0 1 8.0,8.0 v28.0 a8.0,8.0 0 0 1 -8.0,8.0 h-655.9 z" fill="#3987e5"/>
-<text x="977.9" y="711.5" font-size="32" font-weight="650" fill="#f0efec" text-anchor="start">193.7</text>
+<path d="M300.0,582.5 h785.3 a8.0,8.0 0 0 1 8.0,8.0 v28.0 a8.0,8.0 0 0 1 -8.0,8.0 h-785.3 z" fill="#898781"/>
+<text x="1107.3" y="615.5" font-size="32" font-weight="400" fill="#c3c2b7" text-anchor="start">241.6</text>
+<path d="M300.0,630.5 h631.0 a8.0,8.0 0 0 1 8.0,8.0 v28.0 a8.0,8.0 0 0 1 -8.0,8.0 h-631.0 z" fill="#1c5cab"/>
+<text x="953.0" y="663.5" font-size="32" font-weight="400" fill="#c3c2b7" text-anchor="start">194.6</text>
+<path d="M300.0,678.5 h616.6 a8.0,8.0 0 0 1 8.0,8.0 v28.0 a8.0,8.0 0 0 1 -8.0,8.0 h-616.6 z" fill="#3987e5"/>
+<text x="938.6" y="711.5" font-size="32" font-weight="650" fill="#f0efec" text-anchor="start">190.2</text>
 <text x="1530.0" y="282.0" font-size="24" font-weight="400" fill="#898781" text-anchor="end">tok/s</text>
 <text x="70.0" y="848.0" font-size="23" font-weight="400" fill="#898781" text-anchor="start">Mac Studio M5 Ultra 512 GB, one user, 21 Nov 2026. TensorFold 1.3.2 from Homebrew at defaults. Qwen3.8 27B with the DFlash2 drafter, Flash Next with its MTP head.</text>
 </svg>
