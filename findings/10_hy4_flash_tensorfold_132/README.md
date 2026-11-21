@@ -2,7 +2,7 @@
 
 By Local LLM L-Plate. Follow [@LazyLocalLLM on X](https://x.com/LazyLocalLLM) for new benchmarks.
 
-ELI5: Hy4-flash is Tencent's new open model, released on 16 Nov 2026. TensorFold is the only engine I found that loads it. I ran its two MLX builds, with the engine's drafts on and off. Max is greedy at temperature 0 while writing new code. Median is the model's own sampler on mixed text.
+ELI5: Hy4-flash is Tencent's new open model, released on 16 Nov 2026. TensorFold was the only engine I found that loaded it when I ran this. oMLX 0.8.1 loads it too, and that run is [finding 12](../12_hy4_flash_omlx_081). I ran its two MLX builds, with the engine's drafts on and off. Max is greedy at temperature 0 while writing new code. Median is the model's own sampler on mixed text.
 
 **TensorFold 1.3.2 wrote 65.3 tok/s on Hy4-flash 4-bit and 50.8 on the 8-bit build at their max, with thinking on, the model's default. With the model's own sampler it wrote 50.0 and 36.8. With drafts off the same builds wrote 42.2 and 34.0 on code at a 4K prompt. All but one of the 90 timed replies were reasoning text from start to finish. With thinking switched off through the API the replies went off course on both builds, so I publish no thinking-off line.**
 
@@ -275,7 +275,7 @@ python3 tools/summarize.py findings/10_hy4_flash_tensorfold_132
 - **Long prompts, and two users at once.**
 - **Answer quality** of either build.
 - **Peak memory.** The figures above are the process size by `ps` at two moments.
-- **Any other engine on this model.** `mlx-lm` 0.32.2 and oMLX 0.8.0 have no model file for it. oMLX 0.8.1, released on 21 Nov 2026 at 09:17 SGT, lists Hy4-flash in its notes. I have not run it yet. The rest were not tried.
+- **Any other engine on this model.** `mlx-lm` 0.32.2 and oMLX 0.8.0 have no model file for it. oMLX 0.8.1, released on 21 Nov 2026 at 09:17 SGT, loads it, and [finding 12](../12_hy4_flash_omlx_081) has that run on another build. The rest were not tried.
 
 ## Credit
 

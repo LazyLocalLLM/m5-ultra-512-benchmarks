@@ -4,7 +4,7 @@ By Local LLM L-Plate. Follow [@LazyLocalLLM on X](https://x.com/LazyLocalLLM) fo
 
 ELI5: One page with the best speed I have measured for each model on one Mac Studio M5 Ultra 512 GB. Every line links to the finding folder that holds the report and the raw rows.
 
-Updated 21 Nov 2026 12:10 SGT. All figures are decode speed in tok/s for one user.
+Updated 21 Nov 2026 12:34 SGT. All figures are decode speed in tok/s for one user.
 
 ## Two speeds per model
 
@@ -38,6 +38,7 @@ ELI5: The fastest setup I found for each model, one line each.
 | DeepSeek V4.1 Flash 1017, maker's files | **75.6** | TensorFold 1.3.0, drafts at defaults (DSpark and copies). 4K prompt, code, replies up to 2,048 tokens, 5 runs, 2026-11-20 | **44.5** | TensorFold 1.3.0, drafts at defaults (DSpark and copies). 4K prompt, mixed, replies up to 512 tokens, 5 runs, 2026-11-20 | [6](../findings/06_dsv41_tensorfold_130_max_push), [4](../findings/04_dsv41_tensorfold_130) |
 | Hy4-flash, 4-bit | **65.3** | TensorFold 1.3.2, DFly2 drafts on, thinking on, reply is reasoning text. 4K prompt, code, replies up to 2,048 tokens, 5 runs, 2026-11-21 | **50.0** | TensorFold 1.3.2, DFly2 drafts on, thinking on, reply is reasoning text. 4K prompt, mixed, replies up to 512 tokens, 5 runs, 2026-11-21 | [10](../findings/10_hy4_flash_tensorfold_132) |
 | Hy4-flash, 8-bit | **50.8** | TensorFold 1.3.2, DFly2 drafts on, thinking on, reply is reasoning text. 1K prompt, code, replies up to 2,048 tokens, 5 runs, 2026-11-21 | **36.8** | TensorFold 1.3.2, DFly2 drafts on, thinking on, reply is reasoning text. 4K prompt, mixed, replies up to 512 tokens, 5 runs, 2026-11-21 | [10](../findings/10_hy4_flash_tensorfold_132) |
+| Hy4-flash, oQ4h | **75.6** | oMLX 0.8.1 with its kernels, Lightning MTP on, default depth, thinking off. 1K prompt, code, replies up to 2,048 tokens, 5 runs, 2026-11-21 | **54.0** | oMLX 0.8.1 with its kernels, Lightning MTP on, default depth, no thinking setting, reply is reasoning text. 4K prompt, mixed, replies up to 512 tokens, 5 runs, 2026-11-21 | [12](../findings/12_hy4_flash_omlx_081) |
 
 ## Ceiling on easy text
 
@@ -56,6 +57,7 @@ ELI5: Some tests hand the model text it can guess almost perfectly. The drafts l
 | Qwen3.8 Flash Next, full | **120.1** | oMLX 0.8.0 with its kernels, MTP on (built-in head), default depth. 1K prompt, code, replies up to 512 tokens, 5 runs, 2026-11-21 | **51.5** | oMLX 0.8.0 with its kernels, MTP on (built-in head), default depth. 4K prompt, code, replies up to 512 tokens, 5 runs, 2026-11-21 | [9](../findings/09_omlx_080_four_models) |
 | DeepSeek V4.1 Flash 1017, oQ4e-mtp | **118.3** | oMLX 0.8.0 with its kernels, MTP drafts on, fixed depth 5. 4K prompt, code, replies up to 512 tokens, 5 runs, 2026-11-20 | **114.0** | oMLX 0.8.0 with its kernels, MTP drafts on, fixed depth 5. 4K prompt, code, replies up to 512 tokens, 5 runs, 2026-11-20 | [5](../findings/05_dsv41_omlx_080_max_push) |
 | DeepSeek V4.1 Flash 1017, maker's files | **159.0** | TensorFold 1.3.0, drafts at defaults (DSpark and copies). 1K prompt, code, replies up to 512 tokens, 5 runs, 2026-11-20 | **111.9** | TensorFold 1.3.0, drafts at defaults (DSpark and copies). 4K prompt, code, replies up to 512 tokens, 5 runs, 2026-11-20 | [6](../findings/06_dsv41_tensorfold_130_max_push) |
+| Hy4-flash, oQ4h | **101.0** | oMLX 0.8.1 with its kernels, Lightning MTP on, default depth, thinking off. 1K prompt, code, replies up to 512 tokens, 5 runs, 2026-11-21 | **97.4** | oMLX 0.8.1 with its kernels, Lightning MTP on, default depth, thinking off. 1K prompt, code, replies up to 512 tokens, 5 runs, 2026-11-21 | [12](../findings/12_hy4_flash_omlx_081) |
 
 ## Every setup measured
 
@@ -188,6 +190,16 @@ ELI5: Everything behind the table above, including the setups that were not the 
 | Hy4-flash, 8-bit | max | TensorFold 1.3.2, drafts off, thinking on, reply is reasoning text, 512-token replies | greedy, temperature 0 | 4K code | 512 | 34.0 | 33.9 to 34.2 | 5 | 2026-11-21 | `b8e543b952e1` | [10](../findings/10_hy4_flash_tensorfold_132) |
 | Hy4-flash, 8-bit | median | TensorFold 1.3.2, DFly2 drafts on, thinking on, reply is reasoning text | temperature 0.9, top-p 1.0 | 4K mixed | 512 | 36.8 | 35.7 to 47.5 | 5 | 2026-11-21 | `bdcd2d9ede41` | [10](../findings/10_hy4_flash_tensorfold_132) |
 | Hy4-flash, 8-bit | median | TensorFold 1.3.2, drafts off, thinking on, reply is reasoning text | temperature 0.9, top-p 1.0 | 4K mixed | 512 | 33.2 | 33.2 to 33.3 | 5 | 2026-11-21 | `b8e543b952e1` | [10](../findings/10_hy4_flash_tensorfold_132) |
+| Hy4-flash, oQ4h | max | oMLX 0.8.1 with its kernels, Lightning MTP on, default depth, thinking off | greedy, temperature 0 | 1K code | 2,048 | 75.6 | 72.7 to 76.8 | 5 | 2026-11-21 | `61f1f5a70d04` | [12](../findings/12_hy4_flash_omlx_081) |
+| Hy4-flash, oQ4h | max | oMLX 0.8.1 with its kernels, Lightning MTP on, default depth, thinking off | greedy, temperature 0 | 4K code | 2,048 | 73.5 | 67.0 to 78.6 | 5 | 2026-11-21 | `61f1f5a70d04` | [12](../findings/12_hy4_flash_omlx_081) |
+| Hy4-flash, oQ4h | max | oMLX 0.8.1 with its kernels, Lightning MTP on, default depth, no thinking setting, reply is reasoning text | greedy, temperature 0 | 4K code | 2,048 | 54.4 | 50.0 to 57.8 | 5 | 2026-11-21 | `7b6ccfb9c907` | [12](../findings/12_hy4_flash_omlx_081) |
+| Hy4-flash, oQ4h | max | oMLX 0.8.1 with its kernels, Lightning MTP on, default depth, no thinking setting, reply is reasoning text | greedy, temperature 0 | 1K code | 2,048 | 53.8 | 52.7 to 56.4 | 5 | 2026-11-21 | `7b6ccfb9c907` | [12](../findings/12_hy4_flash_omlx_081) |
+| Hy4-flash, oQ4h | copy task | oMLX 0.8.1 with its kernels, Lightning MTP on, default depth, thinking off | greedy, temperature 0 | 1K code | 512 | 101.0 | 94.3 to 103.0 | 5 | 2026-11-21 | `61f1f5a70d04` | [12](../findings/12_hy4_flash_omlx_081) |
+| Hy4-flash, oQ4h | copy task | oMLX 0.8.1 with its kernels, Lightning MTP on, default depth, thinking off | greedy, temperature 0 | 4K code | 512 | 92.1 | 88.1 to 93.3 | 5 | 2026-11-21 | `61f1f5a70d04` | [12](../findings/12_hy4_flash_omlx_081) |
+| Hy4-flash, oQ4h | counting toy | oMLX 0.8.1 with its kernels, Lightning MTP on, default depth, thinking off | greedy, temperature 0 | 1K code | 512 | 97.4 | 92.1 to 98.9 | 5 | 2026-11-21 | `61f1f5a70d04` | [12](../findings/12_hy4_flash_omlx_081) |
+| Hy4-flash, oQ4h | counting toy | oMLX 0.8.1 with its kernels, Lightning MTP on, default depth, thinking off | greedy, temperature 0 | 4K code | 512 | 92.0 | 91.3 to 92.0 | 5 | 2026-11-21 | `61f1f5a70d04` | [12](../findings/12_hy4_flash_omlx_081) |
+| Hy4-flash, oQ4h | median | oMLX 0.8.1 with its kernels, Lightning MTP on, default depth, no thinking setting, reply is reasoning text | temperature 0.9, top-p 1.0 | 4K mixed | 512 | 54.0 | 50.4 to 57.9 | 5 | 2026-11-21 | `7b6ccfb9c907` | [12](../findings/12_hy4_flash_omlx_081) |
+| Hy4-flash, oQ4h | median | oMLX 0.8.1 with its kernels, Lightning MTP on, default depth, thinking off | temperature 0.9, top-p 1.0 | 4K mixed | 512 | 53.7 | 50.8 to 57.5 | 5 | 2026-11-21 | `61f1f5a70d04` | [12](../findings/12_hy4_flash_omlx_081) |
 
 ## Check it yourself
 
