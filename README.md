@@ -8,13 +8,13 @@ ELI5: I'm a learner with one Mac Studio M5 Ultra 512 GB, and I time local AI mod
 
 ELI5: The page in six lines. Every figure here is recomputed from the raw rows each time the page is built.
 
-Updated 21 Nov 2026 14:57 SGT. Decode speed in tok/s, one user, one Mac.
+Updated 21 Nov 2026 17:07 SGT. Decode speed in tok/s, one user, one Mac.
 
 - **Fastest on new code.** Qwen3.8 27B, 4-bit wrote 328.9 tok/s on TensorFold 1.3.2. Next are Qwen3.8 Flash Next, 4-bit at 206.8 and Qwen3.8 Flash Next, 6-bit at 200.1.
 - **Fastest in daily use.** Qwen3.8 27B, 4-bit wrote 161.3 tok/s on TensorFold 1.3.2. Next are Qwen3.8 Flash Next, 4-bit at 129.7 and Qwen3.8 Flash Next, 6-bit at 114.1.
 - **Two speeds per model.** Max is greedy at temperature 0 while the model writes new code. Median is the model's own sampler on mixed text, which is closer to daily use.
-- **Coverage.** 18 models, 150 setups and 14 findings.
-- **Newest finding.** Finding 14, 21 Nov 2026. [Inkling 2 Mini on oMLX 0.8.1, max and median speed](findings/14_inkling2_mini_omlx_081).
+- **Coverage.** 19 models, 178 setups and 15 findings.
+- **Newest finding.** Finding 15, 21 Nov 2026. [GLM-5.3 Flash, an all-4-bit build against a mixed 4-bit and 8-bit build](findings/15_glm53_flash_two_builds).
 - **Check it.** Every figure links to a folder with the rows it came from. If I have set an engine up wrong, [open an issue](https://github.com/LazyLocalLLM/m5-ultra-512-benchmarks/issues).
 
 ## Benchmark summary
@@ -35,7 +35,7 @@ The exact setup behind each figure is one click away, under "Every setup measure
 | GLM-5.3, 4-bit | **24.6** | **24.5** | reasoning | oMLX 0.8.0 with its kernels | [9](findings/09_omlx_080_four_models) |
 | GLM-5.3, 4-bit, draft head joined here | **23.4** | **25.0** | reasoning | oMLX 0.8.0 with its kernels | [9](findings/09_omlx_080_four_models) |
 | GLM-5.3 Flash, 6-bit | not run yet | **57.8** | reasoning | oMLX 0.7.3 with its kernels | [2](findings/02_ten_models_4k_to_1m) |
-| GLM-5.3 Flash, 4-bit | **80.2** | **67.8** | reasoning | oMLX 0.8.0 with its kernels | [9](findings/09_omlx_080_four_models) |
+| GLM-5.3 Flash, oQ4e | **82.9** | **69.7** | answer for max, reasoning for median | TensorFold 1.3.2 for max, oMLX 0.8.1 with its kernels for median | [15](findings/15_glm53_flash_two_builds) |
 | Inkling 2 Small | **51.6** | **42.2** | mostly reasoning | oMLX 0.8.0 with its kernels | [9](findings/09_omlx_080_four_models) |
 | Qwen3.8 27B, 4-bit | **328.9** | **161.3** | answer | TensorFold 1.3.2 | [11](findings/11_qwen38_tensorfold_132) |
 | Qwen3.8 27B, full | **6.9** | **7.1** | answer | mlx-serve 26.11.3 | [8](findings/08_dsv41_mlxserve_26113) |
@@ -44,6 +44,7 @@ The exact setup behind each figure is one click away, under "Every setup measure
 | Qwen3.8 Flash Next, full | **54.2** | **33.6** | answer | oMLX 0.8.0 with its kernels | [9](findings/09_omlx_080_four_models) |
 | DeepSeek V4.1 Flash 1017, oQ4e-mtp | **86.2** | **57.9** | answer | oMLX 0.8.0 with its kernels | [5](findings/05_dsv41_omlx_080_max_push) |
 | DeepSeek V4.1 Flash 1017, maker's files | **75.6** | **44.5** | answer | TensorFold 1.3.0 | [6](findings/06_dsv41_tensorfold_130_max_push), [4](findings/04_dsv41_tensorfold_130) |
+| GLM-5.3 Flash, 4-bit | **102.0** | **80.9** | answer | TensorFold 1.3.2 | [15](findings/15_glm53_flash_two_builds) |
 | Hy4-flash, 4-bit | **65.3** | **50.0** | reasoning | TensorFold 1.3.2 | [10](findings/10_hy4_flash_tensorfold_132) |
 | Hy4-flash, 8-bit | **50.8** | **36.8** | reasoning | TensorFold 1.3.2 | [10](findings/10_hy4_flash_tensorfold_132) |
 | Hy4-flash, oQ4h | **75.6** | **54.0** | answer for max, reasoning for median | oMLX 0.8.1 with its kernels | [12](findings/12_hy4_flash_omlx_081) |
@@ -57,12 +58,14 @@ ELI5: Two tests hand the model text it can guess almost perfectly, copying the p
 | Model | Copy task tok/s | Counting toy tok/s | Engine | Finding |
 |---|---|---|---|---|
 | DeepSeek V4.1 Flash 1017, Lossless | **167.0** | **121.5** | mlx-serve 26.11.3 | [8](findings/08_dsv41_mlxserve_26113) |
+| GLM-5.3 Flash, oQ4e | **156.8** | **96.3** | TensorFold 1.3.2 | [15](findings/15_glm53_flash_two_builds) |
 | Qwen3.8 27B, 4-bit | **814.3** | **448.9** | TensorFold 1.3.2 | [11](findings/11_qwen38_tensorfold_132) |
 | Qwen3.8 Flash Next, 4-bit | **351.6** | **369.3** | TensorFold 1.3.2 | [11](findings/11_qwen38_tensorfold_132) |
 | Qwen3.8 Flash Next, 6-bit | **260.0** | **296.4** | TensorFold 1.3.2 | [11](findings/11_qwen38_tensorfold_132) |
 | Qwen3.8 Flash Next, full | **120.1** | **51.5** | oMLX 0.8.0 with its kernels | [9](findings/09_omlx_080_four_models) |
 | DeepSeek V4.1 Flash 1017, oQ4e-mtp | **118.3** | **114.0** | oMLX 0.8.0 with its kernels | [5](findings/05_dsv41_omlx_080_max_push) |
 | DeepSeek V4.1 Flash 1017, maker's files | **159.0** | **111.9** | TensorFold 1.3.0 | [6](findings/06_dsv41_tensorfold_130_max_push) |
+| GLM-5.3 Flash, 4-bit | **175.0** | **111.1** | TensorFold 1.3.2 | [15](findings/15_glm53_flash_two_builds) |
 | Hy4-flash, oQ4h | **101.0** | **97.4** | oMLX 0.8.1 with its kernels | [12](findings/12_hy4_flash_omlx_081) |
 
 ### Every setup measured
@@ -122,16 +125,30 @@ ELI5: Everything behind the tables above, including the setups that were not the
 </details>
 
 <details>
-<summary><b>GLM-5.3 Flash, 4-bit</b>, 6 setups</summary>
+<summary><b>GLM-5.3 Flash, oQ4e</b>, 20 setups</summary>
 
 | Kind | Engine and setup | Sampler | Prompt | Reply tokens | Decode tok/s | Range | Runs | Date | Run | Finding |
 |---|---|---|---|---|---|---|---|---|---|---|
-| max | oMLX 0.8.0 with its kernels, MTP on, default depth, reply is reasoning text | greedy, temperature 0 | 1K code | 2,048 | 80.2 | 68.4 to 87.6 | 5 | 2026-11-21 | `8f12a00bcc4f` | [9](findings/09_omlx_080_four_models) |
-| max | oMLX 0.8.0 with its kernels, MTP on, default depth, reply is reasoning text | greedy, temperature 0 | 4K code | 2,048 | 74.7 | 68.9 to 81.3 | 5 | 2026-11-21 | `8f12a00bcc4f` | [9](findings/09_omlx_080_four_models) |
+| max | TensorFold 1.3.2, MTP drafts, thinking off, a build made for another engine | greedy, temperature 0 | 4K code | 2,048 | 82.9 | 77.1 to 89.2 | 5 | 2026-11-21 | `787aea383796` | [15](findings/15_glm53_flash_two_builds) |
+| max | TensorFold 1.3.2, MTP drafts, thinking off, a build made for another engine | greedy, temperature 0 | 1K code | 2,048 | 80.7 | 74.5 to 84.5 | 5 | 2026-11-21 | `787aea383796` | [15](findings/15_glm53_flash_two_builds) |
+| max | oMLX 0.8.0 with its kernels, MTP on, default depth, reply is reasoning text, older release | greedy, temperature 0 | 1K code | 2,048 | 80.2 | 68.4 to 87.6 | 5 | 2026-11-21 | `8f12a00bcc4f` | [9](findings/09_omlx_080_four_models) |
+| max | oMLX 0.8.1 with its kernels, MTP on, default depth, reply is reasoning text | greedy, temperature 0 | 1K code | 2,048 | 78.7 | 73.7 to 86.2 | 5 | 2026-11-21 | `421e19a82f36` | [15](findings/15_glm53_flash_two_builds) |
+| max | oMLX 0.8.0 with its kernels, MTP on, default depth, reply is reasoning text, older release | greedy, temperature 0 | 4K code | 2,048 | 74.7 | 68.9 to 81.3 | 5 | 2026-11-21 | `8f12a00bcc4f` | [9](findings/09_omlx_080_four_models) |
+| max | oMLX 0.8.1 with its kernels, MTP on, default depth, reply is reasoning text | greedy, temperature 0 | 4K code | 2,048 | 73.4 | 66.6 to 77.3 | 5 | 2026-11-21 | `421e19a82f36` | [15](findings/15_glm53_flash_two_builds) |
 | max | oMLX 0.8.0 with its kernels, MTP on, fixed depth 4, reply is reasoning text | greedy, temperature 0 | 1K code | 2,048 | 71.7 | 66.4 to 80.9 | 5 | 2026-11-21 | `605e0068ff28` | [9](findings/09_omlx_080_four_models) |
 | max | oMLX 0.8.0 with its kernels, MTP on, fixed depth 4, reply is reasoning text | greedy, temperature 0 | 4K code | 2,048 | 68.9 | 62.1 to 74.9 | 5 | 2026-11-21 | `605e0068ff28` | [9](findings/09_omlx_080_four_models) |
+| max | oMLX 0.8.1 with its kernels, MTP off, reply is reasoning text | greedy, temperature 0 | 1K code | 512 | 51.7 | 51.0 to 51.8 | 5 | 2026-11-21 | `9ab8740acc17` | [15](findings/15_glm53_flash_two_builds) |
+| max | TensorFold 1.3.2, no drafts, thinking off, a build made for another engine | greedy, temperature 0 | 1K code | 512 | 50.9 | 50.5 to 51.0 | 5 | 2026-11-21 | `06d0073eb3e8` | [15](findings/15_glm53_flash_two_builds) |
+| max | TensorFold 1.3.2, no drafts, thinking off, a build made for another engine | greedy, temperature 0 | 4K code | 512 | 50.9 | 50.9 to 50.9 | 5 | 2026-11-21 | `06d0073eb3e8` | [15](findings/15_glm53_flash_two_builds) |
+| max | oMLX 0.8.1 with its kernels, MTP off, reply is reasoning text | greedy, temperature 0 | 4K code | 512 | 49.3 | 49.3 to 49.4 | 5 | 2026-11-21 | `9ab8740acc17` | [15](findings/15_glm53_flash_two_builds) |
+| copy task | TensorFold 1.3.2, MTP drafts, thinking off, a build made for another engine | greedy, temperature 0 | 1K code | 512 | 156.8 | 94.3 to 160.8 | 5 | 2026-11-21 | `787aea383796` | [15](findings/15_glm53_flash_two_builds) |
+| copy task | TensorFold 1.3.2, MTP drafts, thinking off, a build made for another engine | greedy, temperature 0 | 4K code | 512 | 146.5 | 105.9 to 157.6 | 5 | 2026-11-21 | `787aea383796` | [15](findings/15_glm53_flash_two_builds) |
+| counting toy | TensorFold 1.3.2, MTP drafts, thinking off, a build made for another engine | greedy, temperature 0 | 4K code | 512 | 96.3 | 86.7 to 99.5 | 5 | 2026-11-21 | `787aea383796` | [15](findings/15_glm53_flash_two_builds) |
+| counting toy | TensorFold 1.3.2, MTP drafts, thinking off, a build made for another engine | greedy, temperature 0 | 1K code | 512 | 95.2 | 83.1 to 96.5 | 5 | 2026-11-21 | `787aea383796` | [15](findings/15_glm53_flash_two_builds) |
+| median | oMLX 0.8.1 with its kernels, MTP on, default depth, reply is reasoning text | temperature 1.0, top-p 0.95 | 4K mixed | 512 | 69.7 | 66.9 to 73.3 | 5 | 2026-11-21 | `421e19a82f36` | [15](findings/15_glm53_flash_two_builds) |
 | median | oMLX 0.7.3 with its kernels, MTP on, older release | temperature 1.0, top-p 0.95 | 4K mixed | 512 | 68.8 | 61.0 to 76.1 | 5 | 2026-11-17 | `8453ec3a372d` | [2](findings/02_ten_models_4k_to_1m) |
-| median | oMLX 0.8.0 with its kernels, MTP on, default depth, reply is reasoning text | temperature 1.0, top-p 0.95 | 4K mixed | 512 | 67.8 | 63.2 to 72.2 | 5 | 2026-11-21 | `8f12a00bcc4f` | [9](findings/09_omlx_080_four_models) |
+| median | oMLX 0.8.0 with its kernels, MTP on, default depth, reply is reasoning text, older release | temperature 1.0, top-p 0.95 | 4K mixed | 512 | 67.8 | 63.2 to 72.2 | 5 | 2026-11-21 | `8f12a00bcc4f` | [9](findings/09_omlx_080_four_models) |
+| median | TensorFold 1.3.2, MTP drafts, thinking off, a build made for another engine | temperature 1.0, top-p 0.95 | 4K mixed | 512 | 67.5 | 64.3 to 70.0 | 5 | 2026-11-21 | `787aea383796` | [15](findings/15_glm53_flash_two_builds) |
 
 </details>
 
@@ -287,6 +304,28 @@ ELI5: Everything behind the tables above, including the setups that were not the
 </details>
 
 <details>
+<summary><b>GLM-5.3 Flash, 4-bit</b>, 14 setups</summary>
+
+| Kind | Engine and setup | Sampler | Prompt | Reply tokens | Decode tok/s | Range | Runs | Date | Run | Finding |
+|---|---|---|---|---|---|---|---|---|---|---|
+| max | TensorFold 1.3.2, MTP drafts, thinking off | greedy, temperature 0 | 4K code | 2,048 | 102.0 | 95.2 to 108.5 | 5 | 2026-11-21 | `33ba6147e087` | [15](findings/15_glm53_flash_two_builds) |
+| max | TensorFold 1.3.2, MTP drafts, thinking off | greedy, temperature 0 | 1K code | 2,048 | 101.4 | 99.6 to 104.4 | 5 | 2026-11-21 | `33ba6147e087` | [15](findings/15_glm53_flash_two_builds) |
+| max | oMLX 0.8.1 with its kernels, MTP on, default depth, reply is reasoning text | greedy, temperature 0 | 4K code | 2,048 | 85.1 | 79.6 to 87.0 | 5 | 2026-11-21 | `4f9da10c3691` | [15](findings/15_glm53_flash_two_builds) |
+| max | oMLX 0.8.1 with its kernels, MTP on, default depth, reply is reasoning text | greedy, temperature 0 | 1K code | 2,048 | 82.3 | 79.4 to 99.7 | 5 | 2026-11-21 | `4f9da10c3691` | [15](findings/15_glm53_flash_two_builds) |
+| max | TensorFold 1.3.2, no drafts, thinking off | greedy, temperature 0 | 1K code | 512 | 73.4 | 72.4 to 73.6 | 5 | 2026-11-21 | `3b571bd4b948` | [15](findings/15_glm53_flash_two_builds) |
+| max | TensorFold 1.3.2, no drafts, thinking off | greedy, temperature 0 | 4K code | 512 | 73.1 | 73.0 to 73.2 | 5 | 2026-11-21 | `3b571bd4b948` | [15](findings/15_glm53_flash_two_builds) |
+| max | oMLX 0.8.1 with its kernels, MTP off, reply is reasoning text | greedy, temperature 0 | 1K code | 512 | 72.5 | 71.3 to 72.7 | 5 | 2026-11-21 | `5727fcf18ffb` | [15](findings/15_glm53_flash_two_builds) |
+| max | oMLX 0.8.1 with its kernels, MTP off, reply is reasoning text | greedy, temperature 0 | 4K code | 512 | 68.9 | 68.8 to 69.0 | 5 | 2026-11-21 | `5727fcf18ffb` | [15](findings/15_glm53_flash_two_builds) |
+| copy task | TensorFold 1.3.2, MTP drafts, thinking off | greedy, temperature 0 | 1K code | 512 | 175.0 | 118.0 to 183.3 | 5 | 2026-11-21 | `33ba6147e087` | [15](findings/15_glm53_flash_two_builds) |
+| copy task | TensorFold 1.3.2, MTP drafts, thinking off | greedy, temperature 0 | 4K code | 512 | 174.5 | 107.2 to 177.2 | 5 | 2026-11-21 | `33ba6147e087` | [15](findings/15_glm53_flash_two_builds) |
+| counting toy | TensorFold 1.3.2, MTP drafts, thinking off | greedy, temperature 0 | 4K code | 512 | 111.1 | 105.5 to 116.1 | 5 | 2026-11-21 | `33ba6147e087` | [15](findings/15_glm53_flash_two_builds) |
+| counting toy | TensorFold 1.3.2, MTP drafts, thinking off | greedy, temperature 0 | 1K code | 512 | 105.6 | 98.0 to 107.6 | 5 | 2026-11-21 | `33ba6147e087` | [15](findings/15_glm53_flash_two_builds) |
+| median | TensorFold 1.3.2, MTP drafts, thinking off | temperature 1.0, top-p 0.95 | 4K mixed | 512 | 80.9 | 79.2 to 85.4 | 5 | 2026-11-21 | `33ba6147e087` | [15](findings/15_glm53_flash_two_builds) |
+| median | oMLX 0.8.1 with its kernels, MTP on, default depth, reply is reasoning text | temperature 1.0, top-p 0.95 | 4K mixed | 512 | 76.8 | 68.9 to 78.3 | 5 | 2026-11-21 | `4f9da10c3691` | [15](findings/15_glm53_flash_two_builds) |
+
+</details>
+
+<details>
 <summary><b>Hy4-flash, 4-bit</b>, 6 setups</summary>
 
 | Kind | Engine and setup | Sampler | Prompt | Reply tokens | Decode tok/s | Range | Runs | Date | Run | Finding |
@@ -366,6 +405,17 @@ ELI5: Everything behind the tables above, including the setups that were not the
 ## Findings
 
 ELI5: Each finding is one question, one run of an hour or two, and one report. Newest first. Click a title for the full report and the raw rows.
+
+### 15. [GLM-5.3 Flash, an all-4-bit build against a mixed 4-bit and 8-bit build](findings/15_glm53_flash_two_builds)
+
+Runs of 21 Nov 2026. On TensorFold 1.3.2 with no drafts, TensorFold's all-4-bit build wrote 73.4 tok/s and the oQ4e build, which keeps 290 of its 419 tensors at 8 bits, wrote 50.9. oMLX 0.8.1 gave 72.5 and 51.7. With MTP drafts the all-4-bit build reached 102.0 tok/s at its max on TensorFold and oQ4e 82.9. The oQ4e build predicted fixed text slightly better, 0.4849 against 0.5079 nats a token, lower on 21 of 24 texts.
+
+<details>
+<summary>Chart</summary>
+
+![Bars of writing speed in tokens per second for two builds of GLM-5.3 Flash, greedy at temperature 0, new code, 512-token replies, 1K prompt. TensorFold with no drafts, 73.4 for the all-4-bit build and 50.9 for oQ4e. TensorFold with MTP drafts, 101.5 and 74.6. oMLX with no drafts, 72.5 and 51.7. oMLX with MTP drafts, 88.9 and 80.7.](findings/15_glm53_flash_two_builds/chart_builds.png)
+
+</details>
 
 ### 14. [Inkling 2 Mini on oMLX 0.8.1, max and median speed](findings/14_inkling2_mini_omlx_081)
 

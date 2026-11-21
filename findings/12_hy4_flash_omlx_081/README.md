@@ -159,7 +159,9 @@ ELI5: My usual baseline is Apple's `mlx-lm` on the same weights. It can't load t
 
 ## The setup
 
-ELI5: One engine at its newest release, one build from the engine's author, and a fresh server start for every setting.
+ELI5: One engine, one build from the engine's author, and a fresh server start for every setting.
+
+- **Added 21 Nov 2026 17:08 SGT.** oMLX 0.8.2 came out at 12:20 SGT on 21 Nov 2026. The drafts-off starts on this page began at 13:16 SGT, after it. I had not seen it. Its notes call it a hotfix for click positions on screenshots and say everything else is the same as 0.8.1. Every run here is on 0.8.1.
 
 - **Engine.** [oMLX](https://github.com/jundot/omlx) 0.8.1, released 21 Nov 2026 09:17 SGT, installed from the tagged source with its custom kernels built (`OMLX_WITH_CUSTOM_KERNEL=1`). The source tarball's SHA-256 equals the one in the project's Homebrew formula. `omlx --version` prints 0.8.1, and all five kernel families report available.
 - **Serve command.**
