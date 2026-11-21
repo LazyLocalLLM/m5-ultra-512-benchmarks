@@ -1,8 +1,10 @@
 # Benchmark summary
 
+By Local LLM L-Plate. Follow [@LazyLocalLLM on X](https://x.com/LazyLocalLLM) for new benchmarks.
+
 ELI5: One page with the best speed I have measured for each model on one Mac Studio M5 Ultra 512 GB. Every line links to the finding folder that holds the report and the raw rows.
 
-Updated 21 Nov 2026 11:08 SGT. All figures are decode speed in tok/s for one user.
+Updated 21 Nov 2026 12:09 SGT. All figures are decode speed in tok/s for one user.
 
 ## Two speeds per model
 
@@ -195,3 +197,5 @@ ELI5: Each figure here is recomputed from the raw rows in its finding folder. Yo
 - From the top of the repository, `python3 tools/summarize.py findings/FOLDER` prints the median and range of each run in that folder.
 - The weights behind each model name are in the `weights` column of `summary.csv`.
 - If I have set an engine up wrong, [open an issue](https://github.com/LazyLocalLLM/m5-ultra-512-benchmarks/issues). I will rerun it and post the fix.
+
+Follow [@LazyLocalLLM on X](https://x.com/LazyLocalLLM) for new benchmarks.
