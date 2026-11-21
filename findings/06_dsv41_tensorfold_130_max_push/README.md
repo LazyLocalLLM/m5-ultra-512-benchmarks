@@ -89,7 +89,7 @@ ELI5: Apple's own server does not read these files, so there is no baseline bar.
 
 ELI5: The engine and weights of finding 4. One environment variable changed between server starts.
 
-- **Added 22 Nov 2026 04:45 SGT.** TensorFold's main branch at commit 1093b795, which is in no release yet, was run against 1.3.0 on 22 Nov 2026. That is [finding 17](../17_dsv41_tensorfold_main_1093b795). The summary page now shows that night's 1.3.0 start for the default lines, by my rule of the latest start. The figures on this page are unchanged.
+- **Added 22 Nov 2026 04:45 SGT.** TensorFold's main branch at commit 1093b795, which is in no release yet, was run against 1.3.0 on 22 Nov 2026. That is [finding 17](../17_dsv41_tensorfold_main_1093b795). Later that morning TensorFold 1.3.3, the release that holds the change, was run against 1.3.0 in [finding 18](../18_dsv41_tensorfold_133). The summary page shows that run's 1.3.0 start for the default lines, by my rule of the latest start. The figures on this page are unchanged.
 - **Engine.** [TensorFold](https://github.com/ashhart/TensorFold) `tensorfold-dsv41` 1.3.0, commit d3d0bf11, built from the release tag with Zig 0.17.0 and `zig build dsv41-metal-serve -Dcpu=apple_m1`. The project calls this server experimental, switched on with `TF_EXPERIMENTAL=deepseek`.
 - **Weights.** [deepseek-ai/DeepSeek-V4.1-Flash-1017](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) @ 08c8657f, the maker's FP8 and MXFP4 files.
 - **Serve command**, the same on every start.

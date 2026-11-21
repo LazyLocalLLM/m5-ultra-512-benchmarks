@@ -1,6 +1,8 @@
-# Finding 17. DeepSeek V4.1 Flash on TensorFold main at 1093b795, not in a release yet
+# Finding 17. DeepSeek V4.1 Flash on TensorFold main at 1093b795, now in release 1.3.3
 
 By Local LLM L-Plate. Follow [@LazyLocalLLM on X](https://x.com/LazyLocalLLM) for new benchmarks.
+
+**Updated on 22 Nov 2026 at 06:55 SGT. TensorFold 1.3.3 came out at 04:58 SGT that day and holds this change. I reran the test on the release, and that is [finding 18](../18_dsv41_tensorfold_133). The release matches this page in speed and in text. The summary page now shows the 1.3.3 lines in place of the lines from this page. What follows is the page as written before the release, when the label "not in a release yet" was true.**
 
 ELI5: TensorFold's author posted that DeepSeek V4.1 Flash now writes much faster on an M5 Ultra 512 GB. The change behind that, pull request 3405, merged into the project's main branch on 22 Nov 2026 at 01:37 SGT. No release holds it yet. I built main at that commit and ran it against 1.3.0 on the same night and the same texts, two server starts each. When a release ships with it, I will rerun on the release and update this page.
 

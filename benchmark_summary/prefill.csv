@@ -49,17 +49,17 @@ Inkling 2 Small,mlx-community/Inkling-2-Small-oQ4e,,1196.5,1186.4,1225.7,5,1,mix
 "DeepSeek V4.1 Flash 1017, oQ4e-mtp",mlx-community/DeepSeek-V4.1-Flash-1017-oQ4e-mtp,,2822.7,2069.5,3253.4,55,5,code,4096,oMLX 0.8.0 with its kernels,2026-11-20,05_dsv41_omlx_080_max_push,526b05fc2a44 7ece67645192 800dd0f8839c b1703d1d52b6 c15a39cf630a
 "DeepSeek V4.1 Flash 1017, oQ4e-mtp",mlx-community/DeepSeek-V4.1-Flash-1017-oQ4e-mtp,,2907.2,2396.0,3057.4,15,3,mixed,4096,oMLX 0.8.0 with its kernels,2026-11-20,05_dsv41_omlx_080_max_push,800dd0f8839c c15a39cf630a cfff183a181f
 "DeepSeek V4.1 Flash 1017, oQ4e-mtp",mlx-community/DeepSeek-V4.1-Flash-1017-oQ4e-mtp,yes,3758.0,3529.9,3887.6,10,1,code,32768,oMLX 0.8.0 with its kernels,2026-11-20,03_dsv41_omlx_080,800dd0f8839c
-"DeepSeek V4.1 Flash 1017, maker's files",deepseek-ai/DeepSeek-V4.1-Flash-1017,,736.5,678.3,884.1,20,1,code,1024,"TensorFold main at 1093b795, not in a release yet",2026-11-22,17_dsv41_tensorfold_main_1093b795,58aa0c134b88
-"DeepSeek V4.1 Flash 1017, maker's files",deepseek-ai/DeepSeek-V4.1-Flash-1017,,718.6,667.7,856.2,50,3,code,1024,TensorFold 1.3.0,2026-11-22,17_dsv41_tensorfold_main_1093b795,2e72378f2ddd 778e5c808b88 dd80ad7aa9fa
+"DeepSeek V4.1 Flash 1017, maker's files",deepseek-ai/DeepSeek-V4.1-Flash-1017,,737.1,664.8,884.5,20,1,code,1024,TensorFold 1.3.3,2026-11-22,18_dsv41_tensorfold_133,d690d6b1059b
+"DeepSeek V4.1 Flash 1017, maker's files",deepseek-ai/DeepSeek-V4.1-Flash-1017,,725.9,667.7,856.2,30,2,code,1024,TensorFold 1.3.0,2026-11-20,06_dsv41_tensorfold_130_max_push,778e5c808b88 dd80ad7aa9fa
 "DeepSeek V4.1 Flash 1017, maker's files",deepseek-ai/DeepSeek-V4.1-Flash-1017,,718.5,663.3,768.1,5,1,mixed,1024,TensorFold 1.3.0,2026-11-20,04_dsv41_tensorfold_130,778e5c808b88
-"DeepSeek V4.1 Flash 1017, maker's files",deepseek-ai/DeepSeek-V4.1-Flash-1017,,762.2,733.3,806.9,5,1,prose,1024,"TensorFold main at 1093b795, not in a release yet",2026-11-22,17_dsv41_tensorfold_main_1093b795,58aa0c134b88
-"DeepSeek V4.1 Flash 1017, maker's files",deepseek-ai/DeepSeek-V4.1-Flash-1017,,723.4,646.6,783.6,10,2,prose,1024,TensorFold 1.3.0,2026-11-22,17_dsv41_tensorfold_main_1093b795,2e72378f2ddd 778e5c808b88
-"DeepSeek V4.1 Flash 1017, maker's files",deepseek-ai/DeepSeek-V4.1-Flash-1017,,1108.5,989.7,1202.4,20,1,code,4096,"TensorFold main at 1093b795, not in a release yet",2026-11-22,17_dsv41_tensorfold_main_1093b795,58aa0c134b88
-"DeepSeek V4.1 Flash 1017, maker's files",deepseek-ai/DeepSeek-V4.1-Flash-1017,,1055.0,924.8,1172.0,55,3,code,4096,TensorFold 1.3.0,2026-11-22,17_dsv41_tensorfold_main_1093b795,2e72378f2ddd 778e5c808b88 dd80ad7aa9fa
-"DeepSeek V4.1 Flash 1017, maker's files",deepseek-ai/DeepSeek-V4.1-Flash-1017,,1137.9,1120.4,1153.1,5,1,mixed,4096,"TensorFold main at 1093b795, not in a release yet",2026-11-22,17_dsv41_tensorfold_main_1093b795,58aa0c134b88
-"DeepSeek V4.1 Flash 1017, maker's files",deepseek-ai/DeepSeek-V4.1-Flash-1017,,1014.5,981.8,1113.7,10,2,mixed,4096,TensorFold 1.3.0,2026-11-22,17_dsv41_tensorfold_main_1093b795,2e72378f2ddd 778e5c808b88
-"DeepSeek V4.1 Flash 1017, maker's files",deepseek-ai/DeepSeek-V4.1-Flash-1017,yes,1508.3,1478.8,1527.6,5,1,code,32768,"TensorFold main at 1093b795, not in a release yet",2026-11-22,17_dsv41_tensorfold_main_1093b795,58aa0c134b88
-"DeepSeek V4.1 Flash 1017, maker's files",deepseek-ai/DeepSeek-V4.1-Flash-1017,,1371.9,1234.3,1451.9,15,2,code,32768,TensorFold 1.3.0,2026-11-22,17_dsv41_tensorfold_main_1093b795,2e72378f2ddd 778e5c808b88
+"DeepSeek V4.1 Flash 1017, maker's files",deepseek-ai/DeepSeek-V4.1-Flash-1017,,755.5,709.3,810.0,5,1,prose,1024,TensorFold 1.3.3,2026-11-22,18_dsv41_tensorfold_133,d690d6b1059b
+"DeepSeek V4.1 Flash 1017, maker's files",deepseek-ai/DeepSeek-V4.1-Flash-1017,,731.0,646.6,783.6,5,1,prose,1024,TensorFold 1.3.0,2026-11-20,04_dsv41_tensorfold_130,778e5c808b88
+"DeepSeek V4.1 Flash 1017, maker's files",deepseek-ai/DeepSeek-V4.1-Flash-1017,,1103.9,1003.1,1203.2,20,1,code,4096,TensorFold 1.3.3,2026-11-22,18_dsv41_tensorfold_133,d690d6b1059b
+"DeepSeek V4.1 Flash 1017, maker's files",deepseek-ai/DeepSeek-V4.1-Flash-1017,,1064.1,924.8,1172.0,35,2,code,4096,TensorFold 1.3.0,2026-11-20,06_dsv41_tensorfold_130_max_push,778e5c808b88 dd80ad7aa9fa
+"DeepSeek V4.1 Flash 1017, maker's files",deepseek-ai/DeepSeek-V4.1-Flash-1017,,1139.2,1118.7,1152.7,5,1,mixed,4096,TensorFold 1.3.3,2026-11-22,18_dsv41_tensorfold_133,d690d6b1059b
+"DeepSeek V4.1 Flash 1017, maker's files",deepseek-ai/DeepSeek-V4.1-Flash-1017,,1014.2,981.8,1113.7,5,1,mixed,4096,TensorFold 1.3.0,2026-11-20,04_dsv41_tensorfold_130,778e5c808b88
+"DeepSeek V4.1 Flash 1017, maker's files",deepseek-ai/DeepSeek-V4.1-Flash-1017,yes,1509.0,1467.8,1528.6,5,1,code,32768,TensorFold 1.3.3,2026-11-22,18_dsv41_tensorfold_133,d690d6b1059b
+"DeepSeek V4.1 Flash 1017, maker's files",deepseek-ai/DeepSeek-V4.1-Flash-1017,,1371.1,1341.2,1451.9,10,1,code,32768,TensorFold 1.3.0,2026-11-20,04_dsv41_tensorfold_130,778e5c808b88
 "GLM-5.3 Flash, 4-bit",TensorFold/GLM-5.3-Flash-MLX-4bit-MTP,,1610.5,1458.7,1978.1,25,2,code,1024,TensorFold 1.3.2,2026-11-21,15_glm53_flash_two_builds,33ba6147e087 3b571bd4b948
 "GLM-5.3 Flash, 4-bit",TensorFold/GLM-5.3-Flash-MLX-4bit-MTP,,1351.3,1265.1,1820.9,25,2,code,1024,oMLX 0.8.1 with its kernels,2026-11-21,15_glm53_flash_two_builds,4f9da10c3691 5727fcf18ffb
 "GLM-5.3 Flash, 4-bit",TensorFold/GLM-5.3-Flash-MLX-4bit-MTP,,2157.2,1979.2,2282.1,25,2,code,4096,oMLX 0.8.1 with its kernels,2026-11-21,15_glm53_flash_two_builds,4f9da10c3691 5727fcf18ffb

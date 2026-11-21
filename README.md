@@ -8,14 +8,14 @@ ELI5: I'm a learner with one Mac Studio M5 Ultra 512 GB, and I time local AI mod
 
 ELI5: The page in seven lines. Every figure here is recomputed from the raw rows each time the page is built.
 
-Updated 22 Nov 2026 04:46 SGT. Decode speed in tok/s, one user, one Mac.
+Updated 22 Nov 2026 06:59 SGT. Decode speed in tok/s, one user, one Mac.
 
 - **Fastest on new code.** Qwen3.8 27B, 4-bit wrote 328.9 tok/s on TensorFold 1.3.2. Next are Qwen3.8 Flash Next, 4-bit at 206.8 and Qwen3.8 Flash Next, 6-bit at 200.1.
 - **Fastest in daily use.** Qwen3.8 27B, 4-bit wrote 161.3 tok/s on TensorFold 1.3.2. Next are Qwen3.8 Flash Next, 4-bit at 129.7 and Qwen3.8 Flash Next, 6-bit at 114.1.
 - **Two speeds per model.** Max is greedy at temperature 0 while the model writes new code. Median is the model's own sampler on mixed text, which is closer to daily use.
 - **Prefill too.** The table also has how fast each model read a cold prompt, with the prompt size.
-- **Coverage.** 19 models, 218 setups and 17 findings.
-- **Newest finding.** Finding 17, 22 Nov 2026. [DeepSeek V4.1 Flash on TensorFold main at 1093b795, not in a release yet](findings/17_dsv41_tensorfold_main_1093b795).
+- **Coverage.** 19 models, 218 setups and 18 findings.
+- **Newest finding.** Finding 18, 22 Nov 2026. [DeepSeek V4.1 Flash on TensorFold 1.3.3, the release](findings/18_dsv41_tensorfold_133).
 - **Check it.** Every figure links to a folder with the rows it came from. If I have set an engine up wrong, [open an issue](https://github.com/LazyLocalLLM/m5-ultra-512-benchmarks/issues).
 
 ## Benchmark summary
@@ -48,7 +48,7 @@ The exact setup behind each figure is one click away, under "Every setup measure
 | [Qwen3.8 Flash Next, 6-bit](https://huggingface.co/TensorFold/Qwen3.8-Flash-Next-MLX-6bit-MTP) | **200.1** | **114.1** | **3,860.6**, 4K code prompt | answer | TensorFold 1.3.2 | [11](findings/11_qwen38_tensorfold_132) |
 | [Qwen3.8 Flash Next, full](https://huggingface.co/Qwen/Qwen3.8-Flash-Next) | **54.3** | **34.6** | **3,224.1**, 4K code prompt | answer | oMLX 0.8.2 with its kernels | [16](findings/16_omlx_082_refresh) |
 | [DeepSeek V4.1 Flash 1017, oQ4e-mtp](https://huggingface.co/mlx-community/DeepSeek-V4.1-Flash-1017-oQ4e-mtp) | **86.2** | **57.9** | **3,758.0**, 32K code prompt | answer | oMLX 0.8.0 with its kernels | [5](findings/05_dsv41_omlx_080_max_push), [3](findings/03_dsv41_omlx_080) |
-| [DeepSeek V4.1 Flash 1017, maker's files](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) | **105.5** | **71.2** | **1,508.3**, 32K code prompt | answer | TensorFold main at 1093b795, not in a release yet | [17](findings/17_dsv41_tensorfold_main_1093b795) |
+| [DeepSeek V4.1 Flash 1017, maker's files](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) | **108.0** | **74.5** | **1,509.0**, 32K code prompt | answer | TensorFold 1.3.3 | [18](findings/18_dsv41_tensorfold_133) |
 | [GLM-5.3 Flash, 4-bit](https://huggingface.co/TensorFold/GLM-5.3-Flash-MLX-4bit-MTP) | **102.0** | **80.9** | **2,234.3**, 4K mixed prompt, on oMLX 0.8.1 with its kernels | answer | TensorFold 1.3.2 | [15](findings/15_glm53_flash_two_builds) |
 | [Hy4-flash, 4-bit](https://huggingface.co/TensorFold/Hy4-flash-MLX-4bit-MTP) | **71.5** | **51.3** | **1,647.4**, 1K code prompt | reasoning | TensorFold 1.3.2 | [10](findings/10_hy4_flash_tensorfold_132) |
 | [Hy4-flash, 8-bit](https://huggingface.co/TensorFold/Hy4-flash-MLX-8bit-MTP) | **53.4** | **40.9** | **1,233.6**, 1K code prompt | reasoning | TensorFold 1.3.2 | [10](findings/10_hy4_flash_tensorfold_132) |
@@ -69,7 +69,7 @@ ELI5: Two tests hand the model text it can guess almost perfectly, copying the p
 | [Qwen3.8 Flash Next, 6-bit](https://huggingface.co/TensorFold/Qwen3.8-Flash-Next-MLX-6bit-MTP) | **260.0** | **296.4** | TensorFold 1.3.2 | [11](findings/11_qwen38_tensorfold_132) |
 | [Qwen3.8 Flash Next, full](https://huggingface.co/Qwen/Qwen3.8-Flash-Next) | **128.7** | **51.4** | oMLX 0.8.2 with its kernels | [16](findings/16_omlx_082_refresh) |
 | [DeepSeek V4.1 Flash 1017, oQ4e-mtp](https://huggingface.co/mlx-community/DeepSeek-V4.1-Flash-1017-oQ4e-mtp) | **118.3** | **114.0** | oMLX 0.8.0 with its kernels | [5](findings/05_dsv41_omlx_080_max_push) |
-| [DeepSeek V4.1 Flash 1017, maker's files](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) | **186.5** | **138.2** | TensorFold main at 1093b795, not in a release yet | [17](findings/17_dsv41_tensorfold_main_1093b795) |
+| [DeepSeek V4.1 Flash 1017, maker's files](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) | **186.9** | **138.1** | TensorFold 1.3.3 | [18](findings/18_dsv41_tensorfold_133) |
 | [GLM-5.3 Flash, 4-bit](https://huggingface.co/TensorFold/GLM-5.3-Flash-MLX-4bit-MTP) | **175.0** | **111.1** | TensorFold 1.3.2 | [15](findings/15_glm53_flash_two_builds) |
 | [Hy4-flash, oQ4h](https://huggingface.co/Jundot/Hy4-flash-oQ4h-mtp) | **100.9** | **97.4** | oMLX 0.8.2 with its kernels | [16](findings/16_omlx_082_refresh) |
 
@@ -311,24 +311,24 @@ ELI5: Everything behind the tables above, including the setups that were not the
 
 | Kind | Engine and setup | Sampler | Prompt | Reply tokens | Decode tok/s | Range | Runs | Date | Run | Finding |
 |---|---|---|---|---|---|---|---|---|---|---|
-| max | TensorFold main at 1093b795, not in a release yet, drafts at defaults (DSpark and copies), second start | greedy, temperature 0 | 4K code | 2,048 | 105.5 | 95.0 to 105.7 | 5 | 2026-11-22 | `58aa0c134b88` | [17](findings/17_dsv41_tensorfold_main_1093b795) |
-| max | TensorFold main at 1093b795, not in a release yet, drafts at defaults (DSpark and copies), second start | greedy, temperature 0 | 1K code | 512 | 103.2 | 85.1 to 105.9 | 5 | 2026-11-22 | `58aa0c134b88` | [17](findings/17_dsv41_tensorfold_main_1093b795) |
-| max | TensorFold main at 1093b795, not in a release yet, drafts at defaults (DSpark and copies), second start | greedy, temperature 0 | 1K code | 2,048 | 102.2 | 99.9 to 104.0 | 5 | 2026-11-22 | `58aa0c134b88` | [17](findings/17_dsv41_tensorfold_main_1093b795) |
-| max | TensorFold 1.3.0, drafts at defaults (DSpark and copies) | greedy, temperature 0 | 4K code | 2,048 | 74.5 | 67.6 to 77.4 | 5 | 2026-11-22 | `2e72378f2ddd` | [17](findings/17_dsv41_tensorfold_main_1093b795) |
-| max | TensorFold 1.3.0, drafts at defaults (DSpark and copies) | greedy, temperature 0 | 1K code | 2,048 | 73.1 | 68.9 to 75.4 | 5 | 2026-11-22 | `2e72378f2ddd` | [17](findings/17_dsv41_tensorfold_main_1093b795) |
-| max | TensorFold 1.3.0, drafts at defaults (DSpark and copies) | greedy, temperature 0 | 1K code | 512 | 70.1 | 63.8 to 74.6 | 5 | 2026-11-22 | `2e72378f2ddd` | [17](findings/17_dsv41_tensorfold_main_1093b795) |
+| max | TensorFold 1.3.3, drafts at defaults (DSpark and copies), second start | greedy, temperature 0 | 4K code | 2,048 | 108.0 | 93.6 to 110.4 | 5 | 2026-11-22 | `d690d6b1059b` | [18](findings/18_dsv41_tensorfold_133) |
+| max | TensorFold 1.3.3, drafts at defaults (DSpark and copies), second start | greedy, temperature 0 | 1K code | 512 | 101.0 | 81.9 to 102.9 | 5 | 2026-11-22 | `d690d6b1059b` | [18](findings/18_dsv41_tensorfold_133) |
+| max | TensorFold 1.3.3, drafts at defaults (DSpark and copies), second start | greedy, temperature 0 | 1K code | 2,048 | 100.4 | 99.5 to 101.3 | 5 | 2026-11-22 | `d690d6b1059b` | [18](findings/18_dsv41_tensorfold_133) |
+| max | TensorFold 1.3.0, drafts at defaults (DSpark and copies), older release | greedy, temperature 0 | 4K code | 2,048 | 75.2 | 67.7 to 79.4 | 5 | 2026-11-22 | `5b618f8c8234` | [18](findings/18_dsv41_tensorfold_133) |
+| max | TensorFold 1.3.0, drafts at defaults (DSpark and copies), older release | greedy, temperature 0 | 1K code | 2,048 | 74.4 | 67.6 to 82.5 | 5 | 2026-11-22 | `5b618f8c8234` | [18](findings/18_dsv41_tensorfold_133) |
+| max | TensorFold 1.3.0, drafts at defaults (DSpark and copies), older release | greedy, temperature 0 | 1K code | 512 | 71.0 | 59.2 to 78.5 | 5 | 2026-11-22 | `5b618f8c8234` | [18](findings/18_dsv41_tensorfold_133) |
 | max | TensorFold 1.3.0, drafts at defaults (DSpark and copies) | greedy, temperature 0 | 1K code | 128 | 62.6 | 56.7 to 66.0 | 5 | 2026-11-20 | `778e5c808b88` | [4](findings/04_dsv41_tensorfold_130) |
-| copy task | TensorFold main at 1093b795, not in a release yet, drafts at defaults (DSpark and copies), second start | greedy, temperature 0 | 1K code | 512 | 186.5 | 179.1 to 191.7 | 5 | 2026-11-22 | `58aa0c134b88` | [17](findings/17_dsv41_tensorfold_main_1093b795) |
-| copy task | TensorFold main at 1093b795, not in a release yet, drafts at defaults (DSpark and copies), second start | greedy, temperature 0 | 4K code | 512 | 180.1 | 173.3 to 187.6 | 5 | 2026-11-22 | `58aa0c134b88` | [17](findings/17_dsv41_tensorfold_main_1093b795) |
-| copy task | TensorFold 1.3.0, drafts at defaults (DSpark and copies) | greedy, temperature 0 | 1K code | 512 | 160.2 | 151.6 to 161.5 | 5 | 2026-11-22 | `2e72378f2ddd` | [17](findings/17_dsv41_tensorfold_main_1093b795) |
+| copy task | TensorFold 1.3.3, drafts at defaults (DSpark and copies), second start | greedy, temperature 0 | 1K code | 512 | 186.9 | 180.5 to 191.0 | 5 | 2026-11-22 | `d690d6b1059b` | [18](findings/18_dsv41_tensorfold_133) |
+| copy task | TensorFold 1.3.3, drafts at defaults (DSpark and copies), second start | greedy, temperature 0 | 4K code | 512 | 179.9 | 173.0 to 188.3 | 5 | 2026-11-22 | `d690d6b1059b` | [18](findings/18_dsv41_tensorfold_133) |
+| copy task | TensorFold 1.3.0, drafts at defaults (DSpark and copies), older release | greedy, temperature 0 | 1K code | 512 | 159.1 | 138.5 to 161.4 | 5 | 2026-11-22 | `5b618f8c8234` | [18](findings/18_dsv41_tensorfold_133) |
 | copy task | TensorFold 1.3.0, drafts at defaults (DSpark and copies), long copy block | greedy, temperature 0 | 4K code | 2,048 | 148.8 | 143.1 to 150.4 | 5 | 2026-11-20 | `dd80ad7aa9fa` | [6](findings/06_dsv41_tensorfold_130_max_push) |
-| copy task | TensorFold 1.3.0, drafts at defaults (DSpark and copies) | greedy, temperature 0 | 4K code | 512 | 146.8 | 137.0 to 149.6 | 5 | 2026-11-22 | `2e72378f2ddd` | [17](findings/17_dsv41_tensorfold_main_1093b795) |
-| counting toy | TensorFold main at 1093b795, not in a release yet, drafts at defaults (DSpark and copies), second start | greedy, temperature 0 | 1K code | 512 | 138.2 | 130.8 to 138.8 | 5 | 2026-11-22 | `58aa0c134b88` | [17](findings/17_dsv41_tensorfold_main_1093b795) |
-| counting toy | TensorFold main at 1093b795, not in a release yet, drafts at defaults (DSpark and copies), second start | greedy, temperature 0 | 4K code | 512 | 137.1 | 136.9 to 137.7 | 5 | 2026-11-22 | `58aa0c134b88` | [17](findings/17_dsv41_tensorfold_main_1093b795) |
-| counting toy | TensorFold 1.3.0, drafts at defaults (DSpark and copies) | greedy, temperature 0 | 4K code | 512 | 106.4 | 100.8 to 110.5 | 5 | 2026-11-22 | `2e72378f2ddd` | [17](findings/17_dsv41_tensorfold_main_1093b795) |
-| counting toy | TensorFold 1.3.0, drafts at defaults (DSpark and copies) | greedy, temperature 0 | 1K code | 512 | 104.0 | 100.7 to 111.0 | 5 | 2026-11-22 | `2e72378f2ddd` | [17](findings/17_dsv41_tensorfold_main_1093b795) |
-| median | TensorFold main at 1093b795, not in a release yet, drafts at defaults (DSpark and copies), second start | temperature 1.0, top-p 1.0 | 4K mixed | 512 | 71.2 | 65.8 to 75.4 | 5 | 2026-11-22 | `58aa0c134b88` | [17](findings/17_dsv41_tensorfold_main_1093b795) |
-| median | TensorFold 1.3.0, drafts at defaults (DSpark and copies) | temperature 1.0, top-p 1.0 | 4K mixed | 512 | 44.6 | 43.7 to 49.1 | 5 | 2026-11-22 | `2e72378f2ddd` | [17](findings/17_dsv41_tensorfold_main_1093b795) |
+| copy task | TensorFold 1.3.0, drafts at defaults (DSpark and copies), older release | greedy, temperature 0 | 4K code | 512 | 145.9 | 124.1 to 149.2 | 5 | 2026-11-22 | `5b618f8c8234` | [18](findings/18_dsv41_tensorfold_133) |
+| counting toy | TensorFold 1.3.3, drafts at defaults (DSpark and copies), second start | greedy, temperature 0 | 1K code | 512 | 138.1 | 135.3 to 139.3 | 5 | 2026-11-22 | `d690d6b1059b` | [18](findings/18_dsv41_tensorfold_133) |
+| counting toy | TensorFold 1.3.3, drafts at defaults (DSpark and copies), second start | greedy, temperature 0 | 4K code | 512 | 137.7 | 136.7 to 138.0 | 5 | 2026-11-22 | `d690d6b1059b` | [18](findings/18_dsv41_tensorfold_133) |
+| counting toy | TensorFold 1.3.0, drafts at defaults (DSpark and copies), older release | greedy, temperature 0 | 1K code | 512 | 110.0 | 100.2 to 110.7 | 5 | 2026-11-22 | `5b618f8c8234` | [18](findings/18_dsv41_tensorfold_133) |
+| counting toy | TensorFold 1.3.0, drafts at defaults (DSpark and copies), older release | greedy, temperature 0 | 4K code | 512 | 109.5 | 100.4 to 112.3 | 5 | 2026-11-22 | `5b618f8c8234` | [18](findings/18_dsv41_tensorfold_133) |
+| median | TensorFold 1.3.3, drafts at defaults (DSpark and copies), second start | temperature 1.0, top-p 1.0 | 4K mixed | 512 | 74.5 | 71.2 to 75.6 | 5 | 2026-11-22 | `d690d6b1059b` | [18](findings/18_dsv41_tensorfold_133) |
+| median | TensorFold 1.3.0, drafts at defaults (DSpark and copies), older release | temperature 1.0, top-p 1.0 | 4K mixed | 512 | 45.7 | 44.1 to 47.2 | 5 | 2026-11-22 | `5b618f8c8234` | [18](findings/18_dsv41_tensorfold_133) |
 
 </details>
 
@@ -451,9 +451,20 @@ ELI5: Everything behind the tables above, including the setups that were not the
 
 ELI5: Each finding is one question, one run of an hour or two, and one report. Newest first. Click a title for the full report and the raw rows.
 
-### 17. [DeepSeek V4.1 Flash on TensorFold main at 1093b795, not in a release yet](findings/17_dsv41_tensorfold_main_1093b795)
+### 18. [DeepSeek V4.1 Flash on TensorFold 1.3.3, the release](findings/18_dsv41_tensorfold_133)
 
-Runs of 22 Nov 2026. TensorFold main at 1093b795, not in a release yet, wrote 105.5 tok/s on DeepSeek V4.1 Flash at its max and 71.2 with the model's own sampler. TensorFold 1.3.0 wrote 74.5 and 44.6 on the same night, so main is 1.42 and 1.60 times as fast. It was faster on every same-text pair, 58 of 58 and 55 of 55, on two starts. The answers did not change. 250 of 250 short greedy answers match 1.3.0, and so do the replies to the author's own 16 prompts, greedy and sampled. On those 16 prompts I measured 102.3 tok/s, within 1% of the pull request's own table.
+Runs of 22 Nov 2026. TensorFold 1.3.3 wrote 108.0 tok/s on DeepSeek V4.1 Flash at its max and 74.5 with the model's own sampler. TensorFold 1.3.0 wrote 75.2 and 45.7 on the same night, so 1.3.3 is 1.44 and 1.63 times as fast. It was faster on every same-text pair, 58 of 58 and 55 of 55, on two starts. The answers did not change. 250 of 250 short greedy answers match 1.3.0, and so do the replies to the engine author's own 16 prompts, greedy and sampled. The release matches the main-branch build of finding 17 in speed and in text.
+
+<details>
+<summary>Chart</summary>
+
+![Paired bars of writing speed in tokens per second for DeepSeek V4.1 Flash, TensorFold 1.3.0 against TensorFold 1.3.3. Greedy code with replies of up to 2,048 tokens at a 4K prompt, 75.2 and 108.0. Greedy code with 512-token replies at 4K, 69.5 and 94.6. Greedy prose at 1K, 53.9 and 74.5. The model's own sampler on mixed text at 4K, 45.7 and 74.5.](findings/18_dsv41_tensorfold_133/chart_133.png)
+
+</details>
+
+### 17. [DeepSeek V4.1 Flash on TensorFold main at 1093b795, now in release 1.3.3](findings/17_dsv41_tensorfold_main_1093b795)
+
+Runs of 22 Nov 2026. Now in a release. TensorFold 1.3.3 holds this change, and finding 18 is the run on the release. As written before the release. TensorFold main at 1093b795, not in a release yet, wrote 105.5 tok/s on DeepSeek V4.1 Flash at its max and 71.2 with the model's own sampler. TensorFold 1.3.0 wrote 74.5 and 44.6 on the same night, so main is 1.42 and 1.60 times as fast. It was faster on every same-text pair, 58 of 58 and 55 of 55, on two starts. The answers did not change. 250 of 250 short greedy answers match 1.3.0, and so do the replies to the author's own 16 prompts, greedy and sampled. On those 16 prompts I measured 102.3 tok/s, within 1% of the pull request's own table.
 
 <details>
 <summary>Chart</summary>
