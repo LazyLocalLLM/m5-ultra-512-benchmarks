@@ -4,6 +4,8 @@ ELI5: Hy4-flash is Tencent's new open model, released on 16 Nov 2026. TensorFold
 
 **TensorFold 1.3.2 wrote 65.3 tok/s on Hy4-flash 4-bit and 50.8 on the 8-bit build at their max, with thinking on, the model's default. With the model's own sampler it wrote 50.0 and 36.8. With drafts off the same builds wrote 42.2 and 34.0 on code at a 4K prompt. All but one of the 90 timed replies were reasoning text from start to finish. With thinking switched off through the API the replies went off course on both builds, so I publish no thinking-off line.**
 
+Updated on 21 Nov 2026 at 11:08 SGT. A first screen of two draft switches is in its own section below, and the `--no-thinking` start flag has been tried. The headline figures above are unchanged and are at the engine's defaults.
+
 Runs of 21 Nov 2026 SGT. One server start per setting. Mac Studio M5 Ultra 512 GB, one user, median of 5 runs.
 
 | Build | Size on disk | Max, tok/s | Median, tok/s | Drafts off, code | Drafts off, own sampler |
@@ -70,6 +72,41 @@ Tok/s, run `b1f754c43ae4` with drafts on and `df5b641735e6` with drafts off.
 - **Reasoning text.** 89 of the 90 timed replies here spent their whole budget inside the thinking block, 2,048-token replies included. One 4-bit reply closed its thinking at 1,667 tokens and wrote 381 answer tokens.
 - **So these are speeds of reasoning text.** A benchmark that counts only answer tokens will show other numbers.
 
+## Draft switches, a first screen
+
+ELI5: The model drafts a few tokens ahead with a small helper, DFly2, and then checks the drafts. TensorFold's source lists two switches for this model. One stores the helper at fewer bits. The other moves the model's lookup tables into memory. I tried each on one start. Storing the helper at 8 bits was faster on every text. This is a screen and not yet a headline.
+
+Thinking on, drafts on, TensorFold 1.3.2, one start per row, tok/s, 21 Nov 2026.
+
+Hy4-flash 4-bit.
+
+| Setting | Run | Own sampler, 4K | Code, 512, 1K | Code, 512, 4K | Code, up to 2,048, 1K | Code, up to 2,048, 4K |
+|---|---|---|---|---|---|---|
+| Defaults, the start above | `b1f754c43ae4` | 50.0 (43.7 to 55.6) | 57.5 (52.4 to 83.5) | 58.8 (52.4 to 66.8) | 63.2 (58.3 to 65.9) | 65.3 (62.4 to 67.3) |
+| Defaults, another start | `d341be8cafd5` | 45.1 (40.2 to 48.1) | 62.3 (54.9 to 73.3) | 57.1 (55.1 to 64.3) | 65.0 (54.3 to 70.5) | 62.4 (60.8 to 63.7) |
+| `TF_HY4_ENGRAM=gpu` | `f9151885e458` | 49.5 (43.1 to 54.9) | 61.7 (58.0 to 70.4) | 58.0 (53.7 to 64.5) | 66.7 (57.7 to 93.7) | 65.4 (58.5 to 70.6) |
+| `TF_HY4_DRAFT_BITS=8` | `ff37e56bb47f` | 52.8 (49.9 to 72.1) | 73.6 (67.3 to 92.4) | 71.2 (62.1 to 76.9) | 79.5 (69.0 to 107.5) | 71.3 (66.2 to 74.3) |
+
+Hy4-flash 8-bit.
+
+| Setting | Run | Own sampler, 4K | Code, 512, 1K | Code, 512, 4K | Code, up to 2,048, 1K | Code, up to 2,048, 4K |
+|---|---|---|---|---|---|---|
+| Defaults, the start above | `bdcd2d9ede41` | 36.8 (35.7 to 47.5) | 50.8 (46.5 to 52.1) | 46.5 (43.7 to 48.1) | 50.8 (46.4 to 55.0) | 50.4 (43.5 to 51.3) |
+| `TF_HY4_ENGRAM=ram` | `6a939a1d10f5` | 41.5 (35.8 to 61.3) | 48.9 (45.8 to 50.8) | 47.9 (46.2 to 49.7) | 51.9 (46.6 to 52.9) | 46.4 (45.2 to 52.6) |
+| `TF_HY4_ENGRAM=gpu` | `6a3036688221` | 42.2 (38.3 to 72.6) | 50.2 (48.1 to 51.3) | 48.2 (44.0 to 50.1) | 49.3 (48.1 to 50.3) | 49.8 (44.8 to 53.2) |
+| `TF_HY4_DRAFT_BITS=8` | `2e6a99ccd0ea` | 45.7 (44.0 to 54.7) | 54.7 (53.7 to 62.1) | 52.0 (51.1 to 55.3) | 56.3 (52.5 to 59.9) | 54.8 (51.3 to 60.0) |
+
+- **`TF_HY4_DRAFT_BITS=8` was faster on every code text, on both builds.** On the 4-bit build against the default start of the same morning, it was faster on 10 of 10 long replies with a middle ratio of 1.21, and on 10 of 10 short replies with 1.22. Against the first default start the middle ratios are 1.13 and 1.19, again 10 of 10. On the 8-bit build against its one default start they are 1.12 and 1.15, 10 of 10 each.
+- **The 79.5 has a wide range.** Its five runs go from 69.0 to 107.5, and one of the five replies closed its thinking at 235 tokens and wrote 1,813 answer tokens. The steadier cell is the 4K one, 71.3 (66.2 to 74.3), all reasoning text. That is 71.3 / 62.4 = 1.14 times the default start of the same morning and 71.3 / 65.3 = 1.09 times the first.
+- **One start, and no answer check.** The model checks every draft, so the text should not change. I have not shown that. My usual answer check compares answer text only, and these replies are reasoning text. A second start with a check that covers reasoning text is queued.
+- **So the summary page stays on the defaults for now.**
+- **What the switch is.** TensorFold's list of variables in `zig/src/platform/environment.zig` at v1.3.2 reads "4, 8 or 16 (Hy4-flash's DFly2 linears quantized at load; default 16, BF16)". It is not in the project's docs or changelog. The variable was in the server's process environment, checked with `ps`. Server memory after load was 168.0 GiB against 168.7 on the 4-bit build, and 312.6 against 313.3 on the 8-bit build.
+- **`TF_HY4_ENGRAM` was level on code.** The list reads "nvme, ram or gpu (where Hy4-flash's Engram tables live; default nvme)". Text by text against a default start, the middle ratios on code are between 0.99 and 1.05 over the three starts. It cost memory. The 8-bit server held 444.6 GiB after load against 313.3, and the 4-bit server 241.0 against 168.7.
+- **I make no claim on the sampler column.** The two 4-bit default starts wrote 50.0 and 45.1, and the second was slower on 5 of 5 texts. Differences of that size between rows are start to start spread.
+- **The default lines will move.** My rule for the summary page is the latest start at defaults. After the next job that is a newer start than `b1f754c43ae4`, and its figures may be lower.
+- **A second 8-bit default start did not come up.** My harness checks the listening ports before each start, and that check timed out after 5 seconds. That is my tool and says nothing about TensorFold.
+- **What the replies were.** 145 of the 150 timed replies of these six starts were reasoning text from start to finish. The other 5 were on the 4-bit build at the 1K prompt.
+
 ## Thinking off did not give clean answers
 
 ELI5: I first ran everything with thinking switched off, as I do for most models. The replies planned out loud and lost the thread, on both builds. I then looked at the prompt the server built. It is not the prompt the model's own template builds for "no thinking".
@@ -90,7 +127,7 @@ One short prompt, greedy, 200 tokens, on both builds on 1.3.2.
 - **The server's thinking-off prompt is 44 tokens.** I can't see which text it built. More than one rendering comes to 44.
 - **The template's own value was refused.** The server answered "reasoning_effort must be none, minimal, low, medium, high, xhigh or max". The template itself accepts `no_think`, `high` and `max`, and never reads `enable_thinking`.
 - **So I found no request that gives the template's 46-token form** on 1.3.2. If there is one, I will rerun with it.
-- **The server also has a `--no-thinking` start flag.** I found it in the help text after these runs and have not tried it.
+- **The `--no-thinking` start flag gave the same prompt.** On a 4-bit start with that flag, a request with no thinking field came to 44 prompt tokens and 0 reasoning tokens, as with the request switch, and returned the same reply as `enable_thinking: false` did on that start. Tried on 21 Nov 2026 at 09:28 SGT, on the 4-bit build only, with nothing timed.
 
 ### What the replies looked like
 
@@ -179,6 +216,12 @@ tensorfold serve <build folder> --name <name> --host 127.0.0.1 --port 8188 --con
 | `fff18d644690` | 4-bit | 1.3.2 | off | off, old switch | 21 Nov, 07:06 |
 | `dfe2fad2ff2c` | 4-bit | 1.3.1 | on | off, old switch | 21 Nov, 04:20 |
 | `84354146db7d` | 4-bit | 1.3.1 | off | off, old switch | 21 Nov, 04:39 |
+| `6a939a1d10f5` | 8-bit | 1.3.2 | on, `TF_HY4_ENGRAM=ram` | on | 21 Nov, 09:36 |
+| `6a3036688221` | 8-bit | 1.3.2 | on, `TF_HY4_ENGRAM=gpu` | on | 21 Nov, 09:47 |
+| `2e6a99ccd0ea` | 8-bit | 1.3.2 | on, `TF_HY4_DRAFT_BITS=8` | on | 21 Nov, 09:59 |
+| `d341be8cafd5` | 4-bit | 1.3.2 | on, defaults, another start | on | 21 Nov, 10:10 |
+| `f9151885e458` | 4-bit | 1.3.2 | on, `TF_HY4_ENGRAM=gpu` | on | 21 Nov, 10:20 |
+| `ff37e56bb47f` | 4-bit | 1.3.2 | on, `TF_HY4_DRAFT_BITS=8` | on | 21 Nov, 10:29 |
 
 - **Two run ids were made after the fact.** Runs `10884ddb9c17` and `cad62d9be2d7` hold five thinking-on rows each that I sent inside a start recorded as thinking off. I moved them to their own run ids so each run has one thinking setting. No measured value changed.
 
@@ -200,7 +243,7 @@ ELI5: Same Mac, same harness and same text rules as findings 3 to 9.
 ELI5: A speed is only comparable with another speed measured the same way.
 
 - **These are reasoning tokens.** With thinking on, this model spent 512 and 2,048-token budgets thinking.
-- **One start per setting.** Where I have a sampled median from another start, it differs by 0.1 tok/s on the 8-bit build and 2.8 on the 4-bit build.
+- **One start per setting.** Where I have a sampled median from another start, it differs by 0.1 tok/s on the 8-bit build and 2.8 on the 4-bit build. A third 4-bit default start, run `d341be8cafd5`, wrote 45.1, which is 4.9 below the first.
 - **The author's own M5 Ultra figures** are in [TensorFold pull request 3941](https://github.com/ashhart/TensorFold/pull/3941). They use other prompts, so read them there and not against this table.
 - **Max is not what a chat feels like.** The median column is the everyday figure.
 
@@ -208,8 +251,8 @@ ELI5: A speed is only comparable with another speed measured the same way.
 
 ELI5: Every timed request is in this folder. You can redo every median.
 
-- **`rows.csv`.** 354 raw rows from the bench database. 315 timed requests and 39 warm-ups.
-- **`runs.csv`.** The 12 runs behind them, with engine, version, start time, settings and sampling.
+- **`rows.csv`.** 522 raw rows from the bench database. 465 timed requests and 57 warm-ups.
+- **`runs.csv`.** The 18 runs behind them, with engine, version, start time, settings and sampling.
 - **`render_template_tokens.py`.** Renders the build's chat template for each thinking setting and counts the tokens. It needs the `tokenizers` and `jinja2` packages.
 
 From the top of this repository.
@@ -223,12 +266,14 @@ python3 tools/summarize.py findings/10_hy4_flash_tensorfold_132
 - **What the timed thinking-on replies say.** I read back one short thinking-on reply per build and no timed one.
 - **Which 44-token prompt the server built** for thinking off.
 - **A thinking-off run in the template's own 46-token form.** I found no request that produces it.
-- **The server's `--no-thinking` and `--reasoning-effort` start flags.** Not tried.
+- **The server's `--reasoning-effort` start flag.** Not tried.
 - **Longer replies with drafts off and thinking on.**
-- **The switches `TF_HY4_ENGRAM` and `TF_HY4_DRAFT_BITS`**, long prompts, and two users at once.
+- **That `TF_HY4_DRAFT_BITS=8` writes the same text as the default.** No answer check has run with thinking on. My usual check compares answer text only, and these replies are reasoning text.
+- **A second start** of either draft switch.
+- **Long prompts, and two users at once.**
 - **Answer quality** of either build.
 - **Peak memory.** The figures above are the process size by `ps` at two moments.
-- **Any other engine on this model.** `mlx-lm` 0.32.2 and oMLX 0.8.0 have no model file for it. The rest were not tried.
+- **Any other engine on this model.** `mlx-lm` 0.32.2 and oMLX 0.8.0 have no model file for it. oMLX 0.8.1, released on 21 Nov 2026 at 09:17 SGT, lists Hy4-flash in its notes. I have not run it yet. The rest were not tried.
 
 ## Credit
 

@@ -76,7 +76,8 @@ ELI5: These builds carry a small draft head that guesses a few tokens ahead, and
 - **GLM-5.3 Flash lost speed at a fixed depth.** Depth 4 wrote 71.7 against 80.2 at 1K with long replies, which is 71.7 / 80.2 = 0.89 times. Depth 5 wrote 64.4, which is 64.4 / 80.2 = 0.80 times. Text by text on long replies, depth 4 was faster on 1 of 10 with a middle ratio of 0.92, and depth 5 on 0 of 10 with 0.82. With 512-token replies depth 4 was level, faster on 5 of 10 with a middle ratio of 1.00. One start each. Depth 4's gap on long replies is close to the 7% that finding 3 measured between two starts of one setting, and depth 5's is clear of it. So the default stays this model's max.
 - **It did not run in the first job.** My harness checks the listening ports before each start, and that check timed out after 5 seconds. That is my tool and says nothing about oMLX. Both depths ran in the follow-up job on 21 Nov 2026.
 - **Inkling 2 Small was level on code.** 51.8 against 51.6 at 1K, faster on 6 of 10 texts with a middle ratio of 1.01. Its default is already deeper. The log shows its draft loaded at depth 7, adaptive, and at depth 4, not adaptive, on the fixed start.
-- **Same answers.** On 250 short greedy questions, fixed depth 4 gave the default's answer on 250 of 250 for GLM-5.3 Flash, on 250 of 250 for Inkling 2 Small and on 250 of 250 for Qwen3.8 Flash Next. The Flash Next check is from its first starts.
+- **Same answers, checked for Qwen3.8 Flash Next only.** On 250 short greedy questions, fixed depth 4 gave the default's answer on 250 of 250, from its first starts.
+- **Correction, 21 Nov 2026 11:08 SGT.** This page said the same check gave 250 of 250 for GLM-5.3 Flash and for Inkling 2 Small. That check compares answer text only. On those two models every one of the 250 replies was reasoning text with an empty answer, so it compared empty strings and proved nothing. I have no answer check for a fixed depth on either model.
 
 ## The model's own sampler
 
@@ -111,7 +112,7 @@ Tok/s, the middle of 5 runs.
 
 - **The joined head was not faster on greedy code.** 23.4 against 24.6 at 4K, which is 23.4 / 24.6 = 0.95 times. On sampled text it wrote 25.0 against 24.5, inside its own range of 23.0 to 29.0.
 - **The drafts were kept less than twice a cycle.** oMLX's log gives the tokens kept per draft cycle. The middle value over this start's requests was 1.83, and no request drafted deeper than 3.
-- **Same answers.** 250 of 250 short greedy answers match between the two builds.
+- **No answer check. Correction, 21 Nov 2026 11:08 SGT.** This page said 250 of 250 short greedy answers match between the two builds. Every one of those replies was reasoning text with an empty answer, and the check compares answer text only. So it compared empty strings and proved nothing.
 - **Reading 110K tokens took over 4 minutes.** The first token came after 257 s (245 to 288) on the no-drafts start. The prompts came to about 105,750 tokens.
 - **The 110K cell of the joined build has 1 run, not 5.** I stopped the job when free disk reached my floor of 300 GiB. oMLX's prompt cache folder had grown to 120 GiB over the two starts, at the settings I used. I had set no limit on it.
 - **Every reply was reasoning text.** The model's chat template ignores the thinking switch.
@@ -233,6 +234,7 @@ python3 tools/summarize.py findings/09_omlx_080_four_models
 - **A second start** of any setting but the Flash Next default and depth 4.
 - **The model's own sampler at a fixed depth** on GLM-5.3 Flash and Inkling 2 Small.
 - **The answer check and the own sampler at depths 5 and 6** on Flash Next.
+- **Whether a fixed depth or the joined draft head changes the reasoning text** on GLM-5.3 Flash, Inkling 2 Small or GLM-5.3. The answer check saw only empty answers there.
 - **Long replies, copy and counting on GLM-5.3 4-bit**, and the 110K block on the joined build.
 - **Whether oMLX has a setting that caps the prompt cache folder.** I did not look.
 - **Answer quality** of any build here.
