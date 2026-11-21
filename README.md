@@ -8,7 +8,7 @@ ELI5: I'm a learner with one Mac Studio M5 Ultra 512 GB, and I time local AI mod
 
 ELI5: The page in six lines. Every figure here is recomputed from the raw rows each time the page is built.
 
-Updated 21 Nov 2026 12:09 SGT. Decode speed in tok/s, one user, one Mac.
+Updated 21 Nov 2026 12:10 SGT. Decode speed in tok/s, one user, one Mac.
 
 - **Fastest on new code.** Qwen3.8 27B, 4-bit wrote 315.1 tok/s on TensorFold 1.3.2. Next are Qwen3.8 Flash Next, 4-bit at 219.4 and Qwen3.8 Flash Next, 6-bit at 199.8.
 - **Fastest in daily use.** Qwen3.8 27B, 4-bit wrote 157.4 tok/s on TensorFold 1.3.2. Next are Qwen3.8 Flash Next, 4-bit at 130.1 and Qwen3.8 Flash Next, 6-bit at 114.2.
@@ -27,37 +27,39 @@ ELI5: The fastest setup I found for each model, one line each. The same tables, 
 
 ### Best per model
 
-| Model | Max tok/s | Max setup | Median tok/s | Median setup | Finding |
-|---|---|---|---|---|---|
-| DeepSeek V4.1 Flash 1017, Lossless | **95.3** | mlx-serve 26.11.3, warmup-full, defaults with --no-decode-attn-quant, second start, lm head 8-bit by the log, prompt lookup drafts on. 4K prompt, code, replies up to 2,048 tokens, 5 runs, 2026-11-20 | **57.9** | mlx-serve 26.11.3, warmup-full, lm head kept dense by the log (MLX_SERVE_DSV41_HEAD8=0), --no-decode-attn-quant, prompt lookup drafts on. 4K prompt, mixed, replies up to 512 tokens, 5 runs, 2026-11-21 | [8](findings/08_dsv41_mlxserve_26113) |
-| GLM-5.3, 4-bit | **24.6** | oMLX 0.8.0 with its kernels, MTP off, reply is reasoning text, 512-token replies. 4K prompt, code, replies up to 512 tokens, 5 runs, 2026-11-20 | **24.5** | oMLX 0.8.0 with its kernels, MTP off, reply is reasoning text. 4K prompt, mixed, replies up to 512 tokens, 5 runs, 2026-11-20 | [9](findings/09_omlx_080_four_models) |
-| GLM-5.3, 4-bit, draft head joined here | **23.4** | oMLX 0.8.0 with its kernels, MTP on, default depth, reply is reasoning text, 512-token replies. 4K prompt, code, replies up to 512 tokens, 5 runs, 2026-11-21 | **25.0** | oMLX 0.8.0 with its kernels, MTP on, default depth, reply is reasoning text. 4K prompt, mixed, replies up to 512 tokens, 5 runs, 2026-11-21 | [9](findings/09_omlx_080_four_models) |
-| GLM-5.3 Flash, 6-bit | not run yet |  | **57.8** | oMLX 0.7.3 with its kernels, MTP on. 4K prompt, mixed, replies up to 512 tokens, 5 runs, 2026-11-17 | [2](findings/02_ten_models_4k_to_1m) |
-| GLM-5.3 Flash, 4-bit | **80.2** | oMLX 0.8.0 with its kernels, MTP on, default depth, reply is reasoning text. 1K prompt, code, replies up to 2,048 tokens, 5 runs, 2026-11-21 | **67.8** | oMLX 0.8.0 with its kernels, MTP on, default depth, reply is reasoning text. 4K prompt, mixed, replies up to 512 tokens, 5 runs, 2026-11-21 | [9](findings/09_omlx_080_four_models) |
-| Inkling 2 Small | **51.6** | oMLX 0.8.0 with its kernels, DSpark draft on, default depth, reply is mostly reasoning text. 1K prompt, code, replies up to 2,048 tokens, 5 runs, 2026-11-21 | **42.2** | oMLX 0.8.0 with its kernels, DSpark draft on, default depth, reply is mostly reasoning text. 4K prompt, mixed, replies up to 512 tokens, 5 runs, 2026-11-21 | [9](findings/09_omlx_080_four_models) |
-| Qwen3.8 27B, 4-bit | **315.1** | TensorFold 1.3.2, DFlash2 drafter (z-lab), defaults. 1K prompt, code, replies up to 2,048 tokens, 5 runs, 2026-11-21 | **157.4** | TensorFold 1.3.2, DFlash2 drafter (z-lab), defaults. 4K prompt, mixed, replies up to 512 tokens, 5 runs, 2026-11-21 | [11](findings/11_qwen38_tensorfold_132) |
-| Qwen3.8 27B, full | **6.9** | mlx-serve 26.11.3, warmup-full, defaults (lossy decode copies engaged, by the log), prompt lookup drafts on. 4K prompt, code, replies up to 512 tokens, 5 runs, 2026-11-20 | **7.1** | mlx-serve 26.11.3, defaults without --warmup-full (lossy decode copies engaged, by the log), prompt lookup drafts on. 4K prompt, mixed, replies up to 512 tokens, 5 runs, 2026-11-21 | [8](findings/08_dsv41_mlxserve_26113) |
-| Qwen3.8 Flash Next, 4-bit | **219.4** | TensorFold 1.3.2, MTP on, recipe line, defaults. 1K prompt, code, replies up to 2,048 tokens, 5 runs, 2026-11-21 | **130.1** | TensorFold 1.3.2, MTP on, recipe line, defaults. 4K prompt, mixed, replies up to 512 tokens, 5 runs, 2026-11-21 | [11](findings/11_qwen38_tensorfold_132) |
-| Qwen3.8 Flash Next, 6-bit | **199.8** | TensorFold 1.3.2, MTP on, recipe line, defaults. 1K prompt, code, replies up to 2,048 tokens, 5 runs, 2026-11-21 | **114.2** | TensorFold 1.3.2, MTP on, recipe line, defaults. 4K prompt, mixed, replies up to 512 tokens, 5 runs, 2026-11-21 | [11](findings/11_qwen38_tensorfold_132) |
-| Qwen3.8 Flash Next, full | **54.2** | oMLX 0.8.0 with its kernels, MTP on (built-in head), fixed depth 4, second start. 4K prompt, code, replies up to 2,048 tokens, 5 runs, 2026-11-21 | **33.6** | oMLX 0.8.0 with its kernels, MTP on (built-in head), fixed depth 4, second start. 4K prompt, mixed, replies up to 512 tokens, 5 runs, 2026-11-21 | [9](findings/09_omlx_080_four_models) |
-| DeepSeek V4.1 Flash 1017, oQ4e-mtp | **86.2** | oMLX 0.8.0 with its kernels, MTP drafts on, fixed depth 5. 4K prompt, code, replies up to 2,048 tokens, 5 runs, 2026-11-20 | **57.9** | oMLX 0.8.0 with its kernels, MTP drafts on, default depth, second start. 4K prompt, mixed, replies up to 512 tokens, 5 runs, 2026-11-20 | [5](findings/05_dsv41_omlx_080_max_push) |
-| DeepSeek V4.1 Flash 1017, maker's files | **75.6** | TensorFold 1.3.0, drafts at defaults (DSpark and copies). 4K prompt, code, replies up to 2,048 tokens, 5 runs, 2026-11-20 | **44.5** | TensorFold 1.3.0, drafts at defaults (DSpark and copies). 4K prompt, mixed, replies up to 512 tokens, 5 runs, 2026-11-20 | [6](findings/06_dsv41_tensorfold_130_max_push), [4](findings/04_dsv41_tensorfold_130) |
-| Hy4-flash, 4-bit | **65.3** | TensorFold 1.3.2, DFly2 drafts on, thinking on, reply is reasoning text. 4K prompt, code, replies up to 2,048 tokens, 5 runs, 2026-11-21 | **50.0** | TensorFold 1.3.2, DFly2 drafts on, thinking on, reply is reasoning text. 4K prompt, mixed, replies up to 512 tokens, 5 runs, 2026-11-21 | [10](findings/10_hy4_flash_tensorfold_132) |
-| Hy4-flash, 8-bit | **50.8** | TensorFold 1.3.2, DFly2 drafts on, thinking on, reply is reasoning text. 1K prompt, code, replies up to 2,048 tokens, 5 runs, 2026-11-21 | **36.8** | TensorFold 1.3.2, DFly2 drafts on, thinking on, reply is reasoning text. 4K prompt, mixed, replies up to 512 tokens, 5 runs, 2026-11-21 | [10](findings/10_hy4_flash_tensorfold_132) |
+The exact setup behind each figure is one click away, under "Every setup measured".
+
+| Model | Max tok/s | Median tok/s | Engine | Finding |
+|---|---|---|---|---|
+| DeepSeek V4.1 Flash 1017, Lossless | **95.3** | **57.9** | mlx-serve 26.11.3 | [8](findings/08_dsv41_mlxserve_26113) |
+| GLM-5.3, 4-bit | **24.6** | **24.5** | oMLX 0.8.0 with its kernels | [9](findings/09_omlx_080_four_models) |
+| GLM-5.3, 4-bit, draft head joined here | **23.4** | **25.0** | oMLX 0.8.0 with its kernels | [9](findings/09_omlx_080_four_models) |
+| GLM-5.3 Flash, 6-bit | not run yet | **57.8** | oMLX 0.7.3 with its kernels | [2](findings/02_ten_models_4k_to_1m) |
+| GLM-5.3 Flash, 4-bit | **80.2** | **67.8** | oMLX 0.8.0 with its kernels | [9](findings/09_omlx_080_four_models) |
+| Inkling 2 Small | **51.6** | **42.2** | oMLX 0.8.0 with its kernels | [9](findings/09_omlx_080_four_models) |
+| Qwen3.8 27B, 4-bit | **315.1** | **157.4** | TensorFold 1.3.2 | [11](findings/11_qwen38_tensorfold_132) |
+| Qwen3.8 27B, full | **6.9** | **7.1** | mlx-serve 26.11.3 | [8](findings/08_dsv41_mlxserve_26113) |
+| Qwen3.8 Flash Next, 4-bit | **219.4** | **130.1** | TensorFold 1.3.2 | [11](findings/11_qwen38_tensorfold_132) |
+| Qwen3.8 Flash Next, 6-bit | **199.8** | **114.2** | TensorFold 1.3.2 | [11](findings/11_qwen38_tensorfold_132) |
+| Qwen3.8 Flash Next, full | **54.2** | **33.6** | oMLX 0.8.0 with its kernels | [9](findings/09_omlx_080_four_models) |
+| DeepSeek V4.1 Flash 1017, oQ4e-mtp | **86.2** | **57.9** | oMLX 0.8.0 with its kernels | [5](findings/05_dsv41_omlx_080_max_push) |
+| DeepSeek V4.1 Flash 1017, maker's files | **75.6** | **44.5** | TensorFold 1.3.0 | [6](findings/06_dsv41_tensorfold_130_max_push), [4](findings/04_dsv41_tensorfold_130) |
+| Hy4-flash, 4-bit | **65.3** | **50.0** | TensorFold 1.3.2 | [10](findings/10_hy4_flash_tensorfold_132) |
+| Hy4-flash, 8-bit | **50.8** | **36.8** | TensorFold 1.3.2 | [10](findings/10_hy4_flash_tensorfold_132) |
 
 ### Ceiling on easy text
 
 ELI5: Two tests hand the model text it can guess almost perfectly, copying the prompt and counting from 1. The speed is far above real work, so I keep these apart from Max.
 
-| Model | Copy task tok/s | Copy task setup | Counting toy tok/s | Counting toy setup | Finding |
-|---|---|---|---|---|---|
-| DeepSeek V4.1 Flash 1017, Lossless | **167.0** | mlx-serve 26.11.3, warmup-full, defaults, first start, lm head 8-bit by the log, prompt lookup drafts on. 1K prompt, code, replies up to 512 tokens, 5 runs, 2026-11-20 | **121.5** | mlx-serve 26.11.3, warmup-full, defaults, first start, lm head 8-bit by the log, prompt lookup drafts on. 4K prompt, code, replies up to 512 tokens, 5 runs, 2026-11-20 | [8](findings/08_dsv41_mlxserve_26113) |
-| Qwen3.8 27B, 4-bit | **801.7** | TensorFold 1.3.2, DFlash2 drafter (z-lab), defaults. 4K prompt, code, replies up to 2,048 tokens, 5 runs, 2026-11-21 | **440.4** | TensorFold 1.3.2, DFlash2 drafter (z-lab), defaults. 1K prompt, code, replies up to 512 tokens, 5 runs, 2026-11-21 | [11](findings/11_qwen38_tensorfold_132) |
-| Qwen3.8 Flash Next, 4-bit | **322.3** | TensorFold 1.3.2, MTP on, recipe line, defaults. 1K prompt, code, replies up to 512 tokens, 5 runs, 2026-11-21 | **370.3** | TensorFold 1.3.2, MTP on, recipe line, defaults. 1K prompt, code, replies up to 512 tokens, 5 runs, 2026-11-21 | [11](findings/11_qwen38_tensorfold_132) |
-| Qwen3.8 Flash Next, 6-bit | **261.3** | TensorFold 1.3.2, MTP on, recipe line, defaults. 1K prompt, code, replies up to 512 tokens, 5 runs, 2026-11-21 | **297.1** | TensorFold 1.3.2, MTP on, recipe line, defaults. 1K prompt, code, replies up to 512 tokens, 5 runs, 2026-11-21 | [11](findings/11_qwen38_tensorfold_132) |
-| Qwen3.8 Flash Next, full | **120.1** | oMLX 0.8.0 with its kernels, MTP on (built-in head), default depth. 1K prompt, code, replies up to 512 tokens, 5 runs, 2026-11-21 | **51.5** | oMLX 0.8.0 with its kernels, MTP on (built-in head), default depth. 4K prompt, code, replies up to 512 tokens, 5 runs, 2026-11-21 | [9](findings/09_omlx_080_four_models) |
-| DeepSeek V4.1 Flash 1017, oQ4e-mtp | **118.3** | oMLX 0.8.0 with its kernels, MTP drafts on, fixed depth 5. 4K prompt, code, replies up to 512 tokens, 5 runs, 2026-11-20 | **114.0** | oMLX 0.8.0 with its kernels, MTP drafts on, fixed depth 5. 4K prompt, code, replies up to 512 tokens, 5 runs, 2026-11-20 | [5](findings/05_dsv41_omlx_080_max_push) |
-| DeepSeek V4.1 Flash 1017, maker's files | **159.0** | TensorFold 1.3.0, drafts at defaults (DSpark and copies). 1K prompt, code, replies up to 512 tokens, 5 runs, 2026-11-20 | **111.9** | TensorFold 1.3.0, drafts at defaults (DSpark and copies). 4K prompt, code, replies up to 512 tokens, 5 runs, 2026-11-20 | [6](findings/06_dsv41_tensorfold_130_max_push) |
+| Model | Copy task tok/s | Counting toy tok/s | Engine | Finding |
+|---|---|---|---|---|
+| DeepSeek V4.1 Flash 1017, Lossless | **167.0** | **121.5** | mlx-serve 26.11.3 | [8](findings/08_dsv41_mlxserve_26113) |
+| Qwen3.8 27B, 4-bit | **801.7** | **440.4** | TensorFold 1.3.2 | [11](findings/11_qwen38_tensorfold_132) |
+| Qwen3.8 Flash Next, 4-bit | **322.3** | **370.3** | TensorFold 1.3.2 | [11](findings/11_qwen38_tensorfold_132) |
+| Qwen3.8 Flash Next, 6-bit | **261.3** | **297.1** | TensorFold 1.3.2 | [11](findings/11_qwen38_tensorfold_132) |
+| Qwen3.8 Flash Next, full | **120.1** | **51.5** | oMLX 0.8.0 with its kernels | [9](findings/09_omlx_080_four_models) |
+| DeepSeek V4.1 Flash 1017, oQ4e-mtp | **118.3** | **114.0** | oMLX 0.8.0 with its kernels | [5](findings/05_dsv41_omlx_080_max_push) |
+| DeepSeek V4.1 Flash 1017, maker's files | **159.0** | **111.9** | TensorFold 1.3.0 | [6](findings/06_dsv41_tensorfold_130_max_push) |
 
 ### Every setup measured
 
