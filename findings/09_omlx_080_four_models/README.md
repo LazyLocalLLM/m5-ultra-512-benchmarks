@@ -152,6 +152,7 @@ ELI5: Apple's own server is my usual baseline. It can't load three of these four
 
 ELI5: One engine at one release. A fresh server start for every setting.
 
+- **Added 21 Nov 2026 20:27 SGT.** GLM-5.3 Flash, Inkling 2 Small and Qwen3.8 Flash Next were rerun on oMLX 0.8.2 at the default depth, and Qwen3.8 Flash Next at fixed depth 4 too. Those starts are in [finding 16](../16_omlx_082_refresh) and I see no speed change. The summary page now shows them. GLM-5.3 4-bit and the other fixed depth lines here are still on 0.8.0.
 - **Engine.** [oMLX](https://github.com/jundot/omlx) 0.8.0, the release of 18 Nov 2026, installed from the tagged source with its custom kernels built (`OMLX_WITH_CUSTOM_KERNEL=1`).
 - **Serve command.**
 

@@ -4,31 +4,33 @@ By Local LLM L-Plate. Follow [@LazyLocalLLM on X](https://x.com/LazyLocalLLM) fo
 
 ELI5: Hy4-flash is Tencent's new open model, released on 16 Nov 2026. TensorFold was the only engine I found that loaded it when I ran this. oMLX 0.8.1 loads it too, and that run is [finding 12](../12_hy4_flash_omlx_081). I ran its two MLX builds, with the engine's drafts on and off. Max is greedy at temperature 0 while writing new code. Median is the model's own sampler on mixed text.
 
-**TensorFold 1.3.2 wrote 65.3 tok/s on Hy4-flash 4-bit and 50.8 on the 8-bit build at their max, with thinking on, the model's default. With the model's own sampler it wrote 50.0 and 36.8. With drafts off the same builds wrote 42.2 and 34.0 on code at a 4K prompt. All but one of the 90 timed replies were reasoning text from start to finish. With thinking switched off through the API the replies went off course on both builds, so I publish no thinking-off line.**
+**At its defaults TensorFold 1.3.2 wrote 65.3 and then 64.6 tok/s on Hy4-flash 4-bit at its max, on a morning and an evening start, and 50.8 and 47.6 on the 8-bit build. Thinking was on, the model's default. With the model's own sampler it wrote 50.0 and 51.3, and 36.8 and 37.1. One switch from the engine's source, `TF_HY4_DRAFT_BITS=8`, was faster on every code text on both builds on two starts each. Against the default start of the same evening it wrote 71.5 against 64.6 on the 4-bit build and 53.4 against 47.6 on the 8-bit build, with the same text on 100 of 100 short replies. With drafts off the builds wrote 42.2 and 34.0 on code at a 4K prompt. Nearly every timed reply was reasoning text from start to finish. With thinking switched off through the API the replies went off course on both builds, so I publish no thinking-off line.**
 
-Updated on 21 Nov 2026 at 11:08 SGT. A first screen of two draft switches is in its own section below, and the `--no-thinking` start flag has been tried. The headline figures above are unchanged and are at the engine's defaults.
+Updated on 21 Nov 2026 at 20:27 SGT. The draft switch has its second starts and an answer check, in the section "Draft switches, the second starts". By my rule the summary page now shows the evening default starts, and the switch as its own labelled line. The section "Thinking on, the model's default" still holds the morning starts.
 
-Runs of 21 Nov 2026 SGT. One server start per setting. Mac Studio M5 Ultra 512 GB, one user, median of 5 runs.
+Runs of 21 Nov 2026 SGT. Mac Studio M5 Ultra 512 GB, one user, median of 5 runs.
 
-| Build | Size on disk | Max, tok/s | Median, tok/s | Drafts off, code | Drafts off, own sampler |
-|---|---|---|---|---|---|
-| Hy4-flash 4-bit | 121.0 GiB | 65.3 | 50.0 | 42.2 | 41.3 |
-| Hy4-flash 8-bit | 222.9 GiB | 50.8 | 36.8 | 34.0 | 33.2 |
+| Build | Size on disk | Max, tok/s | Median, tok/s | Max with the switch | Median with the switch | Drafts off, code | Drafts off, own sampler |
+|---|---|---|---|---|---|---|---|
+| Hy4-flash 4-bit | 121.0 GiB | 64.6 | 51.3 | 71.5 | 51.0 | 42.2 | 41.3 |
+| Hy4-flash 8-bit | 222.9 GiB | 47.6 | 37.1 | 53.4 | 40.9 | 34.0 | 33.2 |
 
 - **Max** is the middle of 5 greedy runs on new code, replies of up to 2,048 tokens, at the faster of the 1K and 4K prompts.
 - **Median** is the middle of 5 runs with the model's own sampler, mixed text, 512-token replies, 4K prompt.
-- **Drafts off** is the same server with `--no-drafts`, 512-token replies, 4K prompt.
+- **The first four number columns are the evening starts**, the latest start of each setting. The morning default starts wrote 65.3 and 50.0 on the 4-bit build and 50.8 and 36.8 on the 8-bit build.
+- **The switch** is `TF_HY4_DRAFT_BITS=8` in the server's environment. It is in the engine's source and not in its docs.
+- **Drafts off** is the same server with `--no-drafts`, 512-token replies, 4K prompt, from the morning.
 - **No `mlx-lm` baseline.** Apple's `mlx-lm` 0.32.2 has no model file for this model type, and neither had its main branch on 21 Nov 2026. oMLX 0.8.0 has none either. I did not try the other engines on this Mac. The drafts-off column is the reference here.
 
 ## Chart
 
-ELI5: The top speed on new code for each build, at two prompt sizes.
+ELI5: The top speed on new code for each build at two prompt sizes, at the defaults and with the draft-bits switch. These are the evening starts.
 
-![Bars of writing speed in tokens per second for Hy4-flash on TensorFold 1.3.2, greedy at temperature 0, new code, thinking on, replies of up to 2,048 tokens. The 4-bit build writes 63.2 at a 1K prompt and 65.3 at 4K. The 8-bit build writes 50.8 and 50.4.](chart_max.png)
+![Bars of writing speed in tokens per second for Hy4-flash on TensorFold 1.3.2, greedy at temperature 0, new code, thinking on, replies of up to 2,048 tokens, at the defaults and with TF_HY4_DRAFT_BITS=8. The 4-bit build writes 64.6 and 71.5 at a 1K prompt, and 60.4 and 70.7 at 4K. The 8-bit build writes 47.6 and 53.4 at 1K, and 46.8 and 52.0 at 4K.](chart_max.png)
 
 ## Thinking on, the model's default
 
-ELI5: Hy4-flash thinks before it answers unless told not to. These runs leave that alone. Each cell is the middle of 5 runs, with the slowest and fastest run in brackets.
+ELI5: Hy4-flash thinks before it answers unless told not to. These runs leave that alone. Each cell is the middle of 5 runs, with the slowest and fastest run in brackets. These are the morning starts, the only ones with a drafts-off start beside them.
 
 ### Hy4-flash 8-bit
 
@@ -76,7 +78,7 @@ Tok/s, run `b1f754c43ae4` with drafts on and `df5b641735e6` with drafts off.
 
 ## Draft switches, a first screen
 
-ELI5: The model drafts a few tokens ahead with a small helper, DFly2, and then checks the drafts. TensorFold's source lists two switches for this model. One stores the helper at fewer bits. The other moves the model's lookup tables into memory. I tried each on one start. Storing the helper at 8 bits was faster on every text. This is a screen and not yet a headline.
+ELI5: The model drafts a few tokens ahead with a small helper, DFly2, and then checks the drafts. TensorFold's source lists two switches for this model. One stores the helper at fewer bits. The other moves the model's lookup tables into memory. I tried each on one start. Storing the helper at 8 bits was faster on every text. This was the first screen. The second starts are in the next section.
 
 Thinking on, drafts on, TensorFold 1.3.2, one start per row, tok/s, 21 Nov 2026.
 
@@ -100,14 +102,48 @@ Hy4-flash 8-bit.
 
 - **`TF_HY4_DRAFT_BITS=8` was faster on every code text, on both builds.** On the 4-bit build against the default start of the same morning, it was faster on 10 of 10 long replies with a middle ratio of 1.21, and on 10 of 10 short replies with 1.22. Against the first default start the middle ratios are 1.13 and 1.19, again 10 of 10. On the 8-bit build against its one default start they are 1.12 and 1.15, 10 of 10 each.
 - **The 79.5 has a wide range.** Its five runs go from 69.0 to 107.5, and one of the five replies closed its thinking at 235 tokens and wrote 1,813 answer tokens. The steadier cell is the 4K one, 71.3 (66.2 to 74.3), all reasoning text. That is 71.3 / 62.4 = 1.14 times the default start of the same morning and 71.3 / 65.3 = 1.09 times the first.
-- **One start, and no answer check.** The model checks every draft, so the text should not change. I have not shown that. My usual answer check compares answer text only, and these replies are reasoning text. A second start with a check that covers reasoning text is queued.
-- **So the summary page stays on the defaults for now.**
+- **One start, and no answer check, at the time of this screen.** The second starts and the check are in the next section.
 - **What the switch is.** TensorFold's list of variables in `zig/src/platform/environment.zig` at v1.3.2 reads "4, 8 or 16 (Hy4-flash's DFly2 linears quantized at load; default 16, BF16)". It is not in the project's docs or changelog. The variable was in the server's process environment, checked with `ps`. Server memory after load was 168.0 GiB against 168.7 on the 4-bit build, and 312.6 against 313.3 on the 8-bit build.
 - **`TF_HY4_ENGRAM` was level on code.** The list reads "nvme, ram or gpu (where Hy4-flash's Engram tables live; default nvme)". Text by text against a default start, the middle ratios on code are between 0.99 and 1.05 over the three starts. It cost memory. The 8-bit server held 444.6 GiB after load against 313.3, and the 4-bit server 241.0 against 168.7.
 - **I make no claim on the sampler column.** The two 4-bit default starts wrote 50.0 and 45.1, and the second was slower on 5 of 5 texts. Differences of that size between rows are start to start spread.
-- **The default lines will move.** My rule for the summary page is the latest start at defaults. After the next job that is a newer start than `b1f754c43ae4`, and its figures may be lower.
-- **A second 8-bit default start did not come up.** My harness checks the listening ports before each start, and that check timed out after 5 seconds. That is my tool and says nothing about TensorFold.
+- **A second 8-bit default start did not come up that morning.** My harness checks the listening ports before each start, and that check timed out after 5 seconds. That is my tool and says nothing about TensorFold. The evening job has that start.
 - **What the replies were.** 145 of the 150 timed replies of these six starts were reasoning text from start to finish. The other 5 were on the 4-bit build at the 1K prompt.
+
+## Draft switches, the second starts
+
+ELI5: One start can't tell a switch from a lucky start. So I started each setting again that evening, in another order, with the defaults started after the switch. I also ran a check that compares the thinking text, since these replies are nearly all thinking.
+
+Thinking on, drafts on, TensorFold 1.3.2, one start per row, tok/s, 21 Nov 2026 from 18:49 to 20:12 SGT.
+
+Hy4-flash 4-bit.
+
+| Setting | Run | Own sampler, 4K | Code, 512, 1K | Code, 512, 4K | Code, up to 2,048, 1K | Code, up to 2,048, 4K |
+|---|---|---|---|---|---|---|
+| Defaults, third start | `5498d94e70db` | 51.3 (44.0 to 70.4) | 55.2 (52.5 to 79.4) | 55.4 (53.5 to 59.8) | 64.6 (56.4 to 78.8) | 60.4 (56.9 to 65.9) |
+| `TF_HY4_DRAFT_BITS=8`, second start | `b09695c3eab1` | 51.0 (49.4 to 59.1) | 67.5 (63.3 to 88.1) | 64.4 (63.5 to 69.9) | 71.5 (67.4 to 85.9) | 70.7 (61.1 to 77.4) |
+| `TF_HY4_DRAFT_BITS=4` | `0f35e5ffa3e6` | 52.6 (51.9 to 88.5) | 67.5 (63.4 to 88.6) | 61.0 (60.8 to 72.3) | 72.7 (69.4 to 106.6) | 68.6 (64.4 to 84.0) |
+| `TF_HY4_DRAFT_BITS=8` and `TF_HY4_ENGRAM=gpu` | `a9c0686461ad` | not run | 73.1 (68.7 to 76.6) | 67.1 (64.1 to 72.8) | 79.4 (66.1 to 100.2) | 76.4 (65.0 to 79.1) |
+
+Hy4-flash 8-bit.
+
+| Setting | Run | Own sampler, 4K | Code, 512, 1K | Code, 512, 4K | Code, up to 2,048, 1K | Code, up to 2,048, 4K |
+|---|---|---|---|---|---|---|
+| Defaults, second start | `a9fe24e89f10` | 37.1 (36.2 to 38.1) | 45.5 (43.2 to 50.4) | 44.6 (42.0 to 46.1) | 47.6 (44.1 to 50.5) | 46.8 (41.8 to 51.3) |
+| `TF_HY4_DRAFT_BITS=8`, second start | `f3e0bbdd9f33` | 40.9 (40.7 to 44.1) | 53.2 (52.3 to 55.5) | 52.5 (47.7 to 61.2) | 53.4 (51.7 to 57.7) | 52.0 (48.1 to 55.3) |
+| `TF_HY4_DRAFT_BITS=4` | `fb656f1743e9` | 41.8 (40.1 to 60.3) | 53.7 (52.8 to 57.9) | 53.6 (48.2 to 54.5) | 52.9 (50.0 to 56.5) | 53.0 (49.3 to 54.2) |
+
+- **`TF_HY4_DRAFT_BITS=8` was faster on every code text again.** Against the default start of the same evening, on the same texts, it was faster on 10 of 10 long replies with a middle ratio of 1.13 on the 4-bit build, and on 10 of 10 short replies with 1.18. On the 8-bit build it was 10 of 10 with 1.12, and 10 of 10 with 1.20.
+- **That is two starts a build, in two orders.** In the morning the switch ran after the defaults. In the evening the defaults ran after the switch. The switch was ahead on 10 of 10 code pairs both times.
+- **The server's own banner shows why.** It prints the draft time at start. At defaults it read 3.12 ms a token on the 4-bit build and 3.38 on the 8-bit build. With the switch it read 1.30 and 1.49.
+- **The text did not change.** 50 short greedy questions asked twice, with thinking and answer text hashed together. The switch start gave the default start's text on 100 of 100 replies, on each build. Inside each start the second pass gave the first pass's text on 50 of 50.
+- **What that check covers.** Replies of 64 tokens at most, on prompts of about 256 tokens, all of them thinking text. All of these starts had drafts on. I did not compare them with a drafts-off start. The check files are not in `rows.csv`.
+- **With the sampler the gain is smaller and less even.** Faster on 3 of 5 sampled texts with a middle ratio of 1.14 on the 4-bit build, where the two middles are 51.0 and 51.3. On the 8-bit build it was 5 of 5 with 1.12, at 40.9 against 37.1.
+- **`TF_HY4_DRAFT_BITS=4` did the same as 8.** Against the default start it was faster on 10 of 10 long and 10 of 10 short code replies on both builds, with middle ratios of 1.13 to 1.19. Against `TF_HY4_DRAFT_BITS=8` it was level, with middle ratios of 0.98 to 1.02 on code. Its text matched the default start's on 100 of 100 too. One start a build.
+- **Adding `TF_HY4_ENGRAM=gpu` wrote the highest figures here, on one start.** 79.4 and 76.4 on long code replies on the 4-bit build. Against the switch alone it was faster on 9 of 10 long replies with a middle ratio of 1.07, and on 8 of 10 short ones with 1.03. The server held 240.3 GiB after load against 168.0. It had no answer check and no sampled test, and the morning screen found Engram alone level. So it is not on the summary page.
+- **The evening starts were mostly a little lower than the morning ones.** Same setting and same texts, evening over morning, the middle ratios on code run from 0.93 to 1.00. The defaults and the switch both moved. I did not find the cause. So compare a row with the rows of its own table and not across the two tables.
+- **Memory.** After load the 4-bit server held 168.7 GiB at defaults, 168.0 with 8 bits and 167.6 with 4. The 8-bit server held 313.3, 312.6 and 312.2.
+- **What the replies were.** 162 of the 170 timed replies of these seven starts were reasoning text from start to finish. The other 8 were on the 4-bit build, 7 at the 1K prompt and 1 at 4K.
+- **On the summary page.** The default lines are now the evening starts, the latest at defaults. `TF_HY4_DRAFT_BITS=8` is its own line from its second start, labelled as a switch from the source.
 
 ## Thinking off did not give clean answers
 
@@ -187,10 +223,10 @@ ELI5: 1.3.1 was the first release to serve this model. 1.3.2 came out under six 
 
 ## The setup
 
-ELI5: One engine at its newest release, at its defaults. A fresh server start for every setting.
+ELI5: One engine at its newest release. The headline starts are at its defaults, and the switch starts name the one variable they set. A fresh server start for every setting.
 
 - **Engine.** [TensorFold](https://github.com/ashhart/TensorFold) 1.3.2, published 21 Nov 2026 03:27 SGT, from the author's Homebrew tap. The download's SHA-256 equals the digest GitHub lists for the release file.
-- **Serve command.** `--no-drafts` is added for the drafts-off starts. Nothing else is set, and no `TF_` variable is set.
+- **Serve command.** `--no-drafts` is added for the drafts-off starts. Nothing else is set. No `TF_` variable is set except on the starts that name one.
 
 ```bash
 tensorfold serve <build folder> --name <name> --host 127.0.0.1 --port 8188 --context 131072 --parallel 1 --no-update-check
@@ -224,6 +260,13 @@ tensorfold serve <build folder> --name <name> --host 127.0.0.1 --port 8188 --con
 | `d341be8cafd5` | 4-bit | 1.3.2 | on, defaults, another start | on | 21 Nov, 10:10 |
 | `f9151885e458` | 4-bit | 1.3.2 | on, `TF_HY4_ENGRAM=gpu` | on | 21 Nov, 10:20 |
 | `ff37e56bb47f` | 4-bit | 1.3.2 | on, `TF_HY4_DRAFT_BITS=8` | on | 21 Nov, 10:29 |
+| `b09695c3eab1` | 4-bit | 1.3.2 | on, `TF_HY4_DRAFT_BITS=8`, second start | on | 21 Nov, 18:49 |
+| `0f35e5ffa3e6` | 4-bit | 1.3.2 | on, `TF_HY4_DRAFT_BITS=4` | on | 21 Nov, 18:59 |
+| `5498d94e70db` | 4-bit | 1.3.2 | on, defaults, third start | on | 21 Nov, 19:09 |
+| `a9c0686461ad` | 4-bit | 1.3.2 | on, `TF_HY4_DRAFT_BITS=8` and `TF_HY4_ENGRAM=gpu` | on | 21 Nov, 19:21 |
+| `f3e0bbdd9f33` | 8-bit | 1.3.2 | on, `TF_HY4_DRAFT_BITS=8`, second start | on | 21 Nov, 19:31 |
+| `fb656f1743e9` | 8-bit | 1.3.2 | on, `TF_HY4_DRAFT_BITS=4` | on | 21 Nov, 19:44 |
+| `a9fe24e89f10` | 8-bit | 1.3.2 | on, defaults, second start | on | 21 Nov, 19:58 |
 
 - **Two run ids were made after the fact.** Runs `10884ddb9c17` and `cad62d9be2d7` hold five thinking-on rows each that I sent inside a start recorded as thinking off. I moved them to their own run ids so each run has one thinking setting. No measured value changed.
 
@@ -245,7 +288,8 @@ ELI5: Same Mac, same harness and same text rules as findings 3 to 9.
 ELI5: A speed is only comparable with another speed measured the same way.
 
 - **These are reasoning tokens.** With thinking on, this model spent 512 and 2,048-token budgets thinking.
-- **One start per setting.** Where I have a sampled median from another start, it differs by 0.1 tok/s on the 8-bit build and 2.8 on the 4-bit build. A third 4-bit default start, run `d341be8cafd5`, wrote 45.1, which is 4.9 below the first.
+- **Starts differ.** The 4-bit build has three default starts. With the sampler they wrote 50.0, 45.1 and 51.3. On long code replies at 1K they wrote 63.2, 65.0 and 64.6. The 8-bit build's two default starts wrote 50.8 and 47.6 there.
+- **The switch is not in the engine's docs.** I found it in the source's list of environment variables. Its name and its effect may change.
 - **The author's own M5 Ultra figures** are in [TensorFold pull request 3941](https://github.com/ashhart/TensorFold/pull/3941). They use other prompts, so read them there and not against this table.
 - **Max is not what a chat feels like.** The median column is the everyday figure.
 
@@ -253,8 +297,8 @@ ELI5: A speed is only comparable with another speed measured the same way.
 
 ELI5: Every timed request is in this folder. You can redo every median.
 
-- **`rows.csv`.** 522 raw rows from the bench database. 465 timed requests and 57 warm-ups.
-- **`runs.csv`.** The 18 runs behind them, with engine, version, start time, settings and sampling.
+- **`rows.csv`.** 712 raw rows from the bench database. 635 timed requests and 77 warm-ups.
+- **`runs.csv`.** The 25 runs behind them, with engine, version, start time, settings and sampling.
 - **`render_template_tokens.py`.** Renders the build's chat template for each thinking setting and counts the tokens. It needs the `tokenizers` and `jinja2` packages.
 
 From the top of this repository.
@@ -270,8 +314,10 @@ python3 tools/summarize.py findings/10_hy4_flash_tensorfold_132
 - **A thinking-off run in the template's own 46-token form.** I found no request that produces it.
 - **The server's `--reasoning-effort` start flag.** Not tried.
 - **Longer replies with drafts off and thinking on.**
-- **That `TF_HY4_DRAFT_BITS=8` writes the same text as the default.** No answer check has run with thinking on. My usual check compares answer text only, and these replies are reasoning text.
-- **A second start** of either draft switch.
+- **That `TF_HY4_DRAFT_BITS=8` writes the same text as the default on long replies, or as a drafts-off start.** The check covers 64-token replies between starts with drafts on.
+- **What the switch costs in draft quality.** The draft is stored at fewer bits. I measured speed and the final text, not how many drafted tokens were kept.
+- **A second start** of `TF_HY4_DRAFT_BITS=4`, or of the switch with `TF_HY4_ENGRAM=gpu`.
+- **Why the evening starts ran a little lower.**
 - **Long prompts, and two users at once.**
 - **Answer quality** of either build.
 - **Peak memory.** The figures above are the process size by `ps` at two moments.

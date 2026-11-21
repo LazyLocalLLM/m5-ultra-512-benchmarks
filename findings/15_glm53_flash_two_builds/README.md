@@ -104,7 +104,7 @@ Decode tok/s at the default draft depth. The 4-bit build is run `4f9da10c3691`. 
 - **Median.** 76.8 and 69.7. 69.7 / 76.8 = 0.91.
 - **The gap is smaller with drafts on than off on this engine.** Text by text oQ4e was slower on 23 of 25 pairs. The ranges of several cells overlap.
 - **These are reasoning speeds.** The request switched thinking off, and every one of these timed replies was reasoning text all the same, as in [finding 9](../09_omlx_080_four_models).
-- **The template does not read the switch I sent.** I rendered both builds' templates offline with and without `enable_thinking` and got the same prompt each time. It carries a reasoning-effort line set to Max. I did not try the effort field on oMLX.
+- **The model's template has no thinking-off setting.** It reads a reasoning effort of low, high or max, and it always opens a think block. I rendered both builds' templates offline with and without `enable_thinking` and got the same prompt each time, with the effort at Max. TensorFold's recipe says its server closes that open think block when thinking is off, which is how its replies came out as answer text. I did not try a lower effort on oMLX.
 - **No copy or counting line for oMLX.** Those replies mixed reasoning and answer text. The rows are in `rows.csv` under the contents `code_echo` and `code_count`.
 - **TensorFold's build is documented for oMLX.** Its card lists oMLX 0.6.3rc3 as validated for baseline generation. The card also says to keep MTP off on that older build. On 0.8.1 here MTP on was faster than off, 88.9 against 72.5 tok/s on short code replies at 1K.
 
@@ -167,7 +167,7 @@ ELI5: My usual baseline is Apple's `mlx-lm` on the same weights. It has no model
 
 - **`mlx-lm` 0.32.2 has no `glm5_next` model**, so it cannot load either build.
 - **oQ4e on oMLX 0.8.0**, in [finding 9](../09_omlx_080_four_models), wrote 80.2 tok/s at its max and 67.8 with its own sampler. On 0.8.1 here it wrote 78.7 and 69.7. One start each. Finding 3 measured 7% between two starts of one setting on this engine.
-- **oMLX 0.8.2 came out on 21 Nov 2026 at 12:20 SGT.** Its notes call it a hotfix for click positions on screenshots and say everything else is the same as 0.8.1. I ran 0.8.1.
+- **oMLX 0.8.2 came out on 21 Nov 2026 at 12:20 SGT.** Its notes call it a hotfix for click positions on screenshots and say everything else is the same as 0.8.1. I ran 0.8.1. The oQ4e build's drafts-on start was rerun on 0.8.2 that evening, in [finding 16](../16_omlx_082_refresh), and I see no change.
 
 ## The setup
 
@@ -248,8 +248,8 @@ python3 tools/summarize.py findings/15_glm53_flash_two_builds
 - **The original weights' score**, and so how far each build is from them.
 - **Which difference between the builds** gives the speed gap or the score gap.
 - **A second start** of any setting.
-- **A fixed draft depth** on oMLX, and oMLX 0.8.2.
-- **Thinking truly off on oMLX** for this model, and the reasoning-effort field there.
+- **A fixed draft depth** on oMLX, and the drafts-off starts and TensorFold's build on oMLX 0.8.2.
+- **A lower reasoning effort on oMLX**, and any way to close the think block there.
 - **Long prompts**, several users at once, and images.
 - **What the timed replies say.** I read back two replies per build on TensorFold and the short previews of the answer check.
 
