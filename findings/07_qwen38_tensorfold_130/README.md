@@ -1,5 +1,7 @@
 # Finding 7. Qwen3.8 27B and Flash Next on TensorFold 1.3.0, pushing the max
 
+By Local LLM L-Plate. Follow [@LazyLocalLLM on X](https://x.com/LazyLocalLLM) for new benchmarks.
+
 ELI5: TensorFold 1.3.0 came out on 20 Nov 2026. I ran the two Qwen builds it serves on this Mac the same day, asked three different things of each, and tried a few draft switches. For the 27B model I also ran Apple's own `mlx-lm` on the same weights, so there is a baseline to hold it against.
 
 **TensorFold 1.3.0 wrote 331.3 tok/s on Qwen3.8 27B 4-bit while writing new code, greedy at temperature 0, with its DFlash2 drafter and replies of up to 2,048 tokens at a 1K prompt. `mlx-lm` 0.32.2 wrote 45.1 on the same weights and the same test, so TensorFold is 7.3 times `mlx-lm`. With the model's own sampler on mixed text at 4K it wrote 148.2 against 43.6, which is 3.4 times. Copying code out of the prompt it wrote 824.0 tok/s with 2,048-token replies. Qwen3.8 Flash Next 4-bit wrote 204.4 on new code, 126.7 sampled and 292.2 on the same copy task. One server start per setting. Mac Studio M5 Ultra 512 GB, one user, median of 5 runs, 20 Nov 2026.**
@@ -231,3 +233,5 @@ python3 tools/summarize.py findings/07_qwen38_tensorfold_130
 - **Models.** Qwen3.8 27B and Qwen3.8 Flash Next by Qwen.
 
 If a setting here is wrong, open an issue and I will rerun it.
+
+Follow [@LazyLocalLLM on X](https://x.com/LazyLocalLLM) for new benchmarks.

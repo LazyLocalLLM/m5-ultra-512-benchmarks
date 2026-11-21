@@ -1,5 +1,7 @@
 # Finding 8. DeepSeek V4.1 Flash on mlx-serve 26.11.3, pushing the max
 
+By Local LLM L-Plate. Follow [@LazyLocalLLM on X](https://x.com/LazyLocalLLM) for new benchmarks.
+
 ELI5: mlx-serve 26.11.3 came out on 20 Nov 2026. I ran DeepSeek V4.1 Flash on it the same day, with the new warm-up flag its help recommends for benchmarks. I asked three different things of it on two server starts, and I tried one pinned draft depth.
 
 **mlx-serve 26.11.3 wrote 93.8 and 95.3 tok/s on DeepSeek V4.1 Flash 1017 on two server starts while writing new code, greedy at temperature 0, at its defaults with replies of up to 2,048 tokens at a 4K prompt. With the model's own sampler on mixed text at 4K it wrote 57.5 and 56.4 tok/s. Copying code out of the prompt it wrote 167.0 tok/s, and counting from 1 it wrote 121.5. The defaults are not bit-exact. The server log says the output head is requantized to 8-bit. With the head kept dense it wrote 91.6 tok/s on the same code test and 57.9 sampled, on one start. Mac Studio M5 Ultra 512 GB, the ddalcu Lossless pack, one user, median of 5 runs, 20 and 21 Nov 2026.**
@@ -200,3 +202,5 @@ python3 tools/summarize.py findings/08_dsv41_mlxserve_26113
 - **Model.** DeepSeek V4.1 Flash by DeepSeek. Qwen3.8 27B by Qwen.
 
 If a setting here is wrong, open an issue and I will rerun it.
+
+Follow [@LazyLocalLLM on X](https://x.com/LazyLocalLLM) for new benchmarks.

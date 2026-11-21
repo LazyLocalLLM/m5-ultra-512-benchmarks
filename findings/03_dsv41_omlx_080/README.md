@@ -1,5 +1,7 @@
 # Finding 3. DeepSeek V4.1 Flash on oMLX 0.8.0, max and median speed
 
+By Local LLM L-Plate. Follow [@LazyLocalLLM on X](https://x.com/LazyLocalLLM) for new benchmarks.
+
 ELI5: People quote one speed for a model, but the number moves with how you ask. I ran DeepSeek V4.1 Flash on the new oMLX release two ways. Once the fast way, with no randomness and code to continue. Once the everyday way, with the model's own sampler on mixed text. Then I turned oMLX's draft knob to see how much more it gives.
 
 **oMLX 0.8.0 wrote 71.2 tok/s on DeepSeek V4.1 Flash 1017 oQ4e-mtp at its default draft depth, greedy at temperature 0, code, 512-token replies, 1K prompt. The same server wrote 56.5 tok/s with the model's own sampler on mixed text at a 4K prompt. Deeper draft settings moved the greedy figure to between 65.8 and 78.7, and two starts at the same depth differed by as much as any gain. Mac Studio M5 Ultra 512 GB, one user, median of 5 runs, 20 Nov 2026.**
@@ -143,3 +145,5 @@ It prints one line per run, text kind, prompt size, reply length and sampler, wi
 - **Build.** The oQ4e-mtp quant by mlx-community.
 
 If a setting here is wrong, open an issue and I will rerun it.
+
+Follow [@LazyLocalLLM on X](https://x.com/LazyLocalLLM) for new benchmarks.

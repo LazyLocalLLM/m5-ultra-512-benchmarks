@@ -1,5 +1,7 @@
 # Finding 5. DeepSeek V4.1 Flash on oMLX 0.8.0, pushing the max
 
+By Local LLM L-Plate. Follow [@LazyLocalLLM on X](https://x.com/LazyLocalLLM) for new benchmarks.
+
 ELI5: Finding 3 measured this model on oMLX at its default settings. Here I tried a few switches to see how high the top speed goes. I also asked three different things of the same setup, because the top speed depends more on what you ask than on any switch.
 
 **oMLX 0.8.0 wrote 84.1 tok/s on DeepSeek V4.1 Flash 1017 oQ4e-mtp while writing new code, greedy at temperature 0, with draft depth fixed at 5 and replies of up to 2,048 tokens at a 1K prompt. The other fixed-depth start gave 81.3. The default depth gave 77.2 and 76.2 on the same test. With 512-token replies at a 4K prompt, fixed depth 5 wrote 118.3 tok/s copying code out of the prompt and 114.0 counting up from 1. Mac Studio M5 Ultra 512 GB, one user, median of 5 runs, 20 Nov 2026.**
@@ -196,3 +198,5 @@ It prints one line per run, text kind, prompt size, reply length and sampler, wi
 - **Model.** DeepSeek V4.1 Flash by DeepSeek.
 
 If a setting here is wrong, open an issue and I will rerun it.
+
+Follow [@LazyLocalLLM on X](https://x.com/LazyLocalLLM) for new benchmarks.

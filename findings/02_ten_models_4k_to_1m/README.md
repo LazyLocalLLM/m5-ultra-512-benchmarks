@@ -1,5 +1,7 @@
 # Finding 2. Ten open-weight models on one Mac Studio M5 Ultra 512 GB, from 4K to 1M tokens
 
+By Local LLM L-Plate. Follow [@LazyLocalLLM on X](https://x.com/LazyLocalLLM) for new benchmarks.
+
 ELI5: I ran ten popular open-weight model builds on one Mac, each at the best setup I found for it. For each I timed how fast it reads the prompt, how fast it writes the reply, how long you wait for the first word and how much memory it takes, at prompts from 4K to 1M tokens. Then I picked the fastest model that is smart enough and the smartest model that is fast enough.
 
 **Qwen3.8 Flash Next 4-bit was the fastest of the models scoring 28 or more on the Artificial Analysis Intelligence Index. It wrote 124.1 tok/s at a 128K prompt and 93.2 at 1M. DeepSeek V4.1 Flash 1017 has the top index score of the ten and wrote 55.0 to 58.3 tok/s at every prompt length from 4K to 1M. Both scores are with thinking on, and I timed both models with thinking off. Mac Studio M5 Ultra 512 GB, one user, median of 5 runs up to 128K and of 3 at 512K and 1M, 16 to 18 Nov 2026.**
@@ -258,3 +260,5 @@ Artificial Analysis Intelligence Index, from [artificialanalysis.ai](https://art
 - **Scores.** Artificial Analysis.
 
 If a setting here is wrong, open an issue and I will rerun it.
+
+Follow [@LazyLocalLLM on X](https://x.com/LazyLocalLLM) for new benchmarks.

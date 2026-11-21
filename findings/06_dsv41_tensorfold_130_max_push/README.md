@@ -1,5 +1,7 @@
 # Finding 6. DeepSeek V4.1 Flash on TensorFold 1.3.0, pushing the max
 
+By Local LLM L-Plate. Follow [@LazyLocalLLM on X](https://x.com/LazyLocalLLM) for new benchmarks.
+
 ELI5: Finding 4 compared TensorFold 1.3.0 with the version before it. Here I tried six draft settings on 1.3.0 to see how high the top speed goes, and asked three different things of the default setup. The answer is that the defaults are already the top, and that what you ask moves the number far more than any switch.
 
 **TensorFold 1.3.0 wrote 76.4 tok/s on DeepSeek V4.1 Flash 1017 while writing new code, greedy at temperature 0, drafts at defaults, replies of up to 2,048 tokens at a 4K prompt, and 74.1 at a 1K prompt. With 512-token replies at a 1K prompt the same server wrote 159.1 tok/s copying code out of the prompt and 106.9 counting up from 1. None of six draft settings separated from the defaults. Their cell medians ran from 0.95 to 1.06 times the defaults, inside the 7% I measured between two starts of one setting. One server start per switch setting and two at the defaults. Mac Studio M5 Ultra 512 GB, the maker's own files, one user, median of 5 runs, 20 Nov 2026.**
@@ -155,3 +157,5 @@ python3 tools/summarize.py findings/06_dsv41_tensorfold_130_max_push
 - **Model.** DeepSeek V4.1 Flash by DeepSeek.
 
 If a setting here is wrong, open an issue and I will rerun it.
+
+Follow [@LazyLocalLLM on X](https://x.com/LazyLocalLLM) for new benchmarks.

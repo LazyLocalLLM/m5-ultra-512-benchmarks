@@ -1,5 +1,7 @@
 # Finding 9. Four more models on oMLX 0.8.0, max and median speed
 
+By Local LLM L-Plate. Follow [@LazyLocalLLM on X](https://x.com/LazyLocalLLM) for new benchmarks.
+
 ELI5: My older lines for these four models came from oMLX 0.7.3 or from an unreleased commit. I reran them on oMLX 0.8.0, the latest stable release when these ran. oMLX 0.8.1 came out on 21 Nov 2026 at 09:17 SGT, after the last run here, and I have not run it yet. Each model gets two figures. Max is greedy at temperature 0 while writing new code. Median is the model's own sampler on mixed text.
 
 **On oMLX 0.8.0, GLM-5.3 Flash 4-bit wrote 80.2 tok/s at its max and 67.8 with its own sampler. Inkling 2 Small wrote 51.6 and 42.2. Qwen3.8 Flash Next at full precision wrote 53.6 on new code and 33.6 with its own sampler with the draft depth fixed at 4, against 49.4 and 33.2 at the default depth. GLM-5.3 4-bit wrote 24.6 and 24.5 with no drafts.**
@@ -249,3 +251,5 @@ python3 tools/summarize.py findings/09_omlx_080_four_models
 - **Models.** GLM-5.3 and GLM-5.3 Flash by Z.ai. Inkling 2 Small by Thinking Machines. Qwen3.8 Flash Next by Qwen.
 
 If a setting here is wrong, open an issue and I will rerun it.
+
+Follow [@LazyLocalLLM on X](https://x.com/LazyLocalLLM) for new benchmarks.

@@ -1,5 +1,7 @@
 # Finding 1. TensorFold with a draft model on Qwen3.8-27B 4-bit
 
+By Local LLM L-Plate. Follow [@LazyLocalLLM on X](https://x.com/LazyLocalLLM) for new benchmarks.
+
 ELI5: A small draft model guesses the next few words and the big model checks them. When the guesses are right the big model writes much faster. I measured how much faster on one Mac.
 
 **Qwen3.8-27B 4-bit writes 145.7 tok/s on a Mac Studio M5 Ultra 512 GB with TensorFold 1.2.7 and the DFlash2 draft model. Apple's `mlx-lm` 0.32.2 writes 44.5 tok/s on the same weights. That is 3.3 times. One user, 1K prompt, median of 5 runs, 13 Nov 2026.**
@@ -126,3 +128,5 @@ The tests for several users send no seed. The `no_seed` column in `runs.csv` mar
 - [@pratikg](https://x.com/pratikg) showed about the same 3 times on an M5 Pro on 4 Nov 2026. This is the 512 GB data point.
 
 If a setting here is wrong, open an issue and I will rerun it.
+
+Follow [@LazyLocalLLM on X](https://x.com/LazyLocalLLM) for new benchmarks.

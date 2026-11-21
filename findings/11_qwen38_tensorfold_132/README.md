@@ -1,5 +1,7 @@
 # Finding 11. Three Qwen builds on TensorFold 1.3.2, a version refresh
 
+By Local LLM L-Plate. Follow [@LazyLocalLLM on X](https://x.com/LazyLocalLLM) for new benchmarks.
+
 ELI5: TensorFold 1.3.2 came out on 21 Nov 2026 at 03:27 SGT. My lines for these three builds came from 1.3.0, so I reran them on the new release, one fresh server start a build, at the same settings and on the same texts. Max is greedy at temperature 0 while writing new code. Median is the model's own sampler on mixed text.
 
 **On TensorFold 1.3.2, Qwen3.8 27B 4-bit wrote 315.1 tok/s at its max and 157.4 with its own sampler. Qwen3.8 Flash Next 4-bit wrote 219.4 and 130.1. The 6-bit build wrote 199.8 and 114.2. The answers did not change. On each build 250 of 250 short greedy answers match 1.3.0. On new code I see no version change I can stand behind from one start a release. On easy text Flash Next 4-bit wrote 7% to 8% faster than on 1.3.0, on 25 of 25 same-text pairs. Mac Studio M5 Ultra 512 GB, one user, median of 5 runs, 21 Nov 2026.**
@@ -230,3 +232,5 @@ python3 tools/summarize.py findings/11_qwen38_tensorfold_132
 - **Models.** Qwen3.8 27B and Qwen3.8 Flash Next by Qwen.
 
 If a setting here is wrong, open an issue and I will rerun it.
+
+Follow [@LazyLocalLLM on X](https://x.com/LazyLocalLLM) for new benchmarks.

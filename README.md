@@ -1,8 +1,8 @@
 # M5 Ultra benchmarks
 
-ELI5: I'm a learner with one Mac Studio M5 Ultra 512 GB, and I time local AI models on it. Each finding below is a folder with the report, the charts and every raw row, so you can check my arithmetic.
+By Local LLM L-Plate. Follow [@LazyLocalLLM on X](https://x.com/LazyLocalLLM) for new benchmarks.
 
-I post these as [@LazyLocalLLM](https://x.com/LazyLocalLLM) on X.
+ELI5: I'm a learner with one Mac Studio M5 Ultra 512 GB, and I time local AI models on it. Each finding below is a folder with the report, the charts and every raw row, so you can check my arithmetic.
 
 ## Benchmark summary
 
@@ -55,3 +55,5 @@ If I've set an engine up wrong, [open an issue](https://github.com/LazyLocalLLM/
 ## Licence
 
 Data, charts and text under CC BY 4.0. Code under MIT. See [LICENSE.md](LICENSE.md).
+
+Follow [@LazyLocalLLM on X](https://x.com/LazyLocalLLM) for new benchmarks.

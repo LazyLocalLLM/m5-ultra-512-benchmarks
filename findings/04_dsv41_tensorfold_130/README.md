@@ -1,5 +1,7 @@
 # Finding 4. DeepSeek V4.1 Flash on TensorFold 1.3.0 against 1.2.10
 
+By Local LLM L-Plate. Follow [@LazyLocalLLM on X](https://x.com/LazyLocalLLM) for new benchmarks.
+
 ELI5: TensorFold 1.3.0 came out on 20 Nov 2026 with a faster prompt kernel for DeepSeek V4.1 on Macs. I ran the new version and the one before it on the same Mac, the same files and the same prompts, a few hours after the release. Then I looked at how fast each reads a prompt, how fast each writes, and whether the writing is smooth.
 
 **TensorFold 1.3.0 read DeepSeek V4.1 Flash prompts 3% to 11% faster than 1.2.10 in all eleven cells, on two server starts of each version run in both orders. With drafts on it wrote at the same speed within the spread of the runs, 70.5 against 69.5 tok/s greedy on code at a 1K prompt. 17 of 68 replies on 1.3.0 held one pause of 0.25 to 0.58 s between two tokens. None of 68 did on 1.2.10. With drafts off, on one start of each version, 9 of 10 replies on 1.3.0 held one to four pauses and it wrote 40.5 tok/s against 44.7 on 1.2.10. Mac Studio M5 Ultra 512 GB, the maker's own files, one user, median of 5 runs, 20 Nov 2026.**
@@ -181,3 +183,5 @@ python3 tools/summarize.py findings/04_dsv41_tensorfold_130
 - **Model.** DeepSeek V4.1 Flash by DeepSeek.
 
 If a setting here is wrong, open an issue and I will rerun it.
+
+Follow [@LazyLocalLLM on X](https://x.com/LazyLocalLLM) for new benchmarks.
