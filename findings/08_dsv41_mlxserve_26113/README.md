@@ -29,6 +29,7 @@ Decode tok/s. The first start is run `ddee83910540`. The second start, run `4d0f
 | Own sampler, mixed text, 512-token replies | 4K | 57.5 (50.9 to 65.6) | 56.4 (52.6 to 61.4) |
 
 - **Max.** 93.8 and 95.3 tok/s on the two starts, greedy on new code with replies of up to 2,048 tokens at 4K.
+- **These are drafted speeds on code.** On short open questions with reasoning effort max, where the drafts hardly land, the same engine and weights wrote 55.5 to 57.4 tok/s for one user. That run is [finding 13](../13_dsv41_mlxserve_several_users).
 - **Median.** 57.5 and 56.4 tok/s, temperature 1.0 and top-p 1.0 on mixed text at 4K.
 - **The two starts agree.** Text by text the middle ratio of the second over the first is 0.98 to 1.01 on every test.
 - **The defaults are not bit-exact.** The log of both starts reads "lm head requantized to 8-bit (MLX_SERVE_DSV41_HEAD8=0 keeps it dense)". The section "The output head kept dense" below has one start with that switch set.
