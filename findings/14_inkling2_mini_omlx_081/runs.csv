@@ -1,0 +1,10 @@
+run_id,started,source,machine,engine,engine_version,model,family,weights,settings,thinking,notes,os_version,power_mode,build_id,format,bits,effort,sampling,corpus_id,tool_version,engine_commit,no_seed,quick
+a3cf6857c4b5,2026-11-21 14:21:53 SGT,measured here,"Apple M5 Ultra, 80-core GPU, 512 GB, macOS 27.2",omlx-081-kernels,0.8.1,inkling2-mini-mlx-oq4e,Inkling 2 Mini,mlx-community/Inkling-2-Mini-oQ4e-mtp,"oMLX 0.8.1 with custom kernels, MTP on, default depth, burst balanced, A8 off, fp16 off, build inkling2-mini-mlx-oq4e, ctx 131072, max-concurrent 1, thinking off, sampled, mixed",off,,"ProductName:		macOS
+ProductVersion:		27.2
+BuildVersion:		26B118",low power mode off,inkling2-mini-mlx-oq4e,mlx,oQ4e,,"{""temperature"": 1.0, ""top_p"": 1.0, ""enable_thinking"": false, ""chat_template_kwargs"": {""enable_thinking"": false}}",23f31f1d8feb,2.0,,0,0
+fe2a52ddebd0,2026-11-21 14:33:24 SGT,measured here,"Apple M5 Ultra, 80-core GPU, 512 GB, macOS 27.2",omlx-081-kernels,0.8.1,inkling2-mini-mlx-oq4e,Inkling 2 Mini,mlx-community/Inkling-2-Mini-oQ4e-mtp,"oMLX 0.8.1 with custom kernels, MTP off, no drafts, burst balanced, A8 off, fp16 off, build inkling2-mini-mlx-oq4e, ctx 131072, max-concurrent 1, thinking off, sampled, mixed",off,,"ProductName:		macOS
+ProductVersion:		27.2
+BuildVersion:		26B118",low power mode off,inkling2-mini-mlx-oq4e,mlx,oQ4e,,"{""temperature"": 1.0, ""top_p"": 1.0, ""enable_thinking"": false, ""chat_template_kwargs"": {""enable_thinking"": false}}",23f31f1d8feb,2.0,,0,0
+472bfd081962,2026-11-21 14:45:27 SGT,measured here,"Apple M5 Ultra, 80-core GPU, 512 GB, macOS 27.2",omlx-081-kernels,0.8.1,inkling2-mini-mlx-oq3e,Inkling 2 Mini,mlx-community/Inkling-2-Mini-oQ3e-mtp,"oMLX 0.8.1 with custom kernels, MTP on, default depth, burst balanced, A8 off, fp16 off, build inkling2-mini-mlx-oq3e, ctx 131072, max-concurrent 1, thinking off, sampled, mixed",off,,"ProductName:		macOS
+ProductVersion:		27.2
+BuildVersion:		26B118",low power mode off,inkling2-mini-mlx-oq3e,mlx,oQ3e,,"{""temperature"": 1.0, ""top_p"": 1.0, ""enable_thinking"": false, ""chat_template_kwargs"": {""enable_thinking"": false}}",23f31f1d8feb,2.0,,0,0
