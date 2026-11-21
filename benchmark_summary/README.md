@@ -2,7 +2,7 @@
 
 ELI5: One page with the best speed I have measured for each model on one Mac Studio M5 Ultra 512 GB. Every line links to the finding folder that holds the report and the raw rows.
 
-Updated 21 Nov 2026 03:47 SGT. All figures are decode speed in tok/s for one user.
+Updated 21 Nov 2026 08:05 SGT. All figures are decode speed in tok/s for one user.
 
 ## Two speeds per model
 
@@ -34,6 +34,8 @@ ELI5: The fastest setup I found for each model, one line each.
 | Qwen3.8 Flash Next, full | **53.3** | oMLX 0.8.0 with its kernels, MTP on (built-in head), fixed depth 4, one start. 1K prompt, code, replies up to 2,048 tokens, 5 runs, 2026-11-21 | **33.2** | oMLX 0.8.0 with its kernels, MTP on (built-in head), default depth. 4K prompt, mixed, replies up to 512 tokens, 5 runs, 2026-11-21 | [9](../findings/09_omlx_080_four_models) |
 | DeepSeek V4.1 Flash 1017, oQ4e-mtp | **86.2** | oMLX 0.8.0 with its kernels, MTP drafts on, fixed depth 5. 4K prompt, code, replies up to 2,048 tokens, 5 runs, 2026-11-20 | **57.9** | oMLX 0.8.0 with its kernels, MTP drafts on, default depth, second start. 4K prompt, mixed, replies up to 512 tokens, 5 runs, 2026-11-20 | [5](../findings/05_dsv41_omlx_080_max_push) |
 | DeepSeek V4.1 Flash 1017, maker's files | **75.6** | TensorFold 1.3.0, drafts at defaults (DSpark and copies). 4K prompt, code, replies up to 2,048 tokens, 5 runs, 2026-11-20 | **44.5** | TensorFold 1.3.0, drafts at defaults (DSpark and copies). 4K prompt, mixed, replies up to 512 tokens, 5 runs, 2026-11-20 | [6](../findings/06_dsv41_tensorfold_130_max_push), [4](../findings/04_dsv41_tensorfold_130) |
+| Hy4-flash, 4-bit | **65.3** | TensorFold 1.3.2, DFly2 drafts on, thinking on, reply is reasoning text. 4K prompt, code, replies up to 2,048 tokens, 5 runs, 2026-11-21 | **50.0** | TensorFold 1.3.2, DFly2 drafts on, thinking on, reply is reasoning text. 4K prompt, mixed, replies up to 512 tokens, 5 runs, 2026-11-21 | [10](../findings/10_hy4_flash_tensorfold_132) |
+| Hy4-flash, 8-bit | **50.8** | TensorFold 1.3.2, DFly2 drafts on, thinking on, reply is reasoning text. 1K prompt, code, replies up to 2,048 tokens, 5 runs, 2026-11-21 | **36.8** | TensorFold 1.3.2, DFly2 drafts on, thinking on, reply is reasoning text. 4K prompt, mixed, replies up to 512 tokens, 5 runs, 2026-11-21 | [10](../findings/10_hy4_flash_tensorfold_132) |
 
 ## Ceiling on easy text
 
@@ -146,6 +148,18 @@ ELI5: Everything behind the table above, including the setups that were not the 
 | DeepSeek V4.1 Flash 1017, maker's files | counting toy | TensorFold 1.3.0, drafts at defaults (DSpark and copies) | greedy, temperature 0 | 4K code | 512 | 111.9 | 111.2 to 112.7 | 5 | 2026-11-20 | `dd80ad7aa9fa` | [6](../findings/06_dsv41_tensorfold_130_max_push) |
 | DeepSeek V4.1 Flash 1017, maker's files | counting toy | TensorFold 1.3.0, drafts at defaults (DSpark and copies) | greedy, temperature 0 | 1K code | 512 | 107.4 | 101.5 to 113.3 | 5 | 2026-11-20 | `dd80ad7aa9fa` | [6](../findings/06_dsv41_tensorfold_130_max_push) |
 | DeepSeek V4.1 Flash 1017, maker's files | median | TensorFold 1.3.0, drafts at defaults (DSpark and copies) | temperature 1.0, top-p 1.0 | 4K mixed | 512 | 44.5 | 41.1 to 48.2 | 5 | 2026-11-20 | `778e5c808b88` | [4](../findings/04_dsv41_tensorfold_130) |
+| Hy4-flash, 4-bit | max | TensorFold 1.3.2, DFly2 drafts on, thinking on, reply is reasoning text | greedy, temperature 0 | 4K code | 2,048 | 65.3 | 62.4 to 67.3 | 5 | 2026-11-21 | `b1f754c43ae4` | [10](../findings/10_hy4_flash_tensorfold_132) |
+| Hy4-flash, 4-bit | max | TensorFold 1.3.2, DFly2 drafts on, thinking on, reply is reasoning text | greedy, temperature 0 | 1K code | 2,048 | 63.2 | 58.3 to 65.9 | 5 | 2026-11-21 | `b1f754c43ae4` | [10](../findings/10_hy4_flash_tensorfold_132) |
+| Hy4-flash, 4-bit | max | TensorFold 1.3.2, drafts off, thinking on, reply is reasoning text, 512-token replies | greedy, temperature 0 | 1K code | 512 | 43.0 | 41.1 to 43.0 | 5 | 2026-11-21 | `df5b641735e6` | [10](../findings/10_hy4_flash_tensorfold_132) |
+| Hy4-flash, 4-bit | max | TensorFold 1.3.2, drafts off, thinking on, reply is reasoning text, 512-token replies | greedy, temperature 0 | 4K code | 512 | 42.2 | 42.1 to 42.4 | 5 | 2026-11-21 | `df5b641735e6` | [10](../findings/10_hy4_flash_tensorfold_132) |
+| Hy4-flash, 4-bit | median | TensorFold 1.3.2, DFly2 drafts on, thinking on, reply is reasoning text | temperature 0.9, top-p 1.0 | 4K mixed | 512 | 50.0 | 43.7 to 55.6 | 5 | 2026-11-21 | `b1f754c43ae4` | [10](../findings/10_hy4_flash_tensorfold_132) |
+| Hy4-flash, 4-bit | median | TensorFold 1.3.2, drafts off, thinking on, reply is reasoning text | temperature 0.9, top-p 1.0 | 4K mixed | 512 | 41.3 | 41.1 to 41.4 | 5 | 2026-11-21 | `df5b641735e6` | [10](../findings/10_hy4_flash_tensorfold_132) |
+| Hy4-flash, 8-bit | max | TensorFold 1.3.2, DFly2 drafts on, thinking on, reply is reasoning text | greedy, temperature 0 | 1K code | 2,048 | 50.8 | 46.4 to 55.0 | 5 | 2026-11-21 | `bdcd2d9ede41` | [10](../findings/10_hy4_flash_tensorfold_132) |
+| Hy4-flash, 8-bit | max | TensorFold 1.3.2, DFly2 drafts on, thinking on, reply is reasoning text | greedy, temperature 0 | 4K code | 2,048 | 50.4 | 43.5 to 51.3 | 5 | 2026-11-21 | `bdcd2d9ede41` | [10](../findings/10_hy4_flash_tensorfold_132) |
+| Hy4-flash, 8-bit | max | TensorFold 1.3.2, drafts off, thinking on, reply is reasoning text, 512-token replies | greedy, temperature 0 | 1K code | 512 | 34.4 | 33.2 to 34.6 | 5 | 2026-11-21 | `b8e543b952e1` | [10](../findings/10_hy4_flash_tensorfold_132) |
+| Hy4-flash, 8-bit | max | TensorFold 1.3.2, drafts off, thinking on, reply is reasoning text, 512-token replies | greedy, temperature 0 | 4K code | 512 | 34.0 | 33.9 to 34.2 | 5 | 2026-11-21 | `b8e543b952e1` | [10](../findings/10_hy4_flash_tensorfold_132) |
+| Hy4-flash, 8-bit | median | TensorFold 1.3.2, DFly2 drafts on, thinking on, reply is reasoning text | temperature 0.9, top-p 1.0 | 4K mixed | 512 | 36.8 | 35.7 to 47.5 | 5 | 2026-11-21 | `bdcd2d9ede41` | [10](../findings/10_hy4_flash_tensorfold_132) |
+| Hy4-flash, 8-bit | median | TensorFold 1.3.2, drafts off, thinking on, reply is reasoning text | temperature 0.9, top-p 1.0 | 4K mixed | 512 | 33.2 | 33.2 to 33.3 | 5 | 2026-11-21 | `b8e543b952e1` | [10](../findings/10_hy4_flash_tensorfold_132) |
 
 ## Check it yourself
 
