@@ -6,13 +6,14 @@ ELI5: I'm a learner with one Mac Studio M5 Ultra 512 GB, and I time local AI mod
 
 ## Executive summary
 
-ELI5: The page in six lines. Every figure here is recomputed from the raw rows each time the page is built.
+ELI5: The page in seven lines. Every figure here is recomputed from the raw rows each time the page is built.
 
-Updated 21 Nov 2026 20:27 SGT. Decode speed in tok/s, one user, one Mac.
+Updated 22 Nov 2026 01:08 SGT. Decode speed in tok/s, one user, one Mac.
 
 - **Fastest on new code.** Qwen3.8 27B, 4-bit wrote 328.9 tok/s on TensorFold 1.3.2. Next are Qwen3.8 Flash Next, 4-bit at 206.8 and Qwen3.8 Flash Next, 6-bit at 200.1.
 - **Fastest in daily use.** Qwen3.8 27B, 4-bit wrote 161.3 tok/s on TensorFold 1.3.2. Next are Qwen3.8 Flash Next, 4-bit at 129.7 and Qwen3.8 Flash Next, 6-bit at 114.1.
 - **Two speeds per model.** Max is greedy at temperature 0 while the model writes new code. Median is the model's own sampler on mixed text, which is closer to daily use.
+- **Prefill too.** The table also has how fast each model read a cold prompt, with the prompt size.
 - **Coverage.** 19 models, 210 setups and 16 findings.
 - **Newest finding.** Finding 16, 21 Nov 2026. [Five models on oMLX 0.8.2, a version refresh](findings/16_omlx_082_refresh).
 - **Check it.** Every figure links to a folder with the rows it came from. If I have set an engine up wrong, [open an issue](https://github.com/LazyLocalLLM/m5-ultra-512-benchmarks/issues).
@@ -24,32 +25,36 @@ ELI5: The fastest setup I found for each model, one line each. The same tables, 
 - **Filter it.** Open [summary.csv](benchmark_summary/summary.csv). GitHub shows that file as a table with a search box, so you can type a model, an engine or a kind and see only those lines.
 - **Unfold it.** Under "Every setup measured" below, click a model to see all of its setups.
 - "not run yet" means I have not measured it. A line marked "older release" has been replaced by a newer run.
+- **Find the model.** Each model name links to the weights I ran. The row with a draft head joined here links to the base weights, and [finding 9](findings/09_omlx_080_four_models) has the join steps.
 
 ### Best per model
 
 The exact setup behind each figure is one click away, under "Every setup measured". "Reply text" says whether the timed replies were the model's answer or its reasoning. A reasoning speed is not an answer speed.
 
-| Model | Max tok/s | Median tok/s | Reply text | Engine | Finding |
-|---|---|---|---|---|---|
-| DeepSeek V4.1 Flash 1017, Lossless | **95.3** | **57.9** | answer | mlx-serve 26.11.3 | [8](findings/08_dsv41_mlxserve_26113) |
-| GLM-5.3, 4-bit | **24.6** | **24.5** | reasoning | oMLX 0.8.0 with its kernels | [9](findings/09_omlx_080_four_models) |
-| GLM-5.3, 4-bit, draft head joined here | **23.4** | **25.0** | reasoning | oMLX 0.8.0 with its kernels | [9](findings/09_omlx_080_four_models) |
-| GLM-5.3 Flash, 6-bit | not run yet | **57.8** | reasoning | oMLX 0.7.3 with its kernels | [2](findings/02_ten_models_4k_to_1m) |
-| GLM-5.3 Flash, oQ4e | **82.9** | **70.9** | answer for max, reasoning for median | TensorFold 1.3.2 for max, oMLX 0.8.2 with its kernels for median | [15](findings/15_glm53_flash_two_builds), [16](findings/16_omlx_082_refresh) |
-| Inkling 2 Small | **52.7** | **41.3** | mostly reasoning | oMLX 0.8.2 with its kernels | [16](findings/16_omlx_082_refresh) |
-| Qwen3.8 27B, 4-bit | **328.9** | **161.3** | answer | TensorFold 1.3.2 | [11](findings/11_qwen38_tensorfold_132) |
-| Qwen3.8 27B, full | **6.9** | **7.1** | answer | mlx-serve 26.11.3 | [8](findings/08_dsv41_mlxserve_26113) |
-| Qwen3.8 Flash Next, 4-bit | **206.8** | **129.7** | answer | TensorFold 1.3.2 | [11](findings/11_qwen38_tensorfold_132) |
-| Qwen3.8 Flash Next, 6-bit | **200.1** | **114.1** | answer | TensorFold 1.3.2 | [11](findings/11_qwen38_tensorfold_132) |
-| Qwen3.8 Flash Next, full | **54.3** | **34.6** | answer | oMLX 0.8.2 with its kernels | [16](findings/16_omlx_082_refresh) |
-| DeepSeek V4.1 Flash 1017, oQ4e-mtp | **86.2** | **57.9** | answer | oMLX 0.8.0 with its kernels | [5](findings/05_dsv41_omlx_080_max_push) |
-| DeepSeek V4.1 Flash 1017, maker's files | **75.6** | **44.5** | answer | TensorFold 1.3.0 | [6](findings/06_dsv41_tensorfold_130_max_push), [4](findings/04_dsv41_tensorfold_130) |
-| GLM-5.3 Flash, 4-bit | **102.0** | **80.9** | answer | TensorFold 1.3.2 | [15](findings/15_glm53_flash_two_builds) |
-| Hy4-flash, 4-bit | **71.5** | **51.3** | reasoning | TensorFold 1.3.2 | [10](findings/10_hy4_flash_tensorfold_132) |
-| Hy4-flash, 8-bit | **53.4** | **40.9** | reasoning | TensorFold 1.3.2 | [10](findings/10_hy4_flash_tensorfold_132) |
-| Hy4-flash, oQ4h | **76.8** | **54.0** | answer for max, reasoning for median | oMLX 0.8.2 with its kernels for max, oMLX 0.8.1 with its kernels for median | [16](findings/16_omlx_082_refresh), [12](findings/12_hy4_flash_omlx_081) |
-| Inkling 2 Mini, oQ4e | **83.5** | **65.8** | reasoning | oMLX 0.8.2 with its kernels | [16](findings/16_omlx_082_refresh) |
-| Inkling 2 Mini, oQ3e | **105.1** | **67.1** | reasoning | oMLX 0.8.1 with its kernels | [14](findings/14_inkling2_mini_omlx_081) |
+- **Prefill** is how fast the engine read a cold prompt, the prompt's tokens divided by the time to the first token. Each figure is the middle of every timed request on one engine release, at one prompt size and one kind of text. The cell names both. Reading speed changes with both, so compare two cells only where they match.
+- **Prefill engine.** The cell shows the best line of the engine of the best max, on a current release. Another engine is shown, and named, only where it read more than 5% faster on the same text at the same size. Every engine's line at every size is in [prefill.csv](benchmark_summary/prefill.csv).
+
+| Model | Max tok/s | Median tok/s | Prefill tok/s | Reply text | Engine | Finding |
+|---|---|---|---|---|---|---|
+| [DeepSeek V4.1 Flash 1017, Lossless](https://huggingface.co/ddalcu/DeepSeek-V4.1-Flash-1017-MLX-Serve-Lossless) | **95.3** | **57.9** | **3,187.2**, 4K mixed prompt | answer | mlx-serve 26.11.3 | [8](findings/08_dsv41_mlxserve_26113) |
+| [GLM-5.3, 4-bit](https://huggingface.co/mlx-community/GLM-5.3-4bit) | **24.6** | **24.5** | **645.7**, 4K mixed prompt | reasoning | oMLX 0.8.0 with its kernels | [9](findings/09_omlx_080_four_models) |
+| [GLM-5.3, 4-bit, draft head joined here](https://huggingface.co/mlx-community/GLM-5.3-4bit) | **23.4** | **25.0** | **646.9**, 4K mixed prompt | reasoning | oMLX 0.8.0 with its kernels | [9](findings/09_omlx_080_four_models) |
+| [GLM-5.3 Flash, 6-bit](https://huggingface.co/Jundot/GLM-5.3-Flash-oQ6e-mtp) | not run yet | **57.8** | **1,858.8**, 4K mixed prompt | reasoning | oMLX 0.7.3 with its kernels | [2](findings/02_ten_models_4k_to_1m) |
+| [GLM-5.3 Flash, oQ4e](https://huggingface.co/Jundot/GLM-5.3-Flash-oQ4e-mtp) | **82.9** | **70.9** | **2,182.4**, 4K mixed prompt, on oMLX 0.8.2 with its kernels | answer for max, reasoning for median | TensorFold 1.3.2 for max, oMLX 0.8.2 with its kernels for median | [15](findings/15_glm53_flash_two_builds), [16](findings/16_omlx_082_refresh) |
+| [Inkling 2 Small](https://huggingface.co/mlx-community/Inkling-2-Small-oQ4e) | **52.7** | **41.3** | **1,259.3**, 4K code prompt | mostly reasoning | oMLX 0.8.2 with its kernels | [16](findings/16_omlx_082_refresh) |
+| [Qwen3.8 27B, 4-bit](https://huggingface.co/TensorFold/Qwen3.8-27B-MLX-4bit) | **328.9** | **161.3** | **1,863.2**, 4K mixed prompt | answer | TensorFold 1.3.2 | [11](findings/11_qwen38_tensorfold_132) |
+| [Qwen3.8 27B, full](https://huggingface.co/mlx-community/Qwen3.8-27B-bf16) | **6.9** | **7.1** | **1,885.2**, 4K code prompt | answer | mlx-serve 26.11.3 | [8](findings/08_dsv41_mlxserve_26113) |
+| [Qwen3.8 Flash Next, 4-bit](https://huggingface.co/TensorFold/Qwen3.8-Flash-Next-MLX-4bit-MTP) | **206.8** | **129.7** | **4,072.2**, 4K code prompt | answer | TensorFold 1.3.2 | [11](findings/11_qwen38_tensorfold_132) |
+| [Qwen3.8 Flash Next, 6-bit](https://huggingface.co/TensorFold/Qwen3.8-Flash-Next-MLX-6bit-MTP) | **200.1** | **114.1** | **3,860.6**, 4K code prompt | answer | TensorFold 1.3.2 | [11](findings/11_qwen38_tensorfold_132) |
+| [Qwen3.8 Flash Next, full](https://huggingface.co/Qwen/Qwen3.8-Flash-Next) | **54.3** | **34.6** | **3,224.1**, 4K code prompt | answer | oMLX 0.8.2 with its kernels | [16](findings/16_omlx_082_refresh) |
+| [DeepSeek V4.1 Flash 1017, oQ4e-mtp](https://huggingface.co/mlx-community/DeepSeek-V4.1-Flash-1017-oQ4e-mtp) | **86.2** | **57.9** | **3,758.0**, 32K code prompt | answer | oMLX 0.8.0 with its kernels | [5](findings/05_dsv41_omlx_080_max_push), [3](findings/03_dsv41_omlx_080) |
+| [DeepSeek V4.1 Flash 1017, maker's files](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) | **75.6** | **44.5** | **1,371.1**, 32K code prompt | answer | TensorFold 1.3.0 | [6](findings/06_dsv41_tensorfold_130_max_push), [4](findings/04_dsv41_tensorfold_130) |
+| [GLM-5.3 Flash, 4-bit](https://huggingface.co/TensorFold/GLM-5.3-Flash-MLX-4bit-MTP) | **102.0** | **80.9** | **2,234.3**, 4K mixed prompt, on oMLX 0.8.1 with its kernels | answer | TensorFold 1.3.2 | [15](findings/15_glm53_flash_two_builds) |
+| [Hy4-flash, 4-bit](https://huggingface.co/TensorFold/Hy4-flash-MLX-4bit-MTP) | **71.5** | **51.3** | **1,647.4**, 1K code prompt | reasoning | TensorFold 1.3.2 | [10](findings/10_hy4_flash_tensorfold_132) |
+| [Hy4-flash, 8-bit](https://huggingface.co/TensorFold/Hy4-flash-MLX-8bit-MTP) | **53.4** | **40.9** | **1,233.6**, 1K code prompt | reasoning | TensorFold 1.3.2 | [10](findings/10_hy4_flash_tensorfold_132) |
+| [Hy4-flash, oQ4h](https://huggingface.co/Jundot/Hy4-flash-oQ4h-mtp) | **76.8** | **54.0** | **1,529.9**, 4K code prompt | answer for max, reasoning for median | oMLX 0.8.2 with its kernels for max, oMLX 0.8.1 with its kernels for median | [16](findings/16_omlx_082_refresh), [12](findings/12_hy4_flash_omlx_081) |
+| [Inkling 2 Mini, oQ4e](https://huggingface.co/mlx-community/Inkling-2-Mini-oQ4e-mtp) | **83.5** | **65.8** | **2,840.1**, 4K code prompt | reasoning | oMLX 0.8.2 with its kernels | [16](findings/16_omlx_082_refresh) |
+| [Inkling 2 Mini, oQ3e](https://huggingface.co/mlx-community/Inkling-2-Mini-oQ3e-mtp) | **105.1** | **67.1** | **2,850.7**, 4K code prompt | reasoning | oMLX 0.8.1 with its kernels | [14](findings/14_inkling2_mini_omlx_081) |
 
 ### Ceiling on easy text
 
@@ -57,16 +62,16 @@ ELI5: Two tests hand the model text it can guess almost perfectly, copying the p
 
 | Model | Copy task tok/s | Counting toy tok/s | Engine | Finding |
 |---|---|---|---|---|
-| DeepSeek V4.1 Flash 1017, Lossless | **167.0** | **121.5** | mlx-serve 26.11.3 | [8](findings/08_dsv41_mlxserve_26113) |
-| GLM-5.3 Flash, oQ4e | **156.8** | **96.3** | TensorFold 1.3.2 | [15](findings/15_glm53_flash_two_builds) |
-| Qwen3.8 27B, 4-bit | **814.3** | **448.9** | TensorFold 1.3.2 | [11](findings/11_qwen38_tensorfold_132) |
-| Qwen3.8 Flash Next, 4-bit | **351.6** | **369.3** | TensorFold 1.3.2 | [11](findings/11_qwen38_tensorfold_132) |
-| Qwen3.8 Flash Next, 6-bit | **260.0** | **296.4** | TensorFold 1.3.2 | [11](findings/11_qwen38_tensorfold_132) |
-| Qwen3.8 Flash Next, full | **128.7** | **51.4** | oMLX 0.8.2 with its kernels | [16](findings/16_omlx_082_refresh) |
-| DeepSeek V4.1 Flash 1017, oQ4e-mtp | **118.3** | **114.0** | oMLX 0.8.0 with its kernels | [5](findings/05_dsv41_omlx_080_max_push) |
-| DeepSeek V4.1 Flash 1017, maker's files | **159.0** | **111.9** | TensorFold 1.3.0 | [6](findings/06_dsv41_tensorfold_130_max_push) |
-| GLM-5.3 Flash, 4-bit | **175.0** | **111.1** | TensorFold 1.3.2 | [15](findings/15_glm53_flash_two_builds) |
-| Hy4-flash, oQ4h | **100.9** | **97.4** | oMLX 0.8.2 with its kernels | [16](findings/16_omlx_082_refresh) |
+| [DeepSeek V4.1 Flash 1017, Lossless](https://huggingface.co/ddalcu/DeepSeek-V4.1-Flash-1017-MLX-Serve-Lossless) | **167.0** | **121.5** | mlx-serve 26.11.3 | [8](findings/08_dsv41_mlxserve_26113) |
+| [GLM-5.3 Flash, oQ4e](https://huggingface.co/Jundot/GLM-5.3-Flash-oQ4e-mtp) | **156.8** | **96.3** | TensorFold 1.3.2 | [15](findings/15_glm53_flash_two_builds) |
+| [Qwen3.8 27B, 4-bit](https://huggingface.co/TensorFold/Qwen3.8-27B-MLX-4bit) | **814.3** | **448.9** | TensorFold 1.3.2 | [11](findings/11_qwen38_tensorfold_132) |
+| [Qwen3.8 Flash Next, 4-bit](https://huggingface.co/TensorFold/Qwen3.8-Flash-Next-MLX-4bit-MTP) | **351.6** | **369.3** | TensorFold 1.3.2 | [11](findings/11_qwen38_tensorfold_132) |
+| [Qwen3.8 Flash Next, 6-bit](https://huggingface.co/TensorFold/Qwen3.8-Flash-Next-MLX-6bit-MTP) | **260.0** | **296.4** | TensorFold 1.3.2 | [11](findings/11_qwen38_tensorfold_132) |
+| [Qwen3.8 Flash Next, full](https://huggingface.co/Qwen/Qwen3.8-Flash-Next) | **128.7** | **51.4** | oMLX 0.8.2 with its kernels | [16](findings/16_omlx_082_refresh) |
+| [DeepSeek V4.1 Flash 1017, oQ4e-mtp](https://huggingface.co/mlx-community/DeepSeek-V4.1-Flash-1017-oQ4e-mtp) | **118.3** | **114.0** | oMLX 0.8.0 with its kernels | [5](findings/05_dsv41_omlx_080_max_push) |
+| [DeepSeek V4.1 Flash 1017, maker's files](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) | **159.0** | **111.9** | TensorFold 1.3.0 | [6](findings/06_dsv41_tensorfold_130_max_push) |
+| [GLM-5.3 Flash, 4-bit](https://huggingface.co/TensorFold/GLM-5.3-Flash-MLX-4bit-MTP) | **175.0** | **111.1** | TensorFold 1.3.2 | [15](findings/15_glm53_flash_two_builds) |
+| [Hy4-flash, oQ4h](https://huggingface.co/Jundot/Hy4-flash-oQ4h-mtp) | **100.9** | **97.4** | oMLX 0.8.2 with its kernels | [16](findings/16_omlx_082_refresh) |
 
 ### Every setup measured
 
