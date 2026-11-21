@@ -4,7 +4,7 @@ By Local LLM L-Plate. Follow [@LazyLocalLLM on X](https://x.com/LazyLocalLLM) fo
 
 ELI5: One page with the best speed I have measured for each model on one Mac Studio M5 Ultra 512 GB. Every line links to the finding folder that holds the report and the raw rows.
 
-Updated 21 Nov 2026 13:21 SGT. All figures are decode speed in tok/s for one user.
+Updated 21 Nov 2026 13:52 SGT. All figures are decode speed in tok/s for one user.
 
 ## Two speeds per model
 
@@ -194,12 +194,18 @@ ELI5: Everything behind the table above, including the setups that were not the 
 | Hy4-flash, oQ4h | max | oMLX 0.8.1 with its kernels, Lightning MTP on, default depth, thinking off | greedy, temperature 0 | 4K code | 2,048 | 73.5 | 67.0 to 78.6 | 5 | 2026-11-21 | `61f1f5a70d04` | [12](../findings/12_hy4_flash_omlx_081) |
 | Hy4-flash, oQ4h | max | oMLX 0.8.1 with its kernels, Lightning MTP on, default depth, no thinking setting, reply is reasoning text | greedy, temperature 0 | 4K code | 2,048 | 54.4 | 50.0 to 57.8 | 5 | 2026-11-21 | `7b6ccfb9c907` | [12](../findings/12_hy4_flash_omlx_081) |
 | Hy4-flash, oQ4h | max | oMLX 0.8.1 with its kernels, Lightning MTP on, default depth, no thinking setting, reply is reasoning text | greedy, temperature 0 | 1K code | 2,048 | 53.8 | 52.7 to 56.4 | 5 | 2026-11-21 | `7b6ccfb9c907` | [12](../findings/12_hy4_flash_omlx_081) |
+| Hy4-flash, oQ4h | max | oMLX 0.8.1 with its kernels, Lightning MTP off, thinking off | greedy, temperature 0 | 4K code | 2,048 | 35.5 | 35.4 to 35.5 | 5 | 2026-11-21 | `7a70518485cc` | [12](../findings/12_hy4_flash_omlx_081) |
+| Hy4-flash, oQ4h | max | oMLX 0.8.1 with its kernels, Lightning MTP off, no thinking setting, reply is reasoning text | greedy, temperature 0 | 4K code | 2,048 | 35.5 | 35.4 to 35.6 | 5 | 2026-11-21 | `0404d67792d9` | [12](../findings/12_hy4_flash_omlx_081) |
+| Hy4-flash, oQ4h | max | oMLX 0.8.1 with its kernels, Lightning MTP off, no thinking setting, reply is reasoning text | greedy, temperature 0 | 1K code | 2,048 | 35.2 | 35.1 to 35.4 | 5 | 2026-11-21 | `0404d67792d9` | [12](../findings/12_hy4_flash_omlx_081) |
+| Hy4-flash, oQ4h | max | oMLX 0.8.1 with its kernels, Lightning MTP off, thinking off | greedy, temperature 0 | 1K code | 2,048 | 35.1 | 35.0 to 35.4 | 5 | 2026-11-21 | `7a70518485cc` | [12](../findings/12_hy4_flash_omlx_081) |
 | Hy4-flash, oQ4h | copy task | oMLX 0.8.1 with its kernels, Lightning MTP on, default depth, thinking off | greedy, temperature 0 | 1K code | 512 | 101.0 | 94.3 to 103.0 | 5 | 2026-11-21 | `61f1f5a70d04` | [12](../findings/12_hy4_flash_omlx_081) |
 | Hy4-flash, oQ4h | copy task | oMLX 0.8.1 with its kernels, Lightning MTP on, default depth, thinking off | greedy, temperature 0 | 4K code | 512 | 92.1 | 88.1 to 93.3 | 5 | 2026-11-21 | `61f1f5a70d04` | [12](../findings/12_hy4_flash_omlx_081) |
 | Hy4-flash, oQ4h | counting toy | oMLX 0.8.1 with its kernels, Lightning MTP on, default depth, thinking off | greedy, temperature 0 | 1K code | 512 | 97.4 | 92.1 to 98.9 | 5 | 2026-11-21 | `61f1f5a70d04` | [12](../findings/12_hy4_flash_omlx_081) |
 | Hy4-flash, oQ4h | counting toy | oMLX 0.8.1 with its kernels, Lightning MTP on, default depth, thinking off | greedy, temperature 0 | 4K code | 512 | 92.0 | 91.3 to 92.0 | 5 | 2026-11-21 | `61f1f5a70d04` | [12](../findings/12_hy4_flash_omlx_081) |
 | Hy4-flash, oQ4h | median | oMLX 0.8.1 with its kernels, Lightning MTP on, default depth, no thinking setting, reply is reasoning text | temperature 0.9, top-p 1.0 | 4K mixed | 512 | 54.0 | 50.4 to 57.9 | 5 | 2026-11-21 | `7b6ccfb9c907` | [12](../findings/12_hy4_flash_omlx_081) |
 | Hy4-flash, oQ4h | median | oMLX 0.8.1 with its kernels, Lightning MTP on, default depth, thinking off | temperature 0.9, top-p 1.0 | 4K mixed | 512 | 53.7 | 50.8 to 57.5 | 5 | 2026-11-21 | `61f1f5a70d04` | [12](../findings/12_hy4_flash_omlx_081) |
+| Hy4-flash, oQ4h | median | oMLX 0.8.1 with its kernels, Lightning MTP off, thinking off | temperature 0.9, top-p 1.0 | 4K mixed | 512 | 35.5 | 35.5 to 35.6 | 5 | 2026-11-21 | `7a70518485cc` | [12](../findings/12_hy4_flash_omlx_081) |
+| Hy4-flash, oQ4h | median | oMLX 0.8.1 with its kernels, Lightning MTP off, no thinking setting, reply is reasoning text | temperature 0.9, top-p 1.0 | 4K mixed | 512 | 35.5 | 35.4 to 35.6 | 5 | 2026-11-21 | `0404d67792d9` | [12](../findings/12_hy4_flash_omlx_081) |
 
 ## Check it yourself
 

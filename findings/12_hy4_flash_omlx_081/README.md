@@ -4,7 +4,9 @@ By Local LLM L-Plate. Follow [@LazyLocalLLM on X](https://x.com/LazyLocalLLM) fo
 
 ELI5: oMLX 0.8.1 came out on 21 Nov 2026 at 09:17 SGT and is the first oMLX release that loads Hy4-flash. I ran it the same morning on the oMLX author's own 4-bit build. On this engine the thinking switch works, so the model can be timed while it writes a plain answer. Max is greedy at temperature 0 while writing new code. Median is the model's own sampler on mixed text.
 
-**oMLX 0.8.1 wrote 75.6 tok/s on Hy4-flash oQ4h on new code with thinking switched off, and 53.7 with the model's own sampler. Those replies are answer text. With no thinking setting in the request the model thinks, and oMLX wrote 54.4 and 54.0. Thinking off built the 46-token prompt that the model's own chat template renders for it, and the replies I read back were clean. One server start per setting. Mac Studio M5 Ultra 512 GB, one user, median of 5 runs, 21 Nov 2026.**
+**oMLX 0.8.1 wrote 75.6 tok/s on Hy4-flash oQ4h on new code with thinking switched off, and 53.7 with the model's own sampler. Those replies are answer text. With no thinking setting in the request the model thinks, and oMLX wrote 54.4 and 54.0. Thinking off built the 46-token prompt that the model's own chat template renders for it, and the replies I read back were clean. With drafts off the same build wrote 35.1 to 35.5, so the drafts gave 2.1 to 2.2 times with thinking off and 1.5 times on thinking text. One server start per setting. Mac Studio M5 Ultra 512 GB, one user, median of 5 runs, 21 Nov 2026.**
+
+Updated on 21 Nov 2026 at 13:52 SGT with two starts that have drafts off.
 
 | Setting | Max, tok/s | Median, tok/s | What the reply is |
 |---|---|---|---|
@@ -98,16 +100,59 @@ Greedy, new code, no thinking setting, one start each, tok/s at 1K and 4K.
 - **Fixed depth 4 was faster on every long reply.** Text by text against the default, 10 of 10 with a middle ratio of 1.09. On short replies it was faster on 7 of 10 with 1.03.
 - **Fixed depth 6 was level.** Faster on 7 of 10 long replies with a middle ratio of 1.02, and on 4 of 10 short ones with 0.97.
 - **The text changed with the depth.** I sent 50 short greedy questions twice to each start and compared the whole reply. Each start gave the same text on both passes, 50 of 50. Against the default start, depth 4 gave the same text on 48 of 100 replies and depth 6 on 50 of 100. Depths 4 and 6 agreed with each other on 98 of 100.
-- **I can't say which text is the plain one.** I have no start with drafts off on this build yet.
+- **Against a start with drafts off the text differs too.** The counts are in the section "Drafts off, the baseline".
 - **So the summary page stays on the default depth.**
 - **The log shows the depth took.** The last request drafted to depth 3 at the default, 4 at fixed depth 4 and 5 at fixed depth 6.
+
+## Drafts off, the baseline
+
+ELI5: The speeds above have the model's draft helper on. Here it is off, so the model writes one token a step. This is the bar the drafts have to beat.
+
+Decode tok/s with `mtp_enabled` false, one start each. Thinking off is run `7a70518485cc`. No thinking setting is run `0404d67792d9`.
+
+| Test | Prompt | Thinking off, drafts off | Thinking off, drafts on | No setting, drafts off | No setting, drafts on |
+|---|---|---|---|---|---|
+| Greedy, new code, replies up to 2,048 tokens | 1K | 35.1 (35.0 to 35.4) | 75.6 | 35.2 (35.1 to 35.4) | 53.8 |
+| Greedy, new code, replies up to 2,048 tokens | 4K | 35.5 (35.4 to 35.5) | 73.5 | 35.5 (35.4 to 35.6) | 54.4 |
+| Greedy, new code, 512-token replies | 1K | 37.4 (34.7 to 38.2) | 73.0 | 37.8 (34.9 to 38.2) | 57.8 |
+| Greedy, new code, 512-token replies | 4K | 35.3 (35.3 to 35.5) | 68.2 | 35.6 (35.5 to 35.6) | 52.9 |
+| Own sampler, mixed text, 512-token replies | 4K | 35.5 (35.5 to 35.6) | 53.7 | 35.5 (35.4 to 35.6) | 54.0 |
+
+- **Plain decoding is about 35 tok/s whatever the text.** The two starts agree in every cell, and the runs inside a cell sit within 1 tok/s of each other at 4K.
+- **Drafts gave 2.1 to 2.2 times on answer text.** 75.6 / 35.1 = 2.15 times at 1K and 73.5 / 35.5 = 2.07 times at 4K, on long code replies with thinking off.
+- **Drafts gave 1.5 times on thinking text.** 53.8 / 35.2 = 1.53 times at 1K and 54.4 / 35.5 = 1.53 times at 4K.
+- **With the model's own sampler drafts gave 1.5 times** on both settings. 53.7 / 35.5 = 1.51 and 54.0 / 35.5 = 1.52.
+- **The log shows no draft line on either start**, against 122 to 403 on the starts with drafts on.
+- **Memory.** The server held 114.2 GiB at the end of the first of these starts and 125.0 GiB at the end of the second, by `ps`.
+
+### The text with drafts on and off
+
+ELI5: Drafts are checked by the model, so one would expect the same words with them on or off. On this build that is not what I measured. I report the counts and no cause.
+
+50 short greedy questions sent twice to each start, 64 tokens each, the whole reply compared.
+
+| Compared | Replies with the same text |
+|---|---|
+| Each start against itself, second pass against first | 50 of 50, on all six starts |
+| Thinking off, drafts off against drafts on | 30 of 100 |
+| No thinking setting, drafts off against drafts on at the default depth | 38 of 100 |
+| No thinking setting, drafts off against fixed depth 4 | 34 of 100 |
+| No thinking setting, drafts off against fixed depth 6 | 36 of 100 |
+| Default depth against fixed depth 4 | 48 of 100 |
+| Fixed depth 4 against fixed depth 6 | 98 of 100 |
+
+- **Every start repeats itself.** So the text is fixed once a server is up.
+- **Different settings gave different text on most replies.**
+- **I have not run one setting twice.** So I can't say how much of this is the setting and how much is two starts differing. That is the next check.
+- **A reply is 64 tokens.** One early token that differs changes all the text after it.
+- **This says nothing about which text is better.** I did not grade the answers.
 
 ## Reference points
 
 ELI5: My usual baseline is Apple's `mlx-lm` on the same weights. It can't load this model, and this build is in a format only oMLX reads. So there is no baseline bar.
 
 - **No `mlx-lm` baseline.** `mlx-lm` 0.32.2 has no model file for Hy4-flash.
-- **No drafts-off start.** So I can't give the gain from drafts on this engine yet.
+- **The baseline here is the same build with drafts off**, about 35 tok/s, in the section above.
 - **The same model on TensorFold 1.3.2**, on TensorFold's own 4-bit build, is in [finding 10](../10_hy4_flash_tensorfold_132). Those are different weights. Like for like is thinking on. TensorFold wrote 63.2 and 65.3 on long code replies, against 53.8 and 54.4 here. With the model's own sampler, three TensorFold starts wrote 45.1 to 50.0, against 54.0 here.
 - **Thinking off is where the two differ most.** On TensorFold 1.3.2 the thinking-off replies went off course, as finding 10 shows, so I have no clean answer speed there to set against the 75.6.
 - **The oMLX author's own figures** for this model are in the [0.8.1 release notes](https://github.com/jundot/omlx/releases/tag/v0.8.1), on another Mac.
@@ -125,7 +170,7 @@ omlx serve --model-dir <models> --host 127.0.0.1 --port 8193 --max-concurrent-re
 
 - **Weights.** [Jundot/Hy4-flash-oQ4h-mtp](https://huggingface.co/Jundot/Hy4-flash-oQ4h-mtp) @ 6255edf3, 123.4 GiB, the oMLX author's oQ4h build of [tencent/Hy4-flash](https://huggingface.co/tencent/Hy4-flash) with the DFly2 drafter in it. Every file was verified against the pinned commit.
 - **Hugging Face's security scan of that repository was not finished** when I read it on 21 Nov 2026 at 12:29 SGT. No file was flagged. The files I loaded are safetensors, JSON and text.
-- **Model settings**, in oMLX's own `model_settings.json`. `mtp_enabled` true, `a8_prefill_enabled` false, `activation_fp16_enabled` false. The log reads "Speculative backend selected ... Lightning MTP (model_type=hy_v4_flash, active)".
+- **Model settings**, in oMLX's own `model_settings.json`. `mtp_enabled` true, `a8_prefill_enabled` false, `activation_fp16_enabled` false. The log reads "Speculative backend selected ... Lightning MTP (model_type=hy_v4_flash, active)". On the two drafts-off starts `mtp_enabled` was false.
 - **Fixed depth.** `mtp_fixed_depth` set to 4 or 6. Unset is the default.
 - **Burst decode.** `server.burst_decode_mode` at `balanced`, the default.
 - **Sampler.** Temperature 0.9 and top-p 1.0, from the model's `generation_config.json`.
@@ -138,6 +183,8 @@ omlx serve --model-dir <models> --host 127.0.0.1 --port 8193 --max-concurrent-re
 | `61f1f5a70d04` | Off | Default depth | 11:44 |
 | `121f68e9098b` | No setting | Fixed depth 4 | 12:02 |
 | `0a9efd6711fc` | No setting | Fixed depth 6 | 12:13 |
+| `7a70518485cc` | Off | Drafts off | 13:16 |
+| `0404d67792d9` | No setting | Drafts off | 13:32 |
 
 ## How I measured
 
@@ -166,8 +213,8 @@ ELI5: A speed is only comparable with another speed measured the same way.
 
 ELI5: Every timed request is in this folder. You can redo every median.
 
-- **`rows.csv`.** 144 raw rows from the bench database. 130 timed requests and 14 warm-ups.
-- **`runs.csv`.** The 4 runs behind them, with engine, version, start time, settings and sampling.
+- **`rows.csv`.** 200 raw rows from the bench database. 180 timed requests and 20 warm-ups.
+- **`runs.csv`.** The 6 runs behind them, with engine, version, start time, settings and sampling.
 
 From the top of this repository.
 
@@ -178,7 +225,7 @@ python3 tools/summarize.py findings/12_hy4_flash_omlx_081
 ## What I did not verify
 
 - **What the timed replies say.** I read back the probe, two thinking-off replies and the short previews of the answer check.
-- **A start with drafts off.**
+- **Two starts of one setting.** Without that I can't separate a setting's effect on the text from a start's.
 - **A second start** of any setting.
 - **The model's own sampler at a fixed depth**, and any fixed depth with thinking off.
 - **Answer quality.**

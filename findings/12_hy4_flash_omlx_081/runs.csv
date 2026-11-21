@@ -11,3 +11,9 @@ BuildVersion:		26B118",low power mode off,hy4-flash-mlx-oq4h,mlx,oQ4h,,"{""tempe
 0a9efd6711fc,2026-11-21 12:13:32 SGT,measured here,"Apple M5 Ultra, 80-core GPU, 512 GB, macOS 27.2",omlx-081-kernels,0.8.1,hy4-flash-mlx-oq4h,Hy4-flash,Jundot/Hy4-flash-oQ4h-mtp,"oMLX 0.8.1 with custom kernels, MTP on, fixed depth 6, burst balanced, A8 off, fp16 off, build hy4-flash-mlx-oq4h, ctx 131072, max-concurrent 1, thinking server, greedy, code",server,,"ProductName:		macOS
 ProductVersion:		27.2
 BuildVersion:		26B118",low power mode off,hy4-flash-mlx-oq4h,mlx,oQ4h,,"{""temperature"": 0}",23f31f1d8feb,2.0,,0,0
+7a70518485cc,2026-11-21 13:16:42 SGT,measured here,"Apple M5 Ultra, 80-core GPU, 512 GB, macOS 27.2",omlx-081-kernels,0.8.1,hy4-flash-mlx-oq4h,Hy4-flash,Jundot/Hy4-flash-oQ4h-mtp,"oMLX 0.8.1 with custom kernels, MTP off, no drafts, burst balanced, A8 off, fp16 off, build hy4-flash-mlx-oq4h, ctx 131072, max-concurrent 1, thinking off, sampled, mixed",off,,"ProductName:		macOS
+ProductVersion:		27.2
+BuildVersion:		26B118",low power mode off,hy4-flash-mlx-oq4h,mlx,oQ4h,,"{""temperature"": 0.9, ""top_p"": 1.0, ""enable_thinking"": false, ""chat_template_kwargs"": {""enable_thinking"": false}}",23f31f1d8feb,2.0,,0,0
+0404d67792d9,2026-11-21 13:33:05 SGT,measured here,"Apple M5 Ultra, 80-core GPU, 512 GB, macOS 27.2",omlx-081-kernels,0.8.1,hy4-flash-mlx-oq4h,Hy4-flash,Jundot/Hy4-flash-oQ4h-mtp,"oMLX 0.8.1 with custom kernels, MTP off, no drafts, burst balanced, A8 off, fp16 off, build hy4-flash-mlx-oq4h, ctx 131072, max-concurrent 1, thinking server, sampled, mixed",server,,"ProductName:		macOS
+ProductVersion:		27.2
+BuildVersion:		26B118",low power mode off,hy4-flash-mlx-oq4h,mlx,oQ4h,,"{""temperature"": 0.9, ""top_p"": 1.0}",23f31f1d8feb,2.0,,0,0
