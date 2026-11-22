@@ -8,14 +8,14 @@ ELI5: I'm a learner with one Mac Studio M5 Ultra 512 GB, and I time local AI mod
 
 ELI5: The page in seven lines. Every figure here is recomputed from the raw rows each time the page is built.
 
-Updated 22 Nov 2026 16:43 SGT. Decode speed in tok/s, one user, one Mac.
+Updated 22 Nov 2026 18:41 SGT. Decode speed in tok/s, one user, one Mac.
 
 - **Fastest on new code.** Qwen3.8 27B, 4-bit wrote 315.3 tok/s on TensorFold 1.3.3. Next are Qwen3.8 Flash Next, 4-bit at 209.5 and Qwen3.8 Flash Next, 6-bit at 201.3.
 - **Fastest in daily use.** Qwen3.8 27B, 4-bit wrote 164.1 tok/s on TensorFold 1.3.3. Next are Qwen3.8 Flash Next, 4-bit at 130.9 and Qwen3.8 Flash Next, 6-bit at 114.5.
 - **Two speeds per model.** Max is greedy at temperature 0 while the model writes new code. Median is the model's own sampler on mixed text, which is closer to daily use.
 - **Prefill too.** The table also has how fast each model read a cold prompt, with the prompt size.
-- **Coverage.** 19 models, 267 setups and 19 findings.
-- **Newest finding.** Finding 19, 22 Nov 2026. [Seven builds on TensorFold 1.3.3, a version refresh](findings/19_tensorfold_133_refresh).
+- **Coverage.** 20 models, 272 setups and 20 findings.
+- **Newest finding.** Finding 20, 22 Nov 2026. [Inkling 2 Mini on the mlx-serve 26.11.4 pre-release, max and median speed](findings/20_inkling2_mini_mlxserve_pre).
 - **Check it.** Every figure links to a folder with the rows it came from. If I have set an engine up wrong, [open an issue](https://github.com/LazyLocalLLM/m5-ultra-512-benchmarks/issues).
 
 ## Benchmark summary
@@ -55,6 +55,7 @@ The exact setup behind each figure is one click away, under "Every setup measure
 | [Hy4-flash, oQ4h](https://huggingface.co/Jundot/Hy4-flash-oQ4h-mtp) | **76.8** | **54.0** | **1,529.9**, 4K code prompt | answer for max, reasoning for median | oMLX 0.8.2 with its kernels for max, oMLX 0.8.1 with its kernels for median | [16](findings/16_omlx_082_refresh), [12](findings/12_hy4_flash_omlx_081) |
 | [Inkling 2 Mini, oQ4e](https://huggingface.co/mlx-community/Inkling-2-Mini-oQ4e-mtp) | **88.5** | **66.2** | **2,791.3**, 4K code prompt | reasoning | oMLX 0.8.2 with its kernels | [16](findings/16_omlx_082_refresh) |
 | [Inkling 2 Mini, oQ3e](https://huggingface.co/mlx-community/Inkling-2-Mini-oQ3e-mtp) | **105.1** | **67.1** | **2,850.7**, 4K code prompt | reasoning | oMLX 0.8.1 with its kernels | [14](findings/14_inkling2_mini_omlx_081) |
+| [Inkling 2 Mini, 8-bit](https://huggingface.co/ddalcu/Inkling-2-Mini-MLX-8bit) | **146.8** | **104.5** | **4,932.1**, 4K code prompt | reasoning | mlx-serve 26.11.4-pre-release.1, main at 2fe9be83 | [20](findings/20_inkling2_mini_mlxserve_pre) |
 
 ### Ceiling on easy text
 
@@ -496,9 +497,33 @@ ELI5: Everything behind the tables above, including the setups that were not the
 
 </details>
 
+<details>
+<summary><b>Inkling 2 Mini, 8-bit</b>, 5 setups</summary>
+
+| Kind | Engine and setup | Sampler | Prompt | Reply tokens | Decode tok/s | Range | Runs | Date | Run | Finding |
+|---|---|---|---|---|---|---|---|---|---|---|
+| max | mlx-serve 26.11.4-pre-release.1, main at 2fe9be83, drafts on as the engine picks them, reply is reasoning text, second start | greedy, temperature 0 | 1K code | 2,048 | 146.8 | 131.4 to 162.8 | 5 | 2026-11-22 | `3f129b289ed7` | [20](findings/20_inkling2_mini_mlxserve_pre) |
+| max | mlx-serve 26.11.4-pre-release.1, main at 2fe9be83, drafts on as the engine picks them, reply is reasoning text, second start | greedy, temperature 0 | 4K code | 2,048 | 138.7 | 112.5 to 140.2 | 5 | 2026-11-22 | `3f129b289ed7` | [20](findings/20_inkling2_mini_mlxserve_pre) |
+| max | mlx-serve 26.11.4-pre-release.1, main at 2fe9be83, drafts off (--no-mtp --no-drafter --no-pld), reply is reasoning text | greedy, temperature 0 | 1K code | 2,048 | 107.4 | 106.9 to 107.4 | 5 | 2026-11-22 | `8dddc3d76174` | [20](findings/20_inkling2_mini_mlxserve_pre) |
+| max | mlx-serve 26.11.4-pre-release.1, main at 2fe9be83, drafts off (--no-mtp --no-drafter --no-pld), reply is reasoning text | greedy, temperature 0 | 4K code | 2,048 | 105.6 | 105.4 to 106.0 | 5 | 2026-11-22 | `8dddc3d76174` | [20](findings/20_inkling2_mini_mlxserve_pre) |
+| median | mlx-serve 26.11.4-pre-release.1, main at 2fe9be83, drafts on as the engine picks them, reply is reasoning text | temperature 1.0, top-p 1.0 | 4K mixed | 512 | 104.5 | 102.9 to 107.3 | 5 | 2026-11-22 | `338b6385675f` | [20](findings/20_inkling2_mini_mlxserve_pre) |
+
+</details>
+
 ## Findings
 
 ELI5: Each finding is one question, one run of an hour or two, and one report. Newest first. Click a title for the full report and the raw rows.
+
+### 20. [Inkling 2 Mini on the mlx-serve 26.11.4 pre-release, max and median speed](findings/20_inkling2_mini_mlxserve_pre)
+
+Runs of 22 Nov 2026. mlx-serve 26.11.4-pre-release.1 wrote 146.8 tok/s on Inkling 2 Mini at its max, on its latest start, and 160.5 on the start before. With the model's own sampler it wrote 104.5. With its drafts off the same pack wrote 107.4, so text by text the drafts were faster on all 10 long code replies, with a middle ratio of 1.32. Every reply I read back was reasoning text, though the request switched thinking off.
+
+<details>
+<summary>Chart</summary>
+
+![Bars of writing speed in tokens per second for Inkling 2 Mini on the mlx-serve 26.11.4 pre-release, greedy at temperature 0, new code, replies of up to 2,048 tokens. At a 1K prompt, drafts off 107.4, drafts on first start 160.5, drafts on second start 146.8. At 4K, 105.6, 131.3 and 138.7.](findings/20_inkling2_mini_mlxserve_pre/chart_max.png)
+
+</details>
 
 ### 19. [Seven builds on TensorFold 1.3.3, a version refresh](findings/19_tensorfold_133_refresh)
 

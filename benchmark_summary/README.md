@@ -4,7 +4,7 @@ By Local LLM L-Plate. Follow [@LazyLocalLLM on X](https://x.com/LazyLocalLLM) fo
 
 ELI5: One page with the best speed I have measured for each model on one Mac Studio M5 Ultra 512 GB. Every line links to the finding folder that holds the report and the raw rows.
 
-Updated 22 Nov 2026 16:43 SGT. Max and median are decode speed in tok/s for one user. Prefill is prompt-reading speed in tok/s.
+Updated 22 Nov 2026 18:41 SGT. Max and median are decode speed in tok/s for one user. Prefill is prompt-reading speed in tok/s.
 
 ## Two speeds per model
 
@@ -43,6 +43,7 @@ ELI5: The fastest setup I found for each model, one line each.
 | [Hy4-flash, oQ4h](https://huggingface.co/Jundot/Hy4-flash-oQ4h-mtp) | **76.8** | oMLX 0.8.2 with its kernels, Lightning MTP on, default depth, thinking off. 1K prompt, code, replies up to 2,048 tokens, 5 runs, 2026-11-21 | **54.0** | oMLX 0.8.1 with its kernels, Lightning MTP on, default depth, no thinking setting, reply is reasoning text. 4K prompt, mixed, replies up to 512 tokens, 5 runs, 2026-11-21 | **1,529.9** | oMLX 0.8.2 with its kernels. 4K code prompt, 20 requests over 1 run, 2026-11-21 | [16](../findings/16_omlx_082_refresh), [12](../findings/12_hy4_flash_omlx_081) |
 | [Inkling 2 Mini, oQ4e](https://huggingface.co/mlx-community/Inkling-2-Mini-oQ4e-mtp) | **88.5** | oMLX 0.8.2 with its kernels, DSpark draft on, default depth, reply is reasoning text, second start. 1K prompt, code, replies up to 2,048 tokens, 5 runs, 2026-11-22 | **66.2** | oMLX 0.8.2 with its kernels, DSpark draft on, default depth, reply is reasoning text, second start. 4K prompt, mixed, replies up to 512 tokens, 5 runs, 2026-11-22 | **2,791.3** | oMLX 0.8.2 with its kernels. 4K code prompt, 10 requests over 1 run, 2026-11-22 | [16](../findings/16_omlx_082_refresh) |
 | [Inkling 2 Mini, oQ3e](https://huggingface.co/mlx-community/Inkling-2-Mini-oQ3e-mtp) | **105.1** | oMLX 0.8.1 with its kernels, DSpark draft on, default depth, reply is reasoning text. 4K prompt, code, replies up to 2,048 tokens, 5 runs, 2026-11-21 | **67.1** | oMLX 0.8.1 with its kernels, DSpark draft on, default depth, reply is reasoning text. 4K prompt, mixed, replies up to 512 tokens, 5 runs, 2026-11-21 | **2,850.7** | oMLX 0.8.1 with its kernels. 4K code prompt, 20 requests over 1 run, 2026-11-21 | [14](../findings/14_inkling2_mini_omlx_081) |
+| [Inkling 2 Mini, 8-bit](https://huggingface.co/ddalcu/Inkling-2-Mini-MLX-8bit) | **146.8** | mlx-serve 26.11.4-pre-release.1, main at 2fe9be83, drafts on as the engine picks them, reply is reasoning text, second start. 1K prompt, code, replies up to 2,048 tokens, 5 runs, 2026-11-22 | **104.5** | mlx-serve 26.11.4-pre-release.1, main at 2fe9be83, drafts on as the engine picks them, reply is reasoning text. 4K prompt, mixed, replies up to 512 tokens, 5 runs, 2026-11-22 | **4,932.1** | mlx-serve 26.11.4-pre-release.1, main at 2fe9be83. 4K code prompt, 35 requests over 3 runs, 2026-11-22 | [20](../findings/20_inkling2_mini_mlxserve_pre) |
 
 ## Ceiling on easy text
 
@@ -338,6 +339,11 @@ ELI5: Everything behind the table above, including the setups that were not the 
 | Inkling 2 Mini, oQ3e | max | oMLX 0.8.1 with its kernels, DSpark draft on, default depth, reply is reasoning text | greedy, temperature 0 | 4K code | 2,048 | 105.1 | 92.2 to 111.9 | 5 | 2026-11-21 | `472bfd081962` | [14](../findings/14_inkling2_mini_omlx_081) |
 | Inkling 2 Mini, oQ3e | max | oMLX 0.8.1 with its kernels, DSpark draft on, default depth, reply is reasoning text | greedy, temperature 0 | 1K code | 2,048 | 100.6 | 87.6 to 105.7 | 5 | 2026-11-21 | `472bfd081962` | [14](../findings/14_inkling2_mini_omlx_081) |
 | Inkling 2 Mini, oQ3e | median | oMLX 0.8.1 with its kernels, DSpark draft on, default depth, reply is reasoning text | temperature 1.0, top-p 1.0 | 4K mixed | 512 | 67.1 | 61.3 to 83.1 | 5 | 2026-11-21 | `472bfd081962` | [14](../findings/14_inkling2_mini_omlx_081) |
+| Inkling 2 Mini, 8-bit | max | mlx-serve 26.11.4-pre-release.1, main at 2fe9be83, drafts on as the engine picks them, reply is reasoning text, second start | greedy, temperature 0 | 1K code | 2,048 | 146.8 | 131.4 to 162.8 | 5 | 2026-11-22 | `3f129b289ed7` | [20](../findings/20_inkling2_mini_mlxserve_pre) |
+| Inkling 2 Mini, 8-bit | max | mlx-serve 26.11.4-pre-release.1, main at 2fe9be83, drafts on as the engine picks them, reply is reasoning text, second start | greedy, temperature 0 | 4K code | 2,048 | 138.7 | 112.5 to 140.2 | 5 | 2026-11-22 | `3f129b289ed7` | [20](../findings/20_inkling2_mini_mlxserve_pre) |
+| Inkling 2 Mini, 8-bit | max | mlx-serve 26.11.4-pre-release.1, main at 2fe9be83, drafts off (--no-mtp --no-drafter --no-pld), reply is reasoning text | greedy, temperature 0 | 1K code | 2,048 | 107.4 | 106.9 to 107.4 | 5 | 2026-11-22 | `8dddc3d76174` | [20](../findings/20_inkling2_mini_mlxserve_pre) |
+| Inkling 2 Mini, 8-bit | max | mlx-serve 26.11.4-pre-release.1, main at 2fe9be83, drafts off (--no-mtp --no-drafter --no-pld), reply is reasoning text | greedy, temperature 0 | 4K code | 2,048 | 105.6 | 105.4 to 106.0 | 5 | 2026-11-22 | `8dddc3d76174` | [20](../findings/20_inkling2_mini_mlxserve_pre) |
+| Inkling 2 Mini, 8-bit | median | mlx-serve 26.11.4-pre-release.1, main at 2fe9be83, drafts on as the engine picks them, reply is reasoning text | temperature 1.0, top-p 1.0 | 4K mixed | 512 | 104.5 | 102.9 to 107.3 | 5 | 2026-11-22 | `338b6385675f` | [20](../findings/20_inkling2_mini_mlxserve_pre) |
 
 ## Check it yourself
 
