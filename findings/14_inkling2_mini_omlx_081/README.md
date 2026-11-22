@@ -72,17 +72,28 @@ ELI5: The request asked the model not to think. It thought anyway, as Inkling 2 
 
 ## The text with drafts on and off
 
-ELI5: I sent 50 short greedy questions twice to each start and compared the whole reply, thinking text included. I report the counts and no cause.
+ELI5: I sent 50 short greedy questions twice to each start and compared the whole reply, thinking text included. Two different checks come out of that. Does one start give the same reply when asked the same question again? And does turning drafts off change the reply? I report the counts and no cause.
+
+**One start, the same question asked twice.**
+
+| Start | Second reply equal to the first |
+|---|---|
+| oQ4e, drafts off | 50 of 50 |
+| oQ4e, drafts on | 47 of 50 |
+| oQ3e, drafts on | 48 of 50 |
+
+**Two starts, drafts off against drafts on, the same questions.**
 
 | Compared | Replies with the same text |
 |---|---|
-| oQ4e drafts off, second pass against first | 50 of 50 |
-| oQ4e drafts on, second pass against first | 47 of 50 |
-| oQ3e drafts on, second pass against first | 48 of 50 |
-| oQ4e, drafts off against drafts on | 43 of 100 |
+| oQ4e drafts off against oQ4e drafts on | 43 of 100 |
 
-- **With drafts on, one start did not always repeat itself.** 3 of 50 replies on oQ4e and 2 of 50 on oQ3e differed between two passes of the same question.
-- **With drafts off it did**, on 50 of 50.
+- **The two tables measure different things.** The first asks whether a start repeats itself. The second asks whether drafts change the text.
+- **With drafts on, one start mostly repeated itself.** 3 of 50 replies on oQ4e and 2 of 50 on oQ3e differed between two passes of the same question.
+- **With drafts off it always did**, on 50 of 50.
+- **But drafts on and drafts off mostly wrote different text.** The 100 are the 50 questions on both passes. They agreed on 21 of 50 questions on the first pass and 22 of 50 on the second, 43 in all. So drafts changed the reply on more than half the questions.
+- **That is the surprising part.** The model checks every draft, so with greedy decoding the text should not change. On this engine and model it did. Finding 12 shows the same on Hy4-flash.
+- **Reworded on 22 Nov 2026 at 12:56 SGT** to split the two checks into two tables. No figure changed.
 - **A reply is 64 tokens.** One early token that differs changes all the text after it.
 - **This says nothing about which text is better.** I did not grade the answers.
 
