@@ -173,6 +173,7 @@ ELI5: My usual baseline is Apple's `mlx-lm` on the same weights. It has no model
 
 ELI5: Two engines, two builds, and a fresh server start for every setting. TensorFold is at its newest release. oMLX is one hotfix behind.
 
+- **Added 22 Nov 2026 08:17 SGT.** Both builds were rerun on TensorFold 1.3.3 with MTP drafts. I see no change. 1.3.3 also starts with a DFlash2 draft model on a Mac, which this page records 1.3.2 refusing. The drafts-off lines stay on 1.3.2. That run is [finding 19](../19_tensorfold_133_refresh), and the summary page now shows its lines.
 - **Engine 1.** [TensorFold](https://github.com/ashhart/TensorFold) 1.3.2, released 21 Nov 2026 03:27 SGT, installed from the project's Homebrew tap. `tensorfold-native --version` prints 1.3.2.
 
 ```bash

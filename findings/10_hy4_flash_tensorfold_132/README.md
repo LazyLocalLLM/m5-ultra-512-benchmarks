@@ -225,6 +225,7 @@ ELI5: 1.3.1 was the first release to serve this model. 1.3.2 came out under six 
 
 ELI5: One engine at its newest release. The headline starts are at its defaults, and the switch starts name the one variable they set. A fresh server start for every setting.
 
+- **Added 22 Nov 2026 08:17 SGT.** The 4-bit build was rerun on TensorFold 1.3.3 at defaults and with `TF_HY4_DRAFT_BITS=8`. I see no change, and the switch was again faster on every code text. The 8-bit build is parked and stays on 1.3.2. That run is [finding 19](../19_tensorfold_133_refresh), and the summary page now shows its lines.
 - **Engine.** [TensorFold](https://github.com/ashhart/TensorFold) 1.3.2, published 21 Nov 2026 03:27 SGT, from the author's Homebrew tap. The download's SHA-256 equals the digest GitHub lists for the release file.
 - **Serve command.** `--no-drafts` is added for the drafts-off starts. Nothing else is set. No `TF_` variable is set except on the starts that name one.
 

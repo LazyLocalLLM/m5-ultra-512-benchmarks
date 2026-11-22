@@ -159,6 +159,8 @@ ELI5: A faster release is only a fair swap if it writes the same text. I ask 250
 
 ## DeepSeek V4.1 Flash is still on 1.3.0
 
+**Added 22 Nov 2026. No longer true. TensorFold 1.3.3 compiles on this Mac, and DeepSeek V4.1 Flash on 1.3.3 is [finding 18](../18_dsv41_tensorfold_133). The section below is as written on 21 Nov 2026.**
+
 ELI5: TensorFold's DeepSeek server for Macs is not in the Homebrew package. I build it from source. The 1.3.2 tag did not compile on this Mac with the command that built 1.3.0, so my DeepSeek lines stay on 1.3.0 for now.
 
 - **What I ran**, on 21 Nov 2026 at 09:01 SGT.
@@ -185,6 +187,7 @@ zig/src/families/deepseek_v41/metal/target.zig:279:91: error: expected type 'u32
 
 ELI5: One engine at its newest release, three sets of weights, and the serve lines the project documents. Nothing but the release differs from finding 7.
 
+- **Added 22 Nov 2026 08:17 SGT.** Qwen3.8 27B 4-bit and Flash Next 4-bit were rerun on TensorFold 1.3.3. I see no change. The 27B sampler read low on its first 1.3.3 start and level in a same-night test against 1.3.2. Flash Next 6-bit is parked and stays on 1.3.2. That run is [finding 19](../19_tensorfold_133_refresh), and the summary page now shows its lines.
 - **Engine.** [TensorFold](https://github.com/ashhart/TensorFold) 1.3.2, released 21 Nov 2026 03:27 SGT, installed from the project's Homebrew tap. The formula's SHA-256 equals the digest GitHub lists for `tensorfold-1.3.2-macos-arm64.tar.gz`. `tensorfold-native --version` prints 1.3.2.
 - **Weights.**
   - [TensorFold/Qwen3.8-27B-MLX-4bit](https://huggingface.co/TensorFold/Qwen3.8-27B-MLX-4bit) with the drafter [z-lab/Qwen3.8-27B-DFlash2](https://huggingface.co/z-lab/Qwen3.8-27B-DFlash2).
