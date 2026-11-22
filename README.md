@@ -8,14 +8,14 @@ ELI5: I'm a learner with one Mac Studio M5 Ultra 512 GB, and I time local AI mod
 
 ELI5: The page in seven lines. Every figure here is recomputed from the raw rows each time the page is built.
 
-Updated 23 Nov 2026 02:27 SGT. Decode speed in tok/s, one user, one Mac.
+Updated 23 Nov 2026 03:08 SGT. Decode speed in tok/s, one user, one Mac.
 
 - **Fastest on new code.** Qwen3.8 27B, 4-bit wrote 315.3 tok/s on TensorFold 1.3.3. Next are Qwen3.8 Flash Next, 4-bit at 209.5 and Qwen3.8 Flash Next, 6-bit at 201.3.
-- **Fastest in daily use.** Qwen3.8 27B, 4-bit wrote 164.1 tok/s on TensorFold 1.3.3. Next are Qwen3.8 Flash Next, 4-bit at 130.9 and Inkling 2 Mini, Bare Speed at 130.0 (reasoning text).
+- **Fastest in daily use.** Qwen3.8 27B, 4-bit wrote 164.1 tok/s on TensorFold 1.3.3. Next are Qwen3.8 Flash Next, IQ3_S at 136.5 and Qwen3.8 Flash Next, 4-bit at 130.9.
 - **Two speeds per model.** Max is greedy at temperature 0 while the model writes new code. Median is the model's own sampler on mixed text, which is closer to daily use.
 - **Prefill too.** The table also has how fast each model read a cold prompt, with the prompt size.
-- **Coverage.** 24 models, 303 setups and 23 findings.
-- **Newest finding.** Finding 23, 22 Nov 2026. [Inkling 2 Mini on Rapid-MLX 1.1.0, max and median speed](findings/23_inkling2_mini_rapidmlx_110).
+- **Coverage.** 25 models, 316 setups and 24 findings.
+- **Newest finding.** Finding 24, 23 Nov 2026. [Qwen3.8 Flash Next IQ3_S on Strata 0.2.19, MTP on and off, against llama.cpp on the same files](findings/24_qwen38_flash_next_strata_0219).
 - **Check it.** Every figure links to a folder with the rows it came from. If I have set an engine up wrong, [open an issue](https://github.com/LazyLocalLLM/m5-ultra-512-benchmarks/issues).
 
 ## Benchmark summary
@@ -60,6 +60,7 @@ The exact setup behind each figure is one click away, under "Every setup measure
 | [Inkling 2 Mini, Optimized Speed](https://huggingface.co/Youssofal/Inkling-2-Mini-MTPLX-Optimized-Speed) | **148.0** | **115.1** | **4,681.7**, 4K code prompt | reasoning | MTPLX 2.13.1 | [21](findings/21_inkling2_mini_mtplx_213) |
 | [Inkling 2 Mini, Optimized Quality](https://huggingface.co/Youssofal/Inkling-2-Mini-MTPLX-Optimized-Quality) | **136.5** | **106.7** | **4,597.2**, 4K code prompt | reasoning | MTPLX 2.13.1 | [21](findings/21_inkling2_mini_mtplx_213) |
 | [Inkling 2 Mini, 4-bit](https://huggingface.co/mlx-community/Inkling-2-Mini-4bit) | **39.8** | **39.4** | **3,361.2**, 4K code prompt | reasoning | Rapid-MLX 1.1.0 | [23](findings/23_inkling2_mini_rapidmlx_110) |
+| [Qwen3.8 Flash Next, IQ3_S](https://huggingface.co/ISTA-DASLab/Qwen3.8-Flash-Next-GSQ-RCO-GGUF) | **200.3** | **136.5** | **2,956.6**, 4K mixed prompt | answer | Strata 0.2.19 | [24](findings/24_qwen38_flash_next_strata_0219) |
 
 ### Ceiling on easy text
 
@@ -577,9 +578,41 @@ ELI5: Everything behind the tables above, including the setups that were not the
 
 </details>
 
+<details>
+<summary><b>Qwen3.8 Flash Next, IQ3_S</b>, 13 setups</summary>
+
+| Kind | Engine and setup | Sampler | Prompt | Reply tokens | Decode tok/s | Range | Runs | Date | Run | Finding |
+|---|---|---|---|---|---|---|---|---|---|---|
+| max | Strata 0.2.19, setup's config with --spec 5, MTP on, thinking off | greedy, temperature 0 | 1K code | 2,048 | 200.3 | 183.5 to 215.1 | 5 | 2026-11-23 | `ef38b6483d5b` | [24](findings/24_qwen38_flash_next_strata_0219) |
+| max | Strata 0.2.19, setup's config with --spec 4, MTP on, thinking off | greedy, temperature 0 | 1K code | 2,048 | 193.6 | 172.8 to 211.9 | 5 | 2026-11-23 | `ca9762656ee4` | [24](findings/24_qwen38_flash_next_strata_0219) |
+| max | Strata 0.2.19, setup's config with --spec 4, MTP on, thinking off | greedy, temperature 0 | 4K code | 2,048 | 188.5 | 186.3 to 196.1 | 5 | 2026-11-23 | `ca9762656ee4` | [24](findings/24_qwen38_flash_next_strata_0219) |
+| max | Strata 0.2.19, setup's config with --spec 5, MTP on, thinking off | greedy, temperature 0 | 4K code | 2,048 | 185.0 | 176.1 to 200.5 | 5 | 2026-11-23 | `ef38b6483d5b` | [24](findings/24_qwen38_flash_next_strata_0219) |
+| max | Strata 0.2.19, setup's config, MTP on, --spec 3 --spec-min-p 0.5, thinking off, second start | greedy, temperature 0 | 1K code | 2,048 | 173.8 | 173.1 to 180.3 | 5 | 2026-11-23 | `7b15a99cb722` | [24](findings/24_qwen38_flash_next_strata_0219) |
+| max | Strata 0.2.19, setup's config, MTP on, --spec 3 --spec-min-p 0.5, thinking off, second start | greedy, temperature 0 | 4K code | 2,048 | 169.4 | 166.2 to 172.4 | 5 | 2026-11-23 | `7b15a99cb722` | [24](findings/24_qwen38_flash_next_strata_0219) |
+| max | Strata 0.2.19, MTP off by setup's own rule, thinking off | greedy, temperature 0 | 1K code | 2,048 | 100.6 | 99.6 to 101.1 | 5 | 2026-11-23 | `dff5db389042` | [24](findings/24_qwen38_flash_next_strata_0219) |
+| max | Strata 0.2.19, MTP off by setup's own rule, thinking off | greedy, temperature 0 | 4K code | 2,048 | 99.2 | 99.1 to 99.3 | 5 | 2026-11-23 | `dff5db389042` | [24](findings/24_qwen38_flash_next_strata_0219) |
+| max | llama.cpp b12359, the same IQ3_S files, defaults, thinking off | greedy, temperature 0 | 1K code | 2,048 | 58.2 | 57.7 to 58.6 | 5 | 2026-11-23 | `37c6f64892e9` | [24](findings/24_qwen38_flash_next_strata_0219) |
+| max | llama.cpp b12359, the same IQ3_S files, defaults, thinking off | greedy, temperature 0 | 4K code | 2,048 | 57.4 | 57.3 to 60.0 | 5 | 2026-11-23 | `37c6f64892e9` | [24](findings/24_qwen38_flash_next_strata_0219) |
+| median | Strata 0.2.19, setup's config, MTP on, --spec 3 --spec-min-p 0.5, thinking off | temperature 0.7, top-p 0.8, top-k 20 | 4K mixed | 512 | 136.5 | 127.6 to 139.1 | 5 | 2026-11-23 | `77bb7582fe47` | [24](findings/24_qwen38_flash_next_strata_0219) |
+| median | Strata 0.2.19, MTP off by setup's own rule, thinking off | temperature 0.7, top-p 0.8, top-k 20 | 4K mixed | 512 | 96.4 | 96.2 to 96.4 | 5 | 2026-11-23 | `dff5db389042` | [24](findings/24_qwen38_flash_next_strata_0219) |
+| median | llama.cpp b12359, the same IQ3_S files, defaults, thinking off | temperature 0.7, top-p 0.8, top-k 20 | 4K mixed | 512 | 55.7 | 55.3 to 55.7 | 5 | 2026-11-23 | `37c6f64892e9` | [24](findings/24_qwen38_flash_next_strata_0219) |
+
+</details>
+
 ## Findings
 
 ELI5: Each finding is one question, one run of an hour or two, and one report. Newest first. Click a title for the full report and the raw rows.
+
+### 24. [Qwen3.8 Flash Next IQ3_S on Strata 0.2.19, MTP on and off, against llama.cpp on the same files](findings/24_qwen38_flash_next_strata_0219)
+
+Runs of 23 Nov 2026. Strata 0.2.19 wrote 200.3 tok/s on Qwen3.8 Flash Next IQ3_S at its max, with --spec 5. With its setup's own config, MTP on and a 3-token window, it wrote 173.8 on its latest start and 183.3 on the start before. With the model's own sampler it wrote 136.5. llama.cpp b12359 on the same files wrote 58.2 and 55.7, so Strata is 3.4 times llama.cpp at the max and 2.5 times at the median. Setup's config and MTP off wrote the same text on 100 of 100 replies.
+
+<details>
+<summary>Chart</summary>
+
+![Bars of writing speed in tokens per second for Qwen3.8 Flash Next IQ3_S, greedy at temperature 0, new code, replies of up to 2,048 tokens. At a 1K and a 4K prompt. llama.cpp 58.2 and 57.4. Strata with MTP off 100.6 and 99.2. Strata with its setup's config, first start 183.3 and 179.7, second start 173.8 and 169.4. With --spec 4, 193.6 and 188.5. With --spec 5, 200.3 and 185.0.](findings/24_qwen38_flash_next_strata_0219/chart_max.png)
+
+</details>
 
 ### 23. [Inkling 2 Mini on Rapid-MLX 1.1.0, max and median speed](findings/23_inkling2_mini_rapidmlx_110)
 

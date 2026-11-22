@@ -4,7 +4,7 @@ By Local LLM L-Plate. Follow [@LazyLocalLLM on X](https://x.com/LazyLocalLLM) fo
 
 ELI5: One page with the best speed I have measured for each model on one Mac Studio M5 Ultra 512 GB. Every line links to the finding folder that holds the report and the raw rows.
 
-Updated 23 Nov 2026 02:27 SGT. Max and median are decode speed in tok/s for one user. Prefill is prompt-reading speed in tok/s.
+Updated 23 Nov 2026 03:08 SGT. Max and median are decode speed in tok/s for one user. Prefill is prompt-reading speed in tok/s.
 
 ## Two speeds per model
 
@@ -48,6 +48,7 @@ ELI5: The fastest setup I found for each model, one line each.
 | [Inkling 2 Mini, Optimized Speed](https://huggingface.co/Youssofal/Inkling-2-Mini-MTPLX-Optimized-Speed) | **148.0** | MTPLX 2.13.1, draft head on, no thinking field, reply is reasoning text. 4K prompt, code, replies up to 2,048 tokens, 5 runs, 2026-11-22 | **115.1** | MTPLX 2.13.1, draft head on, no thinking field, reply is reasoning text. 4K prompt, mixed, replies up to 512 tokens, 5 runs, 2026-11-22 | **4,681.7** | MTPLX 2.13.1. 4K code prompt, 20 requests over 2 runs, 2026-11-22 | [21](../findings/21_inkling2_mini_mtplx_213) |
 | [Inkling 2 Mini, Optimized Quality](https://huggingface.co/Youssofal/Inkling-2-Mini-MTPLX-Optimized-Quality) | **136.5** | MTPLX 2.13.1, draft head on, no thinking field, reply is reasoning text. 1K prompt, code, replies up to 2,048 tokens, 5 runs, 2026-11-22 | **106.7** | MTPLX 2.13.1, draft head on, no thinking field, reply is reasoning text. 4K prompt, mixed, replies up to 512 tokens, 5 runs, 2026-11-22 | **4,597.2** | MTPLX 2.13.1. 4K code prompt, 20 requests over 2 runs, 2026-11-22 | [21](../findings/21_inkling2_mini_mtplx_213) |
 | [Inkling 2 Mini, 4-bit](https://huggingface.co/mlx-community/Inkling-2-Mini-4bit) | **39.8** | Rapid-MLX 1.1.0, the catalog's settings, no drafts, reply is reasoning text, second start. 1K prompt, code, replies up to 2,048 tokens, 5 runs, 2026-11-22 | **39.4** | Rapid-MLX 1.1.0, the catalog's settings, no drafts, reply is reasoning text. 4K prompt, mixed, replies up to 512 tokens, 5 runs, 2026-11-22 | **3,361.2** | Rapid-MLX 1.1.0. 4K code prompt, 25 requests over 2 runs, 2026-11-22 | [23](../findings/23_inkling2_mini_rapidmlx_110) |
+| [Qwen3.8 Flash Next, IQ3_S](https://huggingface.co/ISTA-DASLab/Qwen3.8-Flash-Next-GSQ-RCO-GGUF) | **200.3** | Strata 0.2.19, setup's config with --spec 5, MTP on, thinking off. 1K prompt, code, replies up to 2,048 tokens, 5 runs, 2026-11-23 | **136.5** | Strata 0.2.19, setup's config, MTP on, --spec 3 --spec-min-p 0.5, thinking off. 4K prompt, mixed, replies up to 512 tokens, 5 runs, 2026-11-23 | **2,956.6** | Strata 0.2.19. 4K mixed prompt, 10 requests over 2 runs, 2026-11-23 | [24](../findings/24_qwen38_flash_next_strata_0219) |
 
 ## Ceiling on easy text
 
@@ -379,6 +380,19 @@ ELI5: Everything behind the table above, including the setups that were not the 
 | Inkling 2 Mini, 4-bit | max | Rapid-MLX 1.1.0, the catalog's settings, no drafts, reply is reasoning text, second start | greedy, temperature 0 | 1K code | 2,048 | 39.8 | 39.5 to 40.0 | 5 | 2026-11-22 | `3c2cb9130c7b` | [23](../findings/23_inkling2_mini_rapidmlx_110) |
 | Inkling 2 Mini, 4-bit | max | Rapid-MLX 1.1.0, the catalog's settings, no drafts, reply is reasoning text, second start | greedy, temperature 0 | 4K code | 2,048 | 39.5 | 39.4 to 39.5 | 5 | 2026-11-22 | `3c2cb9130c7b` | [23](../findings/23_inkling2_mini_rapidmlx_110) |
 | Inkling 2 Mini, 4-bit | median | Rapid-MLX 1.1.0, the catalog's settings, no drafts, reply is reasoning text | temperature 1.0, top-p 1.0 | 4K mixed | 512 | 39.4 | 39.3 to 39.9 | 5 | 2026-11-22 | `3bef921b4076` | [23](../findings/23_inkling2_mini_rapidmlx_110) |
+| Qwen3.8 Flash Next, IQ3_S | max | Strata 0.2.19, setup's config with --spec 5, MTP on, thinking off | greedy, temperature 0 | 1K code | 2,048 | 200.3 | 183.5 to 215.1 | 5 | 2026-11-23 | `ef38b6483d5b` | [24](../findings/24_qwen38_flash_next_strata_0219) |
+| Qwen3.8 Flash Next, IQ3_S | max | Strata 0.2.19, setup's config with --spec 4, MTP on, thinking off | greedy, temperature 0 | 1K code | 2,048 | 193.6 | 172.8 to 211.9 | 5 | 2026-11-23 | `ca9762656ee4` | [24](../findings/24_qwen38_flash_next_strata_0219) |
+| Qwen3.8 Flash Next, IQ3_S | max | Strata 0.2.19, setup's config with --spec 4, MTP on, thinking off | greedy, temperature 0 | 4K code | 2,048 | 188.5 | 186.3 to 196.1 | 5 | 2026-11-23 | `ca9762656ee4` | [24](../findings/24_qwen38_flash_next_strata_0219) |
+| Qwen3.8 Flash Next, IQ3_S | max | Strata 0.2.19, setup's config with --spec 5, MTP on, thinking off | greedy, temperature 0 | 4K code | 2,048 | 185.0 | 176.1 to 200.5 | 5 | 2026-11-23 | `ef38b6483d5b` | [24](../findings/24_qwen38_flash_next_strata_0219) |
+| Qwen3.8 Flash Next, IQ3_S | max | Strata 0.2.19, setup's config, MTP on, --spec 3 --spec-min-p 0.5, thinking off, second start | greedy, temperature 0 | 1K code | 2,048 | 173.8 | 173.1 to 180.3 | 5 | 2026-11-23 | `7b15a99cb722` | [24](../findings/24_qwen38_flash_next_strata_0219) |
+| Qwen3.8 Flash Next, IQ3_S | max | Strata 0.2.19, setup's config, MTP on, --spec 3 --spec-min-p 0.5, thinking off, second start | greedy, temperature 0 | 4K code | 2,048 | 169.4 | 166.2 to 172.4 | 5 | 2026-11-23 | `7b15a99cb722` | [24](../findings/24_qwen38_flash_next_strata_0219) |
+| Qwen3.8 Flash Next, IQ3_S | max | Strata 0.2.19, MTP off by setup's own rule, thinking off | greedy, temperature 0 | 1K code | 2,048 | 100.6 | 99.6 to 101.1 | 5 | 2026-11-23 | `dff5db389042` | [24](../findings/24_qwen38_flash_next_strata_0219) |
+| Qwen3.8 Flash Next, IQ3_S | max | Strata 0.2.19, MTP off by setup's own rule, thinking off | greedy, temperature 0 | 4K code | 2,048 | 99.2 | 99.1 to 99.3 | 5 | 2026-11-23 | `dff5db389042` | [24](../findings/24_qwen38_flash_next_strata_0219) |
+| Qwen3.8 Flash Next, IQ3_S | max | llama.cpp b12359, the same IQ3_S files, defaults, thinking off | greedy, temperature 0 | 1K code | 2,048 | 58.2 | 57.7 to 58.6 | 5 | 2026-11-23 | `37c6f64892e9` | [24](../findings/24_qwen38_flash_next_strata_0219) |
+| Qwen3.8 Flash Next, IQ3_S | max | llama.cpp b12359, the same IQ3_S files, defaults, thinking off | greedy, temperature 0 | 4K code | 2,048 | 57.4 | 57.3 to 60.0 | 5 | 2026-11-23 | `37c6f64892e9` | [24](../findings/24_qwen38_flash_next_strata_0219) |
+| Qwen3.8 Flash Next, IQ3_S | median | Strata 0.2.19, setup's config, MTP on, --spec 3 --spec-min-p 0.5, thinking off | temperature 0.7, top-p 0.8, top-k 20 | 4K mixed | 512 | 136.5 | 127.6 to 139.1 | 5 | 2026-11-23 | `77bb7582fe47` | [24](../findings/24_qwen38_flash_next_strata_0219) |
+| Qwen3.8 Flash Next, IQ3_S | median | Strata 0.2.19, MTP off by setup's own rule, thinking off | temperature 0.7, top-p 0.8, top-k 20 | 4K mixed | 512 | 96.4 | 96.2 to 96.4 | 5 | 2026-11-23 | `dff5db389042` | [24](../findings/24_qwen38_flash_next_strata_0219) |
+| Qwen3.8 Flash Next, IQ3_S | median | llama.cpp b12359, the same IQ3_S files, defaults, thinking off | temperature 0.7, top-p 0.8, top-k 20 | 4K mixed | 512 | 55.7 | 55.3 to 55.7 | 5 | 2026-11-23 | `37c6f64892e9` | [24](../findings/24_qwen38_flash_next_strata_0219) |
 
 ## Check it yourself
 

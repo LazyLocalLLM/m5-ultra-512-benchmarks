@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1120" width="1600" height="1120" font-family='system-ui, -apple-system, "Segoe UI", sans-serif'>
+<rect width="1600" height="1120" fill="#1a1a19"/>
+<rect width="1600" height="10" fill="#f5c400"/>
+<text x="70.0" y="110.0" font-size="56" font-weight="650" fill="#f0efec" text-anchor="start">Qwen3.8 Flash Next IQ3_S on Strata 0.2.19</text>
+<text x="70.0" y="162.0" font-size="30" font-weight="400" fill="#c3c2b7" text-anchor="start">Greedy, new code, replies of up to 2,048 tokens, one user, thinking off, the same IQ3_S files throughout.</text>
+<rect x="70.0" y="226" width="26" height="26" rx="4" fill="#898781"/>
+<text x="108.0" y="248.0" font-size="28" font-weight="400" fill="#c3c2b7" text-anchor="start">1K prompt</text>
+<rect x="301.5" y="226" width="26" height="26" rx="4" fill="#3987e5"/>
+<text x="339.5" y="248.0" font-size="28" font-weight="400" fill="#c3c2b7" text-anchor="start">4K prompt</text>
+<line x1="300" y1="300" x2="300" y2="990" stroke="#383835" stroke-width="2"/>
+<text x="276.0" y="368.5" font-size="32" font-weight="500" fill="#f0efec" text-anchor="end">llama.cpp</text>
+<path d="M300.0,320.0 h305.8 a8.0,8.0 0 0 1 8.0,8.0 v19.5 a8.0,8.0 0 0 1 -8.0,8.0 h-305.8 z" fill="#898781"/>
+<text x="627.8" y="348.8" font-size="32" font-weight="400" fill="#c3c2b7" text-anchor="start">58.2</text>
+<path d="M300.0,359.5 h301.5 a8.0,8.0 0 0 1 8.0,8.0 v19.5 a8.0,8.0 0 0 1 -8.0,8.0 h-301.5 z" fill="#3987e5"/>
+<text x="623.5" y="388.2" font-size="32" font-weight="650" fill="#f0efec" text-anchor="start">57.4</text>
+<text x="276.0" y="483.5" font-size="32" font-weight="500" fill="#f0efec" text-anchor="end">MTP off</text>
+<path d="M300.0,435.0 h534.4 a8.0,8.0 0 0 1 8.0,8.0 v19.5 a8.0,8.0 0 0 1 -8.0,8.0 h-534.4 z" fill="#898781"/>
+<text x="856.4" y="463.8" font-size="32" font-weight="400" fill="#c3c2b7" text-anchor="start">100.6</text>
+<path d="M300.0,474.5 h526.9 a8.0,8.0 0 0 1 8.0,8.0 v19.5 a8.0,8.0 0 0 1 -8.0,8.0 h-526.9 z" fill="#3987e5"/>
+<text x="848.9" y="503.2" font-size="32" font-weight="650" fill="#f0efec" text-anchor="start">99.2</text>
+<text x="276.0" y="598.5" font-size="32" font-weight="500" fill="#f0efec" text-anchor="end">Setup, start 1</text>
+<path d="M300.0,550.0 h980.3 a8.0,8.0 0 0 1 8.0,8.0 v19.5 a8.0,8.0 0 0 1 -8.0,8.0 h-980.3 z" fill="#898781"/>
+<text x="1302.3" y="578.8" font-size="32" font-weight="400" fill="#c3c2b7" text-anchor="start">183.3</text>
+<path d="M300.0,589.5 h960.9 a8.0,8.0 0 0 1 8.0,8.0 v19.5 a8.0,8.0 0 0 1 -8.0,8.0 h-960.9 z" fill="#3987e5"/>
+<text x="1282.9" y="618.2" font-size="32" font-weight="650" fill="#f0efec" text-anchor="start">179.7</text>
+<text x="276.0" y="713.5" font-size="32" font-weight="500" fill="#f0efec" text-anchor="end">Setup, start 2</text>
+<path d="M300.0,665.0 h929.1 a8.0,8.0 0 0 1 8.0,8.0 v19.5 a8.0,8.0 0 0 1 -8.0,8.0 h-929.1 z" fill="#898781"/>
+<text x="1251.1" y="693.8" font-size="32" font-weight="400" fill="#c3c2b7" text-anchor="start">173.8</text>
+<path d="M300.0,704.5 h905.4 a8.0,8.0 0 0 1 8.0,8.0 v19.5 a8.0,8.0 0 0 1 -8.0,8.0 h-905.4 z" fill="#3987e5"/>
+<text x="1227.4" y="733.2" font-size="32" font-weight="650" fill="#f0efec" text-anchor="start">169.4</text>
+<text x="276.0" y="828.5" font-size="32" font-weight="500" fill="#f0efec" text-anchor="end">--spec 4</text>
+<path d="M300.0,780.0 h1035.9 a8.0,8.0 0 0 1 8.0,8.0 v19.5 a8.0,8.0 0 0 1 -8.0,8.0 h-1035.9 z" fill="#898781"/>
+<text x="1357.9" y="808.8" font-size="32" font-weight="400" fill="#c3c2b7" text-anchor="start">193.6</text>
+<path d="M300.0,819.5 h1008.4 a8.0,8.0 0 0 1 8.0,8.0 v19.5 a8.0,8.0 0 0 1 -8.0,8.0 h-1008.4 z" fill="#3987e5"/>
+<text x="1330.4" y="848.2" font-size="32" font-weight="650" fill="#f0efec" text-anchor="start">188.5</text>
+<text x="276.0" y="943.5" font-size="32" font-weight="500" fill="#f0efec" text-anchor="end">--spec 5</text>
+<path d="M300.0,895.0 h1072.0 a8.0,8.0 0 0 1 8.0,8.0 v19.5 a8.0,8.0 0 0 1 -8.0,8.0 h-1072.0 z" fill="#898781"/>
+<text x="1394.0" y="923.8" font-size="32" font-weight="400" fill="#c3c2b7" text-anchor="start">200.3</text>
+<path d="M300.0,934.5 h989.5 a8.0,8.0 0 0 1 8.0,8.0 v19.5 a8.0,8.0 0 0 1 -8.0,8.0 h-989.5 z" fill="#3987e5"/>
+<text x="1311.5" y="963.2" font-size="32" font-weight="650" fill="#f0efec" text-anchor="start">185.0</text>
+<text x="1530.0" y="282.0" font-size="24" font-weight="400" fill="#898781" text-anchor="end">tok/s</text>
+<text x="70.0" y="1068.0" font-size="23" font-weight="400" fill="#898781" text-anchor="start">Median of 5, one start a pair. Strata 0.2.19 (engine 0.1.65) and llama.cpp b12359, 23 Nov 2026.</text>
+</svg>
