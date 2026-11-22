@@ -4,7 +4,7 @@ By Local LLM L-Plate. Follow [@LazyLocalLLM on X](https://x.com/LazyLocalLLM) fo
 
 ELI5: One page with the best speed I have measured for each model on one Mac Studio M5 Ultra 512 GB. Every line links to the finding folder that holds the report and the raw rows.
 
-Updated 22 Nov 2026 21:24 SGT. Max and median are decode speed in tok/s for one user. Prefill is prompt-reading speed in tok/s.
+Updated 23 Nov 2026 02:27 SGT. Max and median are decode speed in tok/s for one user. Prefill is prompt-reading speed in tok/s.
 
 ## Two speeds per model
 
@@ -47,6 +47,7 @@ ELI5: The fastest setup I found for each model, one line each.
 | [Inkling 2 Mini, Bare Speed](https://huggingface.co/Youssofal/Inkling-2-Mini-MTPLX-Bare-Speed) | **159.7** | MTPLX 2.13.1, draft head on, no thinking field, reply is reasoning text, second start. 1K prompt, code, replies up to 2,048 tokens, 5 runs, 2026-11-22 | **130.0** | MTPLX 2.13.1, draft head on, no thinking field, reply is reasoning text. 4K prompt, mixed, replies up to 512 tokens, 5 runs, 2026-11-22 | **4,684.4** | MTPLX 2.13.1. 4K code prompt, 35 requests over 3 runs, 2026-11-22 | [21](../findings/21_inkling2_mini_mtplx_213) |
 | [Inkling 2 Mini, Optimized Speed](https://huggingface.co/Youssofal/Inkling-2-Mini-MTPLX-Optimized-Speed) | **148.0** | MTPLX 2.13.1, draft head on, no thinking field, reply is reasoning text. 4K prompt, code, replies up to 2,048 tokens, 5 runs, 2026-11-22 | **115.1** | MTPLX 2.13.1, draft head on, no thinking field, reply is reasoning text. 4K prompt, mixed, replies up to 512 tokens, 5 runs, 2026-11-22 | **4,681.7** | MTPLX 2.13.1. 4K code prompt, 20 requests over 2 runs, 2026-11-22 | [21](../findings/21_inkling2_mini_mtplx_213) |
 | [Inkling 2 Mini, Optimized Quality](https://huggingface.co/Youssofal/Inkling-2-Mini-MTPLX-Optimized-Quality) | **136.5** | MTPLX 2.13.1, draft head on, no thinking field, reply is reasoning text. 1K prompt, code, replies up to 2,048 tokens, 5 runs, 2026-11-22 | **106.7** | MTPLX 2.13.1, draft head on, no thinking field, reply is reasoning text. 4K prompt, mixed, replies up to 512 tokens, 5 runs, 2026-11-22 | **4,597.2** | MTPLX 2.13.1. 4K code prompt, 20 requests over 2 runs, 2026-11-22 | [21](../findings/21_inkling2_mini_mtplx_213) |
+| [Inkling 2 Mini, 4-bit](https://huggingface.co/mlx-community/Inkling-2-Mini-4bit) | **39.8** | Rapid-MLX 1.1.0, the catalog's settings, no drafts, reply is reasoning text, second start. 1K prompt, code, replies up to 2,048 tokens, 5 runs, 2026-11-22 | **39.4** | Rapid-MLX 1.1.0, the catalog's settings, no drafts, reply is reasoning text. 4K prompt, mixed, replies up to 512 tokens, 5 runs, 2026-11-22 | **3,361.2** | Rapid-MLX 1.1.0. 4K code prompt, 25 requests over 2 runs, 2026-11-22 | [23](../findings/23_inkling2_mini_rapidmlx_110) |
 
 ## Ceiling on easy text
 
@@ -375,6 +376,9 @@ ELI5: Everything behind the table above, including the setups that were not the 
 | Inkling 2 Mini, Optimized Quality | median | MTPLX 2.13.1, draft head on, no thinking field, reply is reasoning text | temperature 1.0, top-p 1.0 | 4K mixed | 512 | 106.7 | 81.6 to 118.0 | 5 | 2026-11-22 | `f0dac5df559b` | [21](../findings/21_inkling2_mini_mtplx_213) |
 | Inkling 2 Mini, Optimized Quality | median | MTPLX 2.13.0, draft head on, no thinking field, reply is reasoning text, older release | temperature 1.0, top-p 1.0 | 4K mixed | 512 | 104.1 | 97.5 to 109.8 | 5 | 2026-11-22 | `b06906a7e390` | [21](../findings/21_inkling2_mini_mtplx_213) |
 | Inkling 2 Mini, Optimized Quality | median | MTPLX 2.13.1, draft head off (--no-mtp), no thinking field, reply is reasoning text | temperature 1.0, top-p 1.0 | 4K mixed | 512 | 62.7 | 62.7 to 62.8 | 5 | 2026-11-22 | `a28a0a8eae9d` | [21](../findings/21_inkling2_mini_mtplx_213) |
+| Inkling 2 Mini, 4-bit | max | Rapid-MLX 1.1.0, the catalog's settings, no drafts, reply is reasoning text, second start | greedy, temperature 0 | 1K code | 2,048 | 39.8 | 39.5 to 40.0 | 5 | 2026-11-22 | `3c2cb9130c7b` | [23](../findings/23_inkling2_mini_rapidmlx_110) |
+| Inkling 2 Mini, 4-bit | max | Rapid-MLX 1.1.0, the catalog's settings, no drafts, reply is reasoning text, second start | greedy, temperature 0 | 4K code | 2,048 | 39.5 | 39.4 to 39.5 | 5 | 2026-11-22 | `3c2cb9130c7b` | [23](../findings/23_inkling2_mini_rapidmlx_110) |
+| Inkling 2 Mini, 4-bit | median | Rapid-MLX 1.1.0, the catalog's settings, no drafts, reply is reasoning text | temperature 1.0, top-p 1.0 | 4K mixed | 512 | 39.4 | 39.3 to 39.9 | 5 | 2026-11-22 | `3bef921b4076` | [23](../findings/23_inkling2_mini_rapidmlx_110) |
 
 ## Check it yourself
 

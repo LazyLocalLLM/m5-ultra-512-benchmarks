@@ -109,3 +109,6 @@ Inkling 2 Small,mlx-community/Inkling-2-Small-oQ4e,,1196.5,1186.4,1225.7,5,1,mix
 "Inkling 2 Mini, Optimized Quality",Youssofal/Inkling-2-Mini-MTPLX-Optimized-Quality,,2686.3,2038.6,3437.0,20,2,code,1024,MTPLX 2.13.1,2026-11-22,21_inkling2_mini_mtplx_213,a28a0a8eae9d f0dac5df559b
 "Inkling 2 Mini, Optimized Quality",Youssofal/Inkling-2-Mini-MTPLX-Optimized-Quality,yes,4597.2,4185.9,4856.5,20,2,code,4096,MTPLX 2.13.1,2026-11-22,21_inkling2_mini_mtplx_213,a28a0a8eae9d f0dac5df559b
 "Inkling 2 Mini, Optimized Quality",Youssofal/Inkling-2-Mini-MTPLX-Optimized-Quality,,4581.8,4125.4,4785.2,10,2,mixed,4096,MTPLX 2.13.1,2026-11-22,21_inkling2_mini_mtplx_213,a28a0a8eae9d f0dac5df559b
+"Inkling 2 Mini, 4-bit",mlx-community/Inkling-2-Mini-4bit,,2321.5,2197.4,2787.8,25,2,code,1024,Rapid-MLX 1.1.0,2026-11-22,23_inkling2_mini_rapidmlx_110,3bef921b4076 3c2cb9130c7b
+"Inkling 2 Mini, 4-bit",mlx-community/Inkling-2-Mini-4bit,yes,3361.2,3138.6,3425.2,25,2,code,4096,Rapid-MLX 1.1.0,2026-11-22,23_inkling2_mini_rapidmlx_110,3bef921b4076 3c2cb9130c7b
+"Inkling 2 Mini, 4-bit",mlx-community/Inkling-2-Mini-4bit,,3210.0,3205.9,3386.6,5,1,mixed,4096,Rapid-MLX 1.1.0,2026-11-22,23_inkling2_mini_rapidmlx_110,3bef921b4076

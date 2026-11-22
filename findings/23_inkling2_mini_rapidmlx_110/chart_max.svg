@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" font-family='system-ui, -apple-system, "Segoe UI", sans-serif'>
+<rect width="1600" height="900" fill="#1a1a19"/>
+<rect width="1600" height="10" fill="#f5c400"/>
+<text x="70.0" y="110.0" font-size="56" font-weight="650" fill="#f0efec" text-anchor="start">Inkling 2 Mini on Rapid-MLX 1.1.0</text>
+<text x="70.0" y="162.0" font-size="30" font-weight="400" fill="#c3c2b7" text-anchor="start">Greedy, new code, replies of up to 2,048 tokens, one user, mlx-community 4-bit, no drafts.</text>
+<rect x="70.0" y="226" width="26" height="26" rx="4" fill="#898781"/>
+<text x="108.0" y="248.0" font-size="28" font-weight="400" fill="#c3c2b7" text-anchor="start">First start</text>
+<rect x="332.5" y="226" width="26" height="26" rx="4" fill="#3987e5"/>
+<text x="370.5" y="248.0" font-size="28" font-weight="400" fill="#c3c2b7" text-anchor="start">Second start</text>
+<line x1="300" y1="300" x2="300" y2="770" stroke="#383835" stroke-width="2"/>
+<text x="276.0" y="428.5" font-size="32" font-weight="500" fill="#f0efec" text-anchor="end">1K prompt</text>
+<path d="M300.0,371.5 h1069.3 a8.0,8.0 0 0 1 8.0,8.0 v28.0 a8.0,8.0 0 0 1 -8.0,8.0 h-1069.3 z" fill="#898781"/>
+<text x="1391.3" y="404.5" font-size="32" font-weight="400" fill="#c3c2b7" text-anchor="start">39.7</text>
+<path d="M300.0,419.5 h1072.0 a8.0,8.0 0 0 1 8.0,8.0 v28.0 a8.0,8.0 0 0 1 -8.0,8.0 h-1072.0 z" fill="#3987e5"/>
+<text x="1394.0" y="452.5" font-size="32" font-weight="650" fill="#f0efec" text-anchor="start">39.8</text>
+<text x="276.0" y="663.5" font-size="32" font-weight="500" fill="#f0efec" text-anchor="end">4K prompt</text>
+<path d="M300.0,606.5 h1063.9 a8.0,8.0 0 0 1 8.0,8.0 v28.0 a8.0,8.0 0 0 1 -8.0,8.0 h-1063.9 z" fill="#898781"/>
+<text x="1385.9" y="639.5" font-size="32" font-weight="400" fill="#c3c2b7" text-anchor="start">39.5</text>
+<path d="M300.0,654.5 h1063.9 a8.0,8.0 0 0 1 8.0,8.0 v28.0 a8.0,8.0 0 0 1 -8.0,8.0 h-1063.9 z" fill="#3987e5"/>
+<text x="1385.9" y="687.5" font-size="32" font-weight="650" fill="#f0efec" text-anchor="start">39.5</text>
+<text x="1530.0" y="282.0" font-size="24" font-weight="400" fill="#898781" text-anchor="end">tok/s</text>
+<text x="70.0" y="848.0" font-size="23" font-weight="400" fill="#898781" text-anchor="start">Median of 5, one start a bar. Rapid-MLX 1.1.0 catalog settings, 22 Nov 2026. Reply is reasoning text.</text>
+</svg>

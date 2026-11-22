@@ -1,0 +1,7 @@
+run_id,started,source,machine,engine,engine_version,model,family,weights,settings,thinking,notes,os_version,power_mode,build_id,format,bits,effort,sampling,corpus_id,tool_version,engine_commit,no_seed,quick
+3bef921b4076,2026-11-22 20:47:08 SGT,measured here,"Apple M5 Ultra, 80-core GPU, 512 GB, macOS 27.2",rapid-mlx-cat,rapid-mlx 1.1.0,inkling-2-mini-4bit,Inkling 2 Mini,mlx-community/Inkling-2-Mini-4bit,"Rapid-MLX 1.1.0, the catalog's settings, no drafts, catalog name inkling-2-mini-4bit, thinking off, ctx 131072, parallel 1, sampled, mixed",off,,"ProductName:		macOS
+ProductVersion:		27.2
+BuildVersion:		26B118",low power mode off,inkling2-mini-rapid-4bit,mlx,4-bit,,"{""temperature"": 1.0, ""top_p"": 1.0, ""reasoning_effort"": ""none""}",23f31f1d8feb,2.0,,0,0
+3c2cb9130c7b,2026-11-22 21:04:53 SGT,measured here,"Apple M5 Ultra, 80-core GPU, 512 GB, macOS 27.2",rapid-mlx-cat,rapid-mlx 1.1.0,inkling-2-mini-4bit,Inkling 2 Mini,mlx-community/Inkling-2-Mini-4bit,"Rapid-MLX 1.1.0, the catalog's settings, no drafts, second start, catalog name inkling-2-mini-4bit, thinking off, ctx 131072, parallel 1, greedy, code, 2048-token replies",off,,"ProductName:		macOS
+ProductVersion:		27.2
+BuildVersion:		26B118",low power mode off,inkling2-mini-rapid-4bit,mlx,4-bit,,"{""temperature"": 0, ""reasoning_effort"": ""none""}",23f31f1d8feb,2.0,,0,0

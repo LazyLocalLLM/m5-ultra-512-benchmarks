@@ -8,14 +8,14 @@ ELI5: I'm a learner with one Mac Studio M5 Ultra 512 GB, and I time local AI mod
 
 ELI5: The page in seven lines. Every figure here is recomputed from the raw rows each time the page is built.
 
-Updated 22 Nov 2026 21:24 SGT. Decode speed in tok/s, one user, one Mac.
+Updated 23 Nov 2026 02:27 SGT. Decode speed in tok/s, one user, one Mac.
 
 - **Fastest on new code.** Qwen3.8 27B, 4-bit wrote 315.3 tok/s on TensorFold 1.3.3. Next are Qwen3.8 Flash Next, 4-bit at 209.5 and Qwen3.8 Flash Next, 6-bit at 201.3.
 - **Fastest in daily use.** Qwen3.8 27B, 4-bit wrote 164.1 tok/s on TensorFold 1.3.3. Next are Qwen3.8 Flash Next, 4-bit at 130.9 and Inkling 2 Mini, Bare Speed at 130.0 (reasoning text).
 - **Two speeds per model.** Max is greedy at temperature 0 while the model writes new code. Median is the model's own sampler on mixed text, which is closer to daily use.
 - **Prefill too.** The table also has how fast each model read a cold prompt, with the prompt size.
-- **Coverage.** 23 models, 300 setups and 22 findings.
-- **Newest finding.** Finding 22, 22 Nov 2026. [Qwen-Image 2.1 and MiniMax H3 video on Rapid-MLX 1.1.0, time per picture and per clip](findings/22_image_video_rapidmlx_110).
+- **Coverage.** 24 models, 303 setups and 23 findings.
+- **Newest finding.** Finding 23, 22 Nov 2026. [Inkling 2 Mini on Rapid-MLX 1.1.0, max and median speed](findings/23_inkling2_mini_rapidmlx_110).
 - **Check it.** Every figure links to a folder with the rows it came from. If I have set an engine up wrong, [open an issue](https://github.com/LazyLocalLLM/m5-ultra-512-benchmarks/issues).
 
 ## Benchmark summary
@@ -59,6 +59,7 @@ The exact setup behind each figure is one click away, under "Every setup measure
 | [Inkling 2 Mini, Bare Speed](https://huggingface.co/Youssofal/Inkling-2-Mini-MTPLX-Bare-Speed) | **159.7** | **130.0** | **4,684.4**, 4K code prompt | reasoning | MTPLX 2.13.1 | [21](findings/21_inkling2_mini_mtplx_213) |
 | [Inkling 2 Mini, Optimized Speed](https://huggingface.co/Youssofal/Inkling-2-Mini-MTPLX-Optimized-Speed) | **148.0** | **115.1** | **4,681.7**, 4K code prompt | reasoning | MTPLX 2.13.1 | [21](findings/21_inkling2_mini_mtplx_213) |
 | [Inkling 2 Mini, Optimized Quality](https://huggingface.co/Youssofal/Inkling-2-Mini-MTPLX-Optimized-Quality) | **136.5** | **106.7** | **4,597.2**, 4K code prompt | reasoning | MTPLX 2.13.1 | [21](findings/21_inkling2_mini_mtplx_213) |
+| [Inkling 2 Mini, 4-bit](https://huggingface.co/mlx-community/Inkling-2-Mini-4bit) | **39.8** | **39.4** | **3,361.2**, 4K code prompt | reasoning | Rapid-MLX 1.1.0 | [23](findings/23_inkling2_mini_rapidmlx_110) |
 
 ### Ceiling on easy text
 
@@ -565,9 +566,31 @@ ELI5: Everything behind the tables above, including the setups that were not the
 
 </details>
 
+<details>
+<summary><b>Inkling 2 Mini, 4-bit</b>, 3 setups</summary>
+
+| Kind | Engine and setup | Sampler | Prompt | Reply tokens | Decode tok/s | Range | Runs | Date | Run | Finding |
+|---|---|---|---|---|---|---|---|---|---|---|
+| max | Rapid-MLX 1.1.0, the catalog's settings, no drafts, reply is reasoning text, second start | greedy, temperature 0 | 1K code | 2,048 | 39.8 | 39.5 to 40.0 | 5 | 2026-11-22 | `3c2cb9130c7b` | [23](findings/23_inkling2_mini_rapidmlx_110) |
+| max | Rapid-MLX 1.1.0, the catalog's settings, no drafts, reply is reasoning text, second start | greedy, temperature 0 | 4K code | 2,048 | 39.5 | 39.4 to 39.5 | 5 | 2026-11-22 | `3c2cb9130c7b` | [23](findings/23_inkling2_mini_rapidmlx_110) |
+| median | Rapid-MLX 1.1.0, the catalog's settings, no drafts, reply is reasoning text | temperature 1.0, top-p 1.0 | 4K mixed | 512 | 39.4 | 39.3 to 39.9 | 5 | 2026-11-22 | `3bef921b4076` | [23](findings/23_inkling2_mini_rapidmlx_110) |
+
+</details>
+
 ## Findings
 
 ELI5: Each finding is one question, one run of an hour or two, and one report. Newest first. Click a title for the full report and the raw rows.
+
+### 23. [Inkling 2 Mini on Rapid-MLX 1.1.0, max and median speed](findings/23_inkling2_mini_rapidmlx_110)
+
+Runs of 22 Nov 2026. Rapid-MLX 1.1.0 wrote 39.8 tok/s on Inkling 2 Mini at its max, on its latest start, and 39.7 on the start before. With the model's own sampler it wrote 39.4. Every test sat between 39.4 and 40.0, greedy or sampled, 1K or 4K prompt, 512 or 2,048-token replies. The catalog runs this model with no drafts. Replies were reasoning text, 54 of 55 timed replies streaming no answer text.
+
+<details>
+<summary>Chart</summary>
+
+![Bars of writing speed in tokens per second for Inkling 2 Mini on Rapid-MLX 1.1.0, greedy at temperature 0, new code, replies of up to 2,048 tokens. At a 1K prompt, first start 39.7, second start 39.8. At 4K, 39.5 and 39.5.](findings/23_inkling2_mini_rapidmlx_110/chart_max.png)
+
+</details>
 
 ### 22. [Qwen-Image 2.1 and MiniMax H3 video on Rapid-MLX 1.1.0, time per picture and per clip](findings/22_image_video_rapidmlx_110)
 

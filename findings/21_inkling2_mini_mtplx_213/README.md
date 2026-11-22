@@ -2,6 +2,8 @@
 
 By Local LLM L-Plate. Follow [@LazyLocalLLM on X](https://x.com/LazyLocalLLM) for new benchmarks.
 
+Updated on 23 Nov 2026 at 02:30 SGT with a section on thinking switched off, checked again on 2.13.1 at 02:21 SGT.
+
 ELI5: MTPLX added Inkling 2 Mini on 22 Nov 2026 in three packs made for it. Bare Speed is the smallest, Optimized Speed keeps more of the model in 8 bits, and Optimized Quality is the maker's weights unchanged. I ran all three on MTPLX 2.13.1, the newest release, with the pack's draft head on and then off. I ran 2.13.0 earlier the same evening, and it gave the same text. Max is greedy at temperature 0 while writing new code. Median is the model's own sampler on mixed text.
 
 **MTPLX 2.13.1 wrote 159.7 tok/s on Inkling 2 Mini Bare Speed at its max, on its latest start, and 161.1 on the start before. With the model's own sampler it wrote 130.0. With the draft head off the same pack wrote 90.1 and 78.5, so the drafts gave 1.77 times at the max and 1.66 times at the median. The drafts did not change a reply, 100 of 100 the same text with them on and off, on every pack. Optimized Speed wrote 148.0 and 115.1, and Optimized Quality 136.5 and 106.7. Replies were reasoning text. Mac Studio M5 Ultra 512 GB, one user, median of 5 runs, 22 Nov 2026.**
@@ -95,6 +97,18 @@ ELI5: The model thought before answering on every reply, as it did on the other 
 - **So I publish no copy or counting line.** The model spent those replies planning. Their rows are in `rows.csv` under `code_echo` and `code_count`.
 - **Thinking.** These requests carry no thinking field, so the server's default applies. A read-back with thinking switched on gave reasoning text of the same length, 1,645 characters, as one with no field. The oMLX and mlx-serve runs of findings 16 and 20 sent thinking switched off, and the model reasoned there too.
 
+## Thinking switched off
+
+ELI5: The timed rows above send no thinking field. I also sent the switch that turns thinking off, `chat_template_kwargs: {"enable_thinking": false}`, as on oMLX and mlx-serve. MTPLX's log shows the model thinking anyway. Short replies came back empty, and a longer one sent only its answer. My reading is that MTPLX holds back the thinking text when thinking is off. No speed with thinking off is published.
+
+- **MTPLX 2.13.0, 22 Nov 2026, 17:36 to 18:00 SGT, Bare Speed and the other two packs.** One plain request came back with `finish_reason` length, 512 completion tokens, 0 reasoning tokens, and an empty answer and reasoning field. MTPLX's own log for that kind of request shows the text starting with `<think>`. Most streamed timed requests got no text piece, so no speed could be timed. On the answer check, 50 short questions asked twice, 100 of 100 replies had no text.
+- **MTPLX 2.13.1, 23 Nov 2026, 02:21 SGT, Bare Speed.** The answer check again, 64-token replies. 100 of 100 had no text, each counted as 64 tokens. MTPLX's log shows all 100 starting with `<think>`.
+- **A longer request on 2.13.1 did return text.** A greedy 512-token request to write a short Python function streamed 58 pieces, 363 characters, starting with the code. The reasoning field was empty. Usage counted 512 tokens, 0 of them reasoning. MTPLX's log shows that reply also starting with `<think>`. My reading is that the thinking closed inside the limit and only the answer after it was sent. The log shows only the opening of each reply, so I can't confirm it.
+- **With no thinking field, the same request** gave 1,372 characters of reasoning in its own field and 293 of answer, with 394 of the 512 tokens counted as reasoning.
+- **Why no speed with thinking off.** Every token is counted, but text arrived only after the part the log shows as thinking, or not at all. A streamed speed would time part of the reply against the whole count. The 2.13.0 runs with thinking off are `636cf90090bb`, `443a8f8dae85`, `e7580e9c251f` and `7fb039e7b9da`. They stay out of `rows.csv`.
+- **The 2.13.1 check run is `846fb9fe78de`.** It has no timed rows.
+- **I did not try MTPLX's reasoning-effort setting.** Only the thinking switch.
+
 ## Reference points
 
 ELI5: My usual baseline is Apple's `mlx-lm` on the same weights. Its newest release can't run this model, so the baseline is the same pack with the draft head off.
@@ -175,7 +189,7 @@ python3 tools/summarize.py findings/21_inkling2_mini_mtplx_213
 
 ## What I did not verify
 
-- **Other thinking settings.** Every request here sent no thinking field.
+- **Other thinking settings.** Every timed request here sent no thinking field. Thinking switched off has its own section, with no speeds. I did not try the reasoning-effort setting.
 - **MTPLX's Mac app and `mtplx start`.** I ran the server only.
 - **A second start** of Optimized Speed, Optimized Quality, drafts off, and the sampler block.
 - **What the timed replies say.** I read back two copy replies on Bare Speed and the short previews of the answer check.
