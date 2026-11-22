@@ -2,15 +2,17 @@
 
 By Local LLM L-Plate. Follow [@LazyLocalLLM on X](https://x.com/LazyLocalLLM) for new benchmarks.
 
+Updated on 22 Nov 2026 at 21:24 SGT with drafts off on the sampler and the text check, from a start at 21:16 SGT.
+
 ELI5: mlx-serve's author released a pre-release on 22 Nov 2026 that adds Inkling 2 Mini, with an 8-bit pack made for it. A pre-release is not a stable release yet. Its code is the project's main branch at commit 2fe9be83, so I ran it and label every figure with that. I'll rerun it when 26.11.4 ships. Max is greedy at temperature 0 while writing new code. Median is the model's own sampler on mixed text.
 
-**mlx-serve 26.11.4-pre-release.1 wrote 146.8 tok/s on Inkling 2 Mini at its max, on its latest start, and 160.5 on the start before. With the model's own sampler it wrote 104.5. With its drafts off the same pack wrote 107.4, so text by text the drafts were faster on all 10 long code replies, with a middle ratio of 1.32. Every reply I read back was reasoning text, though the request switched thinking off. The server held 16.7 GiB. Mac Studio M5 Ultra 512 GB, one user, median of 5 runs, 22 Nov 2026.**
+**mlx-serve 26.11.4-pre-release.1 wrote 146.8 tok/s on Inkling 2 Mini at its max, on its latest start, and 160.5 on the start before. With the model's own sampler it wrote 104.5. With its drafts off the same pack wrote 107.4 at the max and 105.2 with the sampler. So text by text the drafts were faster on all 10 long code replies, with a middle ratio of 1.32, and level with the sampler. Every reply I read back was reasoning text, though the request switched thinking off. The server held 16.7 GiB. Mac Studio M5 Ultra 512 GB, one user, median of 5 runs, 22 Nov 2026.**
 
 | Setting | Max, tok/s | Median, tok/s |
 |---|---|---|
 | Drafts on, the engine's defaults, latest start | 146.8 | not run on this start |
 | Drafts on, the engine's defaults, first start | 160.5 | 104.5 |
-| Drafts off | 107.4 | not run |
+| Drafts off | 107.4 | 105.2 |
 
 - **Max** is the middle of 5 greedy runs on new code with replies of up to 2,048 tokens, at the faster of the 1K and 4K prompts.
 - **Median** is the middle of 5 runs with the model's own sampler, mixed text, 512-token replies, 4K prompt.
@@ -36,9 +38,11 @@ Decode tok/s. The first drafted start is run `338b6385675f`, the second is `3f12
 | Greedy, new code, replies up to 2,048 tokens | 4K | 105.6 (105.4 to 106.0) | 131.3 (115.8 to 155.0) | 138.7 (112.5 to 140.2) |
 | Greedy, new code, 512-token replies | 1K | 107.9 (106.8 to 108.2) | 124.9 (114.8 to 143.7) | not run |
 | Greedy, new code, 512-token replies | 4K | 106.4 (105.6 to 107.0) | 125.4 (107.4 to 139.3) | not run |
-| Own sampler, mixed text, 512-token replies | 4K | not run | 104.5 (102.9 to 107.3) | not run |
+| Own sampler, mixed text, 512-token replies | 4K | 105.2 (104.8 to 106.0) | 104.5 (102.9 to 107.3) | not run |
 
 - **Max.** 146.8 tok/s on the latest start. 146.8 / 107.4 = 1.37 times drafts off.
+- **Median.** 104.5 tok/s with drafts on against 105.2 off. 104.5 / 105.2 = 0.99. Text by text the drafts were faster on 2 of 5 sampled replies, with a middle ratio of 0.99. So with the sampler the drafts gave nothing here.
+- **The drafts-off sampler is its own start**, `a76707324154`, at 21:16 SGT, the same settings as `8dddc3d76174`.
 - **Text by text the drafts were faster on every pair.** Long replies, 10 of 10 on each drafted start, with a middle ratio of 1.32 both times. Short replies, 10 of 10, with 1.16.
 - **Plain decoding is about 107 tok/s whatever the text.** The five runs of each drafts-off cell sit within 1.4 tok/s of each other.
 - **The drafted runs spread widely.** One cell goes from 115.8 to 155.0. Drafted speed depends on how well the guesses land on each text.
@@ -63,7 +67,8 @@ ELI5: I asked the same 50 short questions twice on one drafted start and compare
 
 - **The second reply equalled the first on 43 of 50.** With greedy decoding and every guess checked, the text would not change. On this start it did on 7 of 50.
 - **The same check on oMLX** gave 47 of 50 on 0.8.1, and 46 and 48 of 50 on two 0.8.2 starts, in findings 14 and 16. That is another engine and another pack.
-- **I did not run the check with drafts off** on this engine.
+- **With drafts off one start repeated itself on 50 of 50.**
+- **Drafts on and drafts off wrote the same text on 46 of 100 replies.** The 100 are the 50 questions on both passes. So the drafts changed the reply on about half the questions. Finding 14 shows the same kind of result on oMLX, 43 of 100.
 - **This says nothing about which text is better.** I did not grade the answers.
 
 ## Reference points
@@ -98,6 +103,7 @@ mlx-serve --model <models>/inkling2-mini-mlxserve-8bit --serve --host 127.0.0.1 
 | `338b6385675f` | Drafts on, defaults | 18:00 |
 | `3f129b289ed7` | Drafts on, defaults, second start | 18:08 |
 | `8dddc3d76174` | Drafts off | 18:11 |
+| `a76707324154` | Drafts off, the sampler and the text check | 21:16 |
 
 ## How I measured
 
@@ -124,8 +130,8 @@ ELI5: A speed is only comparable with another speed measured the same way.
 
 ELI5: Every timed request is in this folder. You can redo every median.
 
-- **`rows.csv`.** 83 raw rows from the bench database. 75 timed requests and 8 warm-ups.
-- **`runs.csv`.** The 3 runs behind them, with engine, version, start time, settings and sampling.
+- **`rows.csv`.** 89 raw rows from the bench database. 80 timed requests and 9 warm-ups.
+- **`runs.csv`.** The 4 runs behind them, with engine, version, start time, settings and sampling.
 
 From the top of this repository.
 
@@ -137,7 +143,6 @@ python3 tools/summarize.py findings/20_inkling2_mini_mlxserve_pre
 
 - **The stable release.** 26.11.4 was not out yet.
 - **The model with thinking truly off**, and the effort setting.
-- **The sampler with drafts off**, and the answer check with drafts off.
 - **A second start of the sampler block.**
 - **What the timed replies say.** I read back two replies and the short previews of the answer check.
 - **Answer quality, long prompts, several users at once, and images.**
