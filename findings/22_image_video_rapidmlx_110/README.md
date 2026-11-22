@@ -6,11 +6,13 @@ ELI5: My first pictures and video on this Mac. Rapid-MLX 1.1.0 serves image and 
 
 **Rapid-MLX 1.1.0 made a 1024 by 1024 Qwen-Image 2.1 picture in 17.1 s at 20 steps, the same on two starts and ten pictures. The Turbo model made one in 8.7 s at 8 steps. MiniMax H3, its weights not quantized, made a 5-second clip, 124 frames at 24 fps, in 116.5 s at 832 by 480 and 388.9 s at 1280 by 720. Mac Studio M5 Ultra 512 GB, one request at a time, middle of the runs, 22 Nov 2026.**
 
+Corrected on 23 Nov 2026 at 05:19 SGT. The 20-step pictures sent guidance 3.5 with no negative prompt. Rapid-MLX runs Qwen-Image 2.1 through mflux 0.23.0, whose loop runs the second, unconditioned pass only when guidance is above 1 and a negative prompt is sent. So these pictures ran one pass a step, and the guidance had no effect. [Finding 25](../25_qwen_image_mlxserve_26113) measured it. A 1024 by 1024 picture sent guidance 1.0 had the same file hash as one sent 3.5, at the same 0.72 s a step. The 2048 pictures rest on the code, as I checked the hash at 1024 only. With a negative prompt of one space, guidance 3.5 took 1.53 s a step and 33.4 s a picture. The times on this page stand. Only the label of the work changed.
+
 | Model | Size | Steps | Seconds | Runs | Range |
 |---|---|---|---|---|---|
-| Qwen-Image 2.1, bf16 | 1024 by 1024 | 20, guidance 3.5 | 17.1 | 10 on two starts | 17.1 to 17.4 |
+| Qwen-Image 2.1, bf16 | 1024 by 1024 | 20, guidance 3.5 sent, one pass a step | 17.1 | 10 on two starts | 17.1 to 17.4 |
 | Qwen-Image 2.1, bf16 | 1024 by 1024 | 40, the engine's default | 34.1 | 10 on two starts | 31.8 to 35.3 |
-| Qwen-Image 2.1, bf16 | 2048 by 2048 | 20, guidance 3.5 | 105.4 | 6 on two starts | 104.8 to 108.5 |
+| Qwen-Image 2.1, bf16 | 2048 by 2048 | 20, guidance 3.5 sent, one pass a step | 105.4 | 6 on two starts | 104.8 to 108.5 |
 | Qwen-Image 2.1 Turbo, bf16 | 1024 by 1024 | 8, the engine's default | 8.7 | 5 | 8.7 to 8.7 |
 | MiniMax H3, bf16, 5 s clip | 832 by 480 | 9, Turbo LoRA | 116.5 | 3 | 112.6 to 118.7 |
 | MiniMax H3, bf16, 5 s clip | 768 by 448 | 9, Turbo LoRA | 92.5 | 3 | 92.5 to 94.5 |
@@ -19,7 +21,7 @@ ELI5: My first pictures and video on this Mac. Rapid-MLX 1.1.0 serves image and 
 - **Seconds** run from sending the request to the finished file, picture or clip, as the client saw it. The middle of the runs, warm-ups left out.
 - **Two starts for Qwen-Image 2.1.** A fresh server at 18:29 and at 19:30 SGT. Each start gave 17.1 at 20 steps.
 - **Per second of video.** 116.5 s for 5.17 s of clip is 22.5 s of work per second of video at 832 by 480. 124 frames / 24 fps = 5.17 s. At 1280 by 720 it is 388.9 / 5.17 = 75.2.
-- **The 20-step setting is Rapid-MLX's own image speed test,** 1024 by 1024, 20 steps, guidance 3.5, seed 12648430.
+- **The 20-step setting is Rapid-MLX's own image speed test,** 1024 by 1024, 20 steps, guidance 3.5, seed 12648430. I sent no negative prompt, and its test case lists none.
 - **H3's 9 steps are the engine's own and fixed.** Its source sets 9 and notes that 9 gives the Turbo LoRA's 8 denoising passes.
 
 ## Chart
@@ -62,7 +64,7 @@ ELI5: H3 makes a clip with sound from a sentence. Rapid-MLX always merges a Turb
 ELI5: My usual baseline is Apple's `mlx-lm`, which makes no pictures or video. So this page has no baseline.
 
 - **Rapid-MLX's picture runtime is built on [mflux](https://github.com/mflux-community/mflux) 0.23.0**, which it installs. I did not run mflux on its own.
-- **Other engines that serve these models,** such as mlx-serve, were not run on them yet.
+- **mlx-serve 26.11.3** on its author's 8-bit packs is in [finding 25](../25_qwen_image_mlxserve_26113), with Rapid-MLX run again beside it.
 
 ## The setup
 
@@ -83,7 +85,7 @@ rapid-mlx serve minimax-h3 --host 127.0.0.1 --port 8220 --disable-model-download
   - [MiniMaxAI/MiniMax-H3](https://huggingface.co/MiniMaxAI/MiniMax-H3) @ b3c7290e, the 63 files Rapid-MLX's H3 runtime reads, 134.2 GiB. MiniMax H3 Community licence.
   - [lightx2v/Minimax-h3-Turbo](https://huggingface.co/lightx2v/Minimax-h3-Turbo) @ 30f485ed, the 8-step Turbo LoRA, 1.3 GiB, which Rapid-MLX merges into H3 at load. Its card names no licence.
 - **The cache.** Rapid-MLX loads these from the Hugging Face cache, and for a pinned revision it accepts only real files there. So the bench's cache holds hard links to the verified files.
-- **Pictures.** `POST /v1/images/generations`, one picture, `response_format` b64_json. The 20-step blocks sent steps 20 and guidance 3.5. The default blocks sent no steps or guidance, and the engine's progress reported 40 steps for Qwen-Image 2.1 and 8 for Turbo.
+- **Pictures.** `POST /v1/images/generations`, one picture, `response_format` b64_json. The 20-step blocks sent steps 20 and guidance 3.5, with no negative prompt. The default blocks sent no steps or guidance, and the engine's progress reported 40 steps for Qwen-Image 2.1 and 8 for Turbo.
 - **Video.** `POST /v1/videos` with size, 5 seconds and seed 42, then the job polled until complete and the clip downloaded.
 - **Seeds.** 12648430 for pictures, 42 for video.
 - **Picture prompt.** "A lighthouse on a rocky coast at dusk, waves breaking below, warm light in the windows, a few gulls in a clear sky, photographed with a 35 mm lens".

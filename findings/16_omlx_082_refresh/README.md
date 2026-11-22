@@ -8,6 +8,8 @@ ELI5: oMLX 0.8.2 came out on 21 Nov 2026 at 12:20 SGT. Its notes call it a hotfi
 
 Updated on 22 Nov 2026 at 02:47 SGT with the second Inkling 2 Mini start, and at 21:15 SGT with a third, run at 18:16 SGT the same evening as two other engines' Inkling 2 Mini runs.
 
+Updated on 23 Nov 2026 at 05:19 SGT. oMLX 0.8.3 reran every line here but Inkling 2 Small, in [finding 26](../26_omlx_083_refresh). The summary page now shows 0.8.3 for them.
+
 | Model and build | Max on 0.8.2 | Max before | Median on 0.8.2 | Median before | Earlier release |
 |---|---|---|---|---|---|
 | GLM-5.3 Flash, oQ4e | 76.0 | 78.7 | 70.9 | 69.7 | 0.8.1 |

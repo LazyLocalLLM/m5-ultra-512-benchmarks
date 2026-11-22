@@ -8,14 +8,14 @@ ELI5: I'm a learner with one Mac Studio M5 Ultra 512 GB, and I time local AI mod
 
 ELI5: The page in seven lines. Every figure here is recomputed from the raw rows each time the page is built.
 
-Updated 23 Nov 2026 03:08 SGT. Decode speed in tok/s, one user, one Mac.
+Updated 23 Nov 2026 05:19 SGT. Decode speed in tok/s, one user, one Mac.
 
 - **Fastest on new code.** Qwen3.8 27B, 4-bit wrote 315.3 tok/s on TensorFold 1.3.3. Next are Qwen3.8 Flash Next, 4-bit at 209.5 and Qwen3.8 Flash Next, 6-bit at 201.3.
 - **Fastest in daily use.** Qwen3.8 27B, 4-bit wrote 164.1 tok/s on TensorFold 1.3.3. Next are Qwen3.8 Flash Next, IQ3_S at 136.5 and Qwen3.8 Flash Next, 4-bit at 130.9.
 - **Two speeds per model.** Max is greedy at temperature 0 while the model writes new code. Median is the model's own sampler on mixed text, which is closer to daily use.
 - **Prefill too.** The table also has how fast each model read a cold prompt, with the prompt size.
-- **Coverage.** 25 models, 316 setups and 24 findings.
-- **Newest finding.** Finding 24, 23 Nov 2026. [Qwen3.8 Flash Next IQ3_S on Strata 0.2.19, MTP on and off, against llama.cpp on the same files](findings/24_qwen38_flash_next_strata_0219).
+- **Coverage.** 25 models, 344 setups and 26 findings.
+- **Newest finding.** Finding 26, 23 Nov 2026. [oMLX 0.8.3, Inkling 2 Mini faster and three models level](findings/26_omlx_083_refresh).
 - **Check it.** Every figure links to a folder with the rows it came from. If I have set an engine up wrong, [open an issue](https://github.com/LazyLocalLLM/m5-ultra-512-benchmarks/issues).
 
 ## Benchmark summary
@@ -40,20 +40,20 @@ The exact setup behind each figure is one click away, under "Every setup measure
 | [GLM-5.3, 4-bit](https://huggingface.co/mlx-community/GLM-5.3-4bit) | **24.6** | **24.5** | **645.7**, 4K mixed prompt | reasoning | oMLX 0.8.0 with its kernels | [9](findings/09_omlx_080_four_models) |
 | [GLM-5.3, 4-bit, draft head joined here](https://huggingface.co/mlx-community/GLM-5.3-4bit) | **23.4** | **25.0** | **646.9**, 4K mixed prompt | reasoning | oMLX 0.8.0 with its kernels | [9](findings/09_omlx_080_four_models) |
 | [GLM-5.3 Flash, 6-bit](https://huggingface.co/Jundot/GLM-5.3-Flash-oQ6e-mtp) | not run yet | **57.8** | **1,858.8**, 4K mixed prompt | reasoning | oMLX 0.7.3 with its kernels | [2](findings/02_ten_models_4k_to_1m) |
-| [GLM-5.3 Flash, oQ4e](https://huggingface.co/Jundot/GLM-5.3-Flash-oQ4e-mtp) | **84.8** | **70.9** | **2,182.4**, 4K mixed prompt, on oMLX 0.8.2 with its kernels | answer for max, reasoning for median | TensorFold 1.3.3 for max, oMLX 0.8.2 with its kernels for median | [19](findings/19_tensorfold_133_refresh), [16](findings/16_omlx_082_refresh) |
+| [GLM-5.3 Flash, oQ4e](https://huggingface.co/Jundot/GLM-5.3-Flash-oQ4e-mtp) | **84.8** | **70.1** | **2,173.5**, 4K mixed prompt, on oMLX 0.8.3 with its kernels | answer for max, reasoning for median | TensorFold 1.3.3 for max, oMLX 0.8.3 with its kernels for median | [19](findings/19_tensorfold_133_refresh), [26](findings/26_omlx_083_refresh) |
 | [Inkling 2 Small](https://huggingface.co/mlx-community/Inkling-2-Small-oQ4e) | **52.7** | **41.3** | **1,259.3**, 4K code prompt | mostly reasoning | oMLX 0.8.2 with its kernels | [16](findings/16_omlx_082_refresh) |
 | [Qwen3.8 27B, 4-bit](https://huggingface.co/TensorFold/Qwen3.8-27B-MLX-4bit) | **315.3** | **164.1** | **1,865.7**, 4K mixed prompt | answer | TensorFold 1.3.3 | [19](findings/19_tensorfold_133_refresh) |
 | [Qwen3.8 27B, full](https://huggingface.co/mlx-community/Qwen3.8-27B-bf16) | **6.9** | **7.1** | **1,885.2**, 4K code prompt | answer | mlx-serve 26.11.3 | [8](findings/08_dsv41_mlxserve_26113) |
 | [Qwen3.8 Flash Next, 4-bit](https://huggingface.co/TensorFold/Qwen3.8-Flash-Next-MLX-4bit-MTP) | **209.5** | **130.9** | **4,071.7**, 4K code prompt | answer | TensorFold 1.3.3 | [19](findings/19_tensorfold_133_refresh) |
 | [Qwen3.8 Flash Next, 6-bit](https://huggingface.co/TensorFold/Qwen3.8-Flash-Next-MLX-6bit-MTP) | **201.3** | **114.5** | **3,841.0**, 4K mixed prompt | answer | TensorFold 1.3.3 | [19](findings/19_tensorfold_133_refresh) |
-| [Qwen3.8 Flash Next, full](https://huggingface.co/Qwen/Qwen3.8-Flash-Next) | **54.3** | **34.6** | **3,224.1**, 4K code prompt | answer | oMLX 0.8.2 with its kernels | [16](findings/16_omlx_082_refresh) |
+| [Qwen3.8 Flash Next, full](https://huggingface.co/Qwen/Qwen3.8-Flash-Next) | **54.5** | **34.4** | **3,233.3**, 4K code prompt | answer | oMLX 0.8.3 with its kernels | [26](findings/26_omlx_083_refresh) |
 | [DeepSeek V4.1 Flash 1017, oQ4e-mtp](https://huggingface.co/mlx-community/DeepSeek-V4.1-Flash-1017-oQ4e-mtp) | **86.2** | **57.9** | **3,758.0**, 32K code prompt | answer | oMLX 0.8.0 with its kernels | [5](findings/05_dsv41_omlx_080_max_push), [3](findings/03_dsv41_omlx_080) |
 | [DeepSeek V4.1 Flash 1017, maker's files](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) | **108.0** | **74.5** | **1,509.0**, 32K code prompt | answer | TensorFold 1.3.3 | [18](findings/18_dsv41_tensorfold_133) |
 | [GLM-5.3 Flash, 4-bit](https://huggingface.co/TensorFold/GLM-5.3-Flash-MLX-4bit-MTP) | **102.8** | **84.2** | **2,234.3**, 4K mixed prompt, on oMLX 0.8.1 with its kernels | answer | TensorFold 1.3.3 | [19](findings/19_tensorfold_133_refresh), [15](findings/15_glm53_flash_two_builds) |
 | [Hy4-flash, 4-bit](https://huggingface.co/TensorFold/Hy4-flash-MLX-4bit-MTP) | **73.3** | **54.5** | **1,649.9**, 1K code prompt | reasoning | TensorFold 1.3.3 | [19](findings/19_tensorfold_133_refresh) |
 | [Hy4-flash, 8-bit](https://huggingface.co/TensorFold/Hy4-flash-MLX-8bit-MTP) | **55.2** | **44.8** | **1,235.8**, 1K code prompt | reasoning | TensorFold 1.3.3 | [19](findings/19_tensorfold_133_refresh) |
-| [Hy4-flash, oQ4h](https://huggingface.co/Jundot/Hy4-flash-oQ4h-mtp) | **76.8** | **54.0** | **1,529.9**, 4K code prompt | answer for max, reasoning for median | oMLX 0.8.2 with its kernels for max, oMLX 0.8.1 with its kernels for median | [16](findings/16_omlx_082_refresh), [12](findings/12_hy4_flash_omlx_081) |
-| [Inkling 2 Mini, oQ4e](https://huggingface.co/mlx-community/Inkling-2-Mini-oQ4e-mtp) | **85.3** | **60.3** | **2,819.1**, 4K code prompt | reasoning | oMLX 0.8.2 with its kernels | [16](findings/16_omlx_082_refresh) |
+| [Hy4-flash, oQ4h](https://huggingface.co/Jundot/Hy4-flash-oQ4h-mtp) | **76.2** | **54.0** | **2,302.3**, 4K mixed prompt | answer for max, reasoning for median | oMLX 0.8.3 with its kernels for max, oMLX 0.8.1 with its kernels for median | [26](findings/26_omlx_083_refresh), [12](findings/12_hy4_flash_omlx_081) |
+| [Inkling 2 Mini, oQ4e](https://huggingface.co/mlx-community/Inkling-2-Mini-oQ4e-mtp) | **108.1** | **83.3** | **3,257.6**, 4K code prompt | reasoning | oMLX 0.8.3 with its kernels | [26](findings/26_omlx_083_refresh) |
 | [Inkling 2 Mini, oQ3e](https://huggingface.co/mlx-community/Inkling-2-Mini-oQ3e-mtp) | **105.1** | **67.1** | **2,850.7**, 4K code prompt | reasoning | oMLX 0.8.1 with its kernels | [14](findings/14_inkling2_mini_omlx_081) |
 | [Inkling 2 Mini, 8-bit](https://huggingface.co/ddalcu/Inkling-2-Mini-MLX-8bit) | **146.8** | **105.2** | **4,932.1**, 4K code prompt | reasoning | mlx-serve 26.11.4-pre-release.1, main at 2fe9be83 | [20](findings/20_inkling2_mini_mlxserve_pre) |
 | [Inkling 2 Mini, Bare Speed](https://huggingface.co/Youssofal/Inkling-2-Mini-MTPLX-Bare-Speed) | **159.7** | **130.0** | **4,684.4**, 4K code prompt | reasoning | MTPLX 2.13.1 | [21](findings/21_inkling2_mini_mtplx_213) |
@@ -73,11 +73,11 @@ ELI5: Two tests hand the model text it can guess almost perfectly, copying the p
 | [Qwen3.8 27B, 4-bit](https://huggingface.co/TensorFold/Qwen3.8-27B-MLX-4bit) | **810.8** | **449.7** | TensorFold 1.3.3 | [19](findings/19_tensorfold_133_refresh) |
 | [Qwen3.8 Flash Next, 4-bit](https://huggingface.co/TensorFold/Qwen3.8-Flash-Next-MLX-4bit-MTP) | **322.3** | **369.5** | TensorFold 1.3.3 | [19](findings/19_tensorfold_133_refresh) |
 | [Qwen3.8 Flash Next, 6-bit](https://huggingface.co/TensorFold/Qwen3.8-Flash-Next-MLX-6bit-MTP) | **260.1** | **296.2** | TensorFold 1.3.3 | [19](findings/19_tensorfold_133_refresh) |
-| [Qwen3.8 Flash Next, full](https://huggingface.co/Qwen/Qwen3.8-Flash-Next) | **128.7** | **51.4** | oMLX 0.8.2 with its kernels | [16](findings/16_omlx_082_refresh) |
+| [Qwen3.8 Flash Next, full](https://huggingface.co/Qwen/Qwen3.8-Flash-Next) | **128.4** | **51.5** | oMLX 0.8.3 with its kernels | [26](findings/26_omlx_083_refresh) |
 | [DeepSeek V4.1 Flash 1017, oQ4e-mtp](https://huggingface.co/mlx-community/DeepSeek-V4.1-Flash-1017-oQ4e-mtp) | **118.3** | **114.0** | oMLX 0.8.0 with its kernels | [5](findings/05_dsv41_omlx_080_max_push) |
 | [DeepSeek V4.1 Flash 1017, maker's files](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) | **186.9** | **138.1** | TensorFold 1.3.3 | [18](findings/18_dsv41_tensorfold_133) |
 | [GLM-5.3 Flash, 4-bit](https://huggingface.co/TensorFold/GLM-5.3-Flash-MLX-4bit-MTP) | **174.5** | **113.6** | TensorFold 1.3.3 | [19](findings/19_tensorfold_133_refresh) |
-| [Hy4-flash, oQ4h](https://huggingface.co/Jundot/Hy4-flash-oQ4h-mtp) | **100.9** | **97.4** | oMLX 0.8.2 with its kernels | [16](findings/16_omlx_082_refresh) |
+| [Hy4-flash, oQ4h](https://huggingface.co/Jundot/Hy4-flash-oQ4h-mtp) | **95.9** | **94.0** | oMLX 0.8.3 with its kernels | [26](findings/26_omlx_083_refresh) |
 
 ### Every setup measured
 
@@ -136,7 +136,7 @@ ELI5: Everything behind the tables above, including the setups that were not the
 </details>
 
 <details>
-<summary><b>GLM-5.3 Flash, oQ4e</b>, 30 setups</summary>
+<summary><b>GLM-5.3 Flash, oQ4e</b>, 33 setups</summary>
 
 | Kind | Engine and setup | Sampler | Prompt | Reply tokens | Decode tok/s | Range | Runs | Date | Run | Finding |
 |---|---|---|---|---|---|---|---|---|---|---|
@@ -146,9 +146,11 @@ ELI5: Everything behind the tables above, including the setups that were not the
 | max | TensorFold 1.3.2, MTP drafts, thinking off, a build made for another engine, older release | greedy, temperature 0 | 1K code | 2,048 | 80.7 | 74.5 to 84.5 | 5 | 2026-11-21 | `787aea383796` | [15](findings/15_glm53_flash_two_builds) |
 | max | oMLX 0.8.0 with its kernels, MTP on, default depth, reply is reasoning text, older release | greedy, temperature 0 | 1K code | 2,048 | 80.2 | 68.4 to 87.6 | 5 | 2026-11-21 | `8f12a00bcc4f` | [9](findings/09_omlx_080_four_models) |
 | max | oMLX 0.8.1 with its kernels, MTP on, default depth, reply is reasoning text, older release | greedy, temperature 0 | 1K code | 2,048 | 78.7 | 73.7 to 86.2 | 5 | 2026-11-21 | `421e19a82f36` | [15](findings/15_glm53_flash_two_builds) |
-| max | oMLX 0.8.2 with its kernels, MTP on, default depth, reply is reasoning text | greedy, temperature 0 | 1K code | 2,048 | 76.0 | 72.9 to 78.8 | 5 | 2026-11-21 | `34ae658e42ba` | [16](findings/16_omlx_082_refresh) |
+| max | oMLX 0.8.3 with its kernels, MTP on, default depth, reply is reasoning text | greedy, temperature 0 | 1K code | 2,048 | 77.4 | 71.2 to 82.5 | 5 | 2026-11-23 | `42c428b2af1f` | [26](findings/26_omlx_083_refresh) |
+| max | oMLX 0.8.2 with its kernels, MTP on, default depth, reply is reasoning text, older release | greedy, temperature 0 | 1K code | 2,048 | 76.0 | 72.9 to 78.8 | 5 | 2026-11-21 | `34ae658e42ba` | [16](findings/16_omlx_082_refresh) |
 | max | oMLX 0.8.0 with its kernels, MTP on, default depth, reply is reasoning text, older release | greedy, temperature 0 | 4K code | 2,048 | 74.7 | 68.9 to 81.3 | 5 | 2026-11-21 | `8f12a00bcc4f` | [9](findings/09_omlx_080_four_models) |
-| max | oMLX 0.8.2 with its kernels, MTP on, default depth, reply is reasoning text | greedy, temperature 0 | 4K code | 2,048 | 73.9 | 69.3 to 81.1 | 5 | 2026-11-21 | `34ae658e42ba` | [16](findings/16_omlx_082_refresh) |
+| max | oMLX 0.8.2 with its kernels, MTP on, default depth, reply is reasoning text, older release | greedy, temperature 0 | 4K code | 2,048 | 73.9 | 69.3 to 81.1 | 5 | 2026-11-21 | `34ae658e42ba` | [16](findings/16_omlx_082_refresh) |
+| max | oMLX 0.8.3 with its kernels, MTP on, default depth, reply is reasoning text | greedy, temperature 0 | 4K code | 2,048 | 73.6 | 66.3 to 77.4 | 5 | 2026-11-23 | `42c428b2af1f` | [26](findings/26_omlx_083_refresh) |
 | max | oMLX 0.8.1 with its kernels, MTP on, default depth, reply is reasoning text, older release | greedy, temperature 0 | 4K code | 2,048 | 73.4 | 66.6 to 77.3 | 5 | 2026-11-21 | `421e19a82f36` | [15](findings/15_glm53_flash_two_builds) |
 | max | oMLX 0.8.0 with its kernels, MTP on, fixed depth 4, reply is reasoning text | greedy, temperature 0 | 1K code | 2,048 | 71.7 | 66.4 to 80.9 | 5 | 2026-11-21 | `605e0068ff28` | [9](findings/09_omlx_080_four_models) |
 | max | oMLX 0.8.0 with its kernels, MTP on, fixed depth 4, reply is reasoning text | greedy, temperature 0 | 4K code | 2,048 | 68.9 | 62.1 to 74.9 | 5 | 2026-11-21 | `605e0068ff28` | [9](findings/09_omlx_080_four_models) |
@@ -164,7 +166,8 @@ ELI5: Everything behind the tables above, including the setups that were not the
 | counting toy | TensorFold 1.3.2, MTP drafts, thinking off, a build made for another engine, older release | greedy, temperature 0 | 4K code | 512 | 96.3 | 86.7 to 99.5 | 5 | 2026-11-21 | `787aea383796` | [15](findings/15_glm53_flash_two_builds) |
 | counting toy | TensorFold 1.3.2, MTP drafts, thinking off, a build made for another engine, older release | greedy, temperature 0 | 1K code | 512 | 95.2 | 83.1 to 96.5 | 5 | 2026-11-21 | `787aea383796` | [15](findings/15_glm53_flash_two_builds) |
 | counting toy | TensorFold 1.3.3, MTP drafts, thinking off, a build made for another engine | greedy, temperature 0 | 1K code | 512 | 94.4 | 87.7 to 95.9 | 5 | 2026-11-22 | `0d05d0d3d24c` | [19](findings/19_tensorfold_133_refresh) |
-| median | oMLX 0.8.2 with its kernels, MTP on, default depth, reply is reasoning text | temperature 1.0, top-p 0.95 | 4K mixed | 512 | 70.9 | 64.9 to 73.7 | 5 | 2026-11-21 | `34ae658e42ba` | [16](findings/16_omlx_082_refresh) |
+| median | oMLX 0.8.2 with its kernels, MTP on, default depth, reply is reasoning text, older release | temperature 1.0, top-p 0.95 | 4K mixed | 512 | 70.9 | 64.9 to 73.7 | 5 | 2026-11-21 | `34ae658e42ba` | [16](findings/16_omlx_082_refresh) |
+| median | oMLX 0.8.3 with its kernels, MTP on, default depth, reply is reasoning text | temperature 1.0, top-p 0.95 | 4K mixed | 512 | 70.1 | 69.6 to 73.4 | 5 | 2026-11-23 | `42c428b2af1f` | [26](findings/26_omlx_083_refresh) |
 | median | oMLX 0.8.1 with its kernels, MTP on, default depth, reply is reasoning text, older release | temperature 1.0, top-p 0.95 | 4K mixed | 512 | 69.7 | 66.9 to 73.3 | 5 | 2026-11-21 | `421e19a82f36` | [15](findings/15_glm53_flash_two_builds) |
 | median | oMLX 0.7.3 with its kernels, MTP on, older release | temperature 1.0, top-p 0.95 | 4K mixed | 512 | 68.8 | 61.0 to 76.1 | 5 | 2026-11-17 | `8453ec3a372d` | [2](findings/02_ten_models_4k_to_1m) |
 | median | oMLX 0.8.0 with its kernels, MTP on, default depth, reply is reasoning text, older release | temperature 1.0, top-p 0.95 | 4K mixed | 512 | 67.8 | 63.2 to 72.2 | 5 | 2026-11-21 | `8f12a00bcc4f` | [9](findings/09_omlx_080_four_models) |
@@ -289,31 +292,41 @@ ELI5: Everything behind the tables above, including the setups that were not the
 </details>
 
 <details>
-<summary><b>Qwen3.8 Flash Next, full</b>, 21 setups</summary>
+<summary><b>Qwen3.8 Flash Next, full</b>, 31 setups</summary>
 
 | Kind | Engine and setup | Sampler | Prompt | Reply tokens | Decode tok/s | Range | Runs | Date | Run | Finding |
 |---|---|---|---|---|---|---|---|---|---|---|
-| max | oMLX 0.8.2 with its kernels, MTP on (built-in head), fixed depth 4 | greedy, temperature 0 | 1K code | 2,048 | 54.3 | 50.2 to 55.4 | 5 | 2026-11-21 | `8f063cd2f425` | [16](findings/16_omlx_082_refresh) |
+| max | oMLX 0.8.3 with its kernels, MTP on (built-in head), fixed depth 4 | greedy, temperature 0 | 1K code | 2,048 | 54.5 | 49.2 to 56.6 | 5 | 2026-11-23 | `780bb9bba309` | [26](findings/26_omlx_083_refresh) |
+| max | oMLX 0.8.2 with its kernels, MTP on (built-in head), fixed depth 4, older release | greedy, temperature 0 | 1K code | 2,048 | 54.3 | 50.2 to 55.4 | 5 | 2026-11-21 | `8f063cd2f425` | [16](findings/16_omlx_082_refresh) |
 | max | oMLX 0.8.0 with its kernels, MTP on (built-in head), fixed depth 4, second start, older release | greedy, temperature 0 | 4K code | 2,048 | 54.2 | 47.0 to 60.7 | 5 | 2026-11-21 | `5f6db4faf823` | [9](findings/09_omlx_080_four_models) |
-| max | oMLX 0.8.2 with its kernels, MTP on (built-in head), fixed depth 4 | greedy, temperature 0 | 4K code | 2,048 | 53.6 | 49.2 to 59.2 | 5 | 2026-11-21 | `8f063cd2f425` | [16](findings/16_omlx_082_refresh) |
+| max | oMLX 0.8.2 with its kernels, MTP on (built-in head), fixed depth 4, older release | greedy, temperature 0 | 4K code | 2,048 | 53.6 | 49.2 to 59.2 | 5 | 2026-11-21 | `8f063cd2f425` | [16](findings/16_omlx_082_refresh) |
 | max | oMLX 0.8.0 with its kernels, MTP on (built-in head), fixed depth 4, second start, older release | greedy, temperature 0 | 1K code | 2,048 | 53.6 | 47.6 to 55.3 | 5 | 2026-11-21 | `5f6db4faf823` | [9](findings/09_omlx_080_four_models) |
-| max | oMLX 0.8.2 with its kernels, MTP on (built-in head), default depth | greedy, temperature 0 | 1K code | 2,048 | 50.8 | 46.2 to 52.5 | 5 | 2026-11-21 | `fbc94b62491c` | [16](findings/16_omlx_082_refresh) |
+| max | oMLX 0.8.3 with its kernels, MTP on (built-in head), fixed depth 4 | greedy, temperature 0 | 4K code | 2,048 | 51.1 | 49.1 to 54.2 | 5 | 2026-11-23 | `780bb9bba309` | [26](findings/26_omlx_083_refresh) |
+| max | oMLX 0.8.2 with its kernels, MTP on (built-in head), default depth, older release | greedy, temperature 0 | 1K code | 2,048 | 50.8 | 46.2 to 52.5 | 5 | 2026-11-21 | `fbc94b62491c` | [16](findings/16_omlx_082_refresh) |
 | max | oMLX 0.8.0 with its kernels, MTP on (built-in head), default depth, second start, older release | greedy, temperature 0 | 1K code | 2,048 | 49.4 | 46.9 to 52.6 | 5 | 2026-11-21 | `57b0f4425846` | [9](findings/09_omlx_080_four_models) |
-| max | oMLX 0.8.2 with its kernels, MTP on (built-in head), default depth | greedy, temperature 0 | 4K code | 2,048 | 49.1 | 44.9 to 53.6 | 5 | 2026-11-21 | `fbc94b62491c` | [16](findings/16_omlx_082_refresh) |
+| max | oMLX 0.8.3 with its kernels, MTP on (built-in head), default depth | greedy, temperature 0 | 4K code | 2,048 | 49.1 | 44.1 to 53.5 | 5 | 2026-11-23 | `e741a35f57d5` | [26](findings/26_omlx_083_refresh) |
+| max | oMLX 0.8.2 with its kernels, MTP on (built-in head), default depth, older release | greedy, temperature 0 | 4K code | 2,048 | 49.1 | 44.9 to 53.6 | 5 | 2026-11-21 | `fbc94b62491c` | [16](findings/16_omlx_082_refresh) |
+| max | oMLX 0.8.3 with its kernels, MTP on (built-in head), default depth | greedy, temperature 0 | 1K code | 2,048 | 49.0 | 45.5 to 51.3 | 5 | 2026-11-23 | `e741a35f57d5` | [26](findings/26_omlx_083_refresh) |
 | max | oMLX 0.8.0 with its kernels, MTP on (built-in head), default depth, second start, older release | greedy, temperature 0 | 4K code | 2,048 | 48.5 | 45.3 to 51.4 | 5 | 2026-11-21 | `57b0f4425846` | [9](findings/09_omlx_080_four_models) |
-| copy task | oMLX 0.8.2 with its kernels, MTP on (built-in head), default depth | greedy, temperature 0 | 1K code | 512 | 128.7 | 119.0 to 132.0 | 5 | 2026-11-21 | `fbc94b62491c` | [16](findings/16_omlx_082_refresh) |
+| copy task | oMLX 0.8.2 with its kernels, MTP on (built-in head), default depth, older release | greedy, temperature 0 | 1K code | 512 | 128.7 | 119.0 to 132.0 | 5 | 2026-11-21 | `fbc94b62491c` | [16](findings/16_omlx_082_refresh) |
+| copy task | oMLX 0.8.3 with its kernels, MTP on (built-in head), default depth | greedy, temperature 0 | 1K code | 512 | 128.4 | 120.5 to 132.3 | 5 | 2026-11-23 | `e741a35f57d5` | [26](findings/26_omlx_083_refresh) |
 | copy task | oMLX 0.8.0 with its kernels, MTP on (built-in head), default depth, older release | greedy, temperature 0 | 1K code | 512 | 120.1 | 115.1 to 132.3 | 5 | 2026-11-21 | `6542a7f95175` | [9](findings/09_omlx_080_four_models) |
-| copy task | oMLX 0.8.2 with its kernels, MTP on (built-in head), default depth | greedy, temperature 0 | 4K code | 512 | 119.5 | 105.2 to 126.7 | 5 | 2026-11-21 | `fbc94b62491c` | [16](findings/16_omlx_082_refresh) |
+| copy task | oMLX 0.8.2 with its kernels, MTP on (built-in head), default depth, older release | greedy, temperature 0 | 4K code | 512 | 119.5 | 105.2 to 126.7 | 5 | 2026-11-21 | `fbc94b62491c` | [16](findings/16_omlx_082_refresh) |
+| copy task | oMLX 0.8.3 with its kernels, MTP on (built-in head), default depth | greedy, temperature 0 | 4K code | 512 | 118.6 | 105.2 to 127.9 | 5 | 2026-11-23 | `e741a35f57d5` | [26](findings/26_omlx_083_refresh) |
 | copy task | oMLX 0.8.0 with its kernels, MTP on (built-in head), default depth, older release | greedy, temperature 0 | 4K code | 512 | 116.9 | 98.2 to 125.2 | 5 | 2026-11-21 | `6542a7f95175` | [9](findings/09_omlx_080_four_models) |
 | counting toy | oMLX 0.8.0 with its kernels, MTP on (built-in head), default depth, older release | greedy, temperature 0 | 4K code | 512 | 51.5 | 51.1 to 52.6 | 5 | 2026-11-21 | `6542a7f95175` | [9](findings/09_omlx_080_four_models) |
-| counting toy | oMLX 0.8.2 with its kernels, MTP on (built-in head), default depth | greedy, temperature 0 | 4K code | 512 | 51.4 | 50.1 to 52.2 | 5 | 2026-11-21 | `fbc94b62491c` | [16](findings/16_omlx_082_refresh) |
-| counting toy | oMLX 0.8.2 with its kernels, MTP on (built-in head), default depth | greedy, temperature 0 | 1K code | 512 | 50.2 | 48.9 to 51.4 | 5 | 2026-11-21 | `fbc94b62491c` | [16](findings/16_omlx_082_refresh) |
+| counting toy | oMLX 0.8.3 with its kernels, MTP on (built-in head), default depth | greedy, temperature 0 | 4K code | 512 | 51.5 | 50.7 to 52.4 | 5 | 2026-11-23 | `e741a35f57d5` | [26](findings/26_omlx_083_refresh) |
+| counting toy | oMLX 0.8.2 with its kernels, MTP on (built-in head), default depth, older release | greedy, temperature 0 | 4K code | 512 | 51.4 | 50.1 to 52.2 | 5 | 2026-11-21 | `fbc94b62491c` | [16](findings/16_omlx_082_refresh) |
+| counting toy | oMLX 0.8.2 with its kernels, MTP on (built-in head), default depth, older release | greedy, temperature 0 | 1K code | 512 | 50.2 | 48.9 to 51.4 | 5 | 2026-11-21 | `fbc94b62491c` | [16](findings/16_omlx_082_refresh) |
+| counting toy | oMLX 0.8.3 with its kernels, MTP on (built-in head), default depth | greedy, temperature 0 | 1K code | 512 | 49.9 | 48.9 to 50.6 | 5 | 2026-11-23 | `e741a35f57d5` | [26](findings/26_omlx_083_refresh) |
 | counting toy | oMLX 0.8.0 with its kernels, MTP on (built-in head), default depth, older release | greedy, temperature 0 | 1K code | 512 | 49.5 | 47.6 to 51.8 | 5 | 2026-11-21 | `6542a7f95175` | [9](findings/09_omlx_080_four_models) |
 | median | oMLX 0.7.3 with its kernels, MTP on (built-in head), older release | temperature 0.7, top-p 0.8, top-k 20 | 4K mixed | 512 | 34.9 | 32.2 to 35.9 | 5 | 2026-11-17 | `c4bbe7d3230c` | [2](findings/02_ten_models_4k_to_1m) |
-| median | oMLX 0.8.2 with its kernels, MTP on (built-in head), default depth | temperature 0.7, top-p 0.8, top-k 20 | 4K mixed | 512 | 34.6 | 31.6 to 35.1 | 5 | 2026-11-21 | `fbc94b62491c` | [16](findings/16_omlx_082_refresh) |
+| median | oMLX 0.8.2 with its kernels, MTP on (built-in head), default depth, older release | temperature 0.7, top-p 0.8, top-k 20 | 4K mixed | 512 | 34.6 | 31.6 to 35.1 | 5 | 2026-11-21 | `fbc94b62491c` | [16](findings/16_omlx_082_refresh) |
+| median | oMLX 0.8.3 with its kernels, MTP on (built-in head), default depth | temperature 0.7, top-p 0.8, top-k 20 | 4K mixed | 512 | 34.4 | 34.1 to 36.1 | 5 | 2026-11-23 | `e741a35f57d5` | [26](findings/26_omlx_083_refresh) |
 | median | oMLX 0.8.0 with its kernels, MTP on (built-in head), fixed depth 4, second start, older release | temperature 0.7, top-p 0.8, top-k 20 | 4K mixed | 512 | 33.6 | 31.8 to 40.2 | 5 | 2026-11-21 | `5f6db4faf823` | [9](findings/09_omlx_080_four_models) |
-| median | oMLX 0.8.2 with its kernels, MTP on (built-in head), fixed depth 4 | temperature 0.7, top-p 0.8, top-k 20 | 4K mixed | 512 | 33.3 | 31.9 to 33.9 | 5 | 2026-11-21 | `8f063cd2f425` | [16](findings/16_omlx_082_refresh) |
+| median | oMLX 0.8.2 with its kernels, MTP on (built-in head), fixed depth 4, older release | temperature 0.7, top-p 0.8, top-k 20 | 4K mixed | 512 | 33.3 | 31.9 to 33.9 | 5 | 2026-11-21 | `8f063cd2f425` | [16](findings/16_omlx_082_refresh) |
 | median | oMLX 0.8.0 with its kernels, MTP on (built-in head), default depth, older release | temperature 0.7, top-p 0.8, top-k 20 | 4K mixed | 512 | 33.2 | 31.5 to 34.6 | 5 | 2026-11-21 | `6542a7f95175` | [9](findings/09_omlx_080_four_models) |
+| median | oMLX 0.8.3 with its kernels, MTP on (built-in head), fixed depth 4 | temperature 0.7, top-p 0.8, top-k 20 | 4K mixed | 512 | 32.4 | 30.2 to 35.0 | 5 | 2026-11-23 | `780bb9bba309` | [26](findings/26_omlx_083_refresh) |
 
 </details>
 
@@ -444,14 +457,16 @@ ELI5: Everything behind the tables above, including the setups that were not the
 </details>
 
 <details>
-<summary><b>Hy4-flash, oQ4h</b>, 23 setups</summary>
+<summary><b>Hy4-flash, oQ4h</b>, 30 setups</summary>
 
 | Kind | Engine and setup | Sampler | Prompt | Reply tokens | Decode tok/s | Range | Runs | Date | Run | Finding |
 |---|---|---|---|---|---|---|---|---|---|---|
-| max | oMLX 0.8.2 with its kernels, Lightning MTP on, default depth, thinking off | greedy, temperature 0 | 1K code | 2,048 | 76.8 | 72.5 to 78.4 | 5 | 2026-11-21 | `fab79618854c` | [16](findings/16_omlx_082_refresh) |
+| max | oMLX 0.8.2 with its kernels, Lightning MTP on, default depth, thinking off, older release | greedy, temperature 0 | 1K code | 2,048 | 76.8 | 72.5 to 78.4 | 5 | 2026-11-21 | `fab79618854c` | [16](findings/16_omlx_082_refresh) |
+| max | oMLX 0.8.3 with its kernels, Lightning MTP on, default depth, thinking off | greedy, temperature 0 | 4K code | 2,048 | 76.2 | 67.5 to 78.5 | 5 | 2026-11-23 | `0d2a17ccad56` | [26](findings/26_omlx_083_refresh) |
 | max | oMLX 0.8.1 with its kernels, Lightning MTP on, default depth, thinking off, older release | greedy, temperature 0 | 1K code | 2,048 | 75.6 | 72.7 to 76.8 | 5 | 2026-11-21 | `61f1f5a70d04` | [12](findings/12_hy4_flash_omlx_081) |
-| max | oMLX 0.8.2 with its kernels, Lightning MTP on, default depth, thinking off | greedy, temperature 0 | 4K code | 2,048 | 75.1 | 68.0 to 79.3 | 5 | 2026-11-21 | `fab79618854c` | [16](findings/16_omlx_082_refresh) |
+| max | oMLX 0.8.2 with its kernels, Lightning MTP on, default depth, thinking off, older release | greedy, temperature 0 | 4K code | 2,048 | 75.1 | 68.0 to 79.3 | 5 | 2026-11-21 | `fab79618854c` | [16](findings/16_omlx_082_refresh) |
 | max | oMLX 0.8.1 with its kernels, Lightning MTP on, default depth, thinking off, older release | greedy, temperature 0 | 4K code | 2,048 | 73.5 | 67.0 to 78.6 | 5 | 2026-11-21 | `61f1f5a70d04` | [12](findings/12_hy4_flash_omlx_081) |
+| max | oMLX 0.8.3 with its kernels, Lightning MTP on, default depth, thinking off | greedy, temperature 0 | 1K code | 2,048 | 72.4 | 56.1 to 78.8 | 5 | 2026-11-23 | `0d2a17ccad56` | [26](findings/26_omlx_083_refresh) |
 | max | oMLX 0.8.1 with its kernels, Lightning MTP on, default depth, no thinking setting, reply is reasoning text | greedy, temperature 0 | 4K code | 2,048 | 54.4 | 50.0 to 57.8 | 5 | 2026-11-21 | `7b6ccfb9c907` | [12](findings/12_hy4_flash_omlx_081) |
 | max | oMLX 0.8.1 with its kernels, Lightning MTP on, default depth, no thinking setting, reply is reasoning text | greedy, temperature 0 | 1K code | 2,048 | 53.8 | 52.7 to 56.4 | 5 | 2026-11-21 | `7b6ccfb9c907` | [12](findings/12_hy4_flash_omlx_081) |
 | max | oMLX 0.8.1 with its kernels, Lightning MTP off, thinking off | greedy, temperature 0 | 4K code | 2,048 | 35.5 | 35.4 to 35.5 | 5 | 2026-11-21 | `7a70518485cc` | [12](findings/12_hy4_flash_omlx_081) |
@@ -459,34 +474,47 @@ ELI5: Everything behind the tables above, including the setups that were not the
 | max | oMLX 0.8.1 with its kernels, Lightning MTP off, no thinking setting, reply is reasoning text | greedy, temperature 0 | 1K code | 2,048 | 35.2 | 35.1 to 35.4 | 5 | 2026-11-21 | `0404d67792d9` | [12](findings/12_hy4_flash_omlx_081) |
 | max | oMLX 0.8.1 with its kernels, Lightning MTP off, thinking off | greedy, temperature 0 | 1K code | 2,048 | 35.1 | 35.0 to 35.4 | 5 | 2026-11-21 | `7a70518485cc` | [12](findings/12_hy4_flash_omlx_081) |
 | copy task | oMLX 0.8.1 with its kernels, Lightning MTP on, default depth, thinking off, older release | greedy, temperature 0 | 1K code | 512 | 101.0 | 94.3 to 103.0 | 5 | 2026-11-21 | `61f1f5a70d04` | [12](findings/12_hy4_flash_omlx_081) |
-| copy task | oMLX 0.8.2 with its kernels, Lightning MTP on, default depth, thinking off | greedy, temperature 0 | 1K code | 512 | 100.9 | 94.2 to 103.4 | 5 | 2026-11-21 | `fab79618854c` | [16](findings/16_omlx_082_refresh) |
+| copy task | oMLX 0.8.2 with its kernels, Lightning MTP on, default depth, thinking off, older release | greedy, temperature 0 | 1K code | 512 | 100.9 | 94.2 to 103.4 | 5 | 2026-11-21 | `fab79618854c` | [16](findings/16_omlx_082_refresh) |
+| copy task | oMLX 0.8.3 with its kernels, Lightning MTP on, default depth, thinking off | greedy, temperature 0 | 1K code | 512 | 95.9 | 93.7 to 98.1 | 5 | 2026-11-23 | `0d2a17ccad56` | [26](findings/26_omlx_083_refresh) |
+| copy task | oMLX 0.8.3 with its kernels, Lightning MTP on, default depth, thinking off | greedy, temperature 0 | 4K code | 512 | 93.0 | 88.8 to 94.5 | 5 | 2026-11-23 | `0d2a17ccad56` | [26](findings/26_omlx_083_refresh) |
 | copy task | oMLX 0.8.1 with its kernels, Lightning MTP on, default depth, thinking off, older release | greedy, temperature 0 | 4K code | 512 | 92.1 | 88.1 to 93.3 | 5 | 2026-11-21 | `61f1f5a70d04` | [12](findings/12_hy4_flash_omlx_081) |
-| copy task | oMLX 0.8.2 with its kernels, Lightning MTP on, default depth, thinking off | greedy, temperature 0 | 4K code | 512 | 91.7 | 87.6 to 93.6 | 5 | 2026-11-21 | `fab79618854c` | [16](findings/16_omlx_082_refresh) |
-| counting toy | oMLX 0.8.2 with its kernels, Lightning MTP on, default depth, thinking off | greedy, temperature 0 | 1K code | 512 | 97.4 | 92.0 to 98.2 | 5 | 2026-11-21 | `fab79618854c` | [16](findings/16_omlx_082_refresh) |
+| copy task | oMLX 0.8.2 with its kernels, Lightning MTP on, default depth, thinking off, older release | greedy, temperature 0 | 4K code | 512 | 91.7 | 87.6 to 93.6 | 5 | 2026-11-21 | `fab79618854c` | [16](findings/16_omlx_082_refresh) |
+| counting toy | oMLX 0.8.2 with its kernels, Lightning MTP on, default depth, thinking off, older release | greedy, temperature 0 | 1K code | 512 | 97.4 | 92.0 to 98.2 | 5 | 2026-11-21 | `fab79618854c` | [16](findings/16_omlx_082_refresh) |
 | counting toy | oMLX 0.8.1 with its kernels, Lightning MTP on, default depth, thinking off, older release | greedy, temperature 0 | 1K code | 512 | 97.4 | 92.1 to 98.9 | 5 | 2026-11-21 | `61f1f5a70d04` | [12](findings/12_hy4_flash_omlx_081) |
+| counting toy | oMLX 0.8.3 with its kernels, Lightning MTP on, default depth, thinking off | greedy, temperature 0 | 1K code | 512 | 94.0 | 92.6 to 94.0 | 5 | 2026-11-23 | `0d2a17ccad56` | [26](findings/26_omlx_083_refresh) |
+| counting toy | oMLX 0.8.3 with its kernels, Lightning MTP on, default depth, thinking off | greedy, temperature 0 | 4K code | 512 | 92.6 | 91.9 to 92.7 | 5 | 2026-11-23 | `0d2a17ccad56` | [26](findings/26_omlx_083_refresh) |
 | counting toy | oMLX 0.8.1 with its kernels, Lightning MTP on, default depth, thinking off, older release | greedy, temperature 0 | 4K code | 512 | 92.0 | 91.3 to 92.0 | 5 | 2026-11-21 | `61f1f5a70d04` | [12](findings/12_hy4_flash_omlx_081) |
-| counting toy | oMLX 0.8.2 with its kernels, Lightning MTP on, default depth, thinking off | greedy, temperature 0 | 4K code | 512 | 91.5 | 91.3 to 92.1 | 5 | 2026-11-21 | `fab79618854c` | [16](findings/16_omlx_082_refresh) |
+| counting toy | oMLX 0.8.2 with its kernels, Lightning MTP on, default depth, thinking off, older release | greedy, temperature 0 | 4K code | 512 | 91.5 | 91.3 to 92.1 | 5 | 2026-11-21 | `fab79618854c` | [16](findings/16_omlx_082_refresh) |
 | median | oMLX 0.8.1 with its kernels, Lightning MTP on, default depth, no thinking setting, reply is reasoning text | temperature 0.9, top-p 1.0 | 4K mixed | 512 | 54.0 | 50.4 to 57.9 | 5 | 2026-11-21 | `7b6ccfb9c907` | [12](findings/12_hy4_flash_omlx_081) |
 | median | oMLX 0.8.1 with its kernels, Lightning MTP on, default depth, thinking off, older release | temperature 0.9, top-p 1.0 | 4K mixed | 512 | 53.7 | 50.8 to 57.5 | 5 | 2026-11-21 | `61f1f5a70d04` | [12](findings/12_hy4_flash_omlx_081) |
-| median | oMLX 0.8.2 with its kernels, Lightning MTP on, default depth, thinking off | temperature 0.9, top-p 1.0 | 4K mixed | 512 | 52.1 | 48.2 to 55.8 | 5 | 2026-11-21 | `fab79618854c` | [16](findings/16_omlx_082_refresh) |
+| median | oMLX 0.8.2 with its kernels, Lightning MTP on, default depth, thinking off, older release | temperature 0.9, top-p 1.0 | 4K mixed | 512 | 52.1 | 48.2 to 55.8 | 5 | 2026-11-21 | `fab79618854c` | [16](findings/16_omlx_082_refresh) |
+| median | oMLX 0.8.3 with its kernels, Lightning MTP on, default depth, thinking off | temperature 0.9, top-p 1.0 | 4K mixed | 512 | 49.8 | 48.4 to 55.2 | 5 | 2026-11-23 | `0d2a17ccad56` | [26](findings/26_omlx_083_refresh) |
 | median | oMLX 0.8.1 with its kernels, Lightning MTP off, thinking off | temperature 0.9, top-p 1.0 | 4K mixed | 512 | 35.5 | 35.5 to 35.6 | 5 | 2026-11-21 | `7a70518485cc` | [12](findings/12_hy4_flash_omlx_081) |
 | median | oMLX 0.8.1 with its kernels, Lightning MTP off, no thinking setting, reply is reasoning text | temperature 0.9, top-p 1.0 | 4K mixed | 512 | 35.5 | 35.4 to 35.6 | 5 | 2026-11-21 | `0404d67792d9` | [12](findings/12_hy4_flash_omlx_081) |
 
 </details>
 
 <details>
-<summary><b>Inkling 2 Mini, oQ4e</b>, 9 setups</summary>
+<summary><b>Inkling 2 Mini, oQ4e</b>, 17 setups</summary>
 
 | Kind | Engine and setup | Sampler | Prompt | Reply tokens | Decode tok/s | Range | Runs | Date | Run | Finding |
 |---|---|---|---|---|---|---|---|---|---|---|
+| max | oMLX 0.8.3 with its kernels, DSpark draft on, default depth, reply is reasoning text, default thinking effort | greedy, temperature 0 | 1K code | 2,048 | 108.1 | 93.7 to 117.8 | 5 | 2026-11-23 | `af8afe759506` | [26](findings/26_omlx_083_refresh) |
+| max | oMLX 0.8.3 with its kernels, DSpark draft on, default depth, thinking switched off (effort 0), reply mostly reasoning text | greedy, temperature 0 | 1K code | 2,048 | 104.2 | 97.3 to 115.0 | 5 | 2026-11-23 | `0f8455f8a46f` | [26](findings/26_omlx_083_refresh) |
+| max | oMLX 0.8.3 with its kernels, DSpark draft on, default depth, reply is reasoning text, default thinking effort | greedy, temperature 0 | 4K code | 2,048 | 102.0 | 91.6 to 117.3 | 5 | 2026-11-23 | `af8afe759506` | [26](findings/26_omlx_083_refresh) |
 | max | oMLX 0.8.1 with its kernels, DSpark draft on, default depth, reply is reasoning text, older release | greedy, temperature 0 | 1K code | 2,048 | 96.3 | 83.1 to 97.3 | 5 | 2026-11-21 | `a3cf6857c4b5` | [14](findings/14_inkling2_mini_omlx_081) |
-| max | oMLX 0.8.2 with its kernels, DSpark draft on, default depth, reply is reasoning text, third start | greedy, temperature 0 | 1K code | 2,048 | 85.3 | 81.3 to 94.1 | 5 | 2026-11-22 | `a7944f4eab8a` | [16](findings/16_omlx_082_refresh) |
+| max | oMLX 0.8.3 with its kernels, DSpark draft on, default depth, thinking switched off (effort 0), reply mostly reasoning text | greedy, temperature 0 | 4K code | 2,048 | 92.8 | 89.0 to 110.1 | 5 | 2026-11-23 | `0f8455f8a46f` | [26](findings/26_omlx_083_refresh) |
+| max | oMLX 0.8.2 with its kernels, DSpark draft on, default depth, reply is reasoning text, third start, older release | greedy, temperature 0 | 1K code | 2,048 | 85.3 | 81.3 to 94.1 | 5 | 2026-11-22 | `a7944f4eab8a` | [16](findings/16_omlx_082_refresh) |
 | max | oMLX 0.8.1 with its kernels, DSpark draft on, default depth, reply is reasoning text, older release | greedy, temperature 0 | 4K code | 2,048 | 80.1 | 79.5 to 98.3 | 5 | 2026-11-21 | `a3cf6857c4b5` | [14](findings/14_inkling2_mini_omlx_081) |
-| max | oMLX 0.8.2 with its kernels, DSpark draft on, default depth, reply is reasoning text, third start | greedy, temperature 0 | 4K code | 2,048 | 78.1 | 73.7 to 87.1 | 5 | 2026-11-22 | `a7944f4eab8a` | [16](findings/16_omlx_082_refresh) |
+| max | oMLX 0.8.2 with its kernels, DSpark draft on, default depth, reply is reasoning text, third start, older release | greedy, temperature 0 | 4K code | 2,048 | 78.1 | 73.7 to 87.1 | 5 | 2026-11-22 | `a7944f4eab8a` | [16](findings/16_omlx_082_refresh) |
+| max | oMLX 0.8.3 with its kernels, DSpark draft off, thinking switched off (effort 0), reply mostly reasoning text | greedy, temperature 0 | 1K code | 2,048 | 62.4 | 62.2 to 62.5 | 5 | 2026-11-23 | `1e9d52ecfc69` | [26](findings/26_omlx_083_refresh) |
+| max | oMLX 0.8.3 with its kernels, DSpark draft off, thinking switched off (effort 0), reply mostly reasoning text | greedy, temperature 0 | 4K code | 2,048 | 61.6 | 61.5 to 61.9 | 5 | 2026-11-23 | `1e9d52ecfc69` | [26](findings/26_omlx_083_refresh) |
 | max | oMLX 0.8.1 with its kernels, DSpark draft off, reply is reasoning text | greedy, temperature 0 | 1K code | 2,048 | 54.5 | 54.3 to 54.5 | 5 | 2026-11-21 | `fe2a52ddebd0` | [14](findings/14_inkling2_mini_omlx_081) |
 | max | oMLX 0.8.1 with its kernels, DSpark draft off, reply is reasoning text | greedy, temperature 0 | 4K code | 2,048 | 53.7 | 53.6 to 53.9 | 5 | 2026-11-21 | `fe2a52ddebd0` | [14](findings/14_inkling2_mini_omlx_081) |
+| median | oMLX 0.8.3 with its kernels, DSpark draft on, default depth, reply is reasoning text, default thinking effort | temperature 1.0, top-p 1.0 | 4K mixed | 512 | 83.3 | 78.6 to 87.6 | 5 | 2026-11-23 | `af8afe759506` | [26](findings/26_omlx_083_refresh) |
+| median | oMLX 0.8.3 with its kernels, DSpark draft on, default depth, thinking switched off (effort 0), reply mostly reasoning text | temperature 1.0, top-p 1.0 | 4K mixed | 512 | 80.1 | 72.5 to 82.3 | 5 | 2026-11-23 | `d066e1456e61` | [26](findings/26_omlx_083_refresh) |
 | median | oMLX 0.8.1 with its kernels, DSpark draft on, default depth, reply is reasoning text, older release | temperature 1.0, top-p 1.0 | 4K mixed | 512 | 65.9 | 59.2 to 67.7 | 5 | 2026-11-21 | `a3cf6857c4b5` | [14](findings/14_inkling2_mini_omlx_081) |
-| median | oMLX 0.8.2 with its kernels, DSpark draft on, default depth, reply is reasoning text, third start | temperature 1.0, top-p 1.0 | 4K mixed | 512 | 60.3 | 50.8 to 72.2 | 5 | 2026-11-22 | `a7944f4eab8a` | [16](findings/16_omlx_082_refresh) |
+| median | oMLX 0.8.2 with its kernels, DSpark draft on, default depth, reply is reasoning text, third start, older release | temperature 1.0, top-p 1.0 | 4K mixed | 512 | 60.3 | 50.8 to 72.2 | 5 | 2026-11-22 | `a7944f4eab8a` | [16](findings/16_omlx_082_refresh) |
 | median | oMLX 0.8.1 with its kernels, DSpark draft off, reply is reasoning text | temperature 1.0, top-p 1.0 | 4K mixed | 512 | 54.4 | 54.3 to 54.6 | 5 | 2026-11-21 | `fe2a52ddebd0` | [14](findings/14_inkling2_mini_omlx_081) |
 
 </details>
@@ -602,6 +630,28 @@ ELI5: Everything behind the tables above, including the setups that were not the
 ## Findings
 
 ELI5: Each finding is one question, one run of an hour or two, and one report. Newest first. Click a title for the full report and the raw rows.
+
+### 26. [oMLX 0.8.3, Inkling 2 Mini faster and three models level](findings/26_omlx_083_refresh)
+
+Runs of 23 Nov 2026. oMLX 0.8.3 wrote 108.1 tok/s on Inkling 2 Mini oQ4e at its max and 83.3 with the model's own sampler, against 85.3 and 60.3 on the last 0.8.2 start. Text by text it was faster on 25 of 25 pairs against each of three 0.8.2 starts, with middle ratios from 1.17 to 1.38. With drafts on and off it now wrote the same short replies, 100 of 100. Hy4-flash gave its first token 1.47 times sooner. GLM-5.3 Flash, Hy4-flash and Qwen3.8 Flash Next wrote at the same speed as on 0.8.2. Switching thinking off did not stop Inkling 2 Mini thinking.
+
+<details>
+<summary>Chart</summary>
+
+![Bars of writing speed in tokens per second, oMLX 0.8.2 against 0.8.3, drafts on, median of 5. Max is greedy new code, 2,048-token replies, 1K prompt. Inkling 2 Mini oQ4e max 85.3 against 108.1. Inkling 2 Mini median, own sampler, 4K prompt, 60.3 against 83.3. GLM-5.3 Flash max 76.0 against 77.4. Hy4-flash max 76.8 against 72.4. Qwen3.8 Flash Next max 50.8 against 49.0.](findings/26_omlx_083_refresh/chart_max.png)
+
+</details>
+
+### 25. [Qwen-Image 2.1 and its Turbo on mlx-serve 26.11.3, against Rapid-MLX 1.1.0](findings/25_qwen_image_mlxserve_26113)
+
+Runs of 22 and 23 Nov 2026. With the same passes a step, mlx-serve 26.11.3 made each picture in about half Rapid-MLX 1.1.0's time. A 1024 by 1024 Qwen-Image 2.1 picture at 20 steps took 8.3 s against 17.2 s, and a Turbo picture 3.9 s against 8.7 s. Most of the gap is mlx-serve's lossy int8 path, on by default on this Mac. With it off, a step took 0.71 s against Rapid-MLX's 0.72 s. mlx-serve read its author's 8-bit packs and Rapid-MLX the makers' bf16 weights.
+
+<details>
+<summary>Chart</summary>
+
+![Bars of seconds per picture, shorter is faster, the same passes a step on both engines, mlx-serve with its int8 path on. Turbo, 1024 square, 8 steps. Rapid-MLX 8.7, mlx-serve 3.9. Qwen-Image 2.1, 1024 square, 20 steps. Rapid-MLX 17.2, mlx-serve 8.3. The same at 40 steps, Rapid-MLX 34.1, mlx-serve 16.6. 2048 square, 20 steps, Rapid-MLX 105.4, mlx-serve 53.3. 1024 square, 20 steps, two passes a step, Rapid-MLX 33.4, mlx-serve 18.4.](findings/25_qwen_image_mlxserve_26113/chart_seconds.png)
+
+</details>
 
 ### 24. [Qwen3.8 Flash Next IQ3_S on Strata 0.2.19, MTP on and off, against llama.cpp on the same files](findings/24_qwen38_flash_next_strata_0219)
 

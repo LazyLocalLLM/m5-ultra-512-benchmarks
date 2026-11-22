@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" font-family='system-ui, -apple-system, "Segoe UI", sans-serif'>
+<rect width="1600" height="900" fill="#1a1a19"/>
+<rect width="1600" height="10" fill="#f5c400"/>
+<text x="70.0" y="110.0" font-size="56" font-weight="650" fill="#f0efec" text-anchor="start">oMLX 0.8.3 against 0.8.2</text>
+<text x="70.0" y="162.0" font-size="30" font-weight="400" fill="#c3c2b7" text-anchor="start">Max is greedy new code, 2,048-token replies, 1K prompt. Median is the own sampler, 4K. Drafts on.</text>
+<rect x="70.0" y="226" width="26" height="26" rx="4" fill="#898781"/>
+<text x="108.0" y="248.0" font-size="28" font-weight="400" fill="#c3c2b7" text-anchor="start">oMLX 0.8.2, 21 and 22 Nov 2026</text>
+<rect x="627.0" y="226" width="26" height="26" rx="4" fill="#3987e5"/>
+<text x="665.0" y="248.0" font-size="28" font-weight="400" fill="#c3c2b7" text-anchor="start">oMLX 0.8.3, 23 Nov 2026</text>
+<line x1="300" y1="300" x2="300" y2="770" stroke="#383835" stroke-width="2"/>
+<text x="276.0" y="358.0" font-size="32" font-weight="500" fill="#f0efec" text-anchor="end">Inkling, max</text>
+<path d="M300.0,320.0 h844.2 a8.0,8.0 0 0 1 8.0,8.0 v9.0 a8.0,8.0 0 0 1 -8.0,8.0 h-844.2 z" fill="#898781"/>
+<text x="1166.2" y="343.5" font-size="32" font-weight="400" fill="#c3c2b7" text-anchor="start">85.3</text>
+<path d="M300.0,349.0 h1072.0 a8.0,8.0 0 0 1 8.0,8.0 v9.0 a8.0,8.0 0 0 1 -8.0,8.0 h-1072.0 z" fill="#3987e5"/>
+<text x="1394.0" y="372.5" font-size="32" font-weight="650" fill="#f0efec" text-anchor="start">108.1</text>
+<text x="276.0" y="452.0" font-size="32" font-weight="500" fill="#f0efec" text-anchor="end">Inkling, median</text>
+<path d="M300.0,414.0 h594.4 a8.0,8.0 0 0 1 8.0,8.0 v9.0 a8.0,8.0 0 0 1 -8.0,8.0 h-594.4 z" fill="#898781"/>
+<text x="916.4" y="437.5" font-size="32" font-weight="400" fill="#c3c2b7" text-anchor="start">60.3</text>
+<path d="M300.0,443.0 h824.2 a8.0,8.0 0 0 1 8.0,8.0 v9.0 a8.0,8.0 0 0 1 -8.0,8.0 h-824.2 z" fill="#3987e5"/>
+<text x="1146.2" y="466.5" font-size="32" font-weight="650" fill="#f0efec" text-anchor="start">83.3</text>
+<text x="276.0" y="546.0" font-size="32" font-weight="500" fill="#f0efec" text-anchor="end">GLM Flash, max</text>
+<path d="M300.0,508.0 h751.3 a8.0,8.0 0 0 1 8.0,8.0 v9.0 a8.0,8.0 0 0 1 -8.0,8.0 h-751.3 z" fill="#898781"/>
+<text x="1073.3" y="531.5" font-size="32" font-weight="400" fill="#c3c2b7" text-anchor="start">76.0</text>
+<path d="M300.0,537.0 h765.3 a8.0,8.0 0 0 1 8.0,8.0 v9.0 a8.0,8.0 0 0 1 -8.0,8.0 h-765.3 z" fill="#3987e5"/>
+<text x="1087.3" y="560.5" font-size="32" font-weight="650" fill="#f0efec" text-anchor="start">77.4</text>
+<text x="276.0" y="640.0" font-size="32" font-weight="500" fill="#f0efec" text-anchor="end">Hy4-flash, max</text>
+<path d="M300.0,602.0 h759.3 a8.0,8.0 0 0 1 8.0,8.0 v9.0 a8.0,8.0 0 0 1 -8.0,8.0 h-759.3 z" fill="#898781"/>
+<text x="1081.3" y="625.5" font-size="32" font-weight="400" fill="#c3c2b7" text-anchor="start">76.8</text>
+<path d="M300.0,631.0 h715.3 a8.0,8.0 0 0 1 8.0,8.0 v9.0 a8.0,8.0 0 0 1 -8.0,8.0 h-715.3 z" fill="#3987e5"/>
+<text x="1037.3" y="654.5" font-size="32" font-weight="650" fill="#f0efec" text-anchor="start">72.4</text>
+<text x="276.0" y="734.0" font-size="32" font-weight="500" fill="#f0efec" text-anchor="end">Qwen FN, max</text>
+<path d="M300.0,696.0 h499.5 a8.0,8.0 0 0 1 8.0,8.0 v9.0 a8.0,8.0 0 0 1 -8.0,8.0 h-499.5 z" fill="#898781"/>
+<text x="821.5" y="719.5" font-size="32" font-weight="400" fill="#c3c2b7" text-anchor="start">50.8</text>
+<path d="M300.0,725.0 h481.5 a8.0,8.0 0 0 1 8.0,8.0 v9.0 a8.0,8.0 0 0 1 -8.0,8.0 h-481.5 z" fill="#3987e5"/>
+<text x="803.5" y="748.5" font-size="32" font-weight="650" fill="#f0efec" text-anchor="start">49.0</text>
+<text x="1530.0" y="282.0" font-size="24" font-weight="400" fill="#898781" text-anchor="end">tok/s</text>
+<text x="70.0" y="848.0" font-size="23" font-weight="400" fill="#898781" text-anchor="start">Median of 5, one start a bar. Inkling is Inkling 2 Mini oQ4e, at its default thinking effort on both.</text>
+</svg>
