@@ -1,38 +1,48 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" font-family='system-ui, -apple-system, "Segoe UI", sans-serif'>
-<rect width="1600" height="900" fill="#1a1a19"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1120" width="1600" height="1120" font-family='system-ui, -apple-system, "Segoe UI", sans-serif'>
+<rect width="1600" height="1120" fill="#1a1a19"/>
 <rect width="1600" height="10" fill="#f5c400"/>
-<text x="70.0" y="110.0" font-size="56" font-weight="650" fill="#f0efec" text-anchor="start">Five builds on TensorFold 1.3.3 against 1.3.2</text>
+<text x="70.0" y="110.0" font-size="56" font-weight="650" fill="#f0efec" text-anchor="start">Seven builds on TensorFold 1.3.3 against 1.3.2</text>
 <text x="70.0" y="162.0" font-size="30" font-weight="400" fill="#c3c2b7" text-anchor="start">Greedy, new code, replies of up to 2,048 tokens, 1K prompt, one user, drafts at defaults.</text>
 <rect x="70.0" y="226" width="26" height="26" rx="4" fill="#898781"/>
 <text x="108.0" y="248.0" font-size="28" font-weight="400" fill="#c3c2b7" text-anchor="start">TensorFold 1.3.2, the latest start</text>
 <rect x="689.0" y="226" width="26" height="26" rx="4" fill="#3987e5"/>
 <text x="727.0" y="248.0" font-size="28" font-weight="400" fill="#c3c2b7" text-anchor="start">TensorFold 1.3.3, 22 Nov 2026</text>
-<line x1="300" y1="300" x2="300" y2="770" stroke="#383835" stroke-width="2"/>
-<text x="276.0" y="358.0" font-size="32" font-weight="500" fill="#f0efec" text-anchor="end">Qwen 27B 4-bit</text>
-<path d="M300.0,320.0 h1072.0 a8.0,8.0 0 0 1 8.0,8.0 v9.0 a8.0,8.0 0 0 1 -8.0,8.0 h-1072.0 z" fill="#898781"/>
-<text x="1394.0" y="343.5" font-size="32" font-weight="400" fill="#c3c2b7" text-anchor="start">328.9</text>
-<path d="M300.0,349.0 h1027.3 a8.0,8.0 0 0 1 8.0,8.0 v9.0 a8.0,8.0 0 0 1 -8.0,8.0 h-1027.3 z" fill="#3987e5"/>
-<text x="1349.3" y="372.5" font-size="32" font-weight="650" fill="#f0efec" text-anchor="start">315.3</text>
-<text x="276.0" y="452.0" font-size="32" font-weight="500" fill="#f0efec" text-anchor="end">Flash Next 4-bit</text>
-<path d="M300.0,414.0 h671.1 a8.0,8.0 0 0 1 8.0,8.0 v9.0 a8.0,8.0 0 0 1 -8.0,8.0 h-671.1 z" fill="#898781"/>
-<text x="993.1" y="437.5" font-size="32" font-weight="400" fill="#c3c2b7" text-anchor="start">206.8</text>
-<path d="M300.0,443.0 h671.1 a8.0,8.0 0 0 1 8.0,8.0 v9.0 a8.0,8.0 0 0 1 -8.0,8.0 h-671.1 z" fill="#3987e5"/>
-<text x="993.1" y="466.5" font-size="32" font-weight="650" fill="#f0efec" text-anchor="start">206.8</text>
-<text x="276.0" y="546.0" font-size="32" font-weight="500" fill="#f0efec" text-anchor="end">GLM Flash 4-bit</text>
-<path d="M300.0,508.0 h325.0 a8.0,8.0 0 0 1 8.0,8.0 v9.0 a8.0,8.0 0 0 1 -8.0,8.0 h-325.0 z" fill="#898781"/>
-<text x="647.0" y="531.5" font-size="32" font-weight="400" fill="#c3c2b7" text-anchor="start">101.4</text>
-<path d="M300.0,537.0 h327.3 a8.0,8.0 0 0 1 8.0,8.0 v9.0 a8.0,8.0 0 0 1 -8.0,8.0 h-327.3 z" fill="#3987e5"/>
-<text x="649.3" y="560.5" font-size="32" font-weight="650" fill="#f0efec" text-anchor="start">102.1</text>
-<text x="276.0" y="640.0" font-size="32" font-weight="500" fill="#f0efec" text-anchor="end">GLM Flash oQ4e</text>
-<path d="M300.0,602.0 h257.0 a8.0,8.0 0 0 1 8.0,8.0 v9.0 a8.0,8.0 0 0 1 -8.0,8.0 h-257.0 z" fill="#898781"/>
-<text x="579.0" y="625.5" font-size="32" font-weight="400" fill="#c3c2b7" text-anchor="start">80.7</text>
-<path d="M300.0,631.0 h258.6 a8.0,8.0 0 0 1 8.0,8.0 v9.0 a8.0,8.0 0 0 1 -8.0,8.0 h-258.6 z" fill="#3987e5"/>
-<text x="580.6" y="654.5" font-size="32" font-weight="650" fill="#f0efec" text-anchor="start">81.2</text>
-<text x="276.0" y="734.0" font-size="32" font-weight="500" fill="#f0efec" text-anchor="end">Hy4-flash 4-bit</text>
-<path d="M300.0,696.0 h204.1 a8.0,8.0 0 0 1 8.0,8.0 v9.0 a8.0,8.0 0 0 1 -8.0,8.0 h-204.1 z" fill="#898781"/>
-<text x="526.1" y="719.5" font-size="32" font-weight="400" fill="#c3c2b7" text-anchor="start">64.6</text>
-<path d="M300.0,725.0 h194.9 a8.0,8.0 0 0 1 8.0,8.0 v9.0 a8.0,8.0 0 0 1 -8.0,8.0 h-194.9 z" fill="#3987e5"/>
-<text x="516.9" y="748.5" font-size="32" font-weight="650" fill="#f0efec" text-anchor="start">61.8</text>
+<line x1="300" y1="300" x2="300" y2="990" stroke="#383835" stroke-width="2"/>
+<text x="276.0" y="360.3" font-size="32" font-weight="500" fill="#f0efec" text-anchor="end">Qwen 27B 4-bit</text>
+<path d="M300.0,320.0 h1072.0 a8.0,8.0 0 0 1 8.0,8.0 v11.3 a8.0,8.0 0 0 1 -8.0,8.0 h-1072.0 z" fill="#898781"/>
+<text x="1394.0" y="344.6" font-size="32" font-weight="400" fill="#c3c2b7" text-anchor="start">328.9</text>
+<path d="M300.0,351.3 h1027.3 a8.0,8.0 0 0 1 8.0,8.0 v11.3 a8.0,8.0 0 0 1 -8.0,8.0 h-1027.3 z" fill="#3987e5"/>
+<text x="1349.3" y="375.9" font-size="32" font-weight="650" fill="#f0efec" text-anchor="start">315.3</text>
+<text x="276.0" y="458.9" font-size="32" font-weight="500" fill="#f0efec" text-anchor="end">Flash Next 4-bit</text>
+<path d="M300.0,418.6 h671.1 a8.0,8.0 0 0 1 8.0,8.0 v11.3 a8.0,8.0 0 0 1 -8.0,8.0 h-671.1 z" fill="#898781"/>
+<text x="993.1" y="443.2" font-size="32" font-weight="400" fill="#c3c2b7" text-anchor="start">206.8</text>
+<path d="M300.0,449.9 h671.1 a8.0,8.0 0 0 1 8.0,8.0 v11.3 a8.0,8.0 0 0 1 -8.0,8.0 h-671.1 z" fill="#3987e5"/>
+<text x="993.1" y="474.5" font-size="32" font-weight="650" fill="#f0efec" text-anchor="start">206.8</text>
+<text x="276.0" y="557.4" font-size="32" font-weight="500" fill="#f0efec" text-anchor="end">GLM Flash 4-bit</text>
+<path d="M300.0,517.1 h325.0 a8.0,8.0 0 0 1 8.0,8.0 v11.3 a8.0,8.0 0 0 1 -8.0,8.0 h-325.0 z" fill="#898781"/>
+<text x="647.0" y="541.8" font-size="32" font-weight="400" fill="#c3c2b7" text-anchor="start">101.4</text>
+<path d="M300.0,548.4 h327.3 a8.0,8.0 0 0 1 8.0,8.0 v11.3 a8.0,8.0 0 0 1 -8.0,8.0 h-327.3 z" fill="#3987e5"/>
+<text x="649.3" y="573.1" font-size="32" font-weight="650" fill="#f0efec" text-anchor="start">102.1</text>
+<text x="276.0" y="656.0" font-size="32" font-weight="500" fill="#f0efec" text-anchor="end">GLM Flash oQ4e</text>
+<path d="M300.0,615.7 h257.0 a8.0,8.0 0 0 1 8.0,8.0 v11.3 a8.0,8.0 0 0 1 -8.0,8.0 h-257.0 z" fill="#898781"/>
+<text x="579.0" y="640.4" font-size="32" font-weight="400" fill="#c3c2b7" text-anchor="start">80.7</text>
+<path d="M300.0,647.0 h258.6 a8.0,8.0 0 0 1 8.0,8.0 v11.3 a8.0,8.0 0 0 1 -8.0,8.0 h-258.6 z" fill="#3987e5"/>
+<text x="580.6" y="671.6" font-size="32" font-weight="650" fill="#f0efec" text-anchor="start">81.2</text>
+<text x="276.0" y="754.6" font-size="32" font-weight="500" fill="#f0efec" text-anchor="end">Hy4-flash 4-bit</text>
+<path d="M300.0,714.3 h204.1 a8.0,8.0 0 0 1 8.0,8.0 v11.3 a8.0,8.0 0 0 1 -8.0,8.0 h-204.1 z" fill="#898781"/>
+<text x="526.1" y="738.9" font-size="32" font-weight="400" fill="#c3c2b7" text-anchor="start">64.6</text>
+<path d="M300.0,745.6 h194.9 a8.0,8.0 0 0 1 8.0,8.0 v11.3 a8.0,8.0 0 0 1 -8.0,8.0 h-194.9 z" fill="#3987e5"/>
+<text x="516.9" y="770.2" font-size="32" font-weight="650" fill="#f0efec" text-anchor="start">61.8</text>
+<text x="276.0" y="853.1" font-size="32" font-weight="500" fill="#f0efec" text-anchor="end">Flash Next 6-bit</text>
+<path d="M300.0,812.9 h649.1 a8.0,8.0 0 0 1 8.0,8.0 v11.3 a8.0,8.0 0 0 1 -8.0,8.0 h-649.1 z" fill="#898781"/>
+<text x="971.1" y="837.5" font-size="32" font-weight="400" fill="#c3c2b7" text-anchor="start">200.1</text>
+<path d="M300.0,844.1 h653.0 a8.0,8.0 0 0 1 8.0,8.0 v11.3 a8.0,8.0 0 0 1 -8.0,8.0 h-653.0 z" fill="#3987e5"/>
+<text x="975.0" y="868.8" font-size="32" font-weight="650" fill="#f0efec" text-anchor="start">201.3</text>
+<text x="276.0" y="951.7" font-size="32" font-weight="500" fill="#f0efec" text-anchor="end">Hy4-flash 8-bit</text>
+<path d="M300.0,911.4 h148.3 a8.0,8.0 0 0 1 8.0,8.0 v11.3 a8.0,8.0 0 0 1 -8.0,8.0 h-148.3 z" fill="#898781"/>
+<text x="470.3" y="936.1" font-size="32" font-weight="400" fill="#c3c2b7" text-anchor="start">47.6</text>
+<path d="M300.0,942.7 h145.3 a8.0,8.0 0 0 1 8.0,8.0 v11.3 a8.0,8.0 0 0 1 -8.0,8.0 h-145.3 z" fill="#3987e5"/>
+<text x="467.3" y="967.4" font-size="32" font-weight="650" fill="#f0efec" text-anchor="start">46.7</text>
 <text x="1530.0" y="282.0" font-size="24" font-weight="400" fill="#898781" text-anchor="end">tok/s</text>
-<text x="70.0" y="848.0" font-size="23" font-weight="400" fill="#898781" text-anchor="start">Median of 5, one start a bar. On this test, text by text, the middle ratio of 1.3.3 over 1.3.2 is 1.00 to 1.03.</text>
+<text x="70.0" y="1068.0" font-size="23" font-weight="400" fill="#898781" text-anchor="start">Median of 5, one start a bar. On this test, text by text, the middle ratio of 1.3.3 over 1.3.2 is 1.00 to 1.03.</text>
 </svg>

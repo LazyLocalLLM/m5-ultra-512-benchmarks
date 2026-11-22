@@ -8,14 +8,14 @@ ELI5: I'm a learner with one Mac Studio M5 Ultra 512 GB, and I time local AI mod
 
 ELI5: The page in seven lines. Every figure here is recomputed from the raw rows each time the page is built.
 
-Updated 22 Nov 2026 08:24 SGT. Decode speed in tok/s, one user, one Mac.
+Updated 22 Nov 2026 16:43 SGT. Decode speed in tok/s, one user, one Mac.
 
-- **Fastest on new code.** Qwen3.8 27B, 4-bit wrote 315.3 tok/s on TensorFold 1.3.3. Next are Qwen3.8 Flash Next, 4-bit at 209.5 and Qwen3.8 Flash Next, 6-bit at 200.1.
-- **Fastest in daily use.** Qwen3.8 27B, 4-bit wrote 164.1 tok/s on TensorFold 1.3.3. Next are Qwen3.8 Flash Next, 4-bit at 130.9 and Qwen3.8 Flash Next, 6-bit at 114.1.
+- **Fastest on new code.** Qwen3.8 27B, 4-bit wrote 315.3 tok/s on TensorFold 1.3.3. Next are Qwen3.8 Flash Next, 4-bit at 209.5 and Qwen3.8 Flash Next, 6-bit at 201.3.
+- **Fastest in daily use.** Qwen3.8 27B, 4-bit wrote 164.1 tok/s on TensorFold 1.3.3. Next are Qwen3.8 Flash Next, 4-bit at 130.9 and Qwen3.8 Flash Next, 6-bit at 114.5.
 - **Two speeds per model.** Max is greedy at temperature 0 while the model writes new code. Median is the model's own sampler on mixed text, which is closer to daily use.
 - **Prefill too.** The table also has how fast each model read a cold prompt, with the prompt size.
-- **Coverage.** 19 models, 254 setups and 19 findings.
-- **Newest finding.** Finding 19, 22 Nov 2026. [Five builds on TensorFold 1.3.3, a version refresh](findings/19_tensorfold_133_refresh).
+- **Coverage.** 19 models, 267 setups and 19 findings.
+- **Newest finding.** Finding 19, 22 Nov 2026. [Seven builds on TensorFold 1.3.3, a version refresh](findings/19_tensorfold_133_refresh).
 - **Check it.** Every figure links to a folder with the rows it came from. If I have set an engine up wrong, [open an issue](https://github.com/LazyLocalLLM/m5-ultra-512-benchmarks/issues).
 
 ## Benchmark summary
@@ -45,13 +45,13 @@ The exact setup behind each figure is one click away, under "Every setup measure
 | [Qwen3.8 27B, 4-bit](https://huggingface.co/TensorFold/Qwen3.8-27B-MLX-4bit) | **315.3** | **164.1** | **1,865.7**, 4K mixed prompt | answer | TensorFold 1.3.3 | [19](findings/19_tensorfold_133_refresh) |
 | [Qwen3.8 27B, full](https://huggingface.co/mlx-community/Qwen3.8-27B-bf16) | **6.9** | **7.1** | **1,885.2**, 4K code prompt | answer | mlx-serve 26.11.3 | [8](findings/08_dsv41_mlxserve_26113) |
 | [Qwen3.8 Flash Next, 4-bit](https://huggingface.co/TensorFold/Qwen3.8-Flash-Next-MLX-4bit-MTP) | **209.5** | **130.9** | **4,071.7**, 4K code prompt | answer | TensorFold 1.3.3 | [19](findings/19_tensorfold_133_refresh) |
-| [Qwen3.8 Flash Next, 6-bit](https://huggingface.co/TensorFold/Qwen3.8-Flash-Next-MLX-6bit-MTP) | **200.1** | **114.1** | **3,860.6**, 4K code prompt | answer | TensorFold 1.3.2 | [11](findings/11_qwen38_tensorfold_132) |
+| [Qwen3.8 Flash Next, 6-bit](https://huggingface.co/TensorFold/Qwen3.8-Flash-Next-MLX-6bit-MTP) | **201.3** | **114.5** | **3,841.0**, 4K mixed prompt | answer | TensorFold 1.3.3 | [19](findings/19_tensorfold_133_refresh) |
 | [Qwen3.8 Flash Next, full](https://huggingface.co/Qwen/Qwen3.8-Flash-Next) | **54.3** | **34.6** | **3,224.1**, 4K code prompt | answer | oMLX 0.8.2 with its kernels | [16](findings/16_omlx_082_refresh) |
 | [DeepSeek V4.1 Flash 1017, oQ4e-mtp](https://huggingface.co/mlx-community/DeepSeek-V4.1-Flash-1017-oQ4e-mtp) | **86.2** | **57.9** | **3,758.0**, 32K code prompt | answer | oMLX 0.8.0 with its kernels | [5](findings/05_dsv41_omlx_080_max_push), [3](findings/03_dsv41_omlx_080) |
 | [DeepSeek V4.1 Flash 1017, maker's files](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) | **108.0** | **74.5** | **1,509.0**, 32K code prompt | answer | TensorFold 1.3.3 | [18](findings/18_dsv41_tensorfold_133) |
 | [GLM-5.3 Flash, 4-bit](https://huggingface.co/TensorFold/GLM-5.3-Flash-MLX-4bit-MTP) | **102.8** | **84.2** | **2,234.3**, 4K mixed prompt, on oMLX 0.8.1 with its kernels | answer | TensorFold 1.3.3 | [19](findings/19_tensorfold_133_refresh), [15](findings/15_glm53_flash_two_builds) |
 | [Hy4-flash, 4-bit](https://huggingface.co/TensorFold/Hy4-flash-MLX-4bit-MTP) | **73.3** | **54.5** | **1,649.9**, 1K code prompt | reasoning | TensorFold 1.3.3 | [19](findings/19_tensorfold_133_refresh) |
-| [Hy4-flash, 8-bit](https://huggingface.co/TensorFold/Hy4-flash-MLX-8bit-MTP) | **53.4** | **40.9** | **1,233.6**, 1K code prompt | reasoning | TensorFold 1.3.2 | [10](findings/10_hy4_flash_tensorfold_132) |
+| [Hy4-flash, 8-bit](https://huggingface.co/TensorFold/Hy4-flash-MLX-8bit-MTP) | **55.2** | **44.8** | **1,235.8**, 1K code prompt | reasoning | TensorFold 1.3.3 | [19](findings/19_tensorfold_133_refresh) |
 | [Hy4-flash, oQ4h](https://huggingface.co/Jundot/Hy4-flash-oQ4h-mtp) | **76.8** | **54.0** | **1,529.9**, 4K code prompt | answer for max, reasoning for median | oMLX 0.8.2 with its kernels for max, oMLX 0.8.1 with its kernels for median | [16](findings/16_omlx_082_refresh), [12](findings/12_hy4_flash_omlx_081) |
 | [Inkling 2 Mini, oQ4e](https://huggingface.co/mlx-community/Inkling-2-Mini-oQ4e-mtp) | **88.5** | **66.2** | **2,791.3**, 4K code prompt | reasoning | oMLX 0.8.2 with its kernels | [16](findings/16_omlx_082_refresh) |
 | [Inkling 2 Mini, oQ3e](https://huggingface.co/mlx-community/Inkling-2-Mini-oQ3e-mtp) | **105.1** | **67.1** | **2,850.7**, 4K code prompt | reasoning | oMLX 0.8.1 with its kernels | [14](findings/14_inkling2_mini_omlx_081) |
@@ -66,7 +66,7 @@ ELI5: Two tests hand the model text it can guess almost perfectly, copying the p
 | [GLM-5.3 Flash, oQ4e](https://huggingface.co/Jundot/GLM-5.3-Flash-oQ4e-mtp) | **155.9** | **96.7** | TensorFold 1.3.3 | [19](findings/19_tensorfold_133_refresh) |
 | [Qwen3.8 27B, 4-bit](https://huggingface.co/TensorFold/Qwen3.8-27B-MLX-4bit) | **810.8** | **449.7** | TensorFold 1.3.3 | [19](findings/19_tensorfold_133_refresh) |
 | [Qwen3.8 Flash Next, 4-bit](https://huggingface.co/TensorFold/Qwen3.8-Flash-Next-MLX-4bit-MTP) | **322.3** | **369.5** | TensorFold 1.3.3 | [19](findings/19_tensorfold_133_refresh) |
-| [Qwen3.8 Flash Next, 6-bit](https://huggingface.co/TensorFold/Qwen3.8-Flash-Next-MLX-6bit-MTP) | **260.0** | **296.4** | TensorFold 1.3.2 | [11](findings/11_qwen38_tensorfold_132) |
+| [Qwen3.8 Flash Next, 6-bit](https://huggingface.co/TensorFold/Qwen3.8-Flash-Next-MLX-6bit-MTP) | **260.1** | **296.2** | TensorFold 1.3.3 | [19](findings/19_tensorfold_133_refresh) |
 | [Qwen3.8 Flash Next, full](https://huggingface.co/Qwen/Qwen3.8-Flash-Next) | **128.7** | **51.4** | oMLX 0.8.2 with its kernels | [16](findings/16_omlx_082_refresh) |
 | [DeepSeek V4.1 Flash 1017, oQ4e-mtp](https://huggingface.co/mlx-community/DeepSeek-V4.1-Flash-1017-oQ4e-mtp) | **118.3** | **114.0** | oMLX 0.8.0 with its kernels | [5](findings/05_dsv41_omlx_080_max_push) |
 | [DeepSeek V4.1 Flash 1017, maker's files](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) | **186.9** | **138.1** | TensorFold 1.3.3 | [18](findings/18_dsv41_tensorfold_133) |
@@ -255,22 +255,29 @@ ELI5: Everything behind the tables above, including the setups that were not the
 </details>
 
 <details>
-<summary><b>Qwen3.8 Flash Next, 6-bit</b>, 13 setups</summary>
+<summary><b>Qwen3.8 Flash Next, 6-bit</b>, 20 setups</summary>
 
 | Kind | Engine and setup | Sampler | Prompt | Reply tokens | Decode tok/s | Range | Runs | Date | Run | Finding |
 |---|---|---|---|---|---|---|---|---|---|---|
-| max | TensorFold 1.3.2, MTP on, recipe line, defaults, second start | greedy, temperature 0 | 1K code | 2,048 | 200.1 | 188.9 to 219.8 | 5 | 2026-11-21 | `51735d12713b` | [11](findings/11_qwen38_tensorfold_132) |
-| max | TensorFold 1.3.2, MTP on, recipe line, defaults, second start | greedy, temperature 0 | 1K code | 512 | 195.1 | 186.9 to 201.4 | 5 | 2026-11-21 | `51735d12713b` | [11](findings/11_qwen38_tensorfold_132) |
+| max | TensorFold 1.3.3, MTP on, recipe line, defaults | greedy, temperature 0 | 1K code | 2,048 | 201.3 | 182.7 to 208.6 | 5 | 2026-11-22 | `e4b66d27e9cb` | [19](findings/19_tensorfold_133_refresh) |
+| max | TensorFold 1.3.2, MTP on, recipe line, defaults, second start, older release | greedy, temperature 0 | 1K code | 2,048 | 200.1 | 188.9 to 219.8 | 5 | 2026-11-21 | `51735d12713b` | [11](findings/11_qwen38_tensorfold_132) |
+| max | TensorFold 1.3.3, MTP on, recipe line, defaults | greedy, temperature 0 | 4K code | 2,048 | 197.3 | 176.7 to 217.8 | 5 | 2026-11-22 | `e4b66d27e9cb` | [19](findings/19_tensorfold_133_refresh) |
+| max | TensorFold 1.3.2, MTP on, recipe line, defaults, second start, older release | greedy, temperature 0 | 1K code | 512 | 195.1 | 186.9 to 201.4 | 5 | 2026-11-21 | `51735d12713b` | [11](findings/11_qwen38_tensorfold_132) |
 | max | TensorFold 1.3.0, MTP on, recipe line, defaults, older release | greedy, temperature 0 | 1K code | 2,048 | 193.0 | 178.5 to 212.3 | 5 | 2026-11-21 | `2bc45b1272e8` | [7](findings/07_qwen38_tensorfold_130) |
 | max | TensorFold 1.3.0, MTP on, recipe line, defaults, older release | greedy, temperature 0 | 1K code | 512 | 188.2 | 177.9 to 192.6 | 5 | 2026-11-21 | `2bc45b1272e8` | [7](findings/07_qwen38_tensorfold_130) |
-| copy task | TensorFold 1.3.2, MTP on, recipe line, defaults, second start | greedy, temperature 0 | 1K code | 512 | 260.0 | 213.3 to 283.3 | 5 | 2026-11-21 | `51735d12713b` | [11](findings/11_qwen38_tensorfold_132) |
+| max | TensorFold 1.3.3, MTP on, recipe line, defaults | greedy, temperature 0 | 1K code | 512 | 181.5 | 158.7 to 192.5 | 5 | 2026-11-22 | `e4b66d27e9cb` | [19](findings/19_tensorfold_133_refresh) |
+| copy task | TensorFold 1.3.3, MTP on, recipe line, defaults | greedy, temperature 0 | 1K code | 512 | 260.1 | 213.0 to 283.0 | 5 | 2026-11-22 | `e4b66d27e9cb` | [19](findings/19_tensorfold_133_refresh) |
+| copy task | TensorFold 1.3.2, MTP on, recipe line, defaults, second start, older release | greedy, temperature 0 | 1K code | 512 | 260.0 | 213.3 to 283.3 | 5 | 2026-11-21 | `51735d12713b` | [11](findings/11_qwen38_tensorfold_132) |
 | copy task | TensorFold 1.3.0, MTP on, recipe line, defaults, older release | greedy, temperature 0 | 1K code | 512 | 254.4 | 208.5 to 276.9 | 5 | 2026-11-21 | `2bc45b1272e8` | [7](findings/07_qwen38_tensorfold_130) |
-| copy task | TensorFold 1.3.2, MTP on, recipe line, defaults, second start | greedy, temperature 0 | 4K code | 2,048 | 253.6 | 233.1 to 276.6 | 5 | 2026-11-21 | `51735d12713b` | [11](findings/11_qwen38_tensorfold_132) |
+| copy task | TensorFold 1.3.2, MTP on, recipe line, defaults, second start, older release | greedy, temperature 0 | 4K code | 2,048 | 253.6 | 233.1 to 276.6 | 5 | 2026-11-21 | `51735d12713b` | [11](findings/11_qwen38_tensorfold_132) |
+| copy task | TensorFold 1.3.3, MTP on, recipe line, defaults | greedy, temperature 0 | 4K code | 2,048 | 252.5 | 233.0 to 275.1 | 5 | 2026-11-22 | `e4b66d27e9cb` | [19](findings/19_tensorfold_133_refresh) |
 | copy task | TensorFold 1.3.0, MTP on, recipe line, defaults, older release | greedy, temperature 0 | 4K code | 2,048 | 247.7 | 223.1 to 268.9 | 5 | 2026-11-21 | `2bc45b1272e8` | [7](findings/07_qwen38_tensorfold_130) |
-| counting toy | TensorFold 1.3.2, MTP on, recipe line, defaults, second start | greedy, temperature 0 | 1K code | 512 | 296.4 | 290.2 to 297.1 | 5 | 2026-11-21 | `51735d12713b` | [11](findings/11_qwen38_tensorfold_132) |
+| counting toy | TensorFold 1.3.2, MTP on, recipe line, defaults, second start, older release | greedy, temperature 0 | 1K code | 512 | 296.4 | 290.2 to 297.1 | 5 | 2026-11-21 | `51735d12713b` | [11](findings/11_qwen38_tensorfold_132) |
+| counting toy | TensorFold 1.3.3, MTP on, recipe line, defaults | greedy, temperature 0 | 1K code | 512 | 296.2 | 290.2 to 297.4 | 5 | 2026-11-22 | `e4b66d27e9cb` | [19](findings/19_tensorfold_133_refresh) |
 | counting toy | TensorFold 1.3.0, MTP on, recipe line, defaults, older release | greedy, temperature 0 | 1K code | 512 | 290.0 | 283.9 to 290.3 | 5 | 2026-11-21 | `2bc45b1272e8` | [7](findings/07_qwen38_tensorfold_130) |
 | median | TensorFold 1.3.0, MTP on, recipe line, defaults, older release | temperature 0.7, top-p 0.8, top-k 20 | 4K mixed | 512 | 117.4 | 112.0 to 122.0 | 5 | 2026-11-21 | `2bc45b1272e8` | [7](findings/07_qwen38_tensorfold_130) |
-| median | TensorFold 1.3.2, MTP on, recipe line, defaults, second start | temperature 0.7, top-p 0.8, top-k 20 | 4K mixed | 512 | 114.1 | 110.6 to 121.5 | 5 | 2026-11-21 | `51735d12713b` | [11](findings/11_qwen38_tensorfold_132) |
+| median | TensorFold 1.3.3, MTP on, recipe line, defaults | temperature 0.7, top-p 0.8, top-k 20 | 4K mixed | 512 | 114.5 | 112.7 to 127.1 | 5 | 2026-11-22 | `e4b66d27e9cb` | [19](findings/19_tensorfold_133_refresh) |
+| median | TensorFold 1.3.2, MTP on, recipe line, defaults, second start, older release | temperature 0.7, top-p 0.8, top-k 20 | 4K mixed | 512 | 114.1 | 110.6 to 121.5 | 5 | 2026-11-21 | `51735d12713b` | [11](findings/11_qwen38_tensorfold_132) |
 | median | TensorFold 1.2.8, MTP on, recipe line, older release | temperature 0.7, top-p 0.8, top-k 20 | 4K mixed | 512 | 114.0 | 108.6 to 125.6 | 5 | 2026-11-17 | `ea26b8919e88` | [2](findings/02_ten_models_4k_to_1m) |
 
 </details>
@@ -408,18 +415,24 @@ ELI5: Everything behind the tables above, including the setups that were not the
 </details>
 
 <details>
-<summary><b>Hy4-flash, 8-bit</b>, 9 setups</summary>
+<summary><b>Hy4-flash, 8-bit</b>, 15 setups</summary>
 
 | Kind | Engine and setup | Sampler | Prompt | Reply tokens | Decode tok/s | Range | Runs | Date | Run | Finding |
 |---|---|---|---|---|---|---|---|---|---|---|
-| max | TensorFold 1.3.2, DFly2 drafts on, TF_HY4_DRAFT_BITS=8 (a switch from the source), thinking on, reply is reasoning text, second start | greedy, temperature 0 | 1K code | 2,048 | 53.4 | 51.7 to 57.7 | 5 | 2026-11-21 | `f3e0bbdd9f33` | [10](findings/10_hy4_flash_tensorfold_132) |
-| max | TensorFold 1.3.2, DFly2 drafts on, TF_HY4_DRAFT_BITS=8 (a switch from the source), thinking on, reply is reasoning text, second start | greedy, temperature 0 | 4K code | 2,048 | 52.0 | 48.1 to 55.3 | 5 | 2026-11-21 | `f3e0bbdd9f33` | [10](findings/10_hy4_flash_tensorfold_132) |
-| max | TensorFold 1.3.2, DFly2 drafts on, thinking on, reply is reasoning text, second start | greedy, temperature 0 | 1K code | 2,048 | 47.6 | 44.1 to 50.5 | 5 | 2026-11-21 | `a9fe24e89f10` | [10](findings/10_hy4_flash_tensorfold_132) |
-| max | TensorFold 1.3.2, DFly2 drafts on, thinking on, reply is reasoning text, second start | greedy, temperature 0 | 4K code | 2,048 | 46.8 | 41.8 to 51.3 | 5 | 2026-11-21 | `a9fe24e89f10` | [10](findings/10_hy4_flash_tensorfold_132) |
+| max | TensorFold 1.3.3, DFly2 drafts on, TF_HY4_DRAFT_BITS=8 (a switch from the source), thinking on, reply is reasoning text | greedy, temperature 0 | 1K code | 2,048 | 55.2 | 51.6 to 60.6 | 5 | 2026-11-22 | `bfcced24637c` | [19](findings/19_tensorfold_133_refresh) |
+| max | TensorFold 1.3.3, DFly2 drafts on, TF_HY4_DRAFT_BITS=8 (a switch from the source), thinking on, reply is reasoning text | greedy, temperature 0 | 4K code | 2,048 | 53.8 | 50.4 to 56.5 | 5 | 2026-11-22 | `bfcced24637c` | [19](findings/19_tensorfold_133_refresh) |
+| max | TensorFold 1.3.2, DFly2 drafts on, TF_HY4_DRAFT_BITS=8 (a switch from the source), thinking on, reply is reasoning text, second start, older release | greedy, temperature 0 | 1K code | 2,048 | 53.4 | 51.7 to 57.7 | 5 | 2026-11-21 | `f3e0bbdd9f33` | [10](findings/10_hy4_flash_tensorfold_132) |
+| max | TensorFold 1.3.2, DFly2 drafts on, TF_HY4_DRAFT_BITS=8 (a switch from the source), thinking on, reply is reasoning text, second start, older release | greedy, temperature 0 | 4K code | 2,048 | 52.0 | 48.1 to 55.3 | 5 | 2026-11-21 | `f3e0bbdd9f33` | [10](findings/10_hy4_flash_tensorfold_132) |
+| max | TensorFold 1.3.2, DFly2 drafts on, thinking on, reply is reasoning text, second start, older release | greedy, temperature 0 | 1K code | 2,048 | 47.6 | 44.1 to 50.5 | 5 | 2026-11-21 | `a9fe24e89f10` | [10](findings/10_hy4_flash_tensorfold_132) |
+| max | TensorFold 1.3.2, DFly2 drafts on, thinking on, reply is reasoning text, second start, older release | greedy, temperature 0 | 4K code | 2,048 | 46.8 | 41.8 to 51.3 | 5 | 2026-11-21 | `a9fe24e89f10` | [10](findings/10_hy4_flash_tensorfold_132) |
+| max | TensorFold 1.3.3, DFly2 drafts on, thinking on, reply is reasoning text | greedy, temperature 0 | 1K code | 2,048 | 46.7 | 46.3 to 51.9 | 5 | 2026-11-22 | `998afef57c31` | [19](findings/19_tensorfold_133_refresh) |
+| max | TensorFold 1.3.3, DFly2 drafts on, thinking on, reply is reasoning text | greedy, temperature 0 | 4K code | 2,048 | 46.2 | 43.4 to 47.7 | 5 | 2026-11-22 | `998afef57c31` | [19](findings/19_tensorfold_133_refresh) |
 | max | TensorFold 1.3.2, drafts off, thinking on, reply is reasoning text, 512-token replies | greedy, temperature 0 | 1K code | 512 | 34.4 | 33.2 to 34.6 | 5 | 2026-11-21 | `b8e543b952e1` | [10](findings/10_hy4_flash_tensorfold_132) |
 | max | TensorFold 1.3.2, drafts off, thinking on, reply is reasoning text, 512-token replies | greedy, temperature 0 | 4K code | 512 | 34.0 | 33.9 to 34.2 | 5 | 2026-11-21 | `b8e543b952e1` | [10](findings/10_hy4_flash_tensorfold_132) |
-| median | TensorFold 1.3.2, DFly2 drafts on, TF_HY4_DRAFT_BITS=8 (a switch from the source), thinking on, reply is reasoning text, second start | temperature 0.9, top-p 1.0 | 4K mixed | 512 | 40.9 | 40.7 to 44.1 | 5 | 2026-11-21 | `f3e0bbdd9f33` | [10](findings/10_hy4_flash_tensorfold_132) |
-| median | TensorFold 1.3.2, DFly2 drafts on, thinking on, reply is reasoning text, second start | temperature 0.9, top-p 1.0 | 4K mixed | 512 | 37.1 | 36.2 to 38.1 | 5 | 2026-11-21 | `a9fe24e89f10` | [10](findings/10_hy4_flash_tensorfold_132) |
+| median | TensorFold 1.3.3, DFly2 drafts on, TF_HY4_DRAFT_BITS=8 (a switch from the source), thinking on, reply is reasoning text | temperature 0.9, top-p 1.0 | 4K mixed | 512 | 44.8 | 39.2 to 49.4 | 5 | 2026-11-22 | `bfcced24637c` | [19](findings/19_tensorfold_133_refresh) |
+| median | TensorFold 1.3.2, DFly2 drafts on, TF_HY4_DRAFT_BITS=8 (a switch from the source), thinking on, reply is reasoning text, second start, older release | temperature 0.9, top-p 1.0 | 4K mixed | 512 | 40.9 | 40.7 to 44.1 | 5 | 2026-11-21 | `f3e0bbdd9f33` | [10](findings/10_hy4_flash_tensorfold_132) |
+| median | TensorFold 1.3.3, DFly2 drafts on, thinking on, reply is reasoning text | temperature 0.9, top-p 1.0 | 4K mixed | 512 | 38.2 | 35.3 to 48.6 | 5 | 2026-11-22 | `998afef57c31` | [19](findings/19_tensorfold_133_refresh) |
+| median | TensorFold 1.3.2, DFly2 drafts on, thinking on, reply is reasoning text, second start, older release | temperature 0.9, top-p 1.0 | 4K mixed | 512 | 37.1 | 36.2 to 38.1 | 5 | 2026-11-21 | `a9fe24e89f10` | [10](findings/10_hy4_flash_tensorfold_132) |
 | median | TensorFold 1.3.2, drafts off, thinking on, reply is reasoning text | temperature 0.9, top-p 1.0 | 4K mixed | 512 | 33.2 | 33.2 to 33.3 | 5 | 2026-11-21 | `b8e543b952e1` | [10](findings/10_hy4_flash_tensorfold_132) |
 
 </details>
@@ -487,14 +500,14 @@ ELI5: Everything behind the tables above, including the setups that were not the
 
 ELI5: Each finding is one question, one run of an hour or two, and one report. Newest first. Click a title for the full report and the raw rows.
 
-### 19. [Five builds on TensorFold 1.3.3, a version refresh](findings/19_tensorfold_133_refresh)
+### 19. [Seven builds on TensorFold 1.3.3, a version refresh](findings/19_tensorfold_133_refresh)
 
-Runs of 22 Nov 2026. I see no speed change on TensorFold 1.3.3 on any of these five builds. Text by text against the latest 1.3.2 start, the middle ratio sits between 0.98 and 1.06 on every test but one, and the replies I checked are the same. The one test was Qwen3.8 27B with its own sampler, 136.2 tok/s on its first 1.3.3 start against 161.3 on 1.3.2. Run again on one night, the two releases wrote 147.0 and 147.3 over 20 requests each, so that was a low start and not the release. One thing is new. GLM-5.3 Flash can now draft with a DFlash2 model on a Mac, and it wrote 84.2 tok/s with its own sampler against 79.8 with the built-in MTP drafts, with the same replies.
+Runs of 22 Nov 2026. I see no speed change on TensorFold 1.3.3 on any of these seven builds. Text by text against the latest 1.3.2 start, the middle ratio sits between 0.96 and 1.06 on every test but two, and the replies I checked are the same. One was Qwen3.8 27B with its own sampler, 136.2 tok/s on its first 1.3.3 start against 161.3 on 1.3.2. Run again on one night, the two releases wrote 147.0 and 147.3 over 20 requests each, so that was a low start and not the release. The other is Hy4-flash 8-bit with the draft-bits switch and its own sampler, 1.08, with 1.3.3 faster on only 3 of 5 texts. One thing is new. GLM-5.3 Flash can now draft with a DFlash2 model on a Mac, and it wrote 84.2 tok/s with its own sampler against 79.8 with the built-in MTP drafts, with the same replies.
 
 <details>
 <summary>Chart</summary>
 
-![Bars of writing speed in tokens per second, greedy at temperature 0, new code, replies of up to 2,048 tokens, 1K prompt, on TensorFold 1.3.2 and 1.3.3. Qwen3.8 27B 4-bit 328.9 and 315.3. Qwen3.8 Flash Next 4-bit 206.8 and 206.8. GLM-5.3 Flash 4-bit 101.4 and 102.1. GLM-5.3 Flash oQ4e 80.7 and 81.2. Hy4-flash 4-bit 64.6 and 61.8.](findings/19_tensorfold_133_refresh/chart_max.png)
+![Bars of writing speed in tokens per second, greedy at temperature 0, new code, replies of up to 2,048 tokens, 1K prompt, on TensorFold 1.3.2 and 1.3.3. Qwen3.8 27B 4-bit 328.9 and 315.3. Qwen3.8 Flash Next 4-bit 206.8 and 206.8. GLM-5.3 Flash 4-bit 101.4 and 102.1. GLM-5.3 Flash oQ4e 80.7 and 81.2. Hy4-flash 4-bit 64.6 and 61.8. Qwen3.8 Flash Next 6-bit 200.1 and 201.3. Hy4-flash 8-bit at defaults 47.6 and 46.7.](findings/19_tensorfold_133_refresh/chart_max.png)
 
 </details>
 

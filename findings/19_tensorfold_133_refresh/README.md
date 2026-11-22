@@ -1,25 +1,30 @@
-# Finding 19. Five builds on TensorFold 1.3.3, a version refresh
+# Finding 19. Seven builds on TensorFold 1.3.3, a version refresh
 
 By Local LLM L-Plate. Follow [@LazyLocalLLM on X](https://x.com/LazyLocalLLM) for new benchmarks.
 
+Updated on 22 Nov 2026 at 16:43 SGT with Qwen3.8 Flash Next 6-bit and Hy4-flash 8-bit, brought back from the external drive and run on 1.3.3 from 15:57 SGT.
+
 ELI5: TensorFold 1.3.3 came out on 22 Nov 2026 at 04:58 SGT. My lines for these builds came from 1.3.2, so I reran them on the new release, one fresh server start a setting, at the same settings and on the same texts. One cell came in low, so I tested it again against the old release on the same night. DeepSeek V4.1 Flash on 1.3.3 has its own page, [finding 18](../18_dsv41_tensorfold_133).
 
-**I see no speed change on TensorFold 1.3.3 on any of these five builds. Text by text against the latest 1.3.2 start, the middle ratio sits between 0.98 and 1.06 on every test but one, and the replies I checked are the same. The one test was Qwen3.8 27B with its own sampler, 136.2 tok/s on its first 1.3.3 start against 161.3 on 1.3.2. Run again on one night, the two releases wrote 147.0 and 147.3 over 20 requests each, so that was a low start and not the release. One thing is new. GLM-5.3 Flash can now draft with a DFlash2 model on a Mac, and it wrote 84.2 tok/s with its own sampler against 79.8 with the built-in MTP drafts, with the same replies. Mac Studio M5 Ultra 512 GB, one user, median of 5 runs, 22 Nov 2026.**
+**I see no speed change on TensorFold 1.3.3 on any of these seven builds. Text by text against the latest 1.3.2 start, the middle ratio sits between 0.96 and 1.06 on every test but two, and the replies I checked are the same. One was Qwen3.8 27B with its own sampler, 136.2 tok/s on its first 1.3.3 start against 161.3 on 1.3.2. Run again on one night, the two releases wrote 147.0 and 147.3 over 20 requests each, so that was a low start and not the release. The other is Hy4-flash 8-bit with the draft-bits switch and its own sampler, 1.08, with 1.3.3 faster on only 3 of 5 texts. One thing is new. GLM-5.3 Flash can now draft with a DFlash2 model on a Mac, and it wrote 84.2 tok/s with its own sampler against 79.8 with the built-in MTP drafts, with the same replies. Mac Studio M5 Ultra 512 GB, one user, median of 5 runs, 22 Nov 2026.**
 
 | Model and build | Max on 1.3.3 | Max on 1.3.2 | Median on 1.3.3 | Median on 1.3.2 |
 |---|---|---|---|---|
 | Qwen3.8 27B, 4-bit, DFlash2 drafter | 315.3 | 328.9 | 164.1 | 161.3 |
 | Qwen3.8 Flash Next, 4-bit | 209.5 | 206.8 | 130.9 | 129.7 |
+| Qwen3.8 Flash Next, 6-bit | 201.3 | 200.1 | 114.5 | 114.1 |
 | GLM-5.3 Flash, 4-bit, MTP drafts | 102.8 | 102.0 | 79.8 | 80.9 |
 | GLM-5.3 Flash, 4-bit, DFlash2 draft model | 101.6 | not possible | 84.2 | not possible |
 | GLM-5.3 Flash, oQ4e, MTP drafts | 84.8 | 82.9 | 64.9 | 67.5 |
 | Hy4-flash, 4-bit, defaults | 63.8 | 64.6 | 44.2 | 51.3 |
 | Hy4-flash, 4-bit, `TF_HY4_DRAFT_BITS=8` | 73.3 | 71.5 | 54.5 | 51.0 |
+| Hy4-flash, 8-bit, defaults | 46.7 | 47.6 | 38.2 | 37.1 |
+| Hy4-flash, 8-bit, `TF_HY4_DRAFT_BITS=8` | 55.2 | 53.4 | 44.8 | 40.9 |
 
 - **Max** is the middle of 5 greedy runs on new code with replies of up to 2,048 tokens, at the faster of the 1K and 4K prompts.
 - **Median** is the middle of 5 runs with the model's own sampler, mixed text, 512-token replies, 4K prompt.
 - **The 1.3.2 columns** are the latest 1.3.2 start of each setting, in findings [10](../10_hy4_flash_tensorfold_132), [11](../11_qwen38_tensorfold_132) and [15](../15_glm53_flash_two_builds). Their rows are in those folders.
-- **One median looks apart and is not.** Hy4-flash at defaults reads 44.2 against 51.3, and its five same-text pairs have a middle ratio of 1.00.
+- **One median looks apart and is not.** Hy4-flash 4-bit at defaults reads 44.2 against 51.3, and its five same-text pairs have a middle ratio of 1.00.
 - **The Qwen3.8 27B median is its latest 1.3.3 start.** Four 1.3.3 starts read 136.2, 154.3, 154.3 and 164.1 on the same five texts. It has its own section below.
 - **"Not possible"** means 1.3.2 refused to start GLM-5.3 Flash with a DFlash2 draft model on this Mac, as finding 15 records.
 - **Hy4-flash wrote reasoning text**, as on 1.3.2. The other rows are answer text.
@@ -28,9 +33,9 @@ ELI5: TensorFold 1.3.3 came out on 22 Nov 2026 at 04:58 SGT. My lines for these 
 
 ELI5: The same test on both releases. One pair of bars a build.
 
-![Bars of writing speed in tokens per second, greedy at temperature 0, new code, replies of up to 2,048 tokens, 1K prompt, on TensorFold 1.3.2 and 1.3.3. Qwen3.8 27B 4-bit 328.9 and 315.3. Qwen3.8 Flash Next 4-bit 206.8 and 206.8. GLM-5.3 Flash 4-bit 101.4 and 102.1. GLM-5.3 Flash oQ4e 80.7 and 81.2. Hy4-flash 4-bit 64.6 and 61.8.](chart_max.png)
+![Bars of writing speed in tokens per second, greedy at temperature 0, new code, replies of up to 2,048 tokens, 1K prompt, on TensorFold 1.3.2 and 1.3.3. Qwen3.8 27B 4-bit 328.9 and 315.3. Qwen3.8 Flash Next 4-bit 206.8 and 206.8. GLM-5.3 Flash 4-bit 101.4 and 102.1. GLM-5.3 Flash oQ4e 80.7 and 81.2. Hy4-flash 4-bit 64.6 and 61.8. Qwen3.8 Flash Next 6-bit 200.1 and 201.3. Hy4-flash 8-bit at defaults 47.6 and 46.7.](chart_max.png)
 
-- **The chart is the 1K prompt only.** For four of its five builds the max in the table above is the 4K cell.
+- **The chart is the 1K prompt only.** For four of its seven builds the max in the table above is the 4K cell. The Hy4-flash bars are at defaults.
 
 ## Same-text pairs
 
@@ -42,14 +47,18 @@ ELI5: Each request's text is picked from its size and repeat number, so 1.3.3 go
 |---|---|---|---|---|---|
 | Qwen3.8 27B, 4-bit | 6 of 10, 1.01 | 9 of 10, 1.06 | 1 of 5, 0.89 | 6 of 10, 1.01 | 8 of 10, 1.00 |
 | Qwen3.8 Flash Next, 4-bit | 6 of 10, 1.03 | 5 of 10, 1.00 | 2 of 5, 0.98 | 8 of 10, 1.00 | 9 of 10, 1.00 |
+| Qwen3.8 Flash Next, 6-bit | 5 of 10, 1.00 | 4 of 10, 0.96 | 4 of 5, 1.02 | 1 of 10, 1.00 | 5 of 10, 1.00 |
 | GLM-5.3 Flash, 4-bit, MTP | 6 of 10, 1.01 | 5 of 10, 1.00 | 2 of 5, 0.98 | 3 of 10, 0.99 | 6 of 10, 1.01 |
 | GLM-5.3 Flash, oQ4e, MTP | 6 of 10, 1.03 | 6 of 10, 1.02 | 2 of 5, 0.98 | 4 of 10, 1.00 | 5 of 10, 1.00 |
 | Hy4-flash, 4-bit, defaults | 5 of 10, 1.00 | 6 of 10, 1.02 | 2 of 5, 1.00 | not run | not run |
 | Hy4-flash, 4-bit, draft-bits switch | 6 of 10, 1.02 | 8 of 10, 1.02 | 4 of 5, 1.02 | not run | not run |
+| Hy4-flash, 8-bit, defaults | 5 of 10, 1.01 | 6 of 10, 1.06 | 3 of 5, 1.04 | not run | not run |
+| Hy4-flash, 8-bit, draft-bits switch | 6 of 10, 1.00 | 6 of 10, 1.01 | 3 of 5, 1.08 | not run | not run |
 
 - **One cell stands out, the Qwen3.8 27B sampler at 0.89.** The next section runs it again.
-- **Everything else sits between 0.98 and 1.06.** I call none of it a change.
-- **Same replies.** 250 of 250 short greedy answers match 1.3.2 on both Qwen builds. On GLM-5.3 Flash and Hy4-flash a fuller check of 50 questions asked twice, with thinking and answer text together, matches 1.3.2 on 100 of 100.
+- **Hy4-flash 8-bit with the switch reads 1.08 with its own sampler.** 1.3.3 was faster on only 3 of its 5 texts, and its five runs went from 39.2 to 49.4. One start a release can't call that a change.
+- **Everything else sits between 0.96 and 1.06.** I call none of it a change.
+- **Same replies.** 250 of 250 short greedy answers match 1.3.2 on the three Qwen builds. On GLM-5.3 Flash and Hy4-flash a fuller check of 50 questions asked twice, with thinking and answer text together, matches 1.3.2 on 100 of 100. That holds for both Hy4-flash builds at both settings.
 
 ## The Qwen3.8 27B sampler, run again on one night
 
@@ -98,23 +107,23 @@ Decode tok/s on TensorFold's 4-bit build, 1.3.3, one start each. MTP is run `3a8
 
 ELI5: [Finding 10](../10_hy4_flash_tensorfold_132) found a variable in TensorFold's source that stores the draft helper at fewer bits and writes faster. I checked that it still does on 1.3.3.
 
-- **Still faster on every code text.** Against the default start of this run, `TF_HY4_DRAFT_BITS=8` was faster on 10 of 10 long replies with a middle ratio of 1.16, and on 10 of 10 short ones with 1.18.
+- **Still faster on every code text.** On the 4-bit build, against the default start of this run, `TF_HY4_DRAFT_BITS=8` was faster on 10 of 10 long replies with a middle ratio of 1.16, and on 10 of 10 short ones with 1.18.
 - **Same text.** 100 of 100 replies match the default start, and both match 1.3.2.
-- **That is three pairs of starts now**, two on 1.3.2 and one on 1.3.3.
-- **The 8-bit build was not rerun.** It is parked on an external drive, and its lines stay on 1.3.2.
+- **The 8-bit build too.** Brought back from the external drive and run on 1.3.3, the switch was faster on 10 of 10 long replies with a middle ratio of 1.17, on 10 of 10 short ones with 1.13, and on 5 of 5 sampled texts with 1.11. 100 of 100 replies match its default start.
+- **That is three pairs of starts a build now**, two on 1.3.2 and one on 1.3.3.
 
 ## The setup
 
 ELI5: One engine at its newest release, the same weights and serve lines as the 1.3.2 pages.
 
 - **Engine.** [TensorFold](https://github.com/ashhart/TensorFold) 1.3.3, released 22 Nov 2026 04:58 SGT, installed from the project's Homebrew tap. The formula's SHA-256 equals the digest GitHub lists for `tensorfold-1.3.3-macos-arm64.tar.gz`. `tensorfold-native --version` prints 1.3.3.
-- **It was still the newest release** when I published this, checked on 22 Nov 2026 at 08:21 SGT.
+- **It was still the newest release** when I published this, checked on 22 Nov 2026 at 08:21 SGT, and again at 16:35 SGT for the two added builds.
 - **The 1.3.2 program of the sampler test** is the copy Homebrew kept in its Cellar, run by its full path. Nothing was installed for it.
 - **Weights.**
   - [TensorFold/Qwen3.8-27B-MLX-4bit](https://huggingface.co/TensorFold/Qwen3.8-27B-MLX-4bit) with the drafter [z-lab/Qwen3.8-27B-DFlash2](https://huggingface.co/z-lab/Qwen3.8-27B-DFlash2).
-  - [TensorFold/Qwen3.8-Flash-Next-MLX-4bit-MTP](https://huggingface.co/TensorFold/Qwen3.8-Flash-Next-MLX-4bit-MTP).
+  - [TensorFold/Qwen3.8-Flash-Next-MLX-4bit-MTP](https://huggingface.co/TensorFold/Qwen3.8-Flash-Next-MLX-4bit-MTP) and [TensorFold/Qwen3.8-Flash-Next-MLX-6bit-MTP](https://huggingface.co/TensorFold/Qwen3.8-Flash-Next-MLX-6bit-MTP).
   - [TensorFold/GLM-5.3-Flash-MLX-4bit-MTP](https://huggingface.co/TensorFold/GLM-5.3-Flash-MLX-4bit-MTP) and [Jundot/GLM-5.3-Flash-oQ4e-mtp](https://huggingface.co/Jundot/GLM-5.3-Flash-oQ4e-mtp), a build made for another engine.
-  - [TensorFold/Hy4-flash-MLX-4bit-MTP](https://huggingface.co/TensorFold/Hy4-flash-MLX-4bit-MTP).
+  - [TensorFold/Hy4-flash-MLX-4bit-MTP](https://huggingface.co/TensorFold/Hy4-flash-MLX-4bit-MTP) and [TensorFold/Hy4-flash-MLX-8bit-MTP](https://huggingface.co/TensorFold/Hy4-flash-MLX-8bit-MTP).
 - **Serve lines** are those of findings 10, 11 and 15, unchanged. Qwen3.8 27B at `--context 262144 --parallel 1` with `--drafter`. Flash Next at the M5 Ultra line of the project's recipe. GLM-5.3 Flash and Hy4-flash at `--context 131072 --parallel 1`.
 - **Thinking** off for the Qwen and GLM builds, and on for Hy4-flash, as on 1.3.2.
 
@@ -132,6 +141,9 @@ ELI5: One engine at its newest release, the same weights and serve lines as the 
 | `c6618a74cbb9` | Qwen3.8 27B 4-bit, sampler test, 1.3.2 | 08:10 |
 | `76824af96911` | Qwen3.8 27B 4-bit, sampler test, 1.3.3 | 08:12 |
 | `e2420150405f` | Qwen3.8 27B 4-bit, the standard sampler block, 1.3.3 | 08:19 |
+| `e4b66d27e9cb` | Qwen3.8 Flash Next 6-bit, 1.3.3 | 15:57 |
+| `998afef57c31` | Hy4-flash 8-bit, defaults, 1.3.3 | 16:05 |
+| `bfcced24637c` | Hy4-flash 8-bit, `TF_HY4_DRAFT_BITS=8`, 1.3.3 | 16:20 |
 
 ## How I measured
 
@@ -159,8 +171,8 @@ ELI5: A speed is only comparable with another speed measured the same way.
 
 ELI5: Every timed request is in this folder. You can redo every median.
 
-- **`rows.csv`.** 390 raw rows from the bench database. 350 timed requests and 40 warm-ups.
-- **`runs.csv`.** The 12 runs behind them, with engine, version, start time, settings and sampling.
+- **`rows.csv`.** 502 raw rows from the bench database. 450 timed requests and 52 warm-ups.
+- **`runs.csv`.** The 15 runs behind them, with engine, version, start time, settings and sampling.
 - **The 1.3.2 rows** are in findings 10, 11 and 15.
 
 From the top of this repository.
@@ -171,12 +183,11 @@ python3 tools/summarize.py findings/19_tensorfold_133_refresh
 
 ## What I did not verify
 
-- **Qwen3.8 Flash Next 6-bit and Hy4-flash 8-bit on 1.3.3.** Both are parked on an external drive. Their lines stay on 1.3.2.
 - **The drafts-off lines** of GLM-5.3 Flash and Hy4-flash on 1.3.3.
 - **A second start** of any setting but the Qwen3.8 27B sampler.
 - **Why the Qwen3.8 27B sampler read higher on 21 Nov than on 22 Nov**, on the same 1.3.2 program.
 - **DFlash2 on the oQ4e build**, and DFlash2 against MTP on a second start.
-- **What the timed replies say.** I read back one copy reply and one counting reply on three builds, as the job does, and no other.
+- **What the timed replies say.** I read back one copy reply and one counting reply on four builds, as the job does, and no other.
 - **Answer quality, long prompts, and two users at once.**
 
 ## Credit
