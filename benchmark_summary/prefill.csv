@@ -100,3 +100,12 @@ Inkling 2 Small,mlx-community/Inkling-2-Small-oQ4e,,1196.5,1186.4,1225.7,5,1,mix
 "Inkling 2 Mini, 8-bit",ddalcu/Inkling-2-Mini-MLX-8bit,,3400.0,3266.9,4195.2,35,3,code,1024,"mlx-serve 26.11.4-pre-release.1, main at 2fe9be83",2026-11-22,20_inkling2_mini_mlxserve_pre,338b6385675f 3f129b289ed7 8dddc3d76174
 "Inkling 2 Mini, 8-bit",ddalcu/Inkling-2-Mini-MLX-8bit,yes,4932.1,4847.7,5001.5,35,3,code,4096,"mlx-serve 26.11.4-pre-release.1, main at 2fe9be83",2026-11-22,20_inkling2_mini_mlxserve_pre,338b6385675f 3f129b289ed7 8dddc3d76174
 "Inkling 2 Mini, 8-bit",ddalcu/Inkling-2-Mini-MLX-8bit,,4929.1,4902.3,4970.9,5,1,mixed,4096,"mlx-serve 26.11.4-pre-release.1, main at 2fe9be83",2026-11-22,20_inkling2_mini_mlxserve_pre,338b6385675f
+"Inkling 2 Mini, Bare Speed",Youssofal/Inkling-2-Mini-MTPLX-Bare-Speed,,2879.1,2392.1,3564.4,35,3,code,1024,MTPLX 2.13.1,2026-11-22,21_inkling2_mini_mtplx_213,0bb9739897e0 69e9ae98c9d1 a96cb656f07d
+"Inkling 2 Mini, Bare Speed",Youssofal/Inkling-2-Mini-MTPLX-Bare-Speed,yes,4684.4,4023.9,4899.0,35,3,code,4096,MTPLX 2.13.1,2026-11-22,21_inkling2_mini_mtplx_213,0bb9739897e0 69e9ae98c9d1 a96cb656f07d
+"Inkling 2 Mini, Bare Speed",Youssofal/Inkling-2-Mini-MTPLX-Bare-Speed,,4578.0,4485.1,4785.6,10,2,mixed,4096,MTPLX 2.13.1,2026-11-22,21_inkling2_mini_mtplx_213,0bb9739897e0 a96cb656f07d
+"Inkling 2 Mini, Optimized Speed",Youssofal/Inkling-2-Mini-MTPLX-Optimized-Speed,,2908.3,2575.7,3491.1,20,2,code,1024,MTPLX 2.13.1,2026-11-22,21_inkling2_mini_mtplx_213,0f6c20468d28 472c4ceb9644
+"Inkling 2 Mini, Optimized Speed",Youssofal/Inkling-2-Mini-MTPLX-Optimized-Speed,yes,4681.7,4196.4,4939.7,20,2,code,4096,MTPLX 2.13.1,2026-11-22,21_inkling2_mini_mtplx_213,0f6c20468d28 472c4ceb9644
+"Inkling 2 Mini, Optimized Speed",Youssofal/Inkling-2-Mini-MTPLX-Optimized-Speed,,4562.7,4496.7,4800.1,10,2,mixed,4096,MTPLX 2.13.1,2026-11-22,21_inkling2_mini_mtplx_213,0f6c20468d28 472c4ceb9644
+"Inkling 2 Mini, Optimized Quality",Youssofal/Inkling-2-Mini-MTPLX-Optimized-Quality,,2686.3,2038.6,3437.0,20,2,code,1024,MTPLX 2.13.1,2026-11-22,21_inkling2_mini_mtplx_213,a28a0a8eae9d f0dac5df559b
+"Inkling 2 Mini, Optimized Quality",Youssofal/Inkling-2-Mini-MTPLX-Optimized-Quality,yes,4597.2,4185.9,4856.5,20,2,code,4096,MTPLX 2.13.1,2026-11-22,21_inkling2_mini_mtplx_213,a28a0a8eae9d f0dac5df559b
+"Inkling 2 Mini, Optimized Quality",Youssofal/Inkling-2-Mini-MTPLX-Optimized-Quality,,4581.8,4125.4,4785.2,10,2,mixed,4096,MTPLX 2.13.1,2026-11-22,21_inkling2_mini_mtplx_213,a28a0a8eae9d f0dac5df559b
