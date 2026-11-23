@@ -14,8 +14,8 @@ Updated 23 Nov 2026 20:05 SGT. Decode speed in tok/s, one user, one Mac.
 - **Fastest in daily use.** Qwen3.8 27B, 4-bit wrote 149.6 tok/s on TensorFold 1.3.4. Next are Qwen3.8 Flash Next, 4-bit at 128.4 and Qwen3.8 Flash Next, IQ3_S at 126.0.
 - **Two speeds per model.** Max is greedy at temperature 0 while the model writes new code. Median is the model's own sampler on mixed text, which is closer to daily use.
 - **Prefill too.** The table also has how fast each model read a cold prompt, with the prompt size.
-- **Coverage.** 28 models, 422 setups and 33 findings.
-- **Newest finding.** Finding 33, 23 Nov 2026. [MiniMax H3 video on mlx-serve 26.11.3 and Rapid-MLX 1.1.0, seconds per clip](findings/33_minimax_h3_video_mlxserve_rapidmlx).
+- **Coverage.** 28 models, 422 setups and 34 findings.
+- **Newest finding.** Finding 34, 23 to 24 Nov 2026. [MiniMax H3 video on mlx-serve 26.11.3, round two, the 4-bit pack and HyperFlow H3 Flash, seconds per clip](findings/34_minimax_h3_video_mlxserve_round2).
 - **Check it.** Every figure links to a folder with the rows it came from. If I have set an engine up wrong, [open an issue](https://github.com/LazyLocalLLM/m5-ultra-512-benchmarks/issues).
 
 ## Benchmark summary
@@ -736,9 +736,20 @@ ELI5: Everything behind the tables above, including the setups that were not the
 
 ELI5: Each finding is one question, one run of an hour or two, and one report. Newest first. Click a title for the full report and the raw rows.
 
+### 34. [MiniMax H3 video on mlx-serve 26.11.3, round two, the 4-bit pack and HyperFlow H3 Flash, seconds per clip](findings/34_minimax_h3_video_mlxserve_round2)
+
+Runs of 23 to 24 Nov 2026. mlx-serve 26.11.3 made a 5-second MiniMax H3 clip with sound at 832 by 480 in 35.0 s on its author's 4-bit pack and 35.1 s on the 8-bit pack, both with 4-step Turbo, and in 136.1 s and 135.1 s at 1344 by 768. The 4-bit pack is 27.0 GiB smaller and was no faster, with the int8 path on or off. HyperFlow H3 Flash, given a first and a last frame, took 43.5 s at 832 by 480 with its 6 steps.
+
+<details>
+<summary>Chart</summary>
+
+![Bars of seconds per 5-second MiniMax H3 clip on mlx-serve 26.11.3, lower is faster, the 8-bit pack against the 4-bit pack. At 832 by 480 with the int8 path on, 35.1 and 35.0. At 1344 by 768 with it on, 135.1 and 136.1. At 832 by 480 with it off, 48.9 and 47.8.](findings/34_minimax_h3_video_mlxserve_round2/chart_seconds.png)
+
+</details>
+
 ### 33. [MiniMax H3 video on mlx-serve 26.11.3 and Rapid-MLX 1.1.0, seconds per clip](findings/33_minimax_h3_video_mlxserve_rapidmlx)
 
-Runs of 23 Nov 2026. mlx-serve 26.11.3, on its author's 8-bit pack with its 4-step Turbo, made a 5-second MiniMax H3 clip with sound in 34.9 s at 832 by 480 and 149.4 s at 1344 by 768, H3's native size. Rapid-MLX 1.1.0, on the maker's bf16 weights with its fixed 9-step Turbo LoRA, took 116.6 s and 446.2 s. mlx-serve's own 30-step default took 109.3 s, and 471.4 s on one clip. Different weights, adapters and step counts, so the gaps are not one engine's speed alone.
+Runs of 23 Nov 2026. mlx-serve 26.11.3, on its author's 8-bit pack with its 4-step Turbo, made a 5-second MiniMax H3 clip with sound in 34.9 s at 832 by 480 and 149.4 s at 1344 by 768, H3's native size. Rapid-MLX 1.1.0, on the maker's bf16 weights with its fixed 9-step Turbo LoRA, took 116.6 s and 446.2 s. mlx-serve's own 30-step default took 109.3 s, and 471.4 s on one clip. Different weights, adapters and step counts, so the gaps are not one engine's speed alone. A rerun of mlx-serve's 1344 by 768 clip on 24 Nov took 132.0 s and 138.2 s, in finding 34.
 
 <details>
 <summary>Chart</summary>

@@ -103,6 +103,7 @@ ELI5: Every setting, its range and the number of clips.
 
 - **Rapid-MLX's 832x480 clip matches its own run of 22 Nov,** 116.5 s, in [finding 22](../22_image_video_rapidmlx_110).
 - **mlx-serve gave the same clip every time.** Within each cell, the frames and the sound hashed the same on every clip, warm-up included. Rapid-MLX's MP4 files differed in their bytes. I kept no clip to decode, so I cannot say whether its frames differ.
+- **Note added 24 Nov 2026 SGT.** mlx-serve's 1344x768 Turbo clip ran again on 24 Nov in [finding 34](../34_minimax_h3_video_mlxserve_round2), the same clip by its frame hash `b4184819929e1cbf`. Two starts took 132.0 s and 138.2 s, against 149.4 s here. 149.4 / 135.1 = 1.11, where 135.1 s is the middle of those 4 clips. I did not find the cause. The other cells here were not rerun.
 
 ## The setup
 
