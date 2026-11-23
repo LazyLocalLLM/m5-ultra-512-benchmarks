@@ -8,13 +8,13 @@ ELI5: I'm a learner with one Mac Studio M5 Ultra 512 GB, and I time local AI mod
 
 ELI5: The page in seven lines. Every figure here is recomputed from the raw rows each time the page is built.
 
-Updated 23 Nov 2026 16:09 SGT. Decode speed in tok/s, one user, one Mac.
+Updated 23 Nov 2026 16:23 SGT. Decode speed in tok/s, one user, one Mac.
 
 - **Fastest on new code.** Qwen3.8 27B, 4-bit wrote 323.4 tok/s on TensorFold 1.3.4. Next are Qwen3.8 Flash Next, 4-bit at 211.5 and Qwen3.8 Flash Next, 6-bit at 201.3.
 - **Fastest in daily use.** Qwen3.8 27B, 4-bit wrote 149.6 tok/s on TensorFold 1.3.4. Next are Qwen3.8 Flash Next, 4-bit at 128.4 and Qwen3.8 Flash Next, IQ3_S at 126.0.
 - **Two speeds per model.** Max is greedy at temperature 0 while the model writes new code. Median is the model's own sampler on mixed text, which is closer to daily use.
 - **Prefill too.** The table also has how fast each model read a cold prompt, with the prompt size.
-- **Coverage.** 27 models, 419 setups and 31 findings.
+- **Coverage.** 28 models, 422 setups and 31 findings.
 - **Newest finding.** Finding 31, 23 Nov 2026. [Inkling 2 Mini on Ollama 0.40.17, its drafter 2.3 times as fast, with the thinking hidden](findings/31_inkling2_mini_ollama_04017).
 - **Check it.** Every figure links to a folder with the rows it came from. If I have set an engine up wrong, [open an issue](https://github.com/LazyLocalLLM/m5-ultra-512-benchmarks/issues).
 
@@ -63,6 +63,7 @@ The exact setup behind each figure is one click away, under "Every setup measure
 | [Qwen3.8 Flash Next, IQ3_S](https://huggingface.co/ISTA-DASLab/Qwen3.8-Flash-Next-GSQ-RCO-GGUF) | **196.4** | **126.0** | **2,884.2**, 4K code prompt | answer | Strata 0.2.20 | [28](findings/28_qwen38_flash_next_strata_0220) |
 | [Inkling 2 Mini, SQ-20](https://huggingface.co/strata-engine/Inkling-2-Mini-Strata) | **106.1** | **59.3** | **3,386.8**, 4K mixed prompt | answer | Strata 0.2.20 | [30](findings/30_inkling2_mini_strata_0220) |
 | [Inkling 2 Mini, UD-Q8_K_XL](https://huggingface.co/unsloth/Inkling-2-Mini-GGUF) | **60.1** | **58.2** | **3,216.4**, 4K mixed prompt | answer | Strata 0.2.20 | [30](findings/30_inkling2_mini_strata_0220) |
+| [Inkling 2 Mini, maker's release](https://huggingface.co/thinkingmachines/Inkling-2-Mini) | **82.3** | **61.7** | **2,129.4**, 4K code prompt | reasoning | Ollama 0.40.17 | [31](findings/31_inkling2_mini_ollama_04017) |
 
 ### Ceiling on easy text
 
@@ -717,6 +718,17 @@ ELI5: Everything behind the tables above, including the setups that were not the
 | max | Strata 0.2.20, Unsloth's GGUF, drafting off (this build refused the DSpark file), engine built from source, thinking off (effort none), reply is answer text | greedy, temperature 0 | 1K code | 2,048 | 60.1 | 59.3 to 60.5 | 5 | 2026-11-23 | `c7ce703a276f` | [30](findings/30_inkling2_mini_strata_0220) |
 | max | Strata 0.2.20, Unsloth's GGUF, drafting off (this build refused the DSpark file), engine built from source, thinking off (effort none), reply is answer text | greedy, temperature 0 | 4K code | 2,048 | 58.4 | 57.4 to 58.7 | 5 | 2026-11-23 | `c7ce703a276f` | [30](findings/30_inkling2_mini_strata_0220) |
 | median | Strata 0.2.20, Unsloth's GGUF, drafting off (this build refused the DSpark file), engine built from source, thinking off (effort none), reply is answer text | temperature 1.0, top-p 1.0 | 4K mixed | 512 | 58.2 | 58.0 to 59.5 | 5 | 2026-11-23 | `c7ce703a276f` | [30](findings/30_inkling2_mini_strata_0220) |
+
+</details>
+
+<details>
+<summary><b>Inkling 2 Mini, maker's release</b>, 3 setups</summary>
+
+| Kind | Engine and setup | Sampler | Prompt | Reply tokens | Decode tok/s | Range | Runs | Date | Run | Finding |
+|---|---|---|---|---|---|---|---|---|---|---|
+| max | Ollama 0.40.17, MTP drafter on, as in Ollama's library model, Ollama's default thinking (no thinking field, effort 0.9), reply is reasoning text, sampler adds Ollama's default top-k 40 | greedy, temperature 0 | 4K code | 2,048 | 82.3 | 70.6 to 87.7 | 5 | 2026-11-23 | `b5f573f87f3c` | [31](findings/31_inkling2_mini_ollama_04017) |
+| max | Ollama 0.40.17, MTP drafter on, as in Ollama's library model, Ollama's default thinking (no thinking field, effort 0.9), reply is reasoning text, sampler adds Ollama's default top-k 40 | greedy, temperature 0 | 1K code | 2,048 | 76.6 | 71.5 to 88.4 | 5 | 2026-11-23 | `b5f573f87f3c` | [31](findings/31_inkling2_mini_ollama_04017) |
+| median | Ollama 0.40.17, MTP drafter on, as in Ollama's library model, Ollama's default thinking (no thinking field, effort 0.9), reply is reasoning text, sampler adds Ollama's default top-k 40 | temperature 1.0, top-p 1.0 | 4K mixed | 512 | 61.7 | 51.2 to 68.4 | 5 | 2026-11-23 | `b5f573f87f3c` | [31](findings/31_inkling2_mini_ollama_04017) |
 
 </details>
 

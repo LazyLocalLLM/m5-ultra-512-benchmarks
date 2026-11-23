@@ -130,3 +130,6 @@ Inkling 2 Small,mlx-community/Inkling-2-Small-oQ4e,,1196.5,1186.4,1225.7,5,1,mix
 "Inkling 2 Mini, UD-Q8_K_XL",unsloth/Inkling-2-Mini-GGUF,,2830.4,2769.4,3079.8,20,1,code,1024,Strata 0.2.20,2026-11-23,30_inkling2_mini_strata_0220,c7ce703a276f
 "Inkling 2 Mini, UD-Q8_K_XL",unsloth/Inkling-2-Mini-GGUF,,3192.6,3150.0,3217.6,20,1,code,4096,Strata 0.2.20,2026-11-23,30_inkling2_mini_strata_0220,c7ce703a276f
 "Inkling 2 Mini, UD-Q8_K_XL",unsloth/Inkling-2-Mini-GGUF,yes,3216.4,3173.9,3225.9,5,1,mixed,4096,Strata 0.2.20,2026-11-23,30_inkling2_mini_strata_0220,c7ce703a276f
+"Inkling 2 Mini, maker's release",thinkingmachines/Inkling-2-Mini,,1870.3,1794.4,1992.2,10,1,code,1024,Ollama 0.40.17,2026-11-23,31_inkling2_mini_ollama_04017,b5f573f87f3c
+"Inkling 2 Mini, maker's release",thinkingmachines/Inkling-2-Mini,yes,2129.4,2087.9,2175.4,10,1,code,4096,Ollama 0.40.17,2026-11-23,31_inkling2_mini_ollama_04017,b5f573f87f3c
+"Inkling 2 Mini, maker's release",thinkingmachines/Inkling-2-Mini,,2116.4,2098.6,2123.1,5,1,mixed,4096,Ollama 0.40.17,2026-11-23,31_inkling2_mini_ollama_04017,b5f573f87f3c

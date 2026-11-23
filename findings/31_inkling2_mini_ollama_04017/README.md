@@ -2,6 +2,8 @@
 
 By Local LLM L-Plate. Follow [@LazyLocalLLM on X](https://x.com/LazyLocalLLM) for new benchmarks.
 
+Updated on 23 Nov 2026 at 16:25 SGT with one start at Ollama's default thinking. See that section.
+
 ELI5: Ollama 0.40.17 added Inkling 2 Mini on Apple chips. Its library model is Thinking Machines' own release with the model's MTP drafter attached. I built that same model here from the maker's files with Ollama's own import, and it matches Ollama's library model tensor for tensor. Then I ran it with the drafter on and off. With thinking off the model still thinks, and Ollama hides that thinking from the reply. So every speed here is Ollama's own count of the tokens it decoded, hidden thinking included.
 
 **Ollama 0.40.17 decoded Inkling 2 Mini at 76.8 tok/s at its max with its MTP drafter, and 51.0 with the model's own sampler, by Ollama's own count. With no drafter it decoded 33.6 and 32.4. So the drafter made greedy decoding on code prompts 2.3 times as fast, faster on 20 of 20 same-text pairs, and the sampler 1.6 times. With thinking off, Ollama asks for thinking effort 0, as the maker's template does for "none", and the model still thought before it answered. Ollama drops that thinking from the reply. So 27 of 40 greedy replies to code prompts, capped at 2,048 tokens, came back with no text, and so did all 60 of the replies capped at 512. Most decoded tokens were that thinking, not code. Mac Studio M5 Ultra 512 GB, one user, median of 5 runs, 23 Nov 2026.**
@@ -19,6 +21,18 @@ ELI5: Ollama 0.40.17 added Inkling 2 Mini on Apple chips. Its library model is T
 - **Both lines are their latest start.** The first drafter start decoded 82.2 at the max and 55.3 with the sampler. The first start with no drafter decoded 33.5 and 32.2.
 - **Ollama's library model always carries the drafter.** No drafter is an import without it, made here only to measure the drafter.
 - **No `mlx-lm` multiple.** `mlx-lm` 0.32.2 has no Inkling 2 model. The line with no drafter is the baseline.
+
+## Ollama's default thinking, one more start
+
+ELI5: Added on 23 Nov 2026 at 16:25 SGT. With no thinking field Ollama asks for effort 0.9 and sends the thinking back in its own field. Then the harness can see every token, which checks the clock this page uses, and shows what a user with Ollama's default gets.
+
+- **One drafter start,** run `b5f573f87f3c` at 16:13 SGT, the same library model and Modelfile, no thinking field sent.
+- **Every reply was thinking.** All 2,048 or 512 tokens of each of the 25 timed replies came back in the reasoning field, and none as answer text within the cap.
+- **The two clocks agree.** The harness's writing speed and Ollama's own count differ by at most 0.7% on all 25 rows. So where the harness can see the tokens, it reads what Ollama's count reads.
+- **Speeds, harness clock, middle of 5.** Code 1K capped at 2,048, 76.6 tok/s. Code 4K capped at 2,048, 82.3. Code 1K capped at 512, 80.7. Code 4K capped at 512, 64.8. Mixed 4K with the sampler, 61.7.
+- **So Ollama's default reads 82.3 at the max and 61.7 with the sampler.** These are on the summary page as Ollama's line, labelled as reasoning text.
+- **The first token came at once.** 0.61 s at 1K and 2.51 s at 4K, the middle of 5.
+- **Not the same text as thinking off.** Effort 0.9 thinks differently from effort 0, so these are not same-text pairs with the starts above.
 
 ## Chart
 
@@ -114,6 +128,7 @@ ELI5: Ollama's own release, run as its docs say, with the library model rebuilt 
 | `9a9a2ca51a2d` | No drafter | 15:16 |
 | `73fd93e9251b` | No drafter | 15:36 |
 | `f09bb0f8b45f` | Drafter on | 15:51 |
+| `b5f573f87f3c` | Drafter on, Ollama's default thinking | 16:13 |
 
 - **One earlier start is left out.** Run `b0d94bae1783` at 14:58 SGT used a Modelfile with no `RENDERER` or `PARSER` line, so the prompt went in without Inkling's chat format. I stopped it after one timed request.
 
@@ -138,15 +153,15 @@ ELI5: Same Mac, same harness, same texts and same questions as the other Inkling
 
 ELI5: Every timed request is in this folder. You can redo every median.
 
-- **`rows.csv`.** 112 raw rows from the bench database, with Ollama's own timing in the `extra` column.
-- **`runs.csv`.** The 4 runs, with engine, version, start time and settings.
+- **`rows.csv`.** 140 raw rows from the bench database, with Ollama's own timing in the `extra` column.
+- **`runs.csv`.** The 5 runs, with engine, version, start time and settings.
 - **The harness's summary reads its own clock.** `tools/summarize.py` shows writing speed from the first visible token, which is wrong for these rows. Use `predicted_per_second` in `extra`.
-- **Not on the summary page.** The summary page measures that same clock on rows with visible text, so this finding adds no line there.
+- **On the summary page, the thinking-on start only.** The summary page measures the harness's clock on rows with visible text. The thinking-off starts have few such rows and a wrong clock, so only run `b5f573f87f3c` stands there.
 
 ## What I did not verify
 
 - **Whether the drafter changes the replies.** One reply matched, and the text check came back empty.
-- **Ollama's default.** With no thinking field, Ollama asks for effort 0.9 and shows the thinking in its own field, by its source (`inkling2Effort`). I timed thinking off, this bench's standard for speed, not Ollama's default.
+- **Ollama's default beyond one start.** With no thinking field, Ollama asks for effort 0.9 and shows the thinking in its own field, by its source (`inkling2Effort`). I timed that once, with the drafter, above. Not with the drafter off, and not past the reply caps.
 - **Ollama's ready-made library model itself.** I compared its manifest, not its files.
 - **Why the model thinks at effort 0 on these prompts.** I saw that it does, not why.
 - **Answer quality, long prompts, pictures, tools and two users at once.** Ollama's notes say it now serves several requests at once on Apple silicon.
