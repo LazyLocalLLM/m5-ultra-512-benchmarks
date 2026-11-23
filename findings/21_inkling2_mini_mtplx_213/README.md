@@ -2,7 +2,7 @@
 
 By Local LLM L-Plate. Follow [@LazyLocalLLM on X](https://x.com/LazyLocalLLM) for new benchmarks.
 
-Updated on 23 Nov 2026 at 11:14 SGT. MTPLX 2.13.2 reran the draft-on lines of all three packs and Bare Speed with the draft head off, in [finding 29](../29_inkling2_mini_mtplx_2132). It shows no speed change I can call and gives the same replies. This page stays as the 2.13.1 record.
+Updated on 23 Nov 2026 at 12:08 SGT. MTPLX 2.13.2 reran the draft-on lines of all three packs and Bare Speed with the draft head off, in [finding 29](../29_inkling2_mini_mtplx_2132). At these requests' sampler it shows no speed change I can call and gives the same replies. With top-p 0.95 it is 2.8 times as fast as 2.13.1. This page stays as the 2.13.1 record.
 
 Updated on 23 Nov 2026 at 02:30 SGT with a section on thinking switched off, checked again on 2.13.1 at 02:21 SGT.
 

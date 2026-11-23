@@ -8,14 +8,14 @@ ELI5: I'm a learner with one Mac Studio M5 Ultra 512 GB, and I time local AI mod
 
 ELI5: The page in seven lines. Every figure here is recomputed from the raw rows each time the page is built.
 
-Updated 23 Nov 2026 11:14 SGT. Decode speed in tok/s, one user, one Mac.
+Updated 23 Nov 2026 12:08 SGT. Decode speed in tok/s, one user, one Mac.
 
 - **Fastest on new code.** Qwen3.8 27B, 4-bit wrote 323.4 tok/s on TensorFold 1.3.4. Next are Qwen3.8 Flash Next, 4-bit at 211.5 and Qwen3.8 Flash Next, 6-bit at 201.3.
 - **Fastest in daily use.** Qwen3.8 27B, 4-bit wrote 149.6 tok/s on TensorFold 1.3.4. Next are Qwen3.8 Flash Next, 4-bit at 128.4 and Qwen3.8 Flash Next, IQ3_S at 126.0.
 - **Two speeds per model.** Max is greedy at temperature 0 while the model writes new code. Median is the model's own sampler on mixed text, which is closer to daily use.
 - **Prefill too.** The table also has how fast each model read a cold prompt, with the prompt size.
 - **Coverage.** 25 models, 410 setups and 29 findings.
-- **Newest finding.** Finding 29, 23 Nov 2026. [Inkling 2 Mini on MTPLX 2.13.2, no change I can call against 2.13.1](findings/29_inkling2_mini_mtplx_2132).
+- **Newest finding.** Finding 29, 23 Nov 2026. [Inkling 2 Mini on MTPLX 2.13.2, 2.8 times as fast with top-p 0.95](findings/29_inkling2_mini_mtplx_2132).
 - **Check it.** Every figure links to a folder with the rows it came from. If I have set an engine up wrong, [open an issue](https://github.com/LazyLocalLLM/m5-ultra-512-benchmarks/issues).
 
 ## Benchmark summary
@@ -697,9 +697,9 @@ ELI5: Everything behind the tables above, including the setups that were not the
 
 ELI5: Each finding is one question, one run of an hour or two, and one report. Newest first. Click a title for the full report and the raw rows.
 
-### 29. [Inkling 2 Mini on MTPLX 2.13.2, no change I can call against 2.13.1](findings/29_inkling2_mini_mtplx_2132)
+### 29. [Inkling 2 Mini on MTPLX 2.13.2, 2.8 times as fast with top-p 0.95](findings/29_inkling2_mini_mtplx_2132)
 
-Runs of 23 Nov 2026. MTPLX 2.13.2 shows no speed change I can call against 2.13.1 on Inkling 2 Mini, and gives the same replies. Back to back on the Bare Speed pack, over 10 runs a release, long code at a 1K prompt read 152.1 tok/s on 2.13.2 and 153.9 on 2.13.1, and the model's own sampler 123.9 and 120.6. All 100 short replies match on all three packs. The notes' top-p speed-up can't show here, since these requests send top-p 1.0 and 2.13.1 left its fast path only below that.
+Runs of 23 Nov 2026. MTPLX 2.13.2 writes Inkling 2 Mini 2.8 times as fast as 2.13.1 when a request sets top-p 0.95, as its notes say. On the Bare Speed pack at a 4K prompt it wrote 122.0 tok/s against 42.9, faster on 20 of 20 same-text pairs. Top-p 0.95 cut 2.13.1 to 0.36 of its own top-p 1.0 speed and left 2.13.2 where it was. At the model's own sampler, top-p 1.0, and on greedy code, 2.13.2 shows no change I can call, and all 100 short greedy replies match on all three packs.
 
 <details>
 <summary>Chart</summary>

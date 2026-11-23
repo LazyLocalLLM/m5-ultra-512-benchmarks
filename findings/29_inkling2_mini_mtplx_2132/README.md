@@ -1,10 +1,12 @@
-# Finding 29. Inkling 2 Mini on MTPLX 2.13.2, no change I can call against 2.13.1
+# Finding 29. Inkling 2 Mini on MTPLX 2.13.2, 2.8 times as fast with top-p 0.95
 
 By Local LLM L-Plate. Follow [@LazyLocalLLM on X](https://x.com/LazyLocalLLM) for new benchmarks.
 
-ELI5: MTPLX 2.13.2 came out on 23 Nov 2026 at 09:24 SGT. [Finding 21](../21_inkling2_mini_mtplx_213) measured 2.13.1 on Inkling 2 Mini's three packs. I reran its lines on 2.13.2 and ran both releases back to back on the Bare Speed pack, on the same texts.
+Updated on 23 Nov 2026 at 12:08 SGT with a test at top-p 0.95, run from 11:51 SGT, and a new headline.
 
-**MTPLX 2.13.2 shows no speed change I can call against 2.13.1 on Inkling 2 Mini, and it gives the same replies. Back to back on the Bare Speed pack, over 10 runs a release, long code at a 1K prompt read 152.1 tok/s on 2.13.2 and 153.9 on 2.13.1, and the model's own sampler 123.9 and 120.6. Text by text the middle ratios run from 0.96 to 1.03 on code and the sampler, about the spread of two 2.13.1 starts against each other, 0.94 to 0.99. All 50 short questions, asked twice, give the same replies on both releases on all three packs. The notes' headline speed-up is for requests that set top-p below 1.0 or a top-k. 2.13.1 left its fast path only for those, by its code, and these requests send top-p 1.0 with no top-k, so they can't show it. Mac Studio M5 Ultra 512 GB, one user, median of 5 runs, 23 Nov 2026.**
+ELI5: MTPLX 2.13.2 came out on 23 Nov 2026 at 09:24 SGT. [Finding 21](../21_inkling2_mini_mtplx_213) measured 2.13.1 on Inkling 2 Mini's three packs. I reran its lines on 2.13.2 and ran both releases back to back on the Bare Speed pack, on the same texts. Its notes say a request that sets top-p or top-k now stays on the fast decoder. My sampler sends top-p 1.0, which never left it, so I also ran both releases at top-p 0.95.
+
+**MTPLX 2.13.2 writes Inkling 2 Mini 2.8 times as fast as 2.13.1 when a request sets top-p 0.95, as its notes say. On the Bare Speed pack at a 4K prompt it wrote 122.0 tok/s against 42.9, over 10 runs a release, and it was faster on 20 of 20 same-text pairs. Top-p 0.95 cut 2.13.1 to 0.36 of its own speed at top-p 1.0, and left 2.13.2 where it was. At top-p 1.0, the model's own sampler, and on greedy code, 2.13.2 shows no change I can call: 123.9 against 120.6 with the sampler and 152.1 against 153.9 on long code at 1K. All 50 short greedy questions, asked twice, give the same replies on both releases on all three packs. Mac Studio M5 Ultra 512 GB, one user, median of 5 runs, 23 Nov 2026.**
 
 | Pack and setting | Max on 2.13.2 | Max on 2.13.1 | Median on 2.13.2 | Median on 2.13.1 |
 |---|---|---|---|---|
@@ -28,6 +30,29 @@ ELI5: MTPLX 2.13.2 came out on 23 Nov 2026 at 09:24 SGT. [Finding 21](../21_inkl
 ELI5: Both releases on the Bare Speed pack, two starts each, back to back. Each bar is the middle of the 10 runs of a release's two starts.
 
 ![Paired bars of writing speed in tokens per second for Inkling 2 Mini Bare Speed, MTPLX 2.13.1 against 2.13.2, the middle of 10 runs over two starts each. Long code at 1K, 153.9 and 152.1. Long code at 4K, 148.7 and 147.5. Short code at 1K, 137.4 and 142.7. The model's own sampler at 4K, 120.6 and 123.9.](chart_bare.png)
+
+## Top-p 0.95, the notes' change
+
+ELI5: Top-p 0.95 means the sampler drops the least likely tokens, those outside the top 95% of the chances, before it picks one. At a temperature above 0, 2.13.1 left its fast decoder for any top-p below 1.0 or top-k above 0, by `mtplx/models/inkling/fast/round.py` at that tag, where it returns "filtered_sampler". 2.13.2 removed that condition. Here are both releases at top-p 0.95, two starts each, back to back.
+
+![Paired bars of writing speed in tokens per second for Inkling 2 Mini Bare Speed, MTPLX 2.13.1 against 2.13.2, the model's sampler at temperature 1.0, the middle of 10 runs over two starts each. Top-p 1.0 at 4K, 120.6 and 123.9. Top-p 0.95 at 4K, 42.9 and 122.0. Top-p 0.95 at 1K, 45.6 and 129.7.](chart_topp.png)
+
+Decode tok/s, temperature 1.0 and top-p 0.95, mixed text, 512-token replies. Each cell is the middle of 5 runs.
+
+| Start | Release | 1K prompt | 4K prompt |
+|---|---|---|---|
+| `571b2f74994a`, 11:51 | 2.13.2 | 115.1 | 132.3 |
+| `d7f638f9f0a9`, 11:53 | 2.13.1 | 45.4 | 42.8 |
+| `cdb278964e7a`, 11:56 | 2.13.1 | 45.8 | 42.9 |
+| `1980bb5c8d3f`, 11:59 | 2.13.2 | 137.7 | 119.2 |
+
+- **2.8 times as fast at 4K.** Over the 10 runs of each release's two starts, 122.0 / 42.9 = 2.84. Text by text, each 2.13.2 start against each 2.13.1 start, faster on 20 of 20 pairs, middle ratio 2.83, from 2.53 to 3.71.
+- **At 1K too.** 129.7 / 45.6 = 2.84 by the pooled cells. Text by text, faster on 20 of 20, middle ratio 2.68, from 2.35 to 3.41.
+- **Top-p 0.95 is what slowed 2.13.1.** Against its own two starts at top-p 1.0, at 10:14 and 10:20 SGT, on the same 4K texts, it wrote 0.36 as fast, slower on 20 of 20 pairs. 42.9 against 120.6.
+- **2.13.2 kept its speed.** Against its own top-p 1.0 starts, middle ratio 0.98, faster on 9 of 20 pairs. 122.0 against 123.9.
+- **The requests carried the setting.** Every timed request sent temperature 1.0 and top-p 0.95, by the sampler recorded with each row, and reused 0 cached tokens.
+- **MTPLX's own request log shows the path.** On 2.13.1 each top-p 0.95 request logged a decision on the host for a filtered sampler, and drew its drafts at temperature 0. On 2.13.2 the same requests logged their decisions on the device, with top-p 0.95 applied to the drafts. Both logged top-p 0.95 as the setting in effect. From `~/.mtplx/logs`, the last two requests of each release.
+- **This is not the pack's own sampler.** The Bare Speed pack's `mtplx_runtime.json` sets temperature 1.0, top-p 1.0 and top-k 0. So a client that sends no sampler ran on 2.13.1's fast path, and the change shows only for clients that set top-p or top-k. The summary page keeps its top-p 1.0 lines, and these rows aren't on it.
 
 ## Both releases back to back
 
@@ -69,10 +94,11 @@ ELI5: One 2.13.2 start each, against finding 21's 2.13.1 start of 22 Nov.
 ELI5: MTPLX from source at each tag, the same packs and serve line as finding 21.
 
 - **Engine.** [MTPLX](https://github.com/youssofal/MTPLX) 2.13.2, published 23 Nov 2026 09:24 SGT, not a pre-release, tag `v2.13.2` at commit 3890be55. Installed by `uv sync --locked` from the tag into its own folder. Its `pyproject.toml` and `uv.lock` change only the version line from 2.13.1. `mtplx --version` prints 2.13.2.
-- **It was still the newest release** when I published this, checked on 23 Nov 2026 at 11:14 SGT.
+- **It was still the newest release** when I published this, checked on 23 Nov 2026 at 12:08 SGT.
 - **2.13.1** is finding 21's install, commit cf39588f, kept in its own folder.
 - **Serve line.** `mtplx serve --model <pack> --host 127.0.0.1 --port <port> --context-window 131072 --no-stats-footer`, and `--no-mtp` for the draft head off. No thinking field in the requests.
 - **Packs.** The three Inkling 2 Mini packs of finding 21, Bare Speed, Optimized Speed and Optimized Quality.
+- **The top-p 0.95 runs** read the Bare Speed files in place under the same served name. The only change is top-p 0.95 in the sampler, the value in the notes.
 - **Saved state.** MTPLX keeps a folder in the home directory, `~/.mtplx`. It holds kernel proofs, which got new files during these runs, and a session bank of saved conversations. Each timed prompt opens with a new session line, and every timed request reused 0 cached tokens. The answer check repeats its prompts by design.
 
 | Run id | Release | Pack and setting | Started, SGT, 23 Nov 2026 |
@@ -84,6 +110,10 @@ ELI5: MTPLX from source at each tag, the same packs and serve line as finding 21
 | `db1ba3d496e1` | 2.13.2 | Optimized Speed | 10:34 |
 | `7ea5b8ae2d9e` | 2.13.2 | Optimized Quality | 10:40 |
 | `f41fca789e86` | 2.13.2 | Bare Speed, draft head off | 10:46 |
+| `571b2f74994a` | 2.13.2 | Bare Speed, top-p 0.95 | 11:51 |
+| `d7f638f9f0a9` | 2.13.1 | Bare Speed, top-p 0.95 | 11:53 |
+| `cdb278964e7a` | 2.13.1 | Bare Speed, top-p 0.95 | 11:56 |
+| `1980bb5c8d3f` | 2.13.2 | Bare Speed, top-p 0.95 | 11:59 |
 
 ## How I measured
 
@@ -91,9 +121,9 @@ ELI5: Same Mac, same harness, same texts and same questions as finding 21.
 
 - **Machine.** Mac Studio, Apple M5 Ultra, 80-core GPU, 512 GB, macOS 27.2, low power mode off.
 - **Requests.** Chat requests through the model's chat template, streamed, one user at a time.
-- **Greedy** means temperature 0 with no top-p or top-k sent. **Own sampler** is temperature 1.0 and top-p 1.0, as in finding 21.
+- **Greedy** means temperature 0 with no top-p or top-k sent. **Own sampler** is temperature 1.0 and top-p 1.0, as in finding 21. **Top-p 0.95** is temperature 1.0 and top-p 0.95.
 - **Text.** Code from open-source projects, or a mix of prose and code for the sampled test. Each prompt opens with a new session line so no prompt cache can hit.
-- **Repeats.** 5 timed runs per cell. Each block of cells began with one 16-token warm-up request. A minute's pause followed the unit tests before the first timed start.
+- **Repeats.** 5 timed runs per cell. Each block of cells began with one 16-token warm-up request. A minute's pause followed the unit tests before the first timed start of each job.
 - **Writing speed** is tokens per second from the first streamed piece of the reply to the last.
 - **Not fully quiet.** I wrote files beside the job, light work.
 
@@ -101,8 +131,8 @@ ELI5: Same Mac, same harness, same texts and same questions as finding 21.
 
 ELI5: Every timed request is in this folder. You can redo every median.
 
-- **`rows.csv`.** 284 raw rows from the bench database. 255 timed requests and 29 warm-ups.
-- **`runs.csv`.** The 7 runs, with engine, version, start time, settings and sampling.
+- **`rows.csv`.** 332 raw rows from the bench database. 295 timed requests and 37 warm-ups.
+- **`runs.csv`.** The 11 runs, with engine, version, start time, settings and sampling.
 - **The 2.13.1 rows of 22 Nov** are in finding 21.
 - **The answer checks are not in `rows.csv`.** They are hashes of untimed replies.
 
@@ -114,7 +144,9 @@ python3 tools/summarize.py findings/29_inkling2_mini_mtplx_2132
 
 ## What I did not verify
 
-- **The notes' top-p and top-k speed-up.** In 2.13.1 the Inkling fast path stepped aside only when the temperature was above 0 and top-p was below 1.0 or top-k above 0, by `mtplx/models/inkling/fast/round.py` at that tag, and 2.13.2 removed that condition. These requests send temperature 1.0, top-p 1.0 and no top-k, so 2.13.1 ran them on its fast path.
+- **Top-k.** I tested top-p 0.95 only. The notes' change covers top-k too.
+- **Whether the sampled replies at top-p 0.95 match between releases.** The traces keep timings, not text.
+- **Other packs at top-p 0.95.** I ran Bare Speed only.
 - **Whether the counting toy is slower on 2.13.2.**
 - **The draft-off lines** of Optimized Speed and Optimized Quality on 2.13.2.
 - **Answer text.** With no thinking field the replies are reasoning. I did not time answers with thinking switched off.
