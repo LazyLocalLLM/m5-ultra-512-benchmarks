@@ -2,6 +2,8 @@
 
 By Local LLM L-Plate. Follow [@LazyLocalLLM on X](https://x.com/LazyLocalLLM) for new benchmarks.
 
+Updated on 23 Nov 2026 at 11:14 SGT. MTPLX 2.13.2 reran the draft-on lines of all three packs and Bare Speed with the draft head off, in [finding 29](../29_inkling2_mini_mtplx_2132). It shows no speed change I can call and gives the same replies. This page stays as the 2.13.1 record.
+
 Updated on 23 Nov 2026 at 02:30 SGT with a section on thinking switched off, checked again on 2.13.1 at 02:21 SGT.
 
 ELI5: MTPLX added Inkling 2 Mini on 22 Nov 2026 in three packs made for it. Bare Speed is the smallest, Optimized Speed keeps more of the model in 8 bits, and Optimized Quality is the maker's weights unchanged. I ran all three on MTPLX 2.13.1, the newest release, with the pack's draft head on and then off. I ran 2.13.0 earlier the same evening, and it gave the same text. Max is greedy at temperature 0 while writing new code. Median is the model's own sampler on mixed text.
