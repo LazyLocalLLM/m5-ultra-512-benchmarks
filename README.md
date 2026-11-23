@@ -8,14 +8,14 @@ ELI5: I'm a learner with one Mac Studio M5 Ultra 512 GB, and I time local AI mod
 
 ELI5: The page in seven lines. Every figure here is recomputed from the raw rows each time the page is built.
 
-Updated 23 Nov 2026 17:22 SGT. Decode speed in tok/s, one user, one Mac.
+Updated 23 Nov 2026 20:05 SGT. Decode speed in tok/s, one user, one Mac.
 
 - **Fastest on new code.** Qwen3.8 27B, 4-bit wrote 323.4 tok/s on TensorFold 1.3.4. Next are Qwen3.8 Flash Next, 4-bit at 211.5 and Qwen3.8 Flash Next, 6-bit at 201.3.
 - **Fastest in daily use.** Qwen3.8 27B, 4-bit wrote 149.6 tok/s on TensorFold 1.3.4. Next are Qwen3.8 Flash Next, 4-bit at 128.4 and Qwen3.8 Flash Next, IQ3_S at 126.0.
 - **Two speeds per model.** Max is greedy at temperature 0 while the model writes new code. Median is the model's own sampler on mixed text, which is closer to daily use.
 - **Prefill too.** The table also has how fast each model read a cold prompt, with the prompt size.
-- **Coverage.** 28 models, 422 setups and 32 findings.
-- **Newest finding.** Finding 32, 23 Nov 2026. [mlx-lm 0.32.2 on Qwen3.8-27B 4-bit, the inference-optimisation skill's levers](findings/32_mlxlm_skill_qwen38_27b).
+- **Coverage.** 28 models, 422 setups and 33 findings.
+- **Newest finding.** Finding 33, 23 Nov 2026. [MiniMax H3 video on mlx-serve 26.11.3 and Rapid-MLX 1.1.0, seconds per clip](findings/33_minimax_h3_video_mlxserve_rapidmlx).
 - **Check it.** Every figure links to a folder with the rows it came from. If I have set an engine up wrong, [open an issue](https://github.com/LazyLocalLLM/m5-ultra-512-benchmarks/issues).
 
 ## Benchmark summary
@@ -735,6 +735,17 @@ ELI5: Everything behind the tables above, including the setups that were not the
 ## Findings
 
 ELI5: Each finding is one question, one run of an hour or two, and one report. Newest first. Click a title for the full report and the raw rows.
+
+### 33. [MiniMax H3 video on mlx-serve 26.11.3 and Rapid-MLX 1.1.0, seconds per clip](findings/33_minimax_h3_video_mlxserve_rapidmlx)
+
+Runs of 23 Nov 2026. mlx-serve 26.11.3, on its author's 8-bit pack with its 4-step Turbo, made a 5-second MiniMax H3 clip with sound in 34.9 s at 832 by 480 and 149.4 s at 1344 by 768, H3's native size. Rapid-MLX 1.1.0, on the maker's bf16 weights with its fixed 9-step Turbo LoRA, took 116.6 s and 446.2 s. mlx-serve's own 30-step default took 109.3 s, and 471.4 s on one clip. Different weights, adapters and step counts, so the gaps are not one engine's speed alone.
+
+<details>
+<summary>Chart</summary>
+
+![Bars of seconds per clip for MiniMax H3 video, lower is faster. At 832 by 480 for 5 seconds, mlx-serve Turbo 4 steps 34.9, mlx-serve default 30 steps 109.3, Rapid-MLX Turbo LoRA 9 steps 116.6. At 1344 by 768 for 5 seconds, 149.4, 471.4 and 446.2. At 832 by 480 for 10 seconds, mlx-serve Turbo 100.7 and Rapid-MLX 293.5, with no mlx-serve default bar.](findings/33_minimax_h3_video_mlxserve_rapidmlx/chart_seconds.png)
+
+</details>
 
 ### 32. [mlx-lm 0.32.2 on Qwen3.8-27B 4-bit, the inference-optimisation skill's levers](findings/32_mlxlm_skill_qwen38_27b)
 

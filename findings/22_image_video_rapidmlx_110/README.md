@@ -2,6 +2,8 @@
 
 By Local LLM L-Plate. Follow [@LazyLocalLLM on X](https://x.com/LazyLocalLLM) for new benchmarks.
 
+Updated on 23 Nov 2026 at 20:05 SGT. MiniMax H3 ran again on Rapid-MLX 1.1.0 beside mlx-serve 26.11.3, at 832 by 480, 1344 by 768 and a 10-second clip, in [finding 33](../33_minimax_h3_video_mlxserve_rapidmlx). The 832 by 480 clip took 116.6 s there, against 116.5 s here.
+
 ELI5: My first pictures and video on this Mac. Rapid-MLX 1.1.0 serves image and video models through an OpenAI-style API, so I timed each request from send to finished file, with every setting fixed and one seed. Qwen-Image 2.1 makes pictures. MiniMax H3 makes video with sound. Both ran on the makers' weights, not quantized.
 
 **Rapid-MLX 1.1.0 made a 1024 by 1024 Qwen-Image 2.1 picture in 17.1 s at 20 steps, the same on two starts and ten pictures. The Turbo model made one in 8.7 s at 8 steps. MiniMax H3, its weights not quantized, made a 5-second clip, 124 frames at 24 fps, in 116.5 s at 832 by 480 and 388.9 s at 1280 by 720. Mac Studio M5 Ultra 512 GB, one request at a time, middle of the runs, 22 Nov 2026.**

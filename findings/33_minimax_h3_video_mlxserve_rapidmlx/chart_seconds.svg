@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" font-family='system-ui, -apple-system, "Segoe UI", sans-serif'>
+<rect width="1600" height="900" fill="#1a1a19"/>
+<rect width="1600" height="10" fill="#f5c400"/>
+<text x="70.0" y="110.0" font-size="56" font-weight="650" fill="#f0efec" text-anchor="start">MiniMax H3 video, seconds per clip</text>
+<text x="70.0" y="162.0" font-size="30" font-weight="400" fill="#c3c2b7" text-anchor="start">Text to video with sound, 24 fps, one seed. Lower is faster.</text>
+<rect x="70.0" y="226" width="26" height="26" rx="4" fill="#898781"/>
+<text x="108.0" y="248.0" font-size="28" font-weight="400" fill="#c3c2b7" text-anchor="start">mlx-serve, Turbo, 4 steps</text>
+<rect x="549.5" y="226" width="26" height="26" rx="4" fill="#1c5cab"/>
+<text x="587.5" y="248.0" font-size="28" font-weight="400" fill="#c3c2b7" text-anchor="start">mlx-serve, default, 30 steps</text>
+<rect x="1075.5" y="226" width="26" height="26" rx="4" fill="#3987e5"/>
+<text x="1113.5" y="248.0" font-size="28" font-weight="400" fill="#c3c2b7" text-anchor="start">Rapid-MLX, Turbo LoRA, 9 steps</text>
+<line x1="300" y1="300" x2="300" y2="770" stroke="#383835" stroke-width="2"/>
+<text x="276.0" y="389.3" font-size="32" font-weight="500" fill="#f0efec" text-anchor="end">832x480, 5 s</text>
+<path d="M300.0,320.0 h72.0 a8.0,8.0 0 0 1 8.0,8.0 v20.2 a8.0,8.0 0 0 1 -8.0,8.0 h-72.0 z" fill="#898781"/>
+<text x="394.0" y="349.1" font-size="32" font-weight="400" fill="#c3c2b7" text-anchor="start">34.9</text>
+<path d="M300.0,360.2 h242.4 a8.0,8.0 0 0 1 8.0,8.0 v20.2 a8.0,8.0 0 0 1 -8.0,8.0 h-242.4 z" fill="#1c5cab"/>
+<text x="564.4" y="389.3" font-size="32" font-weight="400" fill="#c3c2b7" text-anchor="start">109.3</text>
+<path d="M300.0,400.4 h259.1 a8.0,8.0 0 0 1 8.0,8.0 v20.2 a8.0,8.0 0 0 1 -8.0,8.0 h-259.1 z" fill="#3987e5"/>
+<text x="581.1" y="429.6" font-size="32" font-weight="650" fill="#f0efec" text-anchor="start">116.6</text>
+<text x="276.0" y="546.0" font-size="32" font-weight="500" fill="#f0efec" text-anchor="end">1344x768, 5 s</text>
+<path d="M300.0,476.7 h334.3 a8.0,8.0 0 0 1 8.0,8.0 v20.2 a8.0,8.0 0 0 1 -8.0,8.0 h-334.3 z" fill="#898781"/>
+<text x="656.3" y="505.8" font-size="32" font-weight="400" fill="#c3c2b7" text-anchor="start">149.4</text>
+<path d="M300.0,516.9 h1072.0 a8.0,8.0 0 0 1 8.0,8.0 v20.2 a8.0,8.0 0 0 1 -8.0,8.0 h-1072.0 z" fill="#1c5cab"/>
+<text x="1394.0" y="546.0" font-size="32" font-weight="400" fill="#c3c2b7" text-anchor="start">471.4</text>
+<path d="M300.0,557.1 h1014.3 a8.0,8.0 0 0 1 8.0,8.0 v20.2 a8.0,8.0 0 0 1 -8.0,8.0 h-1014.3 z" fill="#3987e5"/>
+<text x="1336.3" y="586.2" font-size="32" font-weight="650" fill="#f0efec" text-anchor="start">446.2</text>
+<text x="276.0" y="702.7" font-size="32" font-weight="500" fill="#f0efec" text-anchor="end">832x480, 10 s</text>
+<path d="M300.0,633.3 h222.7 a8.0,8.0 0 0 1 8.0,8.0 v20.2 a8.0,8.0 0 0 1 -8.0,8.0 h-222.7 z" fill="#898781"/>
+<text x="544.7" y="662.4" font-size="32" font-weight="400" fill="#c3c2b7" text-anchor="start">100.7</text>
+<path d="M300.0,713.8 h664.4 a8.0,8.0 0 0 1 8.0,8.0 v20.2 a8.0,8.0 0 0 1 -8.0,8.0 h-664.4 z" fill="#3987e5"/>
+<text x="986.4" y="742.9" font-size="32" font-weight="650" fill="#f0efec" text-anchor="start">293.5</text>
+<text x="1530.0" y="282.0" font-size="24" font-weight="400" fill="#898781" text-anchor="end">s per clip</text>
+<text x="70.0" y="848.0" font-size="23" font-weight="400" fill="#898781" text-anchor="start">Middle of 1 to 3 clips a bar, 23 Nov 2026 18:34 to 19:44 SGT. mlx-serve 26.11.3 8-bit pack, Rapid-MLX 1.1.0 bf16.</text>
+</svg>
