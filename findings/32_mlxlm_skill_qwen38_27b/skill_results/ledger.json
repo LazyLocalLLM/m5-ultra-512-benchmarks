@@ -1,0 +1,118 @@
+[
+ {
+  "name": "mlx-lm 0.32.2 control, Qwen3.8-27B 4-bit, travel-loop cross-check",
+  "time": "2026-11-23T16:55:28",
+  "ttft_short_ms": 140.8,
+  "c1_decode": 44.22,
+  "c1_all": [
+   43.88,
+   44.16,
+   44.23,
+   44.23,
+   44.34,
+   44.21
+  ],
+  "prefill_4096": 1678.3,
+  "prefill_4096_tokens": 2799,
+  "prefill_32768": 1663.9,
+  "prefill_32768_tokens": 21533,
+  "ok": true,
+  "flags": [],
+  "source": "bench.py at fda968e7fc, run once against control C3 (run fea7c505b9a0), temperature 0, thinking off, concurrency 1",
+  "seed": "none sent"
+ },
+ {
+  "machine": "Mac Studio M5 Ultra 512 GB",
+  "engine": "mlx-lm 0.32.2, mlx 0.32.4",
+  "model": "mlx-community/Qwen3.8-27B-4bit",
+  "source": "the bench harness of github.com/LazyLocalLLM/m5-ultra-512-benchmarks, finding 32",
+  "date": "2026-11-23",
+  "name": "baseline, mlx_lm.server --model <path>",
+  "metric": "c1 decode tok/s, 1K prompt, 512-token replies, greedy, median of 6",
+  "runs": {
+   "0b37204c96ff, no seed": 43.9,
+   "a68c93d2eb17, seed": 45.2,
+   "c84c4aa4c153, seed": 45.2,
+   "fea7c505b9a0, seed": 45.3
+  },
+  "ceiling_floor": 63.1,
+  "share_of_ceiling_at_most": {
+   "no seed": 0.7,
+   "seed": 0.72
+  }
+ },
+ {
+  "machine": "Mac Studio M5 Ultra 512 GB",
+  "engine": "mlx-lm 0.32.2, mlx 0.32.4",
+  "model": "mlx-community/Qwen3.8-27B-4bit",
+  "source": "the bench harness of github.com/LazyLocalLLM/m5-ultra-512-benchmarks, finding 32",
+  "date": "2026-11-23",
+  "name": "speculative decoding, draft model",
+  "verdict": "no route",
+  "evidence": "mlx_lm.generate --draft-model: ValueError, Speculative decoding requires a trimmable prompt cache (got {'ArraysCache'})"
+ },
+ {
+  "machine": "Mac Studio M5 Ultra 512 GB",
+  "engine": "mlx-lm 0.32.2, mlx 0.32.4",
+  "model": "mlx-community/Qwen3.8-27B-4bit",
+  "source": "the bench harness of github.com/LazyLocalLLM/m5-ultra-512-benchmarks, finding 32",
+  "date": "2026-11-23",
+  "name": "speculative decoding, built-in MTP",
+  "verdict": "no route",
+  "evidence": "mlx_lm/models/qwen3_5.py sanitize drops mtp. weights"
+ },
+ {
+  "machine": "Mac Studio M5 Ultra 512 GB",
+  "engine": "mlx-lm 0.32.2, mlx 0.32.4",
+  "model": "mlx-community/Qwen3.8-27B-4bit",
+  "source": "the bench harness of github.com/LazyLocalLLM/m5-ultra-512-benchmarks, finding 32",
+  "date": "2026-11-23",
+  "name": "prefix cache",
+  "verdict": "on by default",
+  "evidence": "2,403-token prompt sent twice, cached_tokens 0 then 2,402, wall 1.50 s then 0.08 s"
+ },
+ {
+  "machine": "Mac Studio M5 Ultra 512 GB",
+  "engine": "mlx-lm 0.32.2, mlx 0.32.4",
+  "model": "mlx-community/Qwen3.8-27B-4bit",
+  "source": "the bench harness of github.com/LazyLocalLLM/m5-ultra-512-benchmarks, finding 32",
+  "date": "2026-11-23",
+  "name": "prefill step 4096 vs 2048",
+  "verdict": "not kept, prompt reading inside a wide control spread at 16K and 64K, decode down about 0.4%",
+  "runs": {
+   "control a68c93d2eb17": {
+    "decode_1k": 45.2,
+    "prefill_16k": 1584.5,
+    "prefill_64k": 1251.6
+   },
+   "candidate 069de0c18f4d": {
+    "decode_1k": 45.1,
+    "prefill_16k": 1409.6,
+    "prefill_64k": 1301.8
+   },
+   "control c84c4aa4c153": {
+    "decode_1k": 45.2,
+    "prefill_16k": 1329.5,
+    "prefill_64k": 1350.6
+   }
+  },
+  "rule": "moved if 5 of 6 same-text ratios against the mean of the two controls fall outside the control-to-control spread on one side"
+ },
+ {
+  "machine": "Mac Studio M5 Ultra 512 GB",
+  "engine": "mlx-lm 0.32.2, mlx 0.32.4",
+  "model": "mlx-community/Qwen3.8-27B-4bit",
+  "source": "the bench harness of github.com/LazyLocalLLM/m5-ultra-512-benchmarks, finding 32",
+  "date": "2026-11-23",
+  "name": "batching, no seed",
+  "metric": "all users, every token over wall time, prompt reading included, 2K prompts, 512-token replies, median of 5 rounds",
+  "run": "65e056974d16",
+  "users": {
+   "1": 26.8,
+   "2": 67.7,
+   "4": 99.4,
+   "8": 114.5
+  },
+  "note": "mlx-lm batches only requests with no seed (server.py _is_batchable)"
+ }
+]

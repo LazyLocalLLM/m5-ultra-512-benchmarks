@@ -4,7 +4,7 @@ By Local LLM L-Plate. Follow [@LazyLocalLLM on X](https://x.com/LazyLocalLLM) fo
 
 ELI5: One page with the best speed I have measured for each model on one Mac Studio M5 Ultra 512 GB. Every line links to the finding folder that holds the report and the raw rows.
 
-Updated 23 Nov 2026 16:23 SGT. Max and median are decode speed in tok/s for one user. Prefill is prompt-reading speed in tok/s.
+Updated 23 Nov 2026 17:22 SGT. Max and median are decode speed in tok/s for one user. Prefill is prompt-reading speed in tok/s.
 
 ## Two speeds per model
 

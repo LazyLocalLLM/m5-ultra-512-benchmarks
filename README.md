@@ -8,14 +8,14 @@ ELI5: I'm a learner with one Mac Studio M5 Ultra 512 GB, and I time local AI mod
 
 ELI5: The page in seven lines. Every figure here is recomputed from the raw rows each time the page is built.
 
-Updated 23 Nov 2026 16:23 SGT. Decode speed in tok/s, one user, one Mac.
+Updated 23 Nov 2026 17:22 SGT. Decode speed in tok/s, one user, one Mac.
 
 - **Fastest on new code.** Qwen3.8 27B, 4-bit wrote 323.4 tok/s on TensorFold 1.3.4. Next are Qwen3.8 Flash Next, 4-bit at 211.5 and Qwen3.8 Flash Next, 6-bit at 201.3.
 - **Fastest in daily use.** Qwen3.8 27B, 4-bit wrote 149.6 tok/s on TensorFold 1.3.4. Next are Qwen3.8 Flash Next, 4-bit at 128.4 and Qwen3.8 Flash Next, IQ3_S at 126.0.
 - **Two speeds per model.** Max is greedy at temperature 0 while the model writes new code. Median is the model's own sampler on mixed text, which is closer to daily use.
 - **Prefill too.** The table also has how fast each model read a cold prompt, with the prompt size.
-- **Coverage.** 28 models, 422 setups and 31 findings.
-- **Newest finding.** Finding 31, 23 Nov 2026. [Inkling 2 Mini on Ollama 0.40.17, its drafter 2.3 times as fast, with the thinking hidden](findings/31_inkling2_mini_ollama_04017).
+- **Coverage.** 28 models, 422 setups and 32 findings.
+- **Newest finding.** Finding 32, 23 Nov 2026. [mlx-lm 0.32.2 on Qwen3.8-27B 4-bit, the inference-optimisation skill's levers](findings/32_mlxlm_skill_qwen38_27b).
 - **Check it.** Every figure links to a folder with the rows it came from. If I have set an engine up wrong, [open an issue](https://github.com/LazyLocalLLM/m5-ultra-512-benchmarks/issues).
 
 ## Benchmark summary
@@ -735,6 +735,17 @@ ELI5: Everything behind the tables above, including the setups that were not the
 ## Findings
 
 ELI5: Each finding is one question, one run of an hour or two, and one report. Newest first. Click a title for the full report and the raw rows.
+
+### 32. [mlx-lm 0.32.2 on Qwen3.8-27B 4-bit, the inference-optimisation skill's levers](findings/32_mlxlm_skill_qwen38_27b)
+
+Runs of 23 Nov 2026. mlx-lm 0.32.2, run as its docs show, decoded Qwen3.8-27B 4-bit at 43.9 tok/s for one user sending no seed, at most 70% of this Mac's ceiling, and 45.2 with a seed. None of the skill's levers that mlx-lm 0.32.2 offers on this model raised that. It has no drafting route here, and a larger prefill step showed no change this test could see. With no seed, 8 users together got 114.5 tok/s in all.
+
+<details>
+<summary>Chart</summary>
+
+![Bars in tokens per second for mlx-lm 0.32.2 on Qwen3.8-27B 4-bit. Ceiling for one user, at least 63.1. One user decoding with no seed, 43.9. One user with a seed, 45.2. With a seed and prefill step 4096, 45.1. All tokens over wall time with no seed, two users 67.7, four users 99.4, eight users 114.5.](findings/32_mlxlm_skill_qwen38_27b/chart_skill.png)
+
+</details>
 
 ### 31. [Inkling 2 Mini on Ollama 0.40.17, its drafter 2.3 times as fast, with the thinking hidden](findings/31_inkling2_mini_ollama_04017)
 

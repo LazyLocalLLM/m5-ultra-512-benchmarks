@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" font-family='system-ui, -apple-system, "Segoe UI", sans-serif'>
+<rect width="1600" height="900" fill="#1a1a19"/>
+<rect width="1600" height="10" fill="#f5c400"/>
+<text x="70.0" y="110.0" font-size="56" font-weight="650" fill="#f0efec" text-anchor="start">mlx-lm 0.32.2 on Qwen3.8-27B 4-bit</text>
+<text x="70.0" y="162.0" font-size="30" font-weight="400" fill="#c3c2b7" text-anchor="start">One user, decode tok/s. Users, every token over wall time, no seed.</text>
+<rect x="70.0" y="226" width="26" height="26" rx="4" fill="#3987e5"/>
+<text x="108.0" y="248.0" font-size="28" font-weight="400" fill="#c3c2b7" text-anchor="start">Tok/s</text>
+<line x1="300" y1="300" x2="300" y2="770" stroke="#383835" stroke-width="2"/>
+<text x="276.0" y="344.6" font-size="32" font-weight="500" fill="#f0efec" text-anchor="end">Ceiling, at least</text>
+<path d="M300.0,320.0 h587.2 a8.0,8.0 0 0 1 8.0,8.0 v11.1 a8.0,8.0 0 0 1 -8.0,8.0 h-587.2 z" fill="#3987e5"/>
+<text x="909.2" y="344.6" font-size="32" font-weight="650" fill="#f0efec" text-anchor="start">63.1</text>
+<text x="276.0" y="411.7" font-size="32" font-weight="500" fill="#f0efec" text-anchor="end">1 user, no seed</text>
+<path d="M300.0,387.1 h406.1 a8.0,8.0 0 0 1 8.0,8.0 v11.1 a8.0,8.0 0 0 1 -8.0,8.0 h-406.1 z" fill="#3987e5"/>
+<text x="728.1" y="411.7" font-size="32" font-weight="650" fill="#f0efec" text-anchor="start">43.9</text>
+<text x="276.0" y="478.9" font-size="32" font-weight="500" fill="#f0efec" text-anchor="end">1 user, seed</text>
+<path d="M300.0,454.3 h418.3 a8.0,8.0 0 0 1 8.0,8.0 v11.1 a8.0,8.0 0 0 1 -8.0,8.0 h-418.3 z" fill="#3987e5"/>
+<text x="740.3" y="478.9" font-size="32" font-weight="650" fill="#f0efec" text-anchor="start">45.2</text>
+<text x="276.0" y="546.0" font-size="32" font-weight="500" fill="#f0efec" text-anchor="end">Seed, prefill 4096</text>
+<path d="M300.0,521.4 h417.4 a8.0,8.0 0 0 1 8.0,8.0 v11.1 a8.0,8.0 0 0 1 -8.0,8.0 h-417.4 z" fill="#3987e5"/>
+<text x="739.4" y="546.0" font-size="32" font-weight="650" fill="#f0efec" text-anchor="start">45.1</text>
+<text x="276.0" y="613.1" font-size="32" font-weight="500" fill="#f0efec" text-anchor="end">2 users, total</text>
+<path d="M300.0,588.6 h630.6 a8.0,8.0 0 0 1 8.0,8.0 v11.1 a8.0,8.0 0 0 1 -8.0,8.0 h-630.6 z" fill="#3987e5"/>
+<text x="952.6" y="613.1" font-size="32" font-weight="650" fill="#f0efec" text-anchor="start">67.7</text>
+<text x="276.0" y="680.3" font-size="32" font-weight="500" fill="#f0efec" text-anchor="end">4 users, total</text>
+<path d="M300.0,655.7 h929.6 a8.0,8.0 0 0 1 8.0,8.0 v11.1 a8.0,8.0 0 0 1 -8.0,8.0 h-929.6 z" fill="#3987e5"/>
+<text x="1251.6" y="680.3" font-size="32" font-weight="650" fill="#f0efec" text-anchor="start">99.4</text>
+<text x="276.0" y="747.4" font-size="32" font-weight="500" fill="#f0efec" text-anchor="end">8 users, total</text>
+<path d="M300.0,722.9 h1072.0 a8.0,8.0 0 0 1 8.0,8.0 v11.1 a8.0,8.0 0 0 1 -8.0,8.0 h-1072.0 z" fill="#3987e5"/>
+<text x="1394.0" y="747.4" font-size="32" font-weight="650" fill="#f0efec" text-anchor="start">114.5</text>
+<text x="1530.0" y="282.0" font-size="24" font-weight="400" fill="#898781" text-anchor="end">tok/s</text>
+<text x="70.0" y="848.0" font-size="23" font-weight="400" fill="#898781" text-anchor="start">Median of 6 (one user) and 5 (users), 23 Nov 2026 16:24 to 17:20 SGT. The ceiling is a floor, one user.</text>
+</svg>

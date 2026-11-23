@@ -1,0 +1,16 @@
+run_id,started,source,machine,engine,engine_version,model,family,weights,settings,thinking,notes,os_version,power_mode,build_id,format,bits,effort,sampling,corpus_id,tool_version,engine_commit,no_seed,quick
+a68c93d2eb17,2026-11-23 16:24:59 SGT,measured here,"Apple M5 Ultra, 80-core GPU, 512 GB, macOS 27.2",mlx-lm,0.32.2,~/Desktop/m5_ultra_benchmarking/m5_models/qwen38-27b-mlx-4bit,Qwen3.8-27B,mlx-community/Qwen3.8-27B-4bit,"mlx-lm 0.32.2, control C1, documented server line, build qwen38-27b-mlx-4bit, thinking off, one server with 8 slots, greedy, mixed, 512-token replies, skill decode cell",off,,"ProductName:		macOS
+ProductVersion:		27.2
+BuildVersion:		26B118",low power mode off,qwen38-27b-mlx-4bit,mlx,4-bit,,"{""temperature"": 0, ""chat_template_kwargs"": {""enable_thinking"": false}}",23f31f1d8feb,2.0,,0,0
+069de0c18f4d,2026-11-23 16:34:08 SGT,measured here,"Apple M5 Ultra, 80-core GPU, 512 GB, macOS 27.2",mlx-lm-prefill4096,0.32.2,~/Desktop/m5_ultra_benchmarking/m5_models/qwen38-27b-mlx-4bit,Qwen3.8-27B,mlx-community/Qwen3.8-27B-4bit,"mlx-lm 0.32.2, candidate K, --prefill-step-size 4096, build qwen38-27b-mlx-4bit, thinking off, one server with 8 slots, greedy, mixed, 512-token replies, skill decode cell",off,,"ProductName:		macOS
+ProductVersion:		27.2
+BuildVersion:		26B118",low power mode off,qwen38-27b-mlx-4bit,mlx,4-bit,,"{""temperature"": 0, ""chat_template_kwargs"": {""enable_thinking"": false}}",23f31f1d8feb,2.0,,0,0
+c84c4aa4c153,2026-11-23 16:43:25 SGT,measured here,"Apple M5 Ultra, 80-core GPU, 512 GB, macOS 27.2",mlx-lm,0.32.2,~/Desktop/m5_ultra_benchmarking/m5_models/qwen38-27b-mlx-4bit,Qwen3.8-27B,mlx-community/Qwen3.8-27B-4bit,"mlx-lm 0.32.2, control C2, documented server line, build qwen38-27b-mlx-4bit, thinking off, one server with 8 slots, greedy, mixed, 512-token replies, skill decode cell",off,,"ProductName:		macOS
+ProductVersion:		27.2
+BuildVersion:		26B118",low power mode off,qwen38-27b-mlx-4bit,mlx,4-bit,,"{""temperature"": 0, ""chat_template_kwargs"": {""enable_thinking"": false}}",23f31f1d8feb,2.0,,0,0
+fea7c505b9a0,2026-11-23 16:54:14 SGT,measured here,"Apple M5 Ultra, 80-core GPU, 512 GB, macOS 27.2",mlx-lm,0.32.2,~/Desktop/m5_ultra_benchmarking/m5_models/qwen38-27b-mlx-4bit,Qwen3.8-27B,mlx-community/Qwen3.8-27B-4bit,"mlx-lm 0.32.2, control C3, documented server line, HF_HUB_CACHE set to an empty folder so /v1/models answers, build qwen38-27b-mlx-4bit, thinking off, one server with 8 slots, greedy, mixed, 512-token replies, skill decode cell",off,,"ProductName:		macOS
+ProductVersion:		27.2
+BuildVersion:		26B118",low power mode off,qwen38-27b-mlx-4bit,mlx,4-bit,,"{""temperature"": 0, ""chat_template_kwargs"": {""enable_thinking"": false}}",23f31f1d8feb,2.0,,0,0
+0b37204c96ff,2026-11-23 17:19:24 SGT,measured here,"Apple M5 Ultra, 80-core GPU, 512 GB, macOS 27.2",mlx-lm,0.32.2,~/Desktop/m5_ultra_benchmarking/m5_models/qwen38-27b-mlx-4bit,Qwen3.8-27B,mlx-community/Qwen3.8-27B-4bit,"mlx-lm 0.32.2, control C5, documented server line, build qwen38-27b-mlx-4bit, thinking off, one server with 8 slots, greedy, mixed, 512-token replies, skill decode cell, no seed",off,,"ProductName:		macOS
+ProductVersion:		27.2
+BuildVersion:		26B118",low power mode off,qwen38-27b-mlx-4bit,mlx,4-bit,,"{""temperature"": 0, ""chat_template_kwargs"": {""enable_thinking"": false}}",23f31f1d8feb,2.0,,1,0
