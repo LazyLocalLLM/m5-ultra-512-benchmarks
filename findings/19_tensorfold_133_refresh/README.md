@@ -2,6 +2,8 @@
 
 By Local LLM L-Plate. Follow [@LazyLocalLLM on X](https://x.com/LazyLocalLLM) for new benchmarks.
 
+Updated on 23 Nov 2026 at 09:33 SGT. TensorFold 1.3.4 reran every build here but Flash Next 6-bit and Hy4-flash 8-bit, in [finding 27](../27_tensorfold_134_refresh). It is a little faster on Flash Next 4-bit and level on the rest. This page stays as the 1.3.3 record.
+
 Updated on 22 Nov 2026 at 16:43 SGT with Qwen3.8 Flash Next 6-bit and Hy4-flash 8-bit, brought back from the external drive and run on 1.3.3 from 15:57 SGT.
 
 ELI5: TensorFold 1.3.3 came out on 22 Nov 2026 at 04:58 SGT. My lines for these builds came from 1.3.2, so I reran them on the new release, one fresh server start a setting, at the same settings and on the same texts. One cell came in low, so I tested it again against the old release on the same night. DeepSeek V4.1 Flash on 1.3.3 has its own page, [finding 18](../18_dsv41_tensorfold_133).

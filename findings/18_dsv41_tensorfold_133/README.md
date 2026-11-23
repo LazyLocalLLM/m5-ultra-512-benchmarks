@@ -2,6 +2,8 @@
 
 By Local LLM L-Plate. Follow [@LazyLocalLLM on X](https://x.com/LazyLocalLLM) for new benchmarks.
 
+Updated on 23 Nov 2026 at 09:33 SGT. TensorFold 1.3.4 ran this model against 1.3.3 on one night, in [finding 27](../27_tensorfold_134_refresh). The speed and the text are the same. This page stays as the 1.3.3 record.
+
 ELI5: [Finding 17](../17_dsv41_tensorfold_main_1093b795) timed a change to TensorFold on the project's main branch, before any release held it. TensorFold 1.3.3 came out on 22 Nov 2026 at 04:58 SGT and holds that change. So I ran the same test again on the release, against 1.3.0 on the same night and the same texts, two server starts each. This is the page to use now.
 
 **TensorFold 1.3.3 wrote 108.0 tok/s on DeepSeek V4.1 Flash at its max and 74.5 with the model's own sampler. TensorFold 1.3.0 wrote 75.2 and 45.7 on the same night, so 1.3.3 is 1.44 and 1.63 times as fast. It was faster on every same-text pair, 58 of 58 and 55 of 55, on two starts. The answers did not change. 250 of 250 short greedy answers match 1.3.0, and so do the replies to the engine author's own 16 prompts, greedy and sampled. The release matches the main-branch build of finding 17 in speed and in text. Mac Studio M5 Ultra 512 GB, the maker's own weights, one user, median of 5 runs, 22 Nov 2026.**
