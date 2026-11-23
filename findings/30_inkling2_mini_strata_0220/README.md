@@ -2,6 +2,8 @@
 
 By Local LLM L-Plate. Follow [@LazyLocalLLM on X](https://x.com/LazyLocalLLM) for new benchmarks.
 
+Updated on 23 Nov 2026 at 13:49 SGT. llama.cpp's main-branch build b12642 could not load the same GGUF, so there is no same-file reference line. See the GGUF section.
+
 ELI5: Strata 0.2.20 came out on 23 Nov 2026 at 07:20 SGT with a new engine for Inkling 2 Mini, `strata-inkling`. Strata's setup fetches a ready-made copy unless asked to build one. I had it build from Strata's source, with `--build` and ran it on the pack setup picks for this Mac, Strata's own SQ-20, with its built-in DSpark drafter on and off. I also tried Unsloth's 8-bit GGUF, which Strata supports too. Strata serves Inkling 2 Mini with thinking off only, so every reply here is answer text.
 
 **Strata 0.2.20, its Inkling engine built from source, wrote 106.1 tok/s on Inkling 2 Mini at its max with Strata's own SQ-20 pack and its DSpark drafter, and 37.7 with the model's own sampler. With drafting off it wrote 61.5 and 59.3. So the drafter made greedy code 1.7 times as fast, faster on 19 of 20 same-text pairs, and made the sampler 0.64 times as fast, slower on 10 of 10. By Strata's own counts, with the sampler it proposed about 5 drafts a written token and kept about 5% of them. With the drafter on, 86 of 100 short greedy replies match drafting off. This build refused the DSpark drafter file Strata's setup pins for Unsloth's GGUF, so the GGUF ran with drafting off only, at 60.1. Mac Studio M5 Ultra 512 GB, one user, median of 5 runs, 23 Nov 2026.**
@@ -66,6 +68,7 @@ ELI5: Strata reads Unsloth's GGUFs of Inkling 2 Mini as well as its own packs, w
 
 - **The drafter file was refused.** This build of `strata-inkling` loaded the GGUF in 1.85 s and stopped with "missing dspark tensor: dspark.markov_head.hidden_out.weight", exit code 2, on both tries. The file is `dspark-Inkling-2-Mini-Q8_0.gguf` from `unsloth/Inkling-2-Mini-GGUF` @ 45fd0876, and its size and SHA-256 match the table in Strata's setup at this tag.
 - **Drafting off ran.** 60.1 tok/s at the max and 58.2 with the sampler.
+- **llama.cpp could not read it either.** llama.cpp's stable v1.0.0 has no Inkling 2 model. Its main-branch build b12642, a pre-release of 23 Nov 2026 09:47 SGT at commit 5bacb7c8, stopped loading this GGUF with "check_tensor_dims: tensor 'blk.24.attn_q.weight' not found", on two tries from 13:46 SGT. Its download matched GitHub's SHA-256 digest. So there is no same-file reference line here.
 - **SQ-20 decodes 2% faster.** With drafting off on both, SQ-20 against the GGUF was faster on 24 of 25 same-text pairs, middle ratio 1.02.
 
 ## Against other engines, with drafting off
