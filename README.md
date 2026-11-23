@@ -8,14 +8,14 @@ ELI5: I'm a learner with one Mac Studio M5 Ultra 512 GB, and I time local AI mod
 
 ELI5: The page in seven lines. Every figure here is recomputed from the raw rows each time the page is built.
 
-Updated 23 Nov 2026 12:08 SGT. Decode speed in tok/s, one user, one Mac.
+Updated 23 Nov 2026 13:38 SGT. Decode speed in tok/s, one user, one Mac.
 
 - **Fastest on new code.** Qwen3.8 27B, 4-bit wrote 323.4 tok/s on TensorFold 1.3.4. Next are Qwen3.8 Flash Next, 4-bit at 211.5 and Qwen3.8 Flash Next, 6-bit at 201.3.
 - **Fastest in daily use.** Qwen3.8 27B, 4-bit wrote 149.6 tok/s on TensorFold 1.3.4. Next are Qwen3.8 Flash Next, 4-bit at 128.4 and Qwen3.8 Flash Next, IQ3_S at 126.0.
 - **Two speeds per model.** Max is greedy at temperature 0 while the model writes new code. Median is the model's own sampler on mixed text, which is closer to daily use.
 - **Prefill too.** The table also has how fast each model read a cold prompt, with the prompt size.
-- **Coverage.** 25 models, 410 setups and 29 findings.
-- **Newest finding.** Finding 29, 23 Nov 2026. [Inkling 2 Mini on MTPLX 2.13.2, 2.8 times as fast with top-p 0.95](findings/29_inkling2_mini_mtplx_2132).
+- **Coverage.** 27 models, 419 setups and 30 findings.
+- **Newest finding.** Finding 30, 23 Nov 2026. [Inkling 2 Mini on Strata 0.2.20, its drafter faster on greedy code and slower on the sampler](findings/30_inkling2_mini_strata_0220).
 - **Check it.** Every figure links to a folder with the rows it came from. If I have set an engine up wrong, [open an issue](https://github.com/LazyLocalLLM/m5-ultra-512-benchmarks/issues).
 
 ## Benchmark summary
@@ -61,6 +61,8 @@ The exact setup behind each figure is one click away, under "Every setup measure
 | [Inkling 2 Mini, Optimized Quality](https://huggingface.co/Youssofal/Inkling-2-Mini-MTPLX-Optimized-Quality) | **133.8** | **105.6** | **4,675.6**, 4K code prompt | reasoning | MTPLX 2.13.2 | [29](findings/29_inkling2_mini_mtplx_2132) |
 | [Inkling 2 Mini, 4-bit](https://huggingface.co/mlx-community/Inkling-2-Mini-4bit) | **39.8** | **39.4** | **3,361.2**, 4K code prompt | reasoning | Rapid-MLX 1.1.0 | [23](findings/23_inkling2_mini_rapidmlx_110) |
 | [Qwen3.8 Flash Next, IQ3_S](https://huggingface.co/ISTA-DASLab/Qwen3.8-Flash-Next-GSQ-RCO-GGUF) | **196.4** | **126.0** | **2,884.2**, 4K code prompt | answer | Strata 0.2.20 | [28](findings/28_qwen38_flash_next_strata_0220) |
+| [Inkling 2 Mini, SQ-20](https://huggingface.co/strata-engine/Inkling-2-Mini-Strata) | **106.1** | **59.3** | **3,386.8**, 4K mixed prompt | answer | Strata 0.2.20 | [30](findings/30_inkling2_mini_strata_0220) |
+| [Inkling 2 Mini, UD-Q8_K_XL](https://huggingface.co/unsloth/Inkling-2-Mini-GGUF) | **60.1** | **58.2** | **3,216.4**, 4K mixed prompt | answer | Strata 0.2.20 | [30](findings/30_inkling2_mini_strata_0220) |
 
 ### Ceiling on easy text
 
@@ -693,9 +695,45 @@ ELI5: Everything behind the tables above, including the setups that were not the
 
 </details>
 
+<details>
+<summary><b>Inkling 2 Mini, SQ-20</b>, 6 setups</summary>
+
+| Kind | Engine and setup | Sampler | Prompt | Reply tokens | Decode tok/s | Range | Runs | Date | Run | Finding |
+|---|---|---|---|---|---|---|---|---|---|---|
+| max | Strata 0.2.20, Strata's own pack, DSpark drafter on, setup's config, engine built from source, thinking off (effort none), reply is answer text | greedy, temperature 0 | 4K code | 2,048 | 106.1 | 83.4 to 127.2 | 5 | 2026-11-23 | `acb7355827b4` | [30](findings/30_inkling2_mini_strata_0220) |
+| max | Strata 0.2.20, Strata's own pack, DSpark drafter on, setup's config, engine built from source, thinking off (effort none), reply is answer text | greedy, temperature 0 | 1K code | 2,048 | 105.8 | 66.0 to 112.7 | 5 | 2026-11-23 | `acb7355827b4` | [30](findings/30_inkling2_mini_strata_0220) |
+| max | Strata 0.2.20, Strata's own pack, drafting off, engine built from source, thinking off (effort none), reply is answer text | greedy, temperature 0 | 1K code | 2,048 | 61.5 | 60.9 to 62.3 | 5 | 2026-11-23 | `43be61155ecd` | [30](findings/30_inkling2_mini_strata_0220) |
+| max | Strata 0.2.20, Strata's own pack, drafting off, engine built from source, thinking off (effort none), reply is answer text | greedy, temperature 0 | 4K code | 2,048 | 59.1 | 58.7 to 60.3 | 5 | 2026-11-23 | `43be61155ecd` | [30](findings/30_inkling2_mini_strata_0220) |
+| median | Strata 0.2.20, Strata's own pack, drafting off, engine built from source, thinking off (effort none), reply is answer text | temperature 1.0, top-p 1.0 | 4K mixed | 512 | 59.3 | 59.0 to 59.4 | 5 | 2026-11-23 | `43be61155ecd` | [30](findings/30_inkling2_mini_strata_0220) |
+| median | Strata 0.2.20, Strata's own pack, DSpark drafter on, setup's config, engine built from source, thinking off (effort none), reply is answer text | temperature 1.0, top-p 1.0 | 4K mixed | 512 | 37.7 | 35.6 to 40.3 | 5 | 2026-11-23 | `acb7355827b4` | [30](findings/30_inkling2_mini_strata_0220) |
+
+</details>
+
+<details>
+<summary><b>Inkling 2 Mini, UD-Q8_K_XL</b>, 3 setups</summary>
+
+| Kind | Engine and setup | Sampler | Prompt | Reply tokens | Decode tok/s | Range | Runs | Date | Run | Finding |
+|---|---|---|---|---|---|---|---|---|---|---|
+| max | Strata 0.2.20, Unsloth's GGUF, drafting off (this build refused the DSpark file), engine built from source, thinking off (effort none), reply is answer text | greedy, temperature 0 | 1K code | 2,048 | 60.1 | 59.3 to 60.5 | 5 | 2026-11-23 | `c7ce703a276f` | [30](findings/30_inkling2_mini_strata_0220) |
+| max | Strata 0.2.20, Unsloth's GGUF, drafting off (this build refused the DSpark file), engine built from source, thinking off (effort none), reply is answer text | greedy, temperature 0 | 4K code | 2,048 | 58.4 | 57.4 to 58.7 | 5 | 2026-11-23 | `c7ce703a276f` | [30](findings/30_inkling2_mini_strata_0220) |
+| median | Strata 0.2.20, Unsloth's GGUF, drafting off (this build refused the DSpark file), engine built from source, thinking off (effort none), reply is answer text | temperature 1.0, top-p 1.0 | 4K mixed | 512 | 58.2 | 58.0 to 59.5 | 5 | 2026-11-23 | `c7ce703a276f` | [30](findings/30_inkling2_mini_strata_0220) |
+
+</details>
+
 ## Findings
 
 ELI5: Each finding is one question, one run of an hour or two, and one report. Newest first. Click a title for the full report and the raw rows.
+
+### 30. [Inkling 2 Mini on Strata 0.2.20, its drafter faster on greedy code and slower on the sampler](findings/30_inkling2_mini_strata_0220)
+
+Runs of 23 Nov 2026. Strata 0.2.20, its Inkling engine built from source, wrote 106.1 tok/s on Inkling 2 Mini at its max with Strata's own SQ-20 pack and its DSpark drafter, and 37.7 with the model's own sampler. With drafting off it wrote 61.5 and 59.3. So the drafter made greedy code 1.7 times as fast and the sampler 0.64 times as fast, and it changes 14 of 100 short greedy replies. This build refused the DSpark drafter file Strata's setup pins for Unsloth's GGUF, so the GGUF ran with drafting off only, at 60.1. Every reply is answer text.
+
+<details>
+<summary>Chart</summary>
+
+![Paired bars of writing speed in tokens per second for Inkling 2 Mini on Strata 0.2.20 with Strata's SQ-20 pack, DSpark drafter off against on. Greedy code with replies of up to 2,048 tokens at 1K, 61.5 and 105.8. The same at 4K, 59.1 and 106.1. Greedy code with 512-token replies at 1K, 61.6 and 90.0. The model's own sampler at 4K, 59.3 and 37.7.](findings/30_inkling2_mini_strata_0220/chart_draft.png)
+
+</details>
 
 ### 29. [Inkling 2 Mini on MTPLX 2.13.2, 2.8 times as fast with top-p 0.95](findings/29_inkling2_mini_mtplx_2132)
 

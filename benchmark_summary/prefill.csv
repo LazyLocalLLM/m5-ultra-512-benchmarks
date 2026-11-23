@@ -124,3 +124,9 @@ Inkling 2 Small,mlx-community/Inkling-2-Small-oQ4e,,1196.5,1186.4,1225.7,5,1,mix
 "Qwen3.8 Flash Next, IQ3_S",ISTA-DASLab/Qwen3.8-Flash-Next-GSQ-RCO-GGUF,,1403.2,1383.0,1434.3,10,1,code,4096,llama.cpp b12359,2026-11-23,24_qwen38_flash_next_strata_0219,37c6f64892e9
 "Qwen3.8 Flash Next, IQ3_S",ISTA-DASLab/Qwen3.8-Flash-Next-GSQ-RCO-GGUF,,2867.0,2655.3,3124.6,10,2,mixed,4096,Strata 0.2.20,2026-11-23,28_qwen38_flash_next_strata_0220,651e54639f7c 8b55935c332e
 "Qwen3.8 Flash Next, IQ3_S",ISTA-DASLab/Qwen3.8-Flash-Next-GSQ-RCO-GGUF,,1369.6,1352.3,1388.0,5,1,mixed,4096,llama.cpp b12359,2026-11-23,24_qwen38_flash_next_strata_0219,37c6f64892e9
+"Inkling 2 Mini, SQ-20",strata-engine/Inkling-2-Mini-Strata,,2994.9,2930.9,3259.3,30,2,code,1024,Strata 0.2.20,2026-11-23,30_inkling2_mini_strata_0220,43be61155ecd acb7355827b4
+"Inkling 2 Mini, SQ-20",strata-engine/Inkling-2-Mini-Strata,,3362.0,3318.4,3397.6,30,2,code,4096,Strata 0.2.20,2026-11-23,30_inkling2_mini_strata_0220,43be61155ecd acb7355827b4
+"Inkling 2 Mini, SQ-20",strata-engine/Inkling-2-Mini-Strata,yes,3386.8,3327.6,3410.0,10,2,mixed,4096,Strata 0.2.20,2026-11-23,30_inkling2_mini_strata_0220,43be61155ecd acb7355827b4
+"Inkling 2 Mini, UD-Q8_K_XL",unsloth/Inkling-2-Mini-GGUF,,2830.4,2769.4,3079.8,20,1,code,1024,Strata 0.2.20,2026-11-23,30_inkling2_mini_strata_0220,c7ce703a276f
+"Inkling 2 Mini, UD-Q8_K_XL",unsloth/Inkling-2-Mini-GGUF,,3192.6,3150.0,3217.6,20,1,code,4096,Strata 0.2.20,2026-11-23,30_inkling2_mini_strata_0220,c7ce703a276f
+"Inkling 2 Mini, UD-Q8_K_XL",unsloth/Inkling-2-Mini-GGUF,yes,3216.4,3173.9,3225.9,5,1,mixed,4096,Strata 0.2.20,2026-11-23,30_inkling2_mini_strata_0220,c7ce703a276f

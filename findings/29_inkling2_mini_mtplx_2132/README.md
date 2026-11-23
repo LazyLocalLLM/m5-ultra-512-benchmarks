@@ -51,7 +51,7 @@ Decode tok/s, temperature 1.0 and top-p 0.95, mixed text, 512-token replies. Eac
 - **Top-p 0.95 is what slowed 2.13.1.** Against its own two starts at top-p 1.0, at 10:14 and 10:20 SGT, on the same 4K texts, it wrote 0.36 as fast, slower on 20 of 20 pairs. 42.9 against 120.6.
 - **2.13.2 kept its speed.** Against its own top-p 1.0 starts, middle ratio 0.98, faster on 9 of 20 pairs. 122.0 against 123.9.
 - **The requests carried the setting.** Every timed request sent temperature 1.0 and top-p 0.95, by the sampler recorded with each row, and reused 0 cached tokens.
-- **MTPLX's own request log shows the path.** On 2.13.1 each top-p 0.95 request logged a decision on the host for a filtered sampler, and drew its drafts at temperature 0. On 2.13.2 the same requests logged their decisions on the device, with top-p 0.95 applied to the drafts. Both logged top-p 0.95 as the setting in effect. From `~/.mtplx/logs`, the last two requests of each release.
+- **MTPLX's own request log shows the path.** On 2.13.1 all 24 top-p 0.95 requests logged a decision on the host for a filtered sampler, and drew their drafts at temperature 0. On 2.13.2 none did, and its requests logged their decisions on the device, with top-p 0.95 applied to the drafts. Both logged top-p 0.95 as the setting in effect. From `~/.mtplx/logs`.
 - **This is not the pack's own sampler.** The Bare Speed pack's `mtplx_runtime.json` sets temperature 1.0, top-p 1.0 and top-k 0. So a client that sends no sampler ran on 2.13.1's fast path, and the change shows only for clients that set top-p or top-k. The summary page keeps its top-p 1.0 lines, and these rows aren't on it.
 
 ## Both releases back to back
