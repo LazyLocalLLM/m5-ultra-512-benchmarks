@@ -14,8 +14,8 @@ Updated 23 Nov 2026 20:05 SGT. Decode speed in tok/s, one user, one Mac.
 - **Fastest in daily use.** Qwen3.8 27B, 4-bit wrote 149.6 tok/s on TensorFold 1.3.4. Next are Qwen3.8 Flash Next, 4-bit at 128.4 and Qwen3.8 Flash Next, IQ3_S at 126.0.
 - **Two speeds per model.** Max is greedy at temperature 0 while the model writes new code. Median is the model's own sampler on mixed text, which is closer to daily use.
 - **Prefill too.** The table also has how fast each model read a cold prompt, with the prompt size.
-- **Coverage.** 28 models, 422 setups and 34 findings.
-- **Newest finding.** Finding 34, 23 to 24 Nov 2026. [MiniMax H3 video on mlx-serve 26.11.3, round two, the 4-bit pack and HyperFlow H3 Flash, seconds per clip](findings/34_minimax_h3_video_mlxserve_round2).
+- **Coverage.** 28 models, 422 setups and 35 findings.
+- **Newest finding.** Finding 35, 24 Nov 2026. [MiniMax-H3-Image on mlx-serve 26.11.3, Rapid-MLX 1.1.0 and TensorFold 1.3.4, seconds per picture](findings/35_minimax_h3_image_three_engines).
 - **Check it.** Every figure links to a folder with the rows it came from. If I have set an engine up wrong, [open an issue](https://github.com/LazyLocalLLM/m5-ultra-512-benchmarks/issues).
 
 ## Benchmark summary
@@ -735,6 +735,17 @@ ELI5: Everything behind the tables above, including the setups that were not the
 ## Findings
 
 ELI5: Each finding is one question, one run of an hour or two, and one report. Newest first. Click a title for the full report and the raw rows.
+
+### 35. [MiniMax-H3-Image on mlx-serve 26.11.3, Rapid-MLX 1.1.0 and TensorFold 1.3.4, seconds per picture](findings/35_minimax_h3_image_three_engines)
+
+Runs of 24 Nov 2026. At 2048 by 2048, the model's own canvas, TensorFold 1.3.4 drew a MiniMax-H3-Image picture in 12.9 s, Rapid-MLX 1.1.0 in 13.3 s with 4-bit weights made at load, and mlx-serve 26.11.3 in 13.4 s on its author's 4-bit pack. At 4096 by 4096, mlx-serve took 51.8 s and TensorFold 76.0 s, and Rapid-MLX 1.1.0 refused that size. At 1024 and 2048 the three are within 0.5 s, too close to rank. mlx-serve loads the drawing model again for every picture, 4.8 s of its 13.4 s.
+
+<details>
+<summary>Chart</summary>
+
+![Bars of seconds per MiniMax-H3-Image picture, lower is faster. At 1024 by 1024, mlx-serve 26.11.3 with its 4-bit pack 13.1, Rapid-MLX 1.1.0 with 4-bit at load 13.2, TensorFold 1.3.4 with bf16 13.4. At 2048 by 2048, 13.4, 13.3 and 12.9. At 4096 by 4096, mlx-serve 51.8, Rapid-MLX refused the size, TensorFold 76.0.](findings/35_minimax_h3_image_three_engines/chart_seconds.png)
+
+</details>
 
 ### 34. [MiniMax H3 video on mlx-serve 26.11.3, round two, the 4-bit pack and HyperFlow H3 Flash, seconds per clip](findings/34_minimax_h3_video_mlxserve_round2)
 
