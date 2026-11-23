@@ -112,9 +112,9 @@ Inkling 2 Small,mlx-community/Inkling-2-Small-oQ4e,,1196.5,1186.4,1225.7,5,1,mix
 "Inkling 2 Mini, 4-bit",mlx-community/Inkling-2-Mini-4bit,,2321.5,2197.4,2787.8,25,2,code,1024,Rapid-MLX 1.1.0,2026-11-22,23_inkling2_mini_rapidmlx_110,3bef921b4076 3c2cb9130c7b
 "Inkling 2 Mini, 4-bit",mlx-community/Inkling-2-Mini-4bit,yes,3361.2,3138.6,3425.2,25,2,code,4096,Rapid-MLX 1.1.0,2026-11-22,23_inkling2_mini_rapidmlx_110,3bef921b4076 3c2cb9130c7b
 "Inkling 2 Mini, 4-bit",mlx-community/Inkling-2-Mini-4bit,,3210.0,3205.9,3386.6,5,1,mixed,4096,Rapid-MLX 1.1.0,2026-11-22,23_inkling2_mini_rapidmlx_110,3bef921b4076
-"Qwen3.8 Flash Next, IQ3_S",ISTA-DASLab/Qwen3.8-Flash-Next-GSQ-RCO-GGUF,,2273.9,2029.0,3237.4,60,5,code,1024,Strata 0.2.19,2026-11-23,24_qwen38_flash_next_strata_0219,77bb7582fe47 7b15a99cb722 ca9762656ee4 dff5db389042 ef38b6483d5b
+"Qwen3.8 Flash Next, IQ3_S",ISTA-DASLab/Qwen3.8-Flash-Next-GSQ-RCO-GGUF,,2157.3,1775.0,3203.2,50,4,code,1024,Strata 0.2.20,2026-11-23,28_qwen38_flash_next_strata_0220,651e54639f7c 88b41d226df3 8b55935c332e dc88686985f3
 "Qwen3.8 Flash Next, IQ3_S",ISTA-DASLab/Qwen3.8-Flash-Next-GSQ-RCO-GGUF,,1364.1,1287.5,1437.7,10,1,code,1024,llama.cpp b12359,2026-11-23,24_qwen38_flash_next_strata_0219,37c6f64892e9
-"Qwen3.8 Flash Next, IQ3_S",ISTA-DASLab/Qwen3.8-Flash-Next-GSQ-RCO-GGUF,,2924.4,2450.9,3272.9,60,5,code,4096,Strata 0.2.19,2026-11-23,24_qwen38_flash_next_strata_0219,77bb7582fe47 7b15a99cb722 ca9762656ee4 dff5db389042 ef38b6483d5b
+"Qwen3.8 Flash Next, IQ3_S",ISTA-DASLab/Qwen3.8-Flash-Next-GSQ-RCO-GGUF,yes,2884.2,2410.1,3200.9,50,4,code,4096,Strata 0.2.20,2026-11-23,28_qwen38_flash_next_strata_0220,651e54639f7c 88b41d226df3 8b55935c332e dc88686985f3
 "Qwen3.8 Flash Next, IQ3_S",ISTA-DASLab/Qwen3.8-Flash-Next-GSQ-RCO-GGUF,,1403.2,1383.0,1434.3,10,1,code,4096,llama.cpp b12359,2026-11-23,24_qwen38_flash_next_strata_0219,37c6f64892e9
-"Qwen3.8 Flash Next, IQ3_S",ISTA-DASLab/Qwen3.8-Flash-Next-GSQ-RCO-GGUF,yes,2956.6,2704.9,3175.7,10,2,mixed,4096,Strata 0.2.19,2026-11-23,24_qwen38_flash_next_strata_0219,77bb7582fe47 dff5db389042
+"Qwen3.8 Flash Next, IQ3_S",ISTA-DASLab/Qwen3.8-Flash-Next-GSQ-RCO-GGUF,,2867.0,2655.3,3124.6,10,2,mixed,4096,Strata 0.2.20,2026-11-23,28_qwen38_flash_next_strata_0220,651e54639f7c 8b55935c332e
 "Qwen3.8 Flash Next, IQ3_S",ISTA-DASLab/Qwen3.8-Flash-Next-GSQ-RCO-GGUF,,1369.6,1352.3,1388.0,5,1,mixed,4096,llama.cpp b12359,2026-11-23,24_qwen38_flash_next_strata_0219,37c6f64892e9

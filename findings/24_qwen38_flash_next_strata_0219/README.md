@@ -2,6 +2,8 @@
 
 By Local LLM L-Plate. Follow [@LazyLocalLLM on X](https://x.com/LazyLocalLLM) for new benchmarks.
 
+Updated on 23 Nov 2026 at 11:04 SGT. The second start of setup's config, 173.8 against the first's 183.3, came from Strata's saved draft table. The first start wrote it and the second read it. [Finding 28](../28_qwen38_flash_next_strata_0220) shows this, and finds Strata 0.2.20 level with 0.2.19. This page stays as the 0.2.19 record.
+
 ELI5: Strata is an engine built to run Qwen3.8 Flash Next, a 125B model with 6B active weights, on ordinary hardware. On a Mac it has its own Metal engine. Its setup picks the pack and settings for each Mac. On this one it picked the IQ3_S pack, 3.5 bits a weight, with its MTP draft layer on. I ran that, then MTP off, then wider draft windows to push the max. llama.cpp read the very same two files as a reference. Max is greedy at temperature 0 while writing new code. Median is the model's own sampler on mixed text.
 
 **Strata 0.2.19 wrote 200.3 tok/s on Qwen3.8 Flash Next IQ3_S at its max, with `--spec 5`. With its setup's own config, MTP on and a 3-token window, it wrote 173.8 on its latest start and 183.3 on the start before. With the model's own sampler it wrote 136.5. llama.cpp b12359 on the same files wrote 58.2 and 55.7, so Strata is 3.4 times llama.cpp at the max and 2.5 times at the median. With MTP off Strata wrote 100.6, 1.7 times llama.cpp, which also wrote one token a step. Setup's config and MTP off wrote the same text on 100 of 100 replies. Mac Studio M5 Ultra 512 GB, one user, median of 5 runs, 23 Nov 2026.**
