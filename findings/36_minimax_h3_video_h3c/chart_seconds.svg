@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" font-family='system-ui, -apple-system, "Segoe UI", sans-serif'>
+<rect width="1600" height="900" fill="#1a1a19"/>
+<rect width="1600" height="10" fill="#f5c400"/>
+<text x="70.0" y="110.0" font-size="56" font-weight="650" fill="#f0efec" text-anchor="start">MiniMax H3 on h3.c, three settings</text>
+<text x="70.0" y="162.0" font-size="30" font-weight="400" fill="#c3c2b7" text-anchor="start">Seconds per 5-second clip, 124 frames, seed 42, one clip a process. Lower is faster.</text>
+<rect x="70.0" y="226" width="26" height="26" rx="4" fill="#898781"/>
+<text x="108.0" y="248.0" font-size="28" font-weight="400" fill="#c3c2b7" text-anchor="start">4 steps</text>
+<rect x="270.5" y="226" width="26" height="26" rx="4" fill="#1c5cab"/>
+<text x="308.5" y="248.0" font-size="28" font-weight="400" fill="#c3c2b7" text-anchor="start">Balanced preset, 20 steps</text>
+<rect x="750.0" y="226" width="26" height="26" rx="4" fill="#3987e5"/>
+<text x="788.0" y="248.0" font-size="28" font-weight="400" fill="#c3c2b7" text-anchor="start">Its defaults, 20 steps</text>
+<line x1="300" y1="300" x2="300" y2="770" stroke="#383835" stroke-width="2"/>
+<text x="276.0" y="428.5" font-size="32" font-weight="500" fill="#f0efec" text-anchor="end">832x480</text>
+<path d="M300.0,347.5 h80.6 a8.0,8.0 0 0 1 8.0,8.0 v28.0 a8.0,8.0 0 0 1 -8.0,8.0 h-80.6 z" fill="#898781"/>
+<text x="402.6" y="380.5" font-size="32" font-weight="400" fill="#c3c2b7" text-anchor="start">61.5</text>
+<path d="M300.0,395.5 h140.9 a8.0,8.0 0 0 1 8.0,8.0 v28.0 a8.0,8.0 0 0 1 -8.0,8.0 h-140.9 z" fill="#1c5cab"/>
+<text x="462.9" y="428.5" font-size="32" font-weight="400" fill="#c3c2b7" text-anchor="start">103.3</text>
+<path d="M300.0,443.5 h237.0 a8.0,8.0 0 0 1 8.0,8.0 v28.0 a8.0,8.0 0 0 1 -8.0,8.0 h-237.0 z" fill="#3987e5"/>
+<text x="559.0" y="476.5" font-size="32" font-weight="650" fill="#f0efec" text-anchor="start">170.0</text>
+<text x="276.0" y="663.5" font-size="32" font-weight="500" fill="#f0efec" text-anchor="end">1344x768</text>
+<path d="M300.0,582.5 h297.1 a8.0,8.0 0 0 1 8.0,8.0 v28.0 a8.0,8.0 0 0 1 -8.0,8.0 h-297.1 z" fill="#898781"/>
+<text x="619.1" y="615.5" font-size="32" font-weight="400" fill="#c3c2b7" text-anchor="start">211.7</text>
+<path d="M300.0,630.5 h587.3 a8.0,8.0 0 0 1 8.0,8.0 v28.0 a8.0,8.0 0 0 1 -8.0,8.0 h-587.3 z" fill="#1c5cab"/>
+<text x="909.3" y="663.5" font-size="32" font-weight="400" fill="#c3c2b7" text-anchor="start">413.0</text>
+<path d="M300.0,678.5 h1072.0 a8.0,8.0 0 0 1 8.0,8.0 v28.0 a8.0,8.0 0 0 1 -8.0,8.0 h-1072.0 z" fill="#3987e5"/>
+<text x="1394.0" y="711.5" font-size="32" font-weight="650" fill="#f0efec" text-anchor="start">749.3</text>
+<text x="1530.0" y="282.0" font-size="24" font-weight="400" fill="#898781" text-anchor="end">s per clip</text>
+<text x="70.0" y="848.0" font-size="23" font-weight="400" fill="#898781" text-anchor="start">h3.c main 8974cc05, the maker's bf16 files. Balanced is 45 of 50 layers, reuse 2. Middle of 1 to 5 clips a bar, 24 Nov 2026 SGT.</text>
+</svg>

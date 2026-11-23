@@ -14,8 +14,8 @@ Updated 23 Nov 2026 20:05 SGT. Decode speed in tok/s, one user, one Mac.
 - **Fastest in daily use.** Qwen3.8 27B, 4-bit wrote 149.6 tok/s on TensorFold 1.3.4. Next are Qwen3.8 Flash Next, 4-bit at 128.4 and Qwen3.8 Flash Next, IQ3_S at 126.0.
 - **Two speeds per model.** Max is greedy at temperature 0 while the model writes new code. Median is the model's own sampler on mixed text, which is closer to daily use.
 - **Prefill too.** The table also has how fast each model read a cold prompt, with the prompt size.
-- **Coverage.** 28 models, 422 setups and 35 findings.
-- **Newest finding.** Finding 35, 24 Nov 2026. [MiniMax-H3-Image on mlx-serve 26.11.3, Rapid-MLX 1.1.0 and TensorFold 1.3.4, seconds per picture](findings/35_minimax_h3_image_three_engines).
+- **Coverage.** 28 models, 422 setups and 36 findings.
+- **Newest finding.** Finding 36, 24 Nov 2026. [MiniMax H3 video on h3.c main 8974cc05, antirez's engine in C and Metal, seconds per clip](findings/36_minimax_h3_video_h3c).
 - **Check it.** Every figure links to a folder with the rows it came from. If I have set an engine up wrong, [open an issue](https://github.com/LazyLocalLLM/m5-ultra-512-benchmarks/issues).
 
 ## Benchmark summary
@@ -735,6 +735,17 @@ ELI5: Everything behind the tables above, including the setups that were not the
 ## Findings
 
 ELI5: Each finding is one question, one run of an hour or two, and one report. Newest first. Click a title for the full report and the raw rows.
+
+### 36. [MiniMax H3 video on h3.c main 8974cc05, antirez's engine in C and Metal, seconds per clip](findings/36_minimax_h3_video_h3c)
+
+Runs of 24 Nov 2026. h3.c made a 5-second MiniMax H3 clip at 832 by 480 in 61.5 s at 4 steps, 103.3 s with its README's balanced preset and 170.0 s at its default 20 steps, on the maker's bf16 files. At 1344 by 768 it took 211.7 s at 4 steps, 413.0 s balanced, 749.3 s at 20 steps and 1760.6 s at the 50-step reference. At 4 steps a step cost 6.4 s at 832 by 480 by its own profile, against 6.1 s for mlx-serve 26.11.3 on its author's 8-bit pack. h3.c is at main 8974cc05, with no release.
+
+<details>
+<summary>Chart</summary>
+
+![Bars of seconds per 5-second MiniMax H3 clip on h3.c main 8974cc05, lower is faster. At 832 by 480, 4 steps 61.5, the balanced preset 103.3, its 20-step defaults 170.0. At 1344 by 768, 211.7, 413.0 and 749.3.](findings/36_minimax_h3_video_h3c/chart_seconds.png)
+
+</details>
 
 ### 35. [MiniMax-H3-Image on mlx-serve 26.11.3, Rapid-MLX 1.1.0 and TensorFold 1.3.4, seconds per picture](findings/35_minimax_h3_image_three_engines)
 
