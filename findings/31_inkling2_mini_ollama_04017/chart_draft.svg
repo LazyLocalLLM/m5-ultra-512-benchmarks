@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" font-family='system-ui, -apple-system, "Segoe UI", sans-serif'>
+<rect width="1600" height="900" fill="#1a1a19"/>
+<rect width="1600" height="10" fill="#f5c400"/>
+<text x="70.0" y="110.0" font-size="56" font-weight="650" fill="#f0efec" text-anchor="start">Inkling 2 Mini on Ollama 0.40.17, the MTP drafter</text>
+<text x="70.0" y="162.0" font-size="30" font-weight="400" fill="#c3c2b7" text-anchor="start">Ollama's own decode count, hidden thinking included, one user.</text>
+<rect x="70.0" y="226" width="26" height="26" rx="4" fill="#898781"/>
+<text x="108.0" y="248.0" font-size="28" font-weight="400" fill="#c3c2b7" text-anchor="start">No drafter</text>
+<rect x="317.0" y="226" width="26" height="26" rx="4" fill="#3987e5"/>
+<text x="355.0" y="248.0" font-size="28" font-weight="400" fill="#c3c2b7" text-anchor="start">MTP drafter on</text>
+<line x1="300" y1="300" x2="300" y2="770" stroke="#383835" stroke-width="2"/>
+<text x="276.0" y="369.8" font-size="32" font-weight="500" fill="#f0efec" text-anchor="end">Code 1K, cap 2K</text>
+<path d="M300.0,320.0 h464.5 a8.0,8.0 0 0 1 8.0,8.0 v20.8 a8.0,8.0 0 0 1 -8.0,8.0 h-464.5 z" fill="#898781"/>
+<text x="786.5" y="349.4" font-size="32" font-weight="400" fill="#c3c2b7" text-anchor="start">33.6</text>
+<path d="M300.0,360.8 h1072.0 a8.0,8.0 0 0 1 8.0,8.0 v20.8 a8.0,8.0 0 0 1 -8.0,8.0 h-1072.0 z" fill="#3987e5"/>
+<text x="1394.0" y="390.1" font-size="32" font-weight="650" fill="#f0efec" text-anchor="start">76.8</text>
+<text x="276.0" y="487.2" font-size="32" font-weight="500" fill="#f0efec" text-anchor="end">Code 4K, cap 2K</text>
+<path d="M300.0,437.5 h458.9 a8.0,8.0 0 0 1 8.0,8.0 v20.8 a8.0,8.0 0 0 1 -8.0,8.0 h-458.9 z" fill="#898781"/>
+<text x="780.9" y="466.9" font-size="32" font-weight="400" fill="#c3c2b7" text-anchor="start">33.2</text>
+<path d="M300.0,478.2 h1057.9 a8.0,8.0 0 0 1 8.0,8.0 v20.8 a8.0,8.0 0 0 1 -8.0,8.0 h-1057.9 z" fill="#3987e5"/>
+<text x="1379.9" y="507.6" font-size="32" font-weight="650" fill="#f0efec" text-anchor="start">75.8</text>
+<text x="276.0" y="604.8" font-size="32" font-weight="500" fill="#f0efec" text-anchor="end">Code 1K, cap 512</text>
+<path d="M300.0,555.0 h458.9 a8.0,8.0 0 0 1 8.0,8.0 v20.8 a8.0,8.0 0 0 1 -8.0,8.0 h-458.9 z" fill="#898781"/>
+<text x="780.9" y="584.4" font-size="32" font-weight="400" fill="#c3c2b7" text-anchor="start">33.2</text>
+<path d="M300.0,595.8 h914.5 a8.0,8.0 0 0 1 8.0,8.0 v20.8 a8.0,8.0 0 0 1 -8.0,8.0 h-914.5 z" fill="#3987e5"/>
+<text x="1236.5" y="625.1" font-size="32" font-weight="650" fill="#f0efec" text-anchor="start">65.6</text>
+<text x="276.0" y="722.2" font-size="32" font-weight="500" fill="#f0efec" text-anchor="end">Mixed 4K, sampler</text>
+<path d="M300.0,672.5 h447.6 a8.0,8.0 0 0 1 8.0,8.0 v20.8 a8.0,8.0 0 0 1 -8.0,8.0 h-447.6 z" fill="#898781"/>
+<text x="769.6" y="701.9" font-size="32" font-weight="400" fill="#c3c2b7" text-anchor="start">32.4</text>
+<path d="M300.0,713.2 h709.2 a8.0,8.0 0 0 1 8.0,8.0 v20.8 a8.0,8.0 0 0 1 -8.0,8.0 h-709.2 z" fill="#3987e5"/>
+<text x="1031.2" y="742.6" font-size="32" font-weight="650" fill="#f0efec" text-anchor="start">51.0</text>
+<text x="1530.0" y="282.0" font-size="24" font-weight="400" fill="#898781" text-anchor="end">tok/s</text>
+<text x="70.0" y="848.0" font-size="23" font-weight="400" fill="#898781" text-anchor="start">Median of 5, one start a bar, 23 Nov 2026 15:36 and 15:51 SGT. Ollama 0.40.17, tag 23b94a2d. Greedy except the sampler.</text>
+</svg>

@@ -8,14 +8,14 @@ ELI5: I'm a learner with one Mac Studio M5 Ultra 512 GB, and I time local AI mod
 
 ELI5: The page in seven lines. Every figure here is recomputed from the raw rows each time the page is built.
 
-Updated 23 Nov 2026 13:38 SGT. Decode speed in tok/s, one user, one Mac.
+Updated 23 Nov 2026 16:09 SGT. Decode speed in tok/s, one user, one Mac.
 
 - **Fastest on new code.** Qwen3.8 27B, 4-bit wrote 323.4 tok/s on TensorFold 1.3.4. Next are Qwen3.8 Flash Next, 4-bit at 211.5 and Qwen3.8 Flash Next, 6-bit at 201.3.
 - **Fastest in daily use.** Qwen3.8 27B, 4-bit wrote 149.6 tok/s on TensorFold 1.3.4. Next are Qwen3.8 Flash Next, 4-bit at 128.4 and Qwen3.8 Flash Next, IQ3_S at 126.0.
 - **Two speeds per model.** Max is greedy at temperature 0 while the model writes new code. Median is the model's own sampler on mixed text, which is closer to daily use.
 - **Prefill too.** The table also has how fast each model read a cold prompt, with the prompt size.
-- **Coverage.** 27 models, 419 setups and 30 findings.
-- **Newest finding.** Finding 30, 23 Nov 2026. [Inkling 2 Mini on Strata 0.2.20, its drafter faster on greedy code and slower on the sampler](findings/30_inkling2_mini_strata_0220).
+- **Coverage.** 27 models, 419 setups and 31 findings.
+- **Newest finding.** Finding 31, 23 Nov 2026. [Inkling 2 Mini on Ollama 0.40.17, its drafter 2.3 times as fast, with the thinking hidden](findings/31_inkling2_mini_ollama_04017).
 - **Check it.** Every figure links to a folder with the rows it came from. If I have set an engine up wrong, [open an issue](https://github.com/LazyLocalLLM/m5-ultra-512-benchmarks/issues).
 
 ## Benchmark summary
@@ -723,6 +723,17 @@ ELI5: Everything behind the tables above, including the setups that were not the
 ## Findings
 
 ELI5: Each finding is one question, one run of an hour or two, and one report. Newest first. Click a title for the full report and the raw rows.
+
+### 31. [Inkling 2 Mini on Ollama 0.40.17, its drafter 2.3 times as fast, with the thinking hidden](findings/31_inkling2_mini_ollama_04017)
+
+Runs of 23 Nov 2026. Ollama 0.40.17 decoded Inkling 2 Mini at 76.8 tok/s at its max with its MTP drafter, and 51.0 with the model's own sampler, by Ollama's own count, on the maker's release rebuilt to match Ollama's library model tensor for tensor. With no drafter it decoded 33.6 and 32.4, so the drafter made greedy decoding on code prompts 2.3 times as fast. With thinking off the model still thought at effort 0 and Ollama dropped that thinking from the reply, so 27 of 40 greedy replies to code prompts, capped at 2,048 tokens, came back with no text.
+
+<details>
+<summary>Chart</summary>
+
+![Paired bars of decode speed in tokens per second, by Ollama's own count, for Inkling 2 Mini on Ollama 0.40.17, no drafter against the MTP drafter on. Code prompt at 1K, replies capped at 2,048 tokens, 33.6 and 76.8. The same at 4K, 33.2 and 75.8. Code prompt at 1K, capped at 512, 33.2 and 65.6. Mixed text at 4K with the model's own sampler, 32.4 and 51.0.](findings/31_inkling2_mini_ollama_04017/chart_draft.png)
+
+</details>
 
 ### 30. [Inkling 2 Mini on Strata 0.2.20, its drafter faster on greedy code and slower on the sampler](findings/30_inkling2_mini_strata_0220)
 
