@@ -8,14 +8,14 @@ ELI5: I'm a learner with one Mac Studio M5 Ultra 512 GB, and I time local AI mod
 
 ELI5: The page in seven lines. Every figure here is recomputed from the raw rows each time the page is built.
 
-Updated 24 Nov 2026 19:41 SGT. Decode speed in tok/s, one user, one Mac.
+Updated 24 Nov 2026 20:48 SGT. Decode speed in tok/s, one user, one Mac.
 
 - **Fastest on new code.** Qwen3.8 27B, 4-bit wrote 323.4 tok/s on TensorFold 1.3.4. Next are Qwen3.8 Flash Next, 4-bit at 211.5 and Qwen3.8 Flash Next, 6-bit at 201.3.
-- **Fastest in daily use.** Qwen3.8 27B, 4-bit wrote 149.6 tok/s on TensorFold 1.3.4. Next are Qwen3.8 Flash Next, 4-bit at 128.4 and Qwen3.8 Flash Next, IQ3_S at 126.0.
+- **Fastest in daily use.** Qwen3.8 27B, 4-bit wrote 149.6 tok/s on TensorFold 1.3.4. Next are Qwen3.8 Flash Next, 4-bit at 128.4 and Inkling 2 Mini, Bare Speed at 127.0 (reasoning text).
 - **Two speeds per model.** Max is greedy at temperature 0 while the model writes new code. Median is the model's own sampler on mixed text, which is closer to daily use.
 - **Prefill too.** The table also has how fast each model read a cold prompt, with the prompt size.
-- **Coverage.** 28 models, 422 setups and 38 findings.
-- **Newest finding.** Finding 38, 24 Nov 2026. [Inkling 2 Mini on Strata 0.2.20, prompts up to 255K tokens, DSpark drafter on and off](findings/38_inkling2_mini_long_prompts_strata).
+- **Coverage.** 28 models, 425 setups and 39 findings.
+- **Newest finding.** Finding 39, 24 Nov 2026. [Inkling 2 Mini on MTPLX 2.13.3, the copy task 1.1 times as fast and new code level](findings/39_inkling2_mini_mtplx_2133).
 - **Check it.** Every figure links to a folder with the rows it came from. If I have set an engine up wrong, [open an issue](https://github.com/LazyLocalLLM/m5-ultra-512-benchmarks/issues).
 
 ## Benchmark summary
@@ -54,7 +54,7 @@ The exact setup behind each figure is one click away, under "Every setup measure
 
 | Weights | Max tok/s | Median tok/s | Prefill tok/s | Reply text | Engine | Finding |
 |---|---|---|---|---|---|---|
-| [Bare Speed](https://huggingface.co/Youssofal/Inkling-2-Mini-MTPLX-Bare-Speed) | **153.0** | **124.7** | **4,692.6**, 4K mixed prompt | reasoning | MTPLX 2.13.2 | [29](findings/29_inkling2_mini_mtplx_2132) |
+| [Bare Speed](https://huggingface.co/Youssofal/Inkling-2-Mini-MTPLX-Bare-Speed) | **154.8** | **127.0** | **4,673.3**, 4K code prompt | reasoning | MTPLX 2.13.3 | [39](findings/39_inkling2_mini_mtplx_2133) |
 | [Optimized Speed](https://huggingface.co/Youssofal/Inkling-2-Mini-MTPLX-Optimized-Speed) | **152.0** | **113.0** | **4,675.6**, 4K code prompt | reasoning | MTPLX 2.13.2 | [29](findings/29_inkling2_mini_mtplx_2132) |
 | [Optimized Quality](https://huggingface.co/Youssofal/Inkling-2-Mini-MTPLX-Optimized-Quality) | **133.8** | **105.6** | **4,675.6**, 4K code prompt | reasoning | MTPLX 2.13.2 | [29](findings/29_inkling2_mini_mtplx_2132) |
 | [8-bit](https://huggingface.co/ddalcu/Inkling-2-Mini-MLX-8bit) | **146.8** | **105.2** | **4,932.1**, 4K code prompt | reasoning | mlx-serve 26.11.4-pre-release.1, main at 2fe9be83 | [20](findings/20_inkling2_mini_mlxserve_pre) |
@@ -308,22 +308,25 @@ ELI5: Everything behind the tables above, including the setups that were not the
 </details>
 
 <details>
-<summary><b>Inkling 2 Mini, Bare Speed</b>, 15 setups</summary>
+<summary><b>Inkling 2 Mini, Bare Speed</b>, 18 setups</summary>
 
 | Kind | Engine and setup | Sampler | Prompt | Reply tokens | Decode tok/s | Range | Runs | Date | Run | Finding |
 |---|---|---|---|---|---|---|---|---|---|---|
 | max | MTPLX 2.13.1, draft head on, no thinking field, reply is reasoning text, second start, older release | greedy, temperature 0 | 1K code | 2,048 | 159.7 | 136.3 to 163.1 | 5 | 2026-11-22 | `69e9ae98c9d1` | [21](findings/21_inkling2_mini_mtplx_213) |
+| max | MTPLX 2.13.3, draft head on, no thinking field, reply is reasoning text | greedy, temperature 0 | 4K code | 2,048 | 154.8 | 140.2 to 181.4 | 5 | 2026-11-24 | `c879c4240423` | [39](findings/39_inkling2_mini_mtplx_2133) |
+| max | MTPLX 2.13.3, draft head on, no thinking field, reply is reasoning text | greedy, temperature 0 | 1K code | 2,048 | 154.2 | 139.6 to 210.6 | 5 | 2026-11-24 | `c879c4240423` | [39](findings/39_inkling2_mini_mtplx_2133) |
 | max | MTPLX 2.13.0, draft head on, no thinking field, reply is reasoning text, second start, older release | greedy, temperature 0 | 4K code | 2,048 | 153.6 | 129.1 to 202.8 | 5 | 2026-11-22 | `ea4c8fa3bbcf` | [21](findings/21_inkling2_mini_mtplx_213) |
-| max | MTPLX 2.13.2, draft head on, no thinking field, reply is reasoning text | greedy, temperature 0 | 1K code | 2,048 | 153.0 | 143.1 to 172.7 | 5 | 2026-11-23 | `8ddc9a4f863a` | [29](findings/29_inkling2_mini_mtplx_2132) |
+| max | MTPLX 2.13.2, draft head on, no thinking field, reply is reasoning text, older release | greedy, temperature 0 | 1K code | 2,048 | 153.0 | 143.1 to 172.7 | 5 | 2026-11-23 | `8ddc9a4f863a` | [29](findings/29_inkling2_mini_mtplx_2132) |
 | max | MTPLX 2.13.1, draft head on, no thinking field, reply is reasoning text, second start, older release | greedy, temperature 0 | 4K code | 2,048 | 152.6 | 128.8 to 162.8 | 5 | 2026-11-22 | `69e9ae98c9d1` | [21](findings/21_inkling2_mini_mtplx_213) |
 | max | MTPLX 2.13.0, draft head on, no thinking field, reply is reasoning text, second start, older release | greedy, temperature 0 | 1K code | 2,048 | 149.0 | 139.6 to 158.0 | 5 | 2026-11-22 | `ea4c8fa3bbcf` | [21](findings/21_inkling2_mini_mtplx_213) |
-| max | MTPLX 2.13.2, draft head on, no thinking field, reply is reasoning text | greedy, temperature 0 | 4K code | 2,048 | 140.4 | 137.7 to 149.7 | 5 | 2026-11-23 | `8ddc9a4f863a` | [29](findings/29_inkling2_mini_mtplx_2132) |
+| max | MTPLX 2.13.2, draft head on, no thinking field, reply is reasoning text, older release | greedy, temperature 0 | 4K code | 2,048 | 140.4 | 137.7 to 149.7 | 5 | 2026-11-23 | `8ddc9a4f863a` | [29](findings/29_inkling2_mini_mtplx_2132) |
 | max | MTPLX 2.13.1, draft head off (--no-mtp), no thinking field, reply is reasoning text, older release | greedy, temperature 0 | 1K code | 2,048 | 90.1 | 89.8 to 90.4 | 5 | 2026-11-22 | `a96cb656f07d` | [21](findings/21_inkling2_mini_mtplx_213) |
 | max | MTPLX 2.13.2, draft head off (--no-mtp), no thinking field, reply is reasoning text | greedy, temperature 0 | 1K code | 2,048 | 89.9 | 89.7 to 90.1 | 5 | 2026-11-23 | `f41fca789e86` | [29](findings/29_inkling2_mini_mtplx_2132) |
 | max | MTPLX 2.13.2, draft head off (--no-mtp), no thinking field, reply is reasoning text | greedy, temperature 0 | 4K code | 2,048 | 88.5 | 88.2 to 89.2 | 5 | 2026-11-23 | `f41fca789e86` | [29](findings/29_inkling2_mini_mtplx_2132) |
 | max | MTPLX 2.13.1, draft head off (--no-mtp), no thinking field, reply is reasoning text, older release | greedy, temperature 0 | 4K code | 2,048 | 88.4 | 88.2 to 89.2 | 5 | 2026-11-22 | `a96cb656f07d` | [21](findings/21_inkling2_mini_mtplx_213) |
 | median | MTPLX 2.13.1, draft head on, no thinking field, reply is reasoning text, older release | temperature 1.0, top-p 1.0 | 4K mixed | 512 | 130.0 | 115.0 to 159.3 | 5 | 2026-11-22 | `0bb9739897e0` | [21](findings/21_inkling2_mini_mtplx_213) |
-| median | MTPLX 2.13.2, draft head on, no thinking field, reply is reasoning text | temperature 1.0, top-p 1.0 | 4K mixed | 512 | 124.7 | 114.1 to 134.7 | 5 | 2026-11-23 | `8ddc9a4f863a` | [29](findings/29_inkling2_mini_mtplx_2132) |
+| median | MTPLX 2.13.3, draft head on, no thinking field, reply is reasoning text | temperature 1.0, top-p 1.0 | 4K mixed | 512 | 127.0 | 116.2 to 167.9 | 5 | 2026-11-24 | `c879c4240423` | [39](findings/39_inkling2_mini_mtplx_2133) |
+| median | MTPLX 2.13.2, draft head on, no thinking field, reply is reasoning text, older release | temperature 1.0, top-p 1.0 | 4K mixed | 512 | 124.7 | 114.1 to 134.7 | 5 | 2026-11-23 | `8ddc9a4f863a` | [29](findings/29_inkling2_mini_mtplx_2132) |
 | median | MTPLX 2.13.0, draft head on, no thinking field, reply is reasoning text, older release | temperature 1.0, top-p 1.0 | 4K mixed | 512 | 120.2 | 114.0 to 176.9 | 5 | 2026-11-22 | `15120ef4588c` | [21](findings/21_inkling2_mini_mtplx_213) |
 | median | MTPLX 2.13.2, draft head off (--no-mtp), no thinking field, reply is reasoning text | temperature 1.0, top-p 1.0 | 4K mixed | 512 | 78.9 | 78.3 to 79.7 | 5 | 2026-11-23 | `f41fca789e86` | [29](findings/29_inkling2_mini_mtplx_2132) |
 | median | MTPLX 2.13.1, draft head off (--no-mtp), no thinking field, reply is reasoning text, older release | temperature 1.0, top-p 1.0 | 4K mixed | 512 | 78.5 | 78.0 to 79.7 | 5 | 2026-11-22 | `a96cb656f07d` | [21](findings/21_inkling2_mini_mtplx_213) |
@@ -773,6 +776,17 @@ ELI5: Everything behind the tables above, including the setups that were not the
 ## Findings
 
 ELI5: Each finding is one question, one run of an hour or two, and one report. Newest first. Click a title for the full report and the raw rows.
+
+### 39. [Inkling 2 Mini on MTPLX 2.13.3, the copy task 1.1 times as fast and new code level](findings/39_inkling2_mini_mtplx_2133)
+
+Runs of 24 Nov 2026. On the copy task, where Inkling 2 Mini repeats code from its prompt, MTPLX 2.13.3 wrote 272.9 tok/s against 2.13.2's 238.7, at a 1K prompt with reasoning effort low and replies of up to 2,048 tokens. It was faster on 18 of 20 same-prompt pairs, middle ratio 1.12, and on 17 of 20 at a 4K prompt, 1.14. On new code and with the model's own sampler it was level, 154.7 against 153.2 and 127.4 against 124.0. The 50 short greedy replies match, 50 of 50. With thinking switched off it streamed no text, as 2.13.0 and 2.13.1 did.
+
+<details>
+<summary>Chart</summary>
+
+![Bar chart of Inkling 2 Mini writing speed on MTPLX 2.13.2 and 2.13.3. Copy task 238.7 and 272.9 tok/s. New code 153.2 and 154.7. The model's own sampler 124.0 and 127.4.](findings/39_inkling2_mini_mtplx_2133/chart_write.png)
+
+</details>
 
 ### 38. [Inkling 2 Mini on Strata 0.2.20, prompts up to 255K tokens, DSpark drafter on and off](findings/38_inkling2_mini_long_prompts_strata)
 
