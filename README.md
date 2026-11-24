@@ -8,14 +8,14 @@ ELI5: I'm a learner with one Mac Studio M5 Ultra 512 GB, and I time local AI mod
 
 ELI5: The page in seven lines. Every figure here is recomputed from the raw rows each time the page is built.
 
-Updated 25 Nov 2026 03:21 SGT. Decode speed in tok/s, one user, one Mac.
+Updated 25 Nov 2026 05:39 SGT. Decode speed in tok/s, one user, one Mac.
 
 - **Fastest on new code.** Qwen3.8 27B, 4-bit wrote 323.4 tok/s on TensorFold 1.3.4. Next are Qwen3.8 Flash Next, 4-bit at 211.5 and Qwen3.8 Flash Next, 6-bit at 201.3.
 - **Fastest in daily use.** Qwen3.8 27B, 4-bit wrote 149.6 tok/s on TensorFold 1.3.4. Next are Qwen3.8 Flash Next, 4-bit at 128.4 and Inkling 2 Mini, Bare Speed at 127.0 (reasoning text).
 - **Decode speeds.** Max is greedy at temperature 0 while the model writes new code. Median is the model's own sampler on mixed text, closer to daily use. Code is the model's own sampler on new code, closest to a coding agent, and is being filled in.
 - **Prefill too.** The table also has how fast each model read a cold prompt, with the prompt size.
-- **Coverage.** 28 models, 371 setups and 39 findings.
-- **Newest finding.** Finding 39, 24 Nov 2026. [Inkling 2 Mini on MTPLX 2.13.3, the copy task 1.1 times as fast and new code level](findings/39_inkling2_mini_mtplx_2133).
+- **Coverage.** 28 models, 390 setups and 40 findings.
+- **Newest finding.** Finding 40, 25 Nov 2026. [The code column, 17 models writing new code with their own sampler](findings/40_code_column).
 - **Check it.** Every figure links to a folder with the rows it came from. If I have set an engine up wrong, [open an issue](https://github.com/LazyLocalLLM/m5-ultra-512-benchmarks/issues).
 
 ## Benchmark summary
@@ -38,38 +38,38 @@ The exact setup behind each figure is one click away, under "Every setup measure
 
 | Weights | Max decode tok/s, greedy, new code | Median decode tok/s, own sampler, mixed text | Code decode tok/s, own sampler, new code | Prefill tok/s, cold prompt | Reply text | Engine | Finding |
 |---|---|---|---|---|---|---|---|
-| [4-bit](https://huggingface.co/TensorFold/Qwen3.8-27B-MLX-4bit) | **323.4** | **149.6** |  | **1,863.4**, 4K mixed prompt | answer | TensorFold 1.3.4 | [27](findings/27_tensorfold_134_refresh) |
+| [4-bit](https://huggingface.co/TensorFold/Qwen3.8-27B-MLX-4bit) | **323.4** | **149.6** | **196.2** | **1,863.4**, 4K mixed prompt | answer | TensorFold 1.3.4 | [27](findings/27_tensorfold_134_refresh), [40](findings/40_code_column) |
 | [full](https://huggingface.co/mlx-community/Qwen3.8-27B-bf16) | **6.9** | **7.1** |  | **1,885.2**, 4K code prompt | answer | mlx-serve 26.11.3 | [8](findings/08_dsv41_mlxserve_26113) |
 
 #### Qwen3.8 Flash Next
 
 | Weights | Max decode tok/s, greedy, new code | Median decode tok/s, own sampler, mixed text | Code decode tok/s, own sampler, new code | Prefill tok/s, cold prompt | Reply text | Engine | Finding |
 |---|---|---|---|---|---|---|---|
-| [4-bit](https://huggingface.co/TensorFold/Qwen3.8-Flash-Next-MLX-4bit-MTP) | **211.5** | **128.4** |  | **4,057.1**, 4K code prompt | answer | TensorFold 1.3.4 | [27](findings/27_tensorfold_134_refresh) |
+| [4-bit](https://huggingface.co/TensorFold/Qwen3.8-Flash-Next-MLX-4bit-MTP) | **211.5** | **128.4** | **165.5** | **4,057.0**, 4K code prompt | answer | TensorFold 1.3.4 | [27](findings/27_tensorfold_134_refresh), [40](findings/40_code_column) |
 | [IQ3_S](https://huggingface.co/ISTA-DASLab/Qwen3.8-Flash-Next-GSQ-RCO-GGUF) | **196.4** | **126.0** |  | **2,884.2**, 4K code prompt | answer | Strata 0.2.20 | [28](findings/28_qwen38_flash_next_strata_0220) |
 | [6-bit](https://huggingface.co/TensorFold/Qwen3.8-Flash-Next-MLX-6bit-MTP) | **201.3** | **114.5** |  | **3,841.0**, 4K mixed prompt | answer | TensorFold 1.3.3 | [19](findings/19_tensorfold_133_refresh) |
-| [full](https://huggingface.co/Qwen/Qwen3.8-Flash-Next) | **54.5** | **34.4** |  | **3,233.3**, 4K code prompt | answer | oMLX 0.8.3 with its kernels | [26](findings/26_omlx_083_refresh) |
+| [full](https://huggingface.co/Qwen/Qwen3.8-Flash-Next) | **54.5** | **34.4** | **45.2** | **3,211.1**, 4K code prompt | answer | oMLX 0.8.3 with its kernels | [26](findings/26_omlx_083_refresh), [40](findings/40_code_column) |
 
 #### Inkling 2 Mini
 
 | Weights | Max decode tok/s, greedy, new code | Median decode tok/s, own sampler, mixed text | Code decode tok/s, own sampler, new code | Prefill tok/s, cold prompt | Reply text | Engine | Finding |
 |---|---|---|---|---|---|---|---|
-| [Bare Speed](https://huggingface.co/Youssofal/Inkling-2-Mini-MTPLX-Bare-Speed) | **154.8** | **127.0** |  | **4,673.3**, 4K code prompt | reasoning | MTPLX 2.13.3 | [39](findings/39_inkling2_mini_mtplx_2133) |
-| [Optimized Speed](https://huggingface.co/Youssofal/Inkling-2-Mini-MTPLX-Optimized-Speed) | **152.0** | **113.0** |  | **4,675.6**, 4K code prompt | reasoning | MTPLX 2.13.2 | [29](findings/29_inkling2_mini_mtplx_2132) |
-| [Optimized Quality](https://huggingface.co/Youssofal/Inkling-2-Mini-MTPLX-Optimized-Quality) | **133.8** | **105.6** |  | **4,675.6**, 4K code prompt | reasoning | MTPLX 2.13.2 | [29](findings/29_inkling2_mini_mtplx_2132) |
-| [8-bit](https://huggingface.co/ddalcu/Inkling-2-Mini-MLX-8bit) | **146.8** | **105.2** |  | **4,932.1**, 4K code prompt | reasoning | mlx-serve 26.11.4-pre-release.1, main at 2fe9be83 | [20](findings/20_inkling2_mini_mlxserve_pre) |
-| [oQ4e](https://huggingface.co/mlx-community/Inkling-2-Mini-oQ4e-mtp) | **108.1** | **83.3** |  | **3,257.6**, 4K code prompt | reasoning | oMLX 0.8.3 with its kernels | [26](findings/26_omlx_083_refresh) |
-| [oQ3e](https://huggingface.co/mlx-community/Inkling-2-Mini-oQ3e-mtp) | **105.1** | **67.1** |  | **2,850.7**, 4K code prompt | reasoning | oMLX 0.8.1 with its kernels | [14](findings/14_inkling2_mini_omlx_081) |
-| [maker's release](https://huggingface.co/thinkingmachines/Inkling-2-Mini) | **82.3** | **61.7** |  | **2,129.4**, 4K code prompt | reasoning | Ollama 0.40.17 | [31](findings/31_inkling2_mini_ollama_04017) |
-| [SQ-20](https://huggingface.co/strata-engine/Inkling-2-Mini-Strata) | **106.1** | **59.3** |  | **3,386.8**, 4K mixed prompt | answer | Strata 0.2.20 | [30](findings/30_inkling2_mini_strata_0220) |
-| [UD-Q8_K_XL](https://huggingface.co/unsloth/Inkling-2-Mini-GGUF) | **60.1** | **58.2** |  | **3,216.4**, 4K mixed prompt | answer | Strata 0.2.20 | [30](findings/30_inkling2_mini_strata_0220) |
+| [Bare Speed](https://huggingface.co/Youssofal/Inkling-2-Mini-MTPLX-Bare-Speed) | **154.8** | **127.0** | **125.4** | **4,684.1**, 4K code prompt | reasoning | MTPLX 2.13.3 | [39](findings/39_inkling2_mini_mtplx_2133), [40](findings/40_code_column) |
+| [Optimized Speed](https://huggingface.co/Youssofal/Inkling-2-Mini-MTPLX-Optimized-Speed) | **152.0** | **113.0** | **127.2** | **4,675.6**, 4K code prompt | reasoning | MTPLX 2.13.2 for max, MTPLX 2.13.3 for code | [29](findings/29_inkling2_mini_mtplx_2132), [40](findings/40_code_column) |
+| [Optimized Quality](https://huggingface.co/Youssofal/Inkling-2-Mini-MTPLX-Optimized-Quality) | **133.8** | **105.6** | **118.9** | **4,675.6**, 4K code prompt | reasoning | MTPLX 2.13.2 for max, MTPLX 2.13.3 for code | [29](findings/29_inkling2_mini_mtplx_2132), [40](findings/40_code_column) |
+| [8-bit](https://huggingface.co/ddalcu/Inkling-2-Mini-MLX-8bit) | **146.8** | **105.2** | **105.2** | **4,931.8**, 4K code prompt | reasoning | mlx-serve 26.11.4-pre-release.1, main at 2fe9be83 | [20](findings/20_inkling2_mini_mlxserve_pre), [40](findings/40_code_column) |
+| [oQ4e](https://huggingface.co/mlx-community/Inkling-2-Mini-oQ4e-mtp) | **108.1** | **83.3** | **84.8** | **3,249.8**, 4K code prompt | reasoning | oMLX 0.8.3 with its kernels | [26](findings/26_omlx_083_refresh), [40](findings/40_code_column) |
+| [oQ3e](https://huggingface.co/mlx-community/Inkling-2-Mini-oQ3e-mtp) | **105.1** | **67.1** | **90.0** | **3,096.8**, 4K code prompt, on oMLX 0.8.3 with its kernels | reasoning | oMLX 0.8.1 with its kernels for max, oMLX 0.8.3 with its kernels for code | [14](findings/14_inkling2_mini_omlx_081), [40](findings/40_code_column) |
+| [maker's release](https://huggingface.co/thinkingmachines/Inkling-2-Mini) | **82.3** | **61.7** | **67.1** | **2,127.8**, 4K code prompt | reasoning | Ollama 0.40.17 | [31](findings/31_inkling2_mini_ollama_04017), [40](findings/40_code_column) |
+| [SQ-20](https://huggingface.co/strata-engine/Inkling-2-Mini-Strata) | **106.1** | **59.3** | **58.6** | **3,386.8**, 4K mixed prompt | answer | Strata 0.2.20 | [30](findings/30_inkling2_mini_strata_0220), [40](findings/40_code_column) |
+| [UD-Q8_K_XL](https://huggingface.co/unsloth/Inkling-2-Mini-GGUF) | **60.1** | **58.2** | **57.2** | **3,216.4**, 4K mixed prompt | answer | Strata 0.2.20 | [30](findings/30_inkling2_mini_strata_0220), [40](findings/40_code_column) |
 | [4-bit](https://huggingface.co/mlx-community/Inkling-2-Mini-4bit) | **39.8** | **39.4** |  | **3,361.2**, 4K code prompt | reasoning | Rapid-MLX 1.1.0 | [23](findings/23_inkling2_mini_rapidmlx_110) |
 
 #### GLM-5.3 Flash
 
 | Weights | Max decode tok/s, greedy, new code | Median decode tok/s, own sampler, mixed text | Code decode tok/s, own sampler, new code | Prefill tok/s, cold prompt | Reply text | Engine | Finding |
 |---|---|---|---|---|---|---|---|
-| [4-bit](https://huggingface.co/TensorFold/GLM-5.3-Flash-MLX-4bit-MTP) | **104.7** | **85.9** |  | **2,234.3**, 4K mixed prompt, on oMLX 0.8.1 with its kernels | answer | TensorFold 1.3.4 | [27](findings/27_tensorfold_134_refresh), [15](findings/15_glm53_flash_two_builds) |
+| [4-bit](https://huggingface.co/TensorFold/GLM-5.3-Flash-MLX-4bit-MTP) | **104.7** | **85.9** | **87.6** | **2,234.3**, 4K mixed prompt, on oMLX 0.8.1 with its kernels | answer | TensorFold 1.3.4 | [27](findings/27_tensorfold_134_refresh), [40](findings/40_code_column), [15](findings/15_glm53_flash_two_builds) |
 | [oQ4e](https://huggingface.co/Jundot/GLM-5.3-Flash-oQ4e-mtp) | **84.9** | **70.1** |  | **2,173.5**, 4K mixed prompt, on oMLX 0.8.3 with its kernels | answer for max, reasoning for median | TensorFold 1.3.4 for max, oMLX 0.8.3 with its kernels for median | [27](findings/27_tensorfold_134_refresh), [26](findings/26_omlx_083_refresh) |
 | [6-bit](https://huggingface.co/Jundot/GLM-5.3-Flash-oQ6e-mtp) | not run yet | **57.8** |  | **1,858.8**, 4K mixed prompt | reasoning | oMLX 0.7.3 with its kernels | [2](findings/02_ten_models_4k_to_1m) |
 
@@ -77,8 +77,8 @@ The exact setup behind each figure is one click away, under "Every setup measure
 
 | Weights | Max decode tok/s, greedy, new code | Median decode tok/s, own sampler, mixed text | Code decode tok/s, own sampler, new code | Prefill tok/s, cold prompt | Reply text | Engine | Finding |
 |---|---|---|---|---|---|---|---|
-| [maker's files](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) | **105.7** | **69.9** |  | **1,485.4**, 32K code prompt | answer | TensorFold 1.3.4 | [27](findings/27_tensorfold_134_refresh) |
-| [Lossless](https://huggingface.co/ddalcu/DeepSeek-V4.1-Flash-1017-MLX-Serve-Lossless) | **95.3** | **57.9** |  | **3,187.2**, 4K mixed prompt | answer | mlx-serve 26.11.3 | [8](findings/08_dsv41_mlxserve_26113) |
+| [maker's files](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) | **105.7** | **69.9** | **90.9** | **1,514.3**, 64K code prompt | answer | TensorFold 1.3.4 | [27](findings/27_tensorfold_134_refresh), [40](findings/40_code_column) |
+| [Lossless](https://huggingface.co/ddalcu/DeepSeek-V4.1-Flash-1017-MLX-Serve-Lossless) | **95.3** | **57.9** | **69.2** | **3,187.2**, 4K mixed prompt | answer | mlx-serve 26.11.3 | [8](findings/08_dsv41_mlxserve_26113), [40](findings/40_code_column) |
 | [oQ4e-mtp](https://huggingface.co/mlx-community/DeepSeek-V4.1-Flash-1017-oQ4e-mtp) | **86.2** | **57.9** |  | **3,758.0**, 32K code prompt | answer | oMLX 0.8.0 with its kernels | [5](findings/05_dsv41_omlx_080_max_push), [3](findings/03_dsv41_omlx_080) |
 
 #### Hy4-flash
@@ -86,7 +86,7 @@ The exact setup behind each figure is one click away, under "Every setup measure
 | Weights | Max decode tok/s, greedy, new code | Median decode tok/s, own sampler, mixed text | Code decode tok/s, own sampler, new code | Prefill tok/s, cold prompt | Reply text | Engine | Finding |
 |---|---|---|---|---|---|---|---|
 | [oQ4h](https://huggingface.co/Jundot/Hy4-flash-oQ4h-mtp) | **76.2** | **54.0** |  | **2,302.3**, 4K mixed prompt | answer for max, reasoning for median | oMLX 0.8.3 with its kernels for max, oMLX 0.8.1 with its kernels for median | [26](findings/26_omlx_083_refresh), [12](findings/12_hy4_flash_omlx_081) |
-| [4-bit](https://huggingface.co/TensorFold/Hy4-flash-MLX-4bit-MTP) | **79.0** | **51.6** |  | **1,649.2**, 1K code prompt | reasoning | TensorFold 1.3.4 | [27](findings/27_tensorfold_134_refresh) |
+| [4-bit](https://huggingface.co/TensorFold/Hy4-flash-MLX-4bit-MTP) | **79.0** | **51.6** | **47.6** | **1,649.2**, 1K code prompt | reasoning | TensorFold 1.3.4 | [27](findings/27_tensorfold_134_refresh), [40](findings/40_code_column) |
 | [8-bit](https://huggingface.co/TensorFold/Hy4-flash-MLX-8bit-MTP) | **55.2** | **44.8** |  | **1,235.8**, 1K code prompt | reasoning | TensorFold 1.3.3 | [19](findings/19_tensorfold_133_refresh) |
 
 #### Inkling 2 Small
@@ -100,7 +100,7 @@ The exact setup behind each figure is one click away, under "Every setup measure
 | Weights | Max decode tok/s, greedy, new code | Median decode tok/s, own sampler, mixed text | Code decode tok/s, own sampler, new code | Prefill tok/s, cold prompt | Reply text | Engine | Finding |
 |---|---|---|---|---|---|---|---|
 | [4-bit, draft head joined here](https://huggingface.co/mlx-community/GLM-5.3-4bit) | **23.4** | **25.0** |  | **646.9**, 4K mixed prompt | reasoning | oMLX 0.8.0 with its kernels | [9](findings/09_omlx_080_four_models) |
-| [4-bit](https://huggingface.co/mlx-community/GLM-5.3-4bit) | **24.6** | **24.5** |  | **645.7**, 4K mixed prompt | reasoning | oMLX 0.8.0 with its kernels | [9](findings/09_omlx_080_four_models) |
+| [4-bit](https://huggingface.co/mlx-community/GLM-5.3-4bit) | **24.6** | **24.5** | **24.4** | **648.4**, 4K code prompt, on oMLX 0.8.3 with its kernels | reasoning | oMLX 0.8.0 with its kernels for max, oMLX 0.8.3 with its kernels for code | [9](findings/09_omlx_080_four_models), [40](findings/40_code_column) |
 
 
 ### Ceiling on easy text
@@ -125,7 +125,7 @@ ELI5: One test hands the model text it can guess almost perfectly, counting from
 ELI5: Everything behind the tables above, including the setups that were not the fastest. Click a model to open its lines. The range is the slowest and fastest single run.
 
 <details>
-<summary><b>Qwen3.8 27B, 4-bit</b>, 26 setups</summary>
+<summary><b>Qwen3.8 27B, 4-bit</b>, 27 setups</summary>
 
 | Kind | Engine and setup | Sampler | Prompt | Reply tokens | Decode tok/s | Range | Runs | Date | Run | Finding |
 |---|---|---|---|---|---|---|---|---|---|---|
@@ -155,6 +155,7 @@ ELI5: Everything behind the tables above, including the setups that were not the
 | median | TensorFold 1.2.7, no draft model, older release | temperature 0.7, top-p 0.8, top-k 20 | 1K mixed | 512 | 48.7 | 48.6 to 48.7 | 5 | 2026-11-13 | `eabffb505d52` | [1](findings/01_tensorfold_qwen38-27b_4bit) |
 | median | mlx-lm 0.32.2, defaults, the baseline | temperature 0.7, top-p 0.8, top-k 20 | 1K mixed | 512 | 44.5 | 44.4 to 44.5 | 5 | 2026-11-13 | `3ad3a150c4d0` | [1](findings/01_tensorfold_qwen38-27b_4bit) |
 | median | mlx-lm 0.32.2, defaults, the baseline, 20 Nov run | temperature 0.7, top-p 0.8, top-k 20 | 4K mixed | 512 | 43.6 | 43.6 to 43.7 | 5 | 2026-11-20 | `0c5446c7acc1` | [7](findings/07_qwen38_tensorfold_130) |
+| code, own sampler | TensorFold 1.3.4, DFlash2 drafter (z-lab), defaults | temperature 0.7, top-p 0.8, top-k 20 | 4K code | 512 | 196.2 | 189.3 to 265.1 | 5 | 2026-11-25 | `dddd7122c281` | [40](findings/40_code_column) |
 
 </details>
 
@@ -171,7 +172,7 @@ ELI5: Everything behind the tables above, including the setups that were not the
 </details>
 
 <details>
-<summary><b>Qwen3.8 Flash Next, 4-bit</b>, 19 setups</summary>
+<summary><b>Qwen3.8 Flash Next, 4-bit</b>, 20 setups</summary>
 
 | Kind | Engine and setup | Sampler | Prompt | Reply tokens | Decode tok/s | Range | Runs | Date | Run | Finding |
 |---|---|---|---|---|---|---|---|---|---|---|
@@ -194,6 +195,7 @@ ELI5: Everything behind the tables above, including the setups that were not the
 | median | TensorFold 1.2.8, MTP on, recipe line, older release | temperature 0.7, top-p 0.8, top-k 20 | 4K mixed | 512 | 129.2 | 123.9 to 139.2 | 5 | 2026-11-17 | `72fae37b87f0` | [2](findings/02_ten_models_4k_to_1m) |
 | median | TensorFold 1.3.4, MTP on, recipe line, defaults, same-night start | temperature 0.7, top-p 0.8, top-k 20 | 4K mixed | 512 | 128.4 | 122.7 to 134.1 | 5 | 2026-11-23 | `51182015de42` | [27](findings/27_tensorfold_134_refresh) |
 | median | TensorFold 1.3.0, MTP on, recipe line, defaults, older release | temperature 0.7, top-p 0.8, top-k 20 | 4K mixed | 512 | 126.7 | 115.9 to 131.9 | 5 | 2026-11-20 | `7bf80be3a997` | [7](findings/07_qwen38_tensorfold_130) |
+| code, own sampler | TensorFold 1.3.4, MTP on, recipe line, defaults | temperature 0.7, top-p 0.8, top-k 20 | 4K code | 512 | 165.5 | 148.2 to 204.4 | 5 | 2026-11-25 | `2ca592767578` | [40](findings/40_code_column) |
 
 </details>
 
@@ -251,7 +253,7 @@ ELI5: Everything behind the tables above, including the setups that were not the
 </details>
 
 <details>
-<summary><b>Qwen3.8 Flash Next, full</b>, 25 setups</summary>
+<summary><b>Qwen3.8 Flash Next, full</b>, 26 setups</summary>
 
 | Kind | Engine and setup | Sampler | Prompt | Reply tokens | Decode tok/s | Range | Runs | Date | Run | Finding |
 |---|---|---|---|---|---|---|---|---|---|---|
@@ -280,11 +282,12 @@ ELI5: Everything behind the tables above, including the setups that were not the
 | median | oMLX 0.8.2 with its kernels, MTP on (built-in head), fixed depth 4, older release | temperature 0.7, top-p 0.8, top-k 20 | 4K mixed | 512 | 33.3 | 31.9 to 33.9 | 5 | 2026-11-21 | `8f063cd2f425` | [16](findings/16_omlx_082_refresh) |
 | median | oMLX 0.8.0 with its kernels, MTP on (built-in head), default depth, older release | temperature 0.7, top-p 0.8, top-k 20 | 4K mixed | 512 | 33.2 | 31.5 to 34.6 | 5 | 2026-11-21 | `6542a7f95175` | [9](findings/09_omlx_080_four_models) |
 | median | oMLX 0.8.3 with its kernels, MTP on (built-in head), fixed depth 4 | temperature 0.7, top-p 0.8, top-k 20 | 4K mixed | 512 | 32.4 | 30.2 to 35.0 | 5 | 2026-11-23 | `780bb9bba309` | [26](findings/26_omlx_083_refresh) |
+| code, own sampler | oMLX 0.8.3 with its kernels, MTP on (built-in head), default depth | temperature 0.7, top-p 0.8, top-k 20 | 4K code | 512 | 45.2 | 42.2 to 49.5 | 5 | 2026-11-25 | `7b671868eda1` | [40](findings/40_code_column) |
 
 </details>
 
 <details>
-<summary><b>Inkling 2 Mini, Bare Speed</b>, 18 setups</summary>
+<summary><b>Inkling 2 Mini, Bare Speed</b>, 19 setups</summary>
 
 | Kind | Engine and setup | Sampler | Prompt | Reply tokens | Decode tok/s | Range | Runs | Date | Run | Finding |
 |---|---|---|---|---|---|---|---|---|---|---|
@@ -306,11 +309,12 @@ ELI5: Everything behind the tables above, including the setups that were not the
 | median | MTPLX 2.13.0, draft head on, no thinking field, reply is reasoning text, older release | temperature 1.0, top-p 1.0 | 4K mixed | 512 | 120.2 | 114.0 to 176.9 | 5 | 2026-11-22 | `15120ef4588c` | [21](findings/21_inkling2_mini_mtplx_213) |
 | median | MTPLX 2.13.2, draft head off (--no-mtp), no thinking field, reply is reasoning text | temperature 1.0, top-p 1.0 | 4K mixed | 512 | 78.9 | 78.3 to 79.7 | 5 | 2026-11-23 | `f41fca789e86` | [29](findings/29_inkling2_mini_mtplx_2132) |
 | median | MTPLX 2.13.1, draft head off (--no-mtp), no thinking field, reply is reasoning text, older release | temperature 1.0, top-p 1.0 | 4K mixed | 512 | 78.5 | 78.0 to 79.7 | 5 | 2026-11-22 | `a96cb656f07d` | [21](findings/21_inkling2_mini_mtplx_213) |
+| code, own sampler | MTPLX 2.13.3, draft head on, no thinking field, reply is reasoning text | temperature 1.0, top-p 1.0 | 4K code | 512 | 125.4 | 117.7 to 165.3 | 5 | 2026-11-25 | `d520fa89d5ec` | [40](findings/40_code_column) |
 
 </details>
 
 <details>
-<summary><b>Inkling 2 Mini, Optimized Speed</b>, 12 setups</summary>
+<summary><b>Inkling 2 Mini, Optimized Speed</b>, 13 setups</summary>
 
 | Kind | Engine and setup | Sampler | Prompt | Reply tokens | Decode tok/s | Range | Runs | Date | Run | Finding |
 |---|---|---|---|---|---|---|---|---|---|---|
@@ -326,11 +330,12 @@ ELI5: Everything behind the tables above, including the setups that were not the
 | median | MTPLX 2.13.2, draft head on, no thinking field, reply is reasoning text | temperature 1.0, top-p 1.0 | 4K mixed | 512 | 113.0 | 109.1 to 122.6 | 5 | 2026-11-23 | `db1ba3d496e1` | [29](findings/29_inkling2_mini_mtplx_2132) |
 | median | MTPLX 2.13.0, draft head on, no thinking field, reply is reasoning text, older release | temperature 1.0, top-p 1.0 | 4K mixed | 512 | 112.5 | 109.6 to 124.7 | 5 | 2026-11-22 | `e8af192bf883` | [21](findings/21_inkling2_mini_mtplx_213) |
 | median | MTPLX 2.13.1, draft head off (--no-mtp), no thinking field, reply is reasoning text | temperature 1.0, top-p 1.0 | 4K mixed | 512 | 69.4 | 69.4 to 69.8 | 5 | 2026-11-22 | `0f6c20468d28` | [21](findings/21_inkling2_mini_mtplx_213) |
+| code, own sampler | MTPLX 2.13.3, draft head on, no thinking field, reply is reasoning text | temperature 1.0, top-p 1.0 | 4K code | 512 | 127.2 | 115.1 to 153.6 | 5 | 2026-11-25 | `661a9c7f093c` | [40](findings/40_code_column) |
 
 </details>
 
 <details>
-<summary><b>Inkling 2 Mini, Optimized Quality</b>, 12 setups</summary>
+<summary><b>Inkling 2 Mini, Optimized Quality</b>, 13 setups</summary>
 
 | Kind | Engine and setup | Sampler | Prompt | Reply tokens | Decode tok/s | Range | Runs | Date | Run | Finding |
 |---|---|---|---|---|---|---|---|---|---|---|
@@ -346,11 +351,12 @@ ELI5: Everything behind the tables above, including the setups that were not the
 | median | MTPLX 2.13.2, draft head on, no thinking field, reply is reasoning text | temperature 1.0, top-p 1.0 | 4K mixed | 512 | 105.6 | 93.1 to 129.3 | 5 | 2026-11-23 | `7ea5b8ae2d9e` | [29](findings/29_inkling2_mini_mtplx_2132) |
 | median | MTPLX 2.13.0, draft head on, no thinking field, reply is reasoning text, older release | temperature 1.0, top-p 1.0 | 4K mixed | 512 | 104.1 | 97.5 to 109.8 | 5 | 2026-11-22 | `b06906a7e390` | [21](findings/21_inkling2_mini_mtplx_213) |
 | median | MTPLX 2.13.1, draft head off (--no-mtp), no thinking field, reply is reasoning text | temperature 1.0, top-p 1.0 | 4K mixed | 512 | 62.7 | 62.7 to 62.8 | 5 | 2026-11-22 | `a28a0a8eae9d` | [21](findings/21_inkling2_mini_mtplx_213) |
+| code, own sampler | MTPLX 2.13.3, draft head on, no thinking field, reply is reasoning text | temperature 1.0, top-p 1.0 | 4K code | 512 | 118.9 | 107.2 to 156.5 | 5 | 2026-11-25 | `c03f2fecccd4` | [40](findings/40_code_column) |
 
 </details>
 
 <details>
-<summary><b>Inkling 2 Mini, 8-bit</b>, 6 setups</summary>
+<summary><b>Inkling 2 Mini, 8-bit</b>, 8 setups</summary>
 
 | Kind | Engine and setup | Sampler | Prompt | Reply tokens | Decode tok/s | Range | Runs | Date | Run | Finding |
 |---|---|---|---|---|---|---|---|---|---|---|
@@ -360,11 +366,13 @@ ELI5: Everything behind the tables above, including the setups that were not the
 | max | mlx-serve 26.11.4-pre-release.1, main at 2fe9be83, drafts off (--no-mtp --no-drafter --no-pld), reply is reasoning text | greedy, temperature 0 | 4K code | 2,048 | 105.6 | 105.4 to 106.0 | 5 | 2026-11-22 | `8dddc3d76174` | [20](findings/20_inkling2_mini_mlxserve_pre) |
 | median | mlx-serve 26.11.4-pre-release.1, main at 2fe9be83, drafts off (--no-mtp --no-drafter --no-pld), reply is reasoning text | temperature 1.0, top-p 1.0 | 4K mixed | 512 | 105.2 | 104.8 to 106.0 | 5 | 2026-11-22 | `a76707324154` | [20](findings/20_inkling2_mini_mlxserve_pre) |
 | median | mlx-serve 26.11.4-pre-release.1, main at 2fe9be83, drafts on as the engine picks them, reply is reasoning text | temperature 1.0, top-p 1.0 | 4K mixed | 512 | 104.5 | 102.9 to 107.3 | 5 | 2026-11-22 | `338b6385675f` | [20](findings/20_inkling2_mini_mlxserve_pre) |
+| code, own sampler | mlx-serve 26.11.4-pre-release.1, main at 2fe9be83, drafts on as the engine picks them, reply is reasoning text | temperature 1.0, top-p 1.0 | 4K code | 512 | 105.2 | 103.9 to 123.0 | 5 | 2026-11-25 | `2e9be2070510` | [40](findings/40_code_column) |
+| code, own sampler | mlx-serve 26.11.4-pre-release.1, main at 2fe9be83, drafts off (--no-mtp --no-drafter --no-pld), reply is reasoning text | temperature 1.0, top-p 1.0 | 4K code | 512 | 104.2 | 103.5 to 105.1 | 5 | 2026-11-25 | `efc4664b216c` | [40](findings/40_code_column) |
 
 </details>
 
 <details>
-<summary><b>Inkling 2 Mini, oQ4e</b>, 17 setups</summary>
+<summary><b>Inkling 2 Mini, oQ4e</b>, 18 setups</summary>
 
 | Kind | Engine and setup | Sampler | Prompt | Reply tokens | Decode tok/s | Range | Runs | Date | Run | Finding |
 |---|---|---|---|---|---|---|---|---|---|---|
@@ -385,33 +393,36 @@ ELI5: Everything behind the tables above, including the setups that were not the
 | median | oMLX 0.8.1 with its kernels, DSpark draft on, default depth, reply is reasoning text, older release | temperature 1.0, top-p 1.0 | 4K mixed | 512 | 65.9 | 59.2 to 67.7 | 5 | 2026-11-21 | `a3cf6857c4b5` | [14](findings/14_inkling2_mini_omlx_081) |
 | median | oMLX 0.8.2 with its kernels, DSpark draft on, default depth, reply is reasoning text, third start, older release | temperature 1.0, top-p 1.0 | 4K mixed | 512 | 60.3 | 50.8 to 72.2 | 5 | 2026-11-22 | `a7944f4eab8a` | [16](findings/16_omlx_082_refresh) |
 | median | oMLX 0.8.1 with its kernels, DSpark draft off, reply is reasoning text | temperature 1.0, top-p 1.0 | 4K mixed | 512 | 54.4 | 54.3 to 54.6 | 5 | 2026-11-21 | `fe2a52ddebd0` | [14](findings/14_inkling2_mini_omlx_081) |
+| code, own sampler | oMLX 0.8.3 with its kernels, DSpark draft on, default depth, reply is reasoning text, default thinking effort | temperature 1.0, top-p 1.0 | 4K code | 512 | 84.8 | 83.2 to 95.0 | 5 | 2026-11-25 | `7e7d1190cde0` | [40](findings/40_code_column) |
 
 </details>
 
 <details>
-<summary><b>Inkling 2 Mini, oQ3e</b>, 3 setups</summary>
+<summary><b>Inkling 2 Mini, oQ3e</b>, 4 setups</summary>
 
 | Kind | Engine and setup | Sampler | Prompt | Reply tokens | Decode tok/s | Range | Runs | Date | Run | Finding |
 |---|---|---|---|---|---|---|---|---|---|---|
 | max | oMLX 0.8.1 with its kernels, DSpark draft on, default depth, reply is reasoning text | greedy, temperature 0 | 4K code | 2,048 | 105.1 | 92.2 to 111.9 | 5 | 2026-11-21 | `472bfd081962` | [14](findings/14_inkling2_mini_omlx_081) |
 | max | oMLX 0.8.1 with its kernels, DSpark draft on, default depth, reply is reasoning text | greedy, temperature 0 | 1K code | 2,048 | 100.6 | 87.6 to 105.7 | 5 | 2026-11-21 | `472bfd081962` | [14](findings/14_inkling2_mini_omlx_081) |
 | median | oMLX 0.8.1 with its kernels, DSpark draft on, default depth, reply is reasoning text | temperature 1.0, top-p 1.0 | 4K mixed | 512 | 67.1 | 61.3 to 83.1 | 5 | 2026-11-21 | `472bfd081962` | [14](findings/14_inkling2_mini_omlx_081) |
+| code, own sampler | oMLX 0.8.3 with its kernels, DSpark draft on, default depth, reply is reasoning text | temperature 1.0, top-p 1.0 | 4K code | 512 | 90.0 | 89.5 to 105.3 | 5 | 2026-11-25 | `273cb2e18022` | [40](findings/40_code_column) |
 
 </details>
 
 <details>
-<summary><b>Inkling 2 Mini, maker's release</b>, 3 setups</summary>
+<summary><b>Inkling 2 Mini, maker's release</b>, 4 setups</summary>
 
 | Kind | Engine and setup | Sampler | Prompt | Reply tokens | Decode tok/s | Range | Runs | Date | Run | Finding |
 |---|---|---|---|---|---|---|---|---|---|---|
 | max | Ollama 0.40.17, MTP drafter on, as in Ollama's library model, Ollama's default thinking (no thinking field, effort 0.9), reply is reasoning text, sampler adds Ollama's default top-k 40 | greedy, temperature 0 | 4K code | 2,048 | 82.3 | 70.6 to 87.7 | 5 | 2026-11-23 | `b5f573f87f3c` | [31](findings/31_inkling2_mini_ollama_04017) |
 | max | Ollama 0.40.17, MTP drafter on, as in Ollama's library model, Ollama's default thinking (no thinking field, effort 0.9), reply is reasoning text, sampler adds Ollama's default top-k 40 | greedy, temperature 0 | 1K code | 2,048 | 76.6 | 71.5 to 88.4 | 5 | 2026-11-23 | `b5f573f87f3c` | [31](findings/31_inkling2_mini_ollama_04017) |
 | median | Ollama 0.40.17, MTP drafter on, as in Ollama's library model, Ollama's default thinking (no thinking field, effort 0.9), reply is reasoning text, sampler adds Ollama's default top-k 40 | temperature 1.0, top-p 1.0 | 4K mixed | 512 | 61.7 | 51.2 to 68.4 | 5 | 2026-11-23 | `b5f573f87f3c` | [31](findings/31_inkling2_mini_ollama_04017) |
+| code, own sampler | Ollama 0.40.17, MTP drafter on, as in Ollama's library model, Ollama's default thinking, reply is reasoning text | temperature 1.0, top-p 1.0 | 4K code | 512 | 67.1 | 56.6 to 70.1 | 5 | 2026-11-25 | `46ea0f5249c9` | [40](findings/40_code_column) |
 
 </details>
 
 <details>
-<summary><b>Inkling 2 Mini, SQ-20</b>, 6 setups</summary>
+<summary><b>Inkling 2 Mini, SQ-20</b>, 8 setups</summary>
 
 | Kind | Engine and setup | Sampler | Prompt | Reply tokens | Decode tok/s | Range | Runs | Date | Run | Finding |
 |---|---|---|---|---|---|---|---|---|---|---|
@@ -421,17 +432,20 @@ ELI5: Everything behind the tables above, including the setups that were not the
 | max | Strata 0.2.20, Strata's own pack, drafting off, engine built from source, thinking off (effort none), reply is answer text | greedy, temperature 0 | 4K code | 2,048 | 59.1 | 58.7 to 60.3 | 5 | 2026-11-23 | `43be61155ecd` | [30](findings/30_inkling2_mini_strata_0220) |
 | median | Strata 0.2.20, Strata's own pack, drafting off, engine built from source, thinking off (effort none), reply is answer text | temperature 1.0, top-p 1.0 | 4K mixed | 512 | 59.3 | 59.0 to 59.4 | 5 | 2026-11-23 | `43be61155ecd` | [30](findings/30_inkling2_mini_strata_0220) |
 | median | Strata 0.2.20, Strata's own pack, DSpark drafter on, setup's config, engine built from source, thinking off (effort none), reply is answer text | temperature 1.0, top-p 1.0 | 4K mixed | 512 | 37.7 | 35.6 to 40.3 | 5 | 2026-11-23 | `acb7355827b4` | [30](findings/30_inkling2_mini_strata_0220) |
+| code, own sampler | Strata 0.2.20, Strata's own pack, drafting off, thinking off (effort none), reply is answer text | temperature 1.0, top-p 1.0 | 4K code | 512 | 58.6 | 58.2 to 59.1 | 5 | 2026-11-25 | `1191fa929251` | [40](findings/40_code_column) |
+| code, own sampler | Strata 0.2.20, Strata's own pack, DSpark drafter on, setup's config, thinking off (effort none), reply is answer text | temperature 1.0, top-p 1.0 | 4K code | 512 | 45.1 | 39.8 to 59.4 | 5 | 2026-11-25 | `b62f035fb6e4` | [40](findings/40_code_column) |
 
 </details>
 
 <details>
-<summary><b>Inkling 2 Mini, UD-Q8_K_XL</b>, 3 setups</summary>
+<summary><b>Inkling 2 Mini, UD-Q8_K_XL</b>, 4 setups</summary>
 
 | Kind | Engine and setup | Sampler | Prompt | Reply tokens | Decode tok/s | Range | Runs | Date | Run | Finding |
 |---|---|---|---|---|---|---|---|---|---|---|
 | max | Strata 0.2.20, Unsloth's GGUF, drafting off (this build refused the DSpark file), engine built from source, thinking off (effort none), reply is answer text | greedy, temperature 0 | 1K code | 2,048 | 60.1 | 59.3 to 60.5 | 5 | 2026-11-23 | `c7ce703a276f` | [30](findings/30_inkling2_mini_strata_0220) |
 | max | Strata 0.2.20, Unsloth's GGUF, drafting off (this build refused the DSpark file), engine built from source, thinking off (effort none), reply is answer text | greedy, temperature 0 | 4K code | 2,048 | 58.4 | 57.4 to 58.7 | 5 | 2026-11-23 | `c7ce703a276f` | [30](findings/30_inkling2_mini_strata_0220) |
 | median | Strata 0.2.20, Unsloth's GGUF, drafting off (this build refused the DSpark file), engine built from source, thinking off (effort none), reply is answer text | temperature 1.0, top-p 1.0 | 4K mixed | 512 | 58.2 | 58.0 to 59.5 | 5 | 2026-11-23 | `c7ce703a276f` | [30](findings/30_inkling2_mini_strata_0220) |
+| code, own sampler | Strata 0.2.20, Unsloth's GGUF, drafting off, thinking off (effort none), reply is answer text | temperature 1.0, top-p 1.0 | 4K code | 512 | 57.2 | 56.7 to 57.8 | 5 | 2026-11-25 | `488075759a6c` | [40](findings/40_code_column) |
 
 </details>
 
@@ -447,7 +461,7 @@ ELI5: Everything behind the tables above, including the setups that were not the
 </details>
 
 <details>
-<summary><b>GLM-5.3 Flash, 4-bit</b>, 28 setups</summary>
+<summary><b>GLM-5.3 Flash, 4-bit</b>, 29 setups</summary>
 
 | Kind | Engine and setup | Sampler | Prompt | Reply tokens | Decode tok/s | Range | Runs | Date | Run | Finding |
 |---|---|---|---|---|---|---|---|---|---|---|
@@ -479,6 +493,7 @@ ELI5: Everything behind the tables above, including the setups that were not the
 | median | TensorFold 1.3.3, MTP drafts, thinking off, older release | temperature 1.0, top-p 0.95 | 4K mixed | 512 | 79.8 | 72.6 to 89.0 | 5 | 2026-11-22 | `3a880091476a` | [19](findings/19_tensorfold_133_refresh) |
 | median | TensorFold 1.3.4, MTP drafts, thinking off | temperature 1.0, top-p 0.95 | 4K mixed | 512 | 78.5 | 70.8 to 86.4 | 5 | 2026-11-23 | `5d827a9f83a1` | [27](findings/27_tensorfold_134_refresh) |
 | median | oMLX 0.8.1 with its kernels, MTP on, default depth, reply is reasoning text | temperature 1.0, top-p 0.95 | 4K mixed | 512 | 76.8 | 68.9 to 78.3 | 5 | 2026-11-21 | `4f9da10c3691` | [15](findings/15_glm53_flash_two_builds) |
+| code, own sampler | TensorFold 1.3.4, DFlash2 draft model (incoai), thinking off | temperature 1.0, top-p 0.95 | 4K code | 512 | 87.6 | 84.7 to 98.7 | 5 | 2026-11-25 | `df9d5aad61a8` | [40](findings/40_code_column) |
 
 </details>
 
@@ -534,7 +549,7 @@ ELI5: Everything behind the tables above, including the setups that were not the
 </details>
 
 <details>
-<summary><b>DeepSeek V4.1 Flash 1017, maker's files</b>, 19 setups</summary>
+<summary><b>DeepSeek V4.1 Flash 1017, maker's files</b>, 20 setups</summary>
 
 | Kind | Engine and setup | Sampler | Prompt | Reply tokens | Decode tok/s | Range | Runs | Date | Run | Finding |
 |---|---|---|---|---|---|---|---|---|---|---|
@@ -557,11 +572,12 @@ ELI5: Everything behind the tables above, including the setups that were not the
 | median | TensorFold 1.3.3, drafts at defaults (DSpark and copies), second start, older release | temperature 1.0, top-p 1.0 | 4K mixed | 512 | 74.5 | 71.2 to 75.6 | 5 | 2026-11-22 | `d690d6b1059b` | [18](findings/18_dsv41_tensorfold_133) |
 | median | TensorFold 1.3.4, drafts at defaults (DSpark and copies), second start | temperature 1.0, top-p 1.0 | 4K mixed | 512 | 69.9 | 68.6 to 76.2 | 5 | 2026-11-23 | `33d0baeed473` | [27](findings/27_tensorfold_134_refresh) |
 | median | TensorFold 1.3.0, drafts at defaults (DSpark and copies), older release | temperature 1.0, top-p 1.0 | 4K mixed | 512 | 45.7 | 44.1 to 47.2 | 5 | 2026-11-22 | `5b618f8c8234` | [18](findings/18_dsv41_tensorfold_133) |
+| code, own sampler | TensorFold 1.3.4, drafts at defaults (DSpark and copies), thinking off | temperature 1.0, top-p 1.0 | 4K code | 512 | 90.9 | 86.6 to 105.8 | 5 | 2026-11-25 | `35a1123068ce` | [40](findings/40_code_column) |
 
 </details>
 
 <details>
-<summary><b>DeepSeek V4.1 Flash 1017, Lossless</b>, 12 setups</summary>
+<summary><b>DeepSeek V4.1 Flash 1017, Lossless</b>, 13 setups</summary>
 
 | Kind | Engine and setup | Sampler | Prompt | Reply tokens | Decode tok/s | Range | Runs | Date | Run | Finding |
 |---|---|---|---|---|---|---|---|---|---|---|
@@ -577,6 +593,7 @@ ELI5: Everything behind the tables above, including the setups that were not the
 | median | mlx-serve 26.11.3, warmup-full, lm head kept dense by the log (MLX_SERVE_DSV41_HEAD8=0), --no-decode-attn-quant, prompt lookup drafts on | temperature 1.0, top-p 1.0 | 4K mixed | 512 | 57.9 | 49.7 to 59.2 | 5 | 2026-11-21 | `18b1cdba2631` | [8](findings/08_dsv41_mlxserve_26113) |
 | median | mlx-serve 26.11.3, warmup-full, defaults, first start, lm head 8-bit by the log, prompt lookup drafts on | temperature 1.0, top-p 1.0 | 4K mixed | 512 | 57.5 | 50.9 to 65.6 | 5 | 2026-11-20 | `ddee83910540` | [8](findings/08_dsv41_mlxserve_26113) |
 | median | mlx-serve 26.11.3, warmup-full, defaults with --no-decode-attn-quant, second start, lm head 8-bit by the log, prompt lookup drafts on | temperature 1.0, top-p 1.0 | 4K mixed | 512 | 56.4 | 52.6 to 61.4 | 5 | 2026-11-20 | `4d0f49b9ac43` | [8](findings/08_dsv41_mlxserve_26113) |
+| code, own sampler | mlx-serve 26.11.3, the median line's arm (mlx-serve-warm-exact), defaults, lm head 8-bit, thinking off | temperature 1.0, top-p 1.0 | 4K code | 512 | 69.2 | 59.1 to 89.5 | 5 | 2026-11-25 | `1d2e394c0183` | [40](findings/40_code_column) |
 
 </details>
 
@@ -632,7 +649,7 @@ ELI5: Everything behind the tables above, including the setups that were not the
 </details>
 
 <details>
-<summary><b>Hy4-flash, 4-bit</b>, 21 setups</summary>
+<summary><b>Hy4-flash, 4-bit</b>, 22 setups</summary>
 
 | Kind | Engine and setup | Sampler | Prompt | Reply tokens | Decode tok/s | Range | Runs | Date | Run | Finding |
 |---|---|---|---|---|---|---|---|---|---|---|
@@ -657,6 +674,7 @@ ELI5: Everything behind the tables above, including the setups that were not the
 | median | TensorFold 1.3.4, DFly2 drafts on, thinking on, reply is reasoning text | temperature 0.9, top-p 1.0 | 4K mixed | 512 | 48.0 | 44.0 to 84.0 | 5 | 2026-11-23 | `3523a0e3371d` | [27](findings/27_tensorfold_134_refresh) |
 | median | TensorFold 1.3.3, DFly2 drafts on, thinking on, reply is reasoning text, older release | temperature 0.9, top-p 1.0 | 4K mixed | 512 | 44.2 | 43.3 to 71.6 | 5 | 2026-11-22 | `9e3d9e5dce53` | [19](findings/19_tensorfold_133_refresh) |
 | median | TensorFold 1.3.2, drafts off, thinking on, reply is reasoning text | temperature 0.9, top-p 1.0 | 4K mixed | 512 | 41.3 | 41.1 to 41.4 | 5 | 2026-11-21 | `df5b641735e6` | [10](findings/10_hy4_flash_tensorfold_132) |
+| code, own sampler | TensorFold 1.3.4, DFly2 drafts on, thinking on, reply is reasoning text | temperature 0.9, top-p 1.0 | 4K code | 512 | 47.6 | 44.4 to 52.7 | 5 | 2026-11-25 | `9e81bf39a949` | [40](findings/40_code_column) |
 
 </details>
 
@@ -709,19 +727,24 @@ ELI5: Everything behind the tables above, including the setups that were not the
 </details>
 
 <details>
-<summary><b>GLM-5.3, 4-bit</b>, 3 setups</summary>
+<summary><b>GLM-5.3, 4-bit</b>, 4 setups</summary>
 
 | Kind | Engine and setup | Sampler | Prompt | Reply tokens | Decode tok/s | Range | Runs | Date | Run | Finding |
 |---|---|---|---|---|---|---|---|---|---|---|
 | max | oMLX 0.8.0 with its kernels, MTP off, reply is reasoning text, 512-token replies | greedy, temperature 0 | 4K code | 512 | 24.6 | 24.5 to 24.7 | 5 | 2026-11-20 | `2641f174f97a` | [9](findings/09_omlx_080_four_models) |
 | median | oMLX 0.8.0 with its kernels, MTP off, reply is reasoning text | temperature 1.0, top-p 0.95 | 4K mixed | 512 | 24.5 | 24.5 to 24.5 | 5 | 2026-11-20 | `2641f174f97a` | [9](findings/09_omlx_080_four_models) |
 | median | oMLX 0.7.3 with its kernels, MTP off, older release | temperature 1.0, top-p 0.95 | 4K mixed | 512 | 24.3 | 24.2 to 24.3 | 5 | 2026-11-17 | `626f0c1b4ad9` | [2](findings/02_ten_models_4k_to_1m) |
+| code, own sampler | oMLX 0.8.3 with its kernels, MTP off, no draft lines in the server log, reply is reasoning text | temperature 1.0, top-p 0.95 | 4K code | 512 | 24.4 | 24.3 to 24.5 | 5 | 2026-11-25 | `81b568ace86d` | [40](findings/40_code_column) |
 
 </details>
 
 ## Findings
 
 ELI5: Each finding is one question, one run of an hour or two, and one report. Newest first. Click a title for the full report and the raw rows.
+
+### 40. [The code column, 17 models writing new code with their own sampler](findings/40_code_column)
+
+Runs of 25 Nov 2026. A new column on the summary, how fast each model writes new code with its own recommended sampler, the setup closest to a coding agent. Qwen3.8 27B 4-bit on TensorFold 1.3.4 wrote 196.2 tok/s and Qwen3.8 Flash Next 4-bit 165.5. DeepSeek V4.1 Flash wrote 90.9 on TensorFold 1.3.4 and 69.2 on mlx-serve 26.11.3. Inkling 2 Mini wrote 127.2 on MTPLX 2.13.3, as reasoning text. 4K prompt, 512-token replies, middle of 5 runs.
 
 ### 39. [Inkling 2 Mini on MTPLX 2.13.3, the copy task 1.1 times as fast and new code level](findings/39_inkling2_mini_mtplx_2133)
 
