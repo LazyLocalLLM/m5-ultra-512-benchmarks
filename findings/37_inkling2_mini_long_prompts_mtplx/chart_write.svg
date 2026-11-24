@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" font-family='system-ui, -apple-system, "Segoe UI", sans-serif'>
+<rect width="1600" height="900" fill="#1a1a19"/>
+<rect width="1600" height="10" fill="#f5c400"/>
+<text x="70.0" y="110.0" font-size="56" font-weight="650" fill="#f0efec" text-anchor="start">Inkling 2 Mini on MTPLX 2.13.2, long prompts</text>
+<text x="70.0" y="162.0" font-size="30" font-weight="400" fill="#c3c2b7" text-anchor="start">Writing speed after the prompt, greedy, new code, 512-token replies. Higher is faster.</text>
+<rect x="70.0" y="226" width="26" height="26" rx="4" fill="#898781"/>
+<text x="108.0" y="248.0" font-size="28" font-weight="400" fill="#c3c2b7" text-anchor="start">Draft head off (--no-mtp)</text>
+<rect x="549.5" y="226" width="26" height="26" rx="4" fill="#3987e5"/>
+<text x="587.5" y="248.0" font-size="28" font-weight="400" fill="#c3c2b7" text-anchor="start">Draft head on, its default</text>
+<line x1="300" y1="300" x2="300" y2="770" stroke="#383835" stroke-width="2"/>
+<text x="276.0" y="344.6" font-size="32" font-weight="500" fill="#f0efec" text-anchor="end">19K tokens</text>
+<path d="M300.0,320.0 h747.5 a5.8,5.8 0 0 1 5.8,5.8 v0.0 a5.8,5.8 0 0 1 -5.8,5.8 h-747.5 z" fill="#898781"/>
+<text x="1067.3" y="336.8" font-size="32" font-weight="400" fill="#c3c2b7" text-anchor="start">85.3</text>
+<path d="M300.0,335.6 h1074.2 a5.8,5.8 0 0 1 5.8,5.8 v0.0 a5.8,5.8 0 0 1 -5.8,5.8 h-1074.2 z" fill="#3987e5"/>
+<text x="1394.0" y="352.4" font-size="32" font-weight="650" fill="#f0efec" text-anchor="start">122.3</text>
+<text x="276.0" y="411.7" font-size="32" font-weight="500" fill="#f0efec" text-anchor="end">43K tokens</text>
+<path d="M300.0,387.1 h694.5 a5.8,5.8 0 0 1 5.8,5.8 v0.0 a5.8,5.8 0 0 1 -5.8,5.8 h-694.5 z" fill="#898781"/>
+<text x="1014.3" y="403.9" font-size="32" font-weight="400" fill="#c3c2b7" text-anchor="start">79.3</text>
+<path d="M300.0,402.7 h942.6 a5.8,5.8 0 0 1 5.8,5.8 v0.0 a5.8,5.8 0 0 1 -5.8,5.8 h-942.6 z" fill="#3987e5"/>
+<text x="1262.4" y="419.5" font-size="32" font-weight="650" fill="#f0efec" text-anchor="start">107.4</text>
+<text x="276.0" y="478.9" font-size="32" font-weight="500" fill="#f0efec" text-anchor="end">84K tokens</text>
+<path d="M300.0,454.3 h621.2 a5.8,5.8 0 0 1 5.8,5.8 v0.0 a5.8,5.8 0 0 1 -5.8,5.8 h-621.2 z" fill="#898781"/>
+<text x="941.0" y="471.1" font-size="32" font-weight="400" fill="#c3c2b7" text-anchor="start">71.0</text>
+<path d="M300.0,469.9 h864.9 a5.8,5.8 0 0 1 5.8,5.8 v0.0 a5.8,5.8 0 0 1 -5.8,5.8 h-864.9 z" fill="#3987e5"/>
+<text x="1184.7" y="486.6" font-size="32" font-weight="650" fill="#f0efec" text-anchor="start">98.6</text>
+<text x="276.0" y="546.0" font-size="32" font-weight="500" fill="#f0efec" text-anchor="end">170K tokens</text>
+<path d="M300.0,521.4 h509.9 a5.8,5.8 0 0 1 5.8,5.8 v0.0 a5.8,5.8 0 0 1 -5.8,5.8 h-509.9 z" fill="#898781"/>
+<text x="829.7" y="538.2" font-size="32" font-weight="400" fill="#c3c2b7" text-anchor="start">58.4</text>
+<path d="M300.0,537.0 h750.1 a5.8,5.8 0 0 1 5.8,5.8 v0.0 a5.8,5.8 0 0 1 -5.8,5.8 h-750.1 z" fill="#3987e5"/>
+<text x="1069.9" y="553.8" font-size="32" font-weight="650" fill="#f0efec" text-anchor="start">85.6</text>
+<text x="276.0" y="613.1" font-size="32" font-weight="500" fill="#f0efec" text-anchor="end">255K tokens</text>
+<path d="M300.0,588.6 h429.6 a5.8,5.8 0 0 1 5.8,5.8 v0.0 a5.8,5.8 0 0 1 -5.8,5.8 h-429.6 z" fill="#898781"/>
+<text x="749.4" y="605.4" font-size="32" font-weight="400" fill="#c3c2b7" text-anchor="start">49.3</text>
+<path d="M300.0,604.1 h659.2 a5.8,5.8 0 0 1 5.8,5.8 v0.0 a5.8,5.8 0 0 1 -5.8,5.8 h-659.2 z" fill="#3987e5"/>
+<text x="979.0" y="620.9" font-size="32" font-weight="650" fill="#f0efec" text-anchor="start">75.3</text>
+<text x="276.0" y="680.3" font-size="32" font-weight="500" fill="#f0efec" text-anchor="end">514K tokens</text>
+<path d="M300.0,655.7 h297.1 a5.8,5.8 0 0 1 5.8,5.8 v0.0 a5.8,5.8 0 0 1 -5.8,5.8 h-297.1 z" fill="#898781"/>
+<text x="616.9" y="672.5" font-size="32" font-weight="400" fill="#c3c2b7" text-anchor="start">34.3</text>
+<path d="M300.0,671.3 h414.6 a5.8,5.8 0 0 1 5.8,5.8 v0.0 a5.8,5.8 0 0 1 -5.8,5.8 h-414.6 z" fill="#3987e5"/>
+<text x="734.3" y="688.1" font-size="32" font-weight="650" fill="#f0efec" text-anchor="start">47.6</text>
+<text x="276.0" y="747.4" font-size="32" font-weight="500" fill="#f0efec" text-anchor="end">989K tokens</text>
+<path d="M300.0,722.9 h187.6 a5.8,5.8 0 0 1 5.8,5.8 v0.0 a5.8,5.8 0 0 1 -5.8,5.8 h-187.6 z" fill="#898781"/>
+<text x="507.4" y="739.6" font-size="32" font-weight="400" fill="#c3c2b7" text-anchor="start">21.9</text>
+<path d="M300.0,738.4 h250.3 a5.8,5.8 0 0 1 5.8,5.8 v0.0 a5.8,5.8 0 0 1 -5.8,5.8 h-250.3 z" fill="#3987e5"/>
+<text x="570.1" y="755.2" font-size="32" font-weight="650" fill="#f0efec" text-anchor="start">29.0</text>
+<text x="1530.0" y="282.0" font-size="24" font-weight="400" fill="#898781" text-anchor="end">tok/s</text>
+<text x="70.0" y="848.0" font-size="23" font-weight="400" fill="#898781" text-anchor="start">MTPLX 2.13.2, Bare Speed pack, Sustained mode. Middle of 3 to 5 runs a bar, 24 Nov 2026 SGT.</text>
+</svg>

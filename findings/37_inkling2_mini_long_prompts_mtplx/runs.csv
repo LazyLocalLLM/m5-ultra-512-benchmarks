@@ -1,0 +1,13 @@
+run_id,started,source,machine,engine,engine_version,model,family,weights,settings,thinking,notes,os_version,power_mode,build_id,format,bits,effort,sampling,corpus_id,tool_version,engine_commit,no_seed,quick
+ab2566f12c50,2026-11-24 05:15:42 SGT,measured here,"Apple M5 Ultra, 80-core GPU, 512 GB, macOS 27.2",mtplx,mtplx 2.13.2,inkling2-mini-mtplx-bare-speed,Inkling 2 Mini,Youssofal/Inkling-2-Mini-MTPLX-Bare-Speed,"MTPLX 2.13.2, defaults, the pack's draft head, pack inkling2-mini-mtplx-bare-speed, thinking server, ctx 262144, parallel 1, long prompts, greedy, code",server,,"ProductName:		macOS
+ProductVersion:		27.2
+BuildVersion:		26B118",low power mode off,inkling2-mini-mtplx-bare-speed,mlx,"Bare Speed, 4-bit",,"{""temperature"": 0}",23f31f1d8feb,2.0,3890be556160af48887d5bfbf5304c4ad5b9417f,0,0
+dd498489c8a1,2026-11-24 05:49:54 SGT,measured here,"Apple M5 Ultra, 80-core GPU, 512 GB, macOS 27.2",mtplx-nomtp,mtplx 2.13.2,inkling2-mini-mtplx-bare-speed,Inkling 2 Mini,Youssofal/Inkling-2-Mini-MTPLX-Bare-Speed,"MTPLX 2.13.2, --no-mtp, drafts off, pack inkling2-mini-mtplx-bare-speed, thinking server, ctx 262144, parallel 1, long prompts, greedy, code",server,,"ProductName:		macOS
+ProductVersion:		27.2
+BuildVersion:		26B118",low power mode off,inkling2-mini-mtplx-bare-speed,mlx,"Bare Speed, 4-bit",,"{""temperature"": 0}",23f31f1d8feb,2.0,3890be556160af48887d5bfbf5304c4ad5b9417f,0,0
+a1cdd8e853df,2026-11-24 06:27:09 SGT,measured here,"Apple M5 Ultra, 80-core GPU, 512 GB, macOS 27.2",mtplx,mtplx 2.13.2,inkling2-mini-mtplx-bare-speed,Inkling 2 Mini,Youssofal/Inkling-2-Mini-MTPLX-Bare-Speed,"MTPLX 2.13.2, defaults, the pack's draft head, pack inkling2-mini-mtplx-bare-speed, thinking server, ctx 1048576, parallel 1, prompts near 1M, greedy, code",server,,"ProductName:		macOS
+ProductVersion:		27.2
+BuildVersion:		26B118",low power mode off,inkling2-mini-mtplx-bare-speed,mlx,"Bare Speed, 4-bit",,"{""temperature"": 0}",23f31f1d8feb,2.0,3890be556160af48887d5bfbf5304c4ad5b9417f,0,0
+3d10d9bb0602,2026-11-24 08:31:56 SGT,measured here,"Apple M5 Ultra, 80-core GPU, 512 GB, macOS 27.2",mtplx-nomtp,mtplx 2.13.2,inkling2-mini-mtplx-bare-speed,Inkling 2 Mini,Youssofal/Inkling-2-Mini-MTPLX-Bare-Speed,"MTPLX 2.13.2, --no-mtp, drafts off, pack inkling2-mini-mtplx-bare-speed, thinking server, ctx 1048576, parallel 1, prompts near 1M, greedy, code",server,,"ProductName:		macOS
+ProductVersion:		27.2
+BuildVersion:		26B118",low power mode off,inkling2-mini-mtplx-bare-speed,mlx,"Bare Speed, 4-bit",,"{""temperature"": 0}",23f31f1d8feb,2.0,3890be556160af48887d5bfbf5304c4ad5b9417f,0,0

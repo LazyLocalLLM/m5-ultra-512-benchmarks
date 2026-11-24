@@ -14,8 +14,8 @@ Updated 23 Nov 2026 20:05 SGT. Decode speed in tok/s, one user, one Mac.
 - **Fastest in daily use.** Qwen3.8 27B, 4-bit wrote 149.6 tok/s on TensorFold 1.3.4. Next are Qwen3.8 Flash Next, 4-bit at 128.4 and Qwen3.8 Flash Next, IQ3_S at 126.0.
 - **Two speeds per model.** Max is greedy at temperature 0 while the model writes new code. Median is the model's own sampler on mixed text, which is closer to daily use.
 - **Prefill too.** The table also has how fast each model read a cold prompt, with the prompt size.
-- **Coverage.** 28 models, 422 setups and 36 findings.
-- **Newest finding.** Finding 36, 24 Nov 2026. [MiniMax H3 video on h3.c main 8974cc05, antirez's engine in C and Metal, seconds per clip](findings/36_minimax_h3_video_h3c).
+- **Coverage.** 28 models, 422 setups and 37 findings.
+- **Newest finding.** Finding 37, 24 Nov 2026. [Inkling 2 Mini on MTPLX 2.13.2, prompts near 1M tokens, draft head on and off](findings/37_inkling2_mini_long_prompts_mtplx).
 - **Check it.** Every figure links to a folder with the rows it came from. If I have set an engine up wrong, [open an issue](https://github.com/LazyLocalLLM/m5-ultra-512-benchmarks/issues).
 
 ## Benchmark summary
@@ -735,6 +735,17 @@ ELI5: Everything behind the tables above, including the setups that were not the
 ## Findings
 
 ELI5: Each finding is one question, one run of an hour or two, and one report. Newest first. Click a title for the full report and the raw rows.
+
+### 37. [Inkling 2 Mini on MTPLX 2.13.2, prompts near 1M tokens, draft head on and off](findings/37_inkling2_mini_long_prompts_mtplx)
+
+Runs of 24 Nov 2026. MTPLX 2.13.2 read a 988,698-token prompt in 860.8 s, about 14 minutes, then wrote 29.0 tok/s with Inkling 2 Mini's draft head on. With the head off it read for 908.3 s and wrote 21.9. Greedy code, middle of 3 runs. At 18,852 tokens it read at 4,908 tok/s and wrote 122.3 and 85.3. The draft head was faster on all 56 same-text pairs.
+
+<details>
+<summary>Chart</summary>
+
+![Bar chart of writing speed after the prompt for Inkling 2 Mini on MTPLX 2.13.2, greedy code. At 19K, 43K, 84K, 170K, 255K, 514K and 989K tokens, the draft head off wrote 85.3, 79.3, 71.0, 58.4, 49.3, 34.3 and 21.9 tok/s, and the draft head on wrote 122.3, 107.4, 98.6, 85.6, 75.3, 47.6 and 29.0 tok/s.](findings/37_inkling2_mini_long_prompts_mtplx/chart_write.png)
+
+</details>
 
 ### 36. [MiniMax H3 video on h3.c main 8974cc05, antirez's engine in C and Metal, seconds per clip](findings/36_minimax_h3_video_h3c)
 
