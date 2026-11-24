@@ -14,8 +14,8 @@ Updated 23 Nov 2026 20:05 SGT. Decode speed in tok/s, one user, one Mac.
 - **Fastest in daily use.** Qwen3.8 27B, 4-bit wrote 149.6 tok/s on TensorFold 1.3.4. Next are Qwen3.8 Flash Next, 4-bit at 128.4 and Qwen3.8 Flash Next, IQ3_S at 126.0.
 - **Two speeds per model.** Max is greedy at temperature 0 while the model writes new code. Median is the model's own sampler on mixed text, which is closer to daily use.
 - **Prefill too.** The table also has how fast each model read a cold prompt, with the prompt size.
-- **Coverage.** 28 models, 422 setups and 37 findings.
-- **Newest finding.** Finding 37, 24 Nov 2026. [Inkling 2 Mini on MTPLX 2.13.2, prompts near 1M tokens, draft head on and off](findings/37_inkling2_mini_long_prompts_mtplx).
+- **Coverage.** 28 models, 422 setups and 38 findings.
+- **Newest finding.** Finding 38, 24 Nov 2026. [Inkling 2 Mini on Strata 0.2.20, prompts up to 255K tokens, DSpark drafter on and off](findings/38_inkling2_mini_long_prompts_strata).
 - **Check it.** Every figure links to a folder with the rows it came from. If I have set an engine up wrong, [open an issue](https://github.com/LazyLocalLLM/m5-ultra-512-benchmarks/issues).
 
 ## Benchmark summary
@@ -735,6 +735,17 @@ ELI5: Everything behind the tables above, including the setups that were not the
 ## Findings
 
 ELI5: Each finding is one question, one run of an hour or two, and one report. Newest first. Click a title for the full report and the raw rows.
+
+### 38. [Inkling 2 Mini on Strata 0.2.20, prompts up to 255K tokens, DSpark drafter on and off](findings/38_inkling2_mini_long_prompts_strata)
+
+Runs of 24 Nov 2026. Strata 0.2.20 read a 255,376-token prompt in 207.1 s, 1,234 tok/s, on Inkling 2 Mini with Strata's own SQ-20 pack, and an 18,849-token one in 6.0 s, 3,117 tok/s. With the model's own sampler its DSpark drafter was slower than drafting off at every length, 12.2 against 18.6 tok/s at 242,129 tokens, on 25 of 25 pairs, as finding 30 found at 4K. On greedy code it was faster on 15 of 15 pairs where both replies ran full length, and on 19 of 25 over all replies.
+
+<details>
+<summary>Chart</summary>
+
+![Bar chart of writing speed after the prompt for Inkling 2 Mini on Strata 0.2.20 with the model's own sampler on mixed text. At 20K, 40K, 82K, 163K and 242K tokens, drafting off wrote 51.9, 44.8, 34.7, 24.2 and 18.6 tok/s, and the DSpark drafter on wrote 34.1, 30.0, 22.6, 16.6 and 12.2 tok/s.](findings/38_inkling2_mini_long_prompts_strata/chart_write.png)
+
+</details>
 
 ### 37. [Inkling 2 Mini on MTPLX 2.13.2, prompts near 1M tokens, draft head on and off](findings/37_inkling2_mini_long_prompts_mtplx)
 

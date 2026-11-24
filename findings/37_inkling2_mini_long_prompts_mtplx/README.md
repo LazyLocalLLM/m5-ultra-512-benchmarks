@@ -2,6 +2,8 @@
 
 By Local LLM L-Plate. Follow [@LazyLocalLLM on X](https://x.com/LazyLocalLLM) for new benchmarks.
 
+Updated on 24 Nov 2026 at 12:32 SGT with a link to finding 38, the same prompts on Strata.
+
 ELI5: [Finding 29](../29_inkling2_mini_mtplx_2132) timed Inkling 2 Mini on MTPLX 2.13.2 with prompts of 1K and 4K tokens. This page asks what happens when the prompt is long. I gave it new code and mixed text from about 19K tokens up to 988,698, near the model's limit of 1,048,576, with its draft head on and off. Two things are timed. How long it takes to read the prompt, and how fast it writes after that.
 
 **MTPLX 2.13.2 read a 988,698-token prompt in 860.8 s, about 14 minutes, then wrote 29.0 tok/s with Inkling 2 Mini's draft head on.** With the head off it read for 908.3 s and wrote 21.9. Greedy code, middle of 3 runs each, 24 Nov 2026 SGT. At 18,852 tokens the same arms wrote 122.3 and 85.3.
@@ -60,7 +62,7 @@ ELI5: Before it writes a word, the model has to read the whole prompt. Near 1M t
 
 - **Reading slowed as the prompt grew.** 4,908 tok/s at 18,852 tokens, 3,322 at 169,676, 2,778 at 255,377, 1,840 at 514,313 and 1,149 at 988,698, greedy code with the draft head on.
 - **At 988,698 tokens, reading was 98% of the wait.** In each of the 3 draft head on runs, the first token came at 97.9% of the time to the end of the reply. The middle run read for 860.8 s of 879.6 s.
-- **This page cannot say how much of the slowdown is the model and how much is MTPLX.** No other engine has run these prompts here yet.
+- **This page cannot say how much of the slowdown is the model and how much is MTPLX.** [Finding 38](../38_inkling2_mini_long_prompts_strata) runs the same prompts up to 255,376 tokens on Strata 0.2.20.
 - **Nothing was cached.** Every request opens with its own random session line, and every timed request reused 0 cached tokens, by MTPLX's own count.
 
 ## The setup
