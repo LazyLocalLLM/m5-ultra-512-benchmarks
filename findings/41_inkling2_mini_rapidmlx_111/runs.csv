@@ -1,0 +1,25 @@
+run_id,started,source,machine,engine,engine_version,model,family,weights,settings,thinking,notes,os_version,power_mode,build_id,format,bits,effort,sampling,corpus_id,tool_version,engine_commit,no_seed,quick
+52f2f183c136,2026-11-25 08:27:40 SGT,measured here,"Apple M5 Ultra, 80-core GPU, 512 GB, macOS 27.2",rapid-mlx-cat,rapid-mlx 1.1.1,inkling-2-mini-4bit,Inkling 2 Mini,mlx-community/Inkling-2-Mini-4bit,"Rapid-MLX 1.1.1, the catalog's settings, no drafts, same-morning start a, catalog name inkling-2-mini-4bit, thinking off, ctx 131072, parallel 1, sampled, mixed",off,,"ProductName:		macOS
+ProductVersion:		27.2
+BuildVersion:		26B118",low power mode off,inkling2-mini-rapid-4bit,mlx,4-bit,,"{""temperature"": 1.0, ""top_p"": 1.0, ""reasoning_effort"": ""none""}",23f31f1d8feb,2.0,,0,0
+f8e73c2b088a,2026-11-25 08:39:12 SGT,measured here,"Apple M5 Ultra, 80-core GPU, 512 GB, macOS 27.2",rapid-mlx-cat-110,rapid-mlx 1.1.0,inkling-2-mini-4bit,Inkling 2 Mini,mlx-community/Inkling-2-Mini-4bit,"Rapid-MLX 1.1.0, the catalog's settings, no drafts, same-morning start a, catalog name inkling-2-mini-4bit, thinking off, ctx 131072, parallel 1, sampled, mixed",off,,"ProductName:		macOS
+ProductVersion:		27.2
+BuildVersion:		26B118",low power mode off,inkling2-mini-rapid-4bit,mlx,4-bit,,"{""temperature"": 1.0, ""top_p"": 1.0, ""reasoning_effort"": ""none""}",23f31f1d8feb,2.0,,0,0
+91224b33383b,2026-11-25 08:54:06 SGT,measured here,"Apple M5 Ultra, 80-core GPU, 512 GB, macOS 27.2",rapid-mlx-cat-110,rapid-mlx 1.1.0,inkling-2-mini-4bit,Inkling 2 Mini,mlx-community/Inkling-2-Mini-4bit,"Rapid-MLX 1.1.0, the catalog's settings, no drafts, same-morning start b, catalog name inkling-2-mini-4bit, thinking off, ctx 131072, parallel 1, sampled, mixed",off,,"ProductName:		macOS
+ProductVersion:		27.2
+BuildVersion:		26B118",low power mode off,inkling2-mini-rapid-4bit,mlx,4-bit,,"{""temperature"": 1.0, ""top_p"": 1.0, ""reasoning_effort"": ""none""}",23f31f1d8feb,2.0,,0,0
+da2de99a1514,2026-11-25 09:08:58 SGT,measured here,"Apple M5 Ultra, 80-core GPU, 512 GB, macOS 27.2",rapid-mlx-cat,rapid-mlx 1.1.1,inkling-2-mini-4bit,Inkling 2 Mini,mlx-community/Inkling-2-Mini-4bit,"Rapid-MLX 1.1.1, the catalog's settings, no drafts, same-morning start b, catalog name inkling-2-mini-4bit, thinking off, ctx 131072, parallel 1, sampled, mixed",off,,"ProductName:		macOS
+ProductVersion:		27.2
+BuildVersion:		26B118",low power mode off,inkling2-mini-rapid-4bit,mlx,4-bit,,"{""temperature"": 1.0, ""top_p"": 1.0, ""reasoning_effort"": ""none""}",23f31f1d8feb,2.0,,0,0
+cc97d644c0dc,2026-11-25 09:20:31 SGT,measured here,"Apple M5 Ultra, 80-core GPU, 512 GB, macOS 27.2",rapid-mlx-cat,rapid-mlx 1.1.1,inkling-2-mini-4bit,Inkling 2 Mini,mlx-community/Inkling-2-Mini-4bit,"Rapid-MLX 1.1.1, the catalog's settings, no drafts, thinking on, same-morning start a, catalog name inkling-2-mini-4bit, thinking on, ctx 131072, parallel 1, greedy, code",on,,"ProductName:		macOS
+ProductVersion:		27.2
+BuildVersion:		26B118",low power mode off,inkling2-mini-rapid-4bit,mlx,4-bit,,"{""temperature"": 0}",23f31f1d8feb,2.0,,0,0
+44590e9895ae,2026-11-25 09:25:07 SGT,measured here,"Apple M5 Ultra, 80-core GPU, 512 GB, macOS 27.2",rapid-mlx-cat-110,rapid-mlx 1.1.0,inkling-2-mini-4bit,Inkling 2 Mini,mlx-community/Inkling-2-Mini-4bit,"Rapid-MLX 1.1.0, the catalog's settings, no drafts, thinking on, same-morning start a, catalog name inkling-2-mini-4bit, thinking on, ctx 131072, parallel 1, greedy, code",on,,"ProductName:		macOS
+ProductVersion:		27.2
+BuildVersion:		26B118",low power mode off,inkling2-mini-rapid-4bit,mlx,4-bit,,"{""temperature"": 0}",23f31f1d8feb,2.0,,0,0
+de4844a016f7,2026-11-25 09:31:04 SGT,measured here,"Apple M5 Ultra, 80-core GPU, 512 GB, macOS 27.2",rapid-mlx-cat-110,rapid-mlx 1.1.0,inkling-2-mini-4bit,Inkling 2 Mini,mlx-community/Inkling-2-Mini-4bit,"Rapid-MLX 1.1.0, the catalog's settings, no drafts, thinking on, same-morning start b, catalog name inkling-2-mini-4bit, thinking on, ctx 131072, parallel 1, greedy, code",on,,"ProductName:		macOS
+ProductVersion:		27.2
+BuildVersion:		26B118",low power mode off,inkling2-mini-rapid-4bit,mlx,4-bit,,"{""temperature"": 0}",23f31f1d8feb,2.0,,0,0
+54c806b12992,2026-11-25 09:36:59 SGT,measured here,"Apple M5 Ultra, 80-core GPU, 512 GB, macOS 27.2",rapid-mlx-cat,rapid-mlx 1.1.1,inkling-2-mini-4bit,Inkling 2 Mini,mlx-community/Inkling-2-Mini-4bit,"Rapid-MLX 1.1.1, the catalog's settings, no drafts, thinking on, same-morning start b, catalog name inkling-2-mini-4bit, thinking on, ctx 131072, parallel 1, greedy, code",on,,"ProductName:		macOS
+ProductVersion:		27.2
+BuildVersion:		26B118",low power mode off,inkling2-mini-rapid-4bit,mlx,4-bit,,"{""temperature"": 0}",23f31f1d8feb,2.0,,0,0

@@ -8,14 +8,14 @@ ELI5: I'm a learner with one Mac Studio M5 Ultra 512 GB, and I time local AI mod
 
 ELI5: The page in seven lines. Every figure here is recomputed from the raw rows each time the page is built.
 
-Updated 25 Nov 2026 05:39 SGT. Decode speed in tok/s, one user, one Mac.
+Updated 2026-11-25 09:46 SGT. Decode speed in tok/s, one user, one Mac.
 
 - **Fastest on new code.** Qwen3.8 27B, 4-bit wrote 323.4 tok/s on TensorFold 1.3.4. Next are Qwen3.8 Flash Next, 4-bit at 211.5 and Qwen3.8 Flash Next, 6-bit at 201.3.
 - **Fastest in daily use.** Qwen3.8 27B, 4-bit wrote 149.6 tok/s on TensorFold 1.3.4. Next are Qwen3.8 Flash Next, 4-bit at 128.4 and Inkling 2 Mini, Bare Speed at 127.0 (reasoning text).
 - **Decode speeds.** Max is greedy at temperature 0 while the model writes new code. Median is the model's own sampler on mixed text, closer to daily use. Code is the model's own sampler on new code, closest to a coding agent, and is being filled in.
 - **Prefill too.** The table also has how fast each model read a cold prompt, with the prompt size.
-- **Coverage.** 28 models, 390 setups and 40 findings.
-- **Newest finding.** Finding 40, 25 Nov 2026. [The code column, 17 models writing new code with their own sampler](findings/40_code_column).
+- **Coverage.** 28 models, 394 setups and 41 findings.
+- **Newest finding.** Finding 41, 25 Nov 2026. [Inkling 2 Mini on Rapid-MLX 1.1.1, 1.3 times as fast as 1.1.0](findings/41_inkling2_mini_rapidmlx_111).
 - **Check it.** Every figure links to a folder with the rows it came from. If I have set an engine up wrong, [open an issue](https://github.com/LazyLocalLLM/m5-ultra-512-benchmarks/issues).
 
 ## Benchmark summary
@@ -63,7 +63,7 @@ The exact setup behind each figure is one click away, under "Every setup measure
 | [maker's release](https://huggingface.co/thinkingmachines/Inkling-2-Mini) | **82.3** | **61.7** | **67.1** | **2,127.8**, 4K code prompt | reasoning | Ollama 0.40.17 | [31](findings/31_inkling2_mini_ollama_04017), [40](findings/40_code_column) |
 | [SQ-20](https://huggingface.co/strata-engine/Inkling-2-Mini-Strata) | **106.1** | **59.3** | **58.6** | **3,386.8**, 4K mixed prompt | answer | Strata 0.2.20 | [30](findings/30_inkling2_mini_strata_0220), [40](findings/40_code_column) |
 | [UD-Q8_K_XL](https://huggingface.co/unsloth/Inkling-2-Mini-GGUF) | **60.1** | **58.2** | **57.2** | **3,216.4**, 4K mixed prompt | answer | Strata 0.2.20 | [30](findings/30_inkling2_mini_strata_0220), [40](findings/40_code_column) |
-| [4-bit](https://huggingface.co/mlx-community/Inkling-2-Mini-4bit) | **39.8** | **39.4** |  | **3,361.2**, 4K code prompt | reasoning | Rapid-MLX 1.1.0 | [23](findings/23_inkling2_mini_rapidmlx_110) |
+| [4-bit](https://huggingface.co/mlx-community/Inkling-2-Mini-4bit) | **51.9** | **53.6** | **53.2** | **3,400.6**, 4K code prompt | reasoning | Rapid-MLX 1.1.1 | [41](findings/41_inkling2_mini_rapidmlx_111) |
 
 #### GLM-5.3 Flash
 
@@ -450,13 +450,17 @@ ELI5: Everything behind the tables above, including the setups that were not the
 </details>
 
 <details>
-<summary><b>Inkling 2 Mini, 4-bit</b>, 3 setups</summary>
+<summary><b>Inkling 2 Mini, 4-bit</b>, 7 setups</summary>
 
 | Kind | Engine and setup | Sampler | Prompt | Reply tokens | Decode tok/s | Range | Runs | Date | Run | Finding |
 |---|---|---|---|---|---|---|---|---|---|---|
-| max | Rapid-MLX 1.1.0, the catalog's settings, no drafts, reply is reasoning text, second start | greedy, temperature 0 | 1K code | 2,048 | 39.8 | 39.5 to 40.0 | 5 | 2026-11-22 | `3c2cb9130c7b` | [23](findings/23_inkling2_mini_rapidmlx_110) |
-| max | Rapid-MLX 1.1.0, the catalog's settings, no drafts, reply is reasoning text, second start | greedy, temperature 0 | 4K code | 2,048 | 39.5 | 39.4 to 39.5 | 5 | 2026-11-22 | `3c2cb9130c7b` | [23](findings/23_inkling2_mini_rapidmlx_110) |
-| median | Rapid-MLX 1.1.0, the catalog's settings, no drafts, reply is reasoning text | temperature 1.0, top-p 1.0 | 4K mixed | 512 | 39.4 | 39.3 to 39.9 | 5 | 2026-11-22 | `3bef921b4076` | [23](findings/23_inkling2_mini_rapidmlx_110) |
+| max | Rapid-MLX 1.1.1, the catalog's settings, no drafts, thinking off (effort none), reply is reasoning text, second start | greedy, temperature 0 | 1K code | 2,048 | 51.9 | 51.8 to 52.2 | 5 | 2026-11-25 | `da2de99a1514` | [41](findings/41_inkling2_mini_rapidmlx_111) |
+| max | Rapid-MLX 1.1.1, the catalog's settings, no drafts, thinking off (effort none), reply is reasoning text, second start | greedy, temperature 0 | 4K code | 2,048 | 51.7 | 51.6 to 51.8 | 5 | 2026-11-25 | `da2de99a1514` | [41](findings/41_inkling2_mini_rapidmlx_111) |
+| max | Rapid-MLX 1.1.0, the catalog's settings, no drafts, reply is reasoning text, second start, older release | greedy, temperature 0 | 1K code | 2,048 | 39.8 | 39.5 to 40.0 | 5 | 2026-11-22 | `3c2cb9130c7b` | [23](findings/23_inkling2_mini_rapidmlx_110) |
+| max | Rapid-MLX 1.1.0, the catalog's settings, no drafts, reply is reasoning text, second start, older release | greedy, temperature 0 | 4K code | 2,048 | 39.5 | 39.4 to 39.5 | 5 | 2026-11-22 | `3c2cb9130c7b` | [23](findings/23_inkling2_mini_rapidmlx_110) |
+| median | Rapid-MLX 1.1.1, the catalog's settings, no drafts, thinking off (effort none), reply is reasoning text, second start | temperature 1.0, top-p 1.0 | 4K mixed | 512 | 53.6 | 53.2 to 53.8 | 5 | 2026-11-25 | `da2de99a1514` | [41](findings/41_inkling2_mini_rapidmlx_111) |
+| median | Rapid-MLX 1.1.0, the catalog's settings, no drafts, reply is reasoning text, older release | temperature 1.0, top-p 1.0 | 4K mixed | 512 | 39.4 | 39.3 to 39.9 | 5 | 2026-11-22 | `3bef921b4076` | [23](findings/23_inkling2_mini_rapidmlx_110) |
+| code, own sampler | Rapid-MLX 1.1.1, the catalog's settings, no drafts, thinking off (effort none), reply is reasoning text | temperature 1.0, top-p 1.0 | 4K code | 512 | 53.2 | 53.0 to 53.5 | 5 | 2026-11-25 | `da2de99a1514` | [41](findings/41_inkling2_mini_rapidmlx_111) |
 
 </details>
 
@@ -741,6 +745,17 @@ ELI5: Everything behind the tables above, including the setups that were not the
 ## Findings
 
 ELI5: Each finding is one question, one run of an hour or two, and one report. Newest first. Click a title for the full report and the raw rows.
+
+### 41. [Inkling 2 Mini on Rapid-MLX 1.1.1, 1.3 times as fast as 1.1.0](findings/41_inkling2_mini_rapidmlx_111)
+
+Runs of 25 Nov 2026. Rapid-MLX 1.1.1 wrote Inkling 2 Mini 4-bit at 52.0 tok/s against 1.1.0's 40.1, on greedy code at a 1K prompt with 2,048-token replies. It was faster on 20 of 20 same-prompt pairs, middle ratio 1.30. Every test read the same way, 20 of 20 pairs and 1.30 to 1.35 times. The text changed. The 50 short greedy replies of 1.1.1 match none of 1.1.0's, 0 of 100, while each release matches itself across its two starts, 100 of 100.
+
+<details>
+<summary>Chart</summary>
+
+![Bar chart of Inkling 2 Mini 4-bit writing speed on Rapid-MLX 1.1.0 and 1.1.1. Greedy code 40.1 and 52.0 tok/s. Sampled code 39.8 and 53.1. Sampled mixed 39.8 and 53.6.](findings/41_inkling2_mini_rapidmlx_111/chart_write.png)
+
+</details>
 
 ### 40. [The code column, 17 models writing new code with their own sampler](findings/40_code_column)
 

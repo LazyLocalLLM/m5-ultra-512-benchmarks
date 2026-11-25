@@ -123,9 +123,9 @@ Inkling 2 Small,mlx-community/Inkling-2-Small-oQ4e,,1196.5,1186.4,1225.7,5,1,mix
 "Inkling 2 Mini, Optimized Quality",Youssofal/Inkling-2-Mini-MTPLX-Optimized-Quality,,4567.4,4214.8,4842.7,10,1,code,4096,MTPLX 2.13.1,2026-11-22,21_inkling2_mini_mtplx_213,a28a0a8eae9d
 "Inkling 2 Mini, Optimized Quality",Youssofal/Inkling-2-Mini-MTPLX-Optimized-Quality,,4591.0,4543.3,5085.4,5,1,mixed,4096,MTPLX 2.13.2,2026-11-23,29_inkling2_mini_mtplx_2132,7ea5b8ae2d9e
 "Inkling 2 Mini, Optimized Quality",Youssofal/Inkling-2-Mini-MTPLX-Optimized-Quality,,4590.4,4125.4,4715.6,5,1,mixed,4096,MTPLX 2.13.1,2026-11-22,21_inkling2_mini_mtplx_213,a28a0a8eae9d
-"Inkling 2 Mini, 4-bit",mlx-community/Inkling-2-Mini-4bit,,2321.5,2197.4,2787.8,25,2,code,1024,Rapid-MLX 1.1.0,2026-11-22,23_inkling2_mini_rapidmlx_110,3bef921b4076 3c2cb9130c7b
-"Inkling 2 Mini, 4-bit",mlx-community/Inkling-2-Mini-4bit,yes,3361.2,3138.6,3425.2,25,2,code,4096,Rapid-MLX 1.1.0,2026-11-22,23_inkling2_mini_rapidmlx_110,3bef921b4076 3c2cb9130c7b
-"Inkling 2 Mini, 4-bit",mlx-community/Inkling-2-Mini-4bit,,3210.0,3205.9,3386.6,5,1,mixed,4096,Rapid-MLX 1.1.0,2026-11-22,23_inkling2_mini_rapidmlx_110,3bef921b4076
+"Inkling 2 Mini, 4-bit",mlx-community/Inkling-2-Mini-4bit,,2505.4,2407.0,2874.4,5,1,code,1024,Rapid-MLX 1.1.1,2026-11-25,41_inkling2_mini_rapidmlx_111,da2de99a1514
+"Inkling 2 Mini, 4-bit",mlx-community/Inkling-2-Mini-4bit,yes,3400.6,3212.8,3456.9,10,1,code,4096,Rapid-MLX 1.1.1,2026-11-25,41_inkling2_mini_rapidmlx_111,da2de99a1514
+"Inkling 2 Mini, 4-bit",mlx-community/Inkling-2-Mini-4bit,,3322.3,3301.9,3449.4,5,1,mixed,4096,Rapid-MLX 1.1.1,2026-11-25,41_inkling2_mini_rapidmlx_111,da2de99a1514
 "Qwen3.8 Flash Next, IQ3_S",ISTA-DASLab/Qwen3.8-Flash-Next-GSQ-RCO-GGUF,,2157.3,1775.0,3203.2,50,4,code,1024,Strata 0.2.20,2026-11-23,28_qwen38_flash_next_strata_0220,651e54639f7c 88b41d226df3 8b55935c332e dc88686985f3
 "Qwen3.8 Flash Next, IQ3_S",ISTA-DASLab/Qwen3.8-Flash-Next-GSQ-RCO-GGUF,,1364.1,1287.5,1437.7,10,1,code,1024,llama.cpp b12359,2026-11-23,24_qwen38_flash_next_strata_0219,37c6f64892e9
 "Qwen3.8 Flash Next, IQ3_S",ISTA-DASLab/Qwen3.8-Flash-Next-GSQ-RCO-GGUF,yes,2884.2,2410.1,3200.9,50,4,code,4096,Strata 0.2.20,2026-11-23,28_qwen38_flash_next_strata_0220,651e54639f7c 88b41d226df3 8b55935c332e dc88686985f3
