@@ -40,12 +40,12 @@ Inkling 2 Small,mlx-community/Inkling-2-Small-oQ4e,,1196.5,1186.4,1225.7,5,1,mix
 "Qwen3.8 27B, full",mlx-community/Qwen3.8-27B-bf16,,1726.0,1625.9,1911.3,5,1,code,1024,mlx-serve 26.11.3,2026-11-20,08_dsv41_mlxserve_26113,8594b4fe926a
 "Qwen3.8 27B, full",mlx-community/Qwen3.8-27B-bf16,yes,1885.2,1883.9,1892.4,5,1,code,4096,mlx-serve 26.11.3,2026-11-20,08_dsv41_mlxserve_26113,8594b4fe926a
 "Qwen3.8 27B, full",mlx-community/Qwen3.8-27B-bf16,,1873.1,1864.1,1888.9,10,2,mixed,4096,mlx-serve 26.11.3,2026-11-21,08_dsv41_mlxserve_26113,5619fdacb103 8594b4fe926a
-"Qwen3.8 Flash Next, 4-bit",TensorFold/Qwen3.8-Flash-Next-MLX-4bit-MTP,,2817.8,2664.0,3468.2,10,1,code,1024,TensorFold 1.3.5,2026-11-26,42_tensorfold_135_refresh,dd04a3121fd2
 "Qwen3.8 Flash Next, 4-bit",TensorFold/Qwen3.8-Flash-Next-MLX-4bit-MTP,,2813.5,2626.9,3470.5,30,2,code,1024,TensorFold 1.3.4,2026-11-23,27_tensorfold_134_refresh,8d40d469c26c dd4ddf3cf8cd
+"Qwen3.8 Flash Next, 4-bit",TensorFold/Qwen3.8-Flash-Next-MLX-4bit-MTP,,2713.0,1050.9,3468.2,20,2,code,1024,TensorFold 1.3.5,2026-11-27,43_tensorfold_135_tfq3,2b3d0041ab7c dd04a3121fd2
 "Qwen3.8 Flash Next, 4-bit",TensorFold/Qwen3.8-Flash-Next-MLX-4bit-MTP,,4063.1,3905.7,4150.9,35,2,code,4096,TensorFold 1.3.4,2026-11-23,27_tensorfold_134_refresh,8d40d469c26c dd4ddf3cf8cd
-"Qwen3.8 Flash Next, 4-bit",TensorFold/Qwen3.8-Flash-Next-MLX-4bit-MTP,yes,4054.9,3912.6,4137.2,15,1,code,4096,TensorFold 1.3.5,2026-11-26,42_tensorfold_135_refresh,dd04a3121fd2
+"Qwen3.8 Flash Next, 4-bit",TensorFold/Qwen3.8-Flash-Next-MLX-4bit-MTP,,3905.8,2570.6,4137.2,30,2,code,4096,TensorFold 1.3.5,2026-11-27,43_tensorfold_135_tfq3,2b3d0041ab7c dd04a3121fd2
 "Qwen3.8 Flash Next, 4-bit",TensorFold/Qwen3.8-Flash-Next-MLX-4bit-MTP,,4040.1,4015.5,4143.3,5,1,mixed,4096,TensorFold 1.3.4,2026-11-23,27_tensorfold_134_refresh,8d40d469c26c
-"Qwen3.8 Flash Next, 4-bit",TensorFold/Qwen3.8-Flash-Next-MLX-4bit-MTP,,4035.0,4012.1,4122.3,5,1,mixed,4096,TensorFold 1.3.5,2026-11-26,42_tensorfold_135_refresh,dd04a3121fd2
+"Qwen3.8 Flash Next, 4-bit",TensorFold/Qwen3.8-Flash-Next-MLX-4bit-MTP,yes,4013.3,3550.0,4122.3,10,2,mixed,4096,TensorFold 1.3.5,2026-11-27,43_tensorfold_135_tfq3,2b3d0041ab7c dd04a3121fd2
 "Qwen3.8 Flash Next, 6-bit",TensorFold/Qwen3.8-Flash-Next-MLX-6bit-MTP,,2470.3,2209.0,3239.2,20,1,code,1024,TensorFold 1.3.3,2026-11-22,19_tensorfold_133_refresh,e4b66d27e9cb
 "Qwen3.8 Flash Next, 6-bit",TensorFold/Qwen3.8-Flash-Next-MLX-6bit-MTP,,3703.3,3524.2,3931.4,25,1,code,4096,TensorFold 1.3.3,2026-11-22,19_tensorfold_133_refresh,e4b66d27e9cb
 "Qwen3.8 Flash Next, 6-bit",TensorFold/Qwen3.8-Flash-Next-MLX-6bit-MTP,yes,3841.0,3805.9,3916.3,5,1,mixed,4096,TensorFold 1.3.3,2026-11-22,19_tensorfold_133_refresh,e4b66d27e9cb
@@ -153,3 +153,6 @@ Inkling 2 Small,mlx-community/Inkling-2-Small-oQ4e,,1196.5,1186.4,1225.7,5,1,mix
 "Inkling 2 Mini, maker's release",thinkingmachines/Inkling-2-Mini,,1870.3,1794.4,1992.2,10,1,code,1024,Ollama 0.40.17,2026-11-23,31_inkling2_mini_ollama_04017,b5f573f87f3c
 "Inkling 2 Mini, maker's release",thinkingmachines/Inkling-2-Mini,yes,2127.8,2087.9,2175.4,15,2,code,4096,Ollama 0.40.17,2026-11-25,40_code_column,46ea0f5249c9 b5f573f87f3c
 "Inkling 2 Mini, maker's release",thinkingmachines/Inkling-2-Mini,,2116.4,2098.6,2123.1,5,1,mixed,4096,Ollama 0.40.17,2026-11-23,31_inkling2_mini_ollama_04017,b5f573f87f3c
+"Qwen3.8 Flash Next, TFQ3",TensorFold/Qwen3.8-Flash-Next-TFQ3,,2614.8,1025.3,3399.3,20,2,code,1024,TensorFold 1.3.5,2026-11-27,43_tensorfold_135_tfq3,01a33e97e798 e76b38f9a661
+"Qwen3.8 Flash Next, TFQ3",TensorFold/Qwen3.8-Flash-Next-TFQ3,,3695.2,2476.7,3868.1,30,2,code,4096,TensorFold 1.3.5,2026-11-27,43_tensorfold_135_tfq3,01a33e97e798 e76b38f9a661
+"Qwen3.8 Flash Next, TFQ3",TensorFold/Qwen3.8-Flash-Next-TFQ3,yes,3754.4,3382.5,3840.7,10,2,mixed,4096,TensorFold 1.3.5,2026-11-27,43_tensorfold_135_tfq3,01a33e97e798 e76b38f9a661

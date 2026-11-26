@@ -8,14 +8,14 @@ ELI5: I'm a learner with one Mac Studio M5 Ultra 512 GB, and I time local AI mod
 
 ELI5: The page in seven lines. Every figure here is recomputed from the raw rows each time the page is built.
 
-Updated 26 Nov 2026 13:53 SGT. Decode speed in tok/s, one user, one Mac.
+Updated 27 Nov 2026 01:11 SGT. Decode speed in tok/s, one user, one Mac.
 
-- **Fastest on new code.** Qwen3.8 27B, 4-bit wrote 325.7 tok/s on TensorFold 1.3.5. Next are Qwen3.8 Flash Next, 4-bit at 217.6 and Qwen3.8 Flash Next, 6-bit at 201.3.
-- **Fastest in daily use.** Qwen3.8 27B, 4-bit wrote 156.9 tok/s on TensorFold 1.3.5. Next are Qwen3.8 Flash Next, 4-bit at 131.2 and Inkling 2 Mini, Bare Speed at 127.0 (reasoning text).
+- **Fastest on new code.** Qwen3.8 27B, 4-bit wrote 325.7 tok/s on TensorFold 1.3.5. Next are Qwen3.8 Flash Next, 4-bit at 223.4 and Qwen3.8 Flash Next, 6-bit at 201.3.
+- **Fastest in daily use.** Qwen3.8 27B, 4-bit wrote 156.9 tok/s on TensorFold 1.3.5. Next are Qwen3.8 Flash Next, 4-bit at 150.9 and Inkling 2 Mini, Bare Speed at 127.0 (reasoning text).
 - **Decode speeds.** Max is greedy at temperature 0 while the model writes new code. Median is the model's own sampler on mixed text, closer to daily use. Code is the model's own sampler on new code, closest to a coding agent, and is being filled in.
 - **Prefill too.** The table also has how fast each model read a cold prompt, with the prompt size.
-- **Coverage.** 28 models, 412 setups and 42 findings.
-- **Newest finding.** Finding 42, 26 Nov 2026. [TensorFold 1.3.5 against 1.3.4 on four builds, no change I can call](findings/42_tensorfold_135_refresh).
+- **Coverage.** 29 models, 427 setups and 43 findings.
+- **Newest finding.** Finding 43, 26 and 27 Nov 2026. [TensorFold 1.3.5's Qwen3.8 Flash Next TFQ3 met its card and wrote 0.73 to 0.83 times the 4-bit build's speed](findings/43_tensorfold_135_tfq3).
 - **Check it.** Every figure links to a folder with the rows it came from. If I have set an engine up wrong, [open an issue](https://github.com/LazyLocalLLM/m5-ultra-512-benchmarks/issues).
 
 ## Benchmark summary
@@ -45,8 +45,9 @@ The exact setup behind each figure is one click away, under "Every setup measure
 
 | Weights | Max decode tok/s, greedy, new code | Median decode tok/s, own sampler, mixed text | Code decode tok/s, own sampler, new code | Prefill tok/s, cold prompt | Reply text | Engine | Finding |
 |---|---|---|---|---|---|---|---|
-| [4-bit](https://huggingface.co/TensorFold/Qwen3.8-Flash-Next-MLX-4bit-MTP) | **217.6** | **131.2** | **165.5** | **4,054.9**, 4K code prompt | answer | TensorFold 1.3.5 | [42](findings/42_tensorfold_135_refresh) |
+| [4-bit](https://huggingface.co/TensorFold/Qwen3.8-Flash-Next-MLX-4bit-MTP) | **223.4** | **150.9** | **191.1** | **4,013.3**, 4K mixed prompt | answer | TensorFold 1.3.5 | [43](findings/43_tensorfold_135_tfq3) |
 | [IQ3_S](https://huggingface.co/ISTA-DASLab/Qwen3.8-Flash-Next-GSQ-RCO-GGUF) | **196.4** | **126.0** |  | **2,884.2**, 4K code prompt | answer | Strata 0.2.20 | [28](findings/28_qwen38_flash_next_strata_0220) |
+| [TFQ3](https://huggingface.co/TensorFold/Qwen3.8-Flash-Next-TFQ3) | **180.7** | **115.3** | **150.2** | **3,754.4**, 4K mixed prompt | answer | TensorFold 1.3.5 | [43](findings/43_tensorfold_135_tfq3) |
 | [6-bit](https://huggingface.co/TensorFold/Qwen3.8-Flash-Next-MLX-6bit-MTP) | **201.3** | **114.5** |  | **3,841.0**, 4K mixed prompt | answer | TensorFold 1.3.3 | [19](findings/19_tensorfold_133_refresh) |
 | [full](https://huggingface.co/Qwen/Qwen3.8-Flash-Next) | **54.5** | **34.4** | **45.2** | **3,211.1**, 4K code prompt | answer | oMLX 0.8.3 with its kernels | [26](findings/26_omlx_083_refresh), [40](findings/40_code_column) |
 
@@ -177,12 +178,15 @@ ELI5: Everything behind the tables above, including the setups that were not the
 </details>
 
 <details>
-<summary><b>Qwen3.8 Flash Next, 4-bit</b>, 25 setups</summary>
+<summary><b>Qwen3.8 Flash Next, 4-bit</b>, 30 setups</summary>
 
 | Kind | Engine and setup | Sampler | Prompt | Reply tokens | Decode tok/s | Range | Runs | Date | Run | Finding |
 |---|---|---|---|---|---|---|---|---|---|---|
+| max | TensorFold 1.3.5, MTP on, defaults, 262144 context, one user, start b | greedy, temperature 0 | 1K code | 2,048 | 223.4 | 208.6 to 270.8 | 5 | 2026-11-27 | `2b3d0041ab7c` | [43](findings/43_tensorfold_135_tfq3) |
+| max | TensorFold 1.3.5, MTP on, defaults, 262144 context, one user, start b | greedy, temperature 0 | 4K code | 2,048 | 218.4 | 199.5 to 266.8 | 5 | 2026-11-27 | `2b3d0041ab7c` | [43](findings/43_tensorfold_135_tfq3) |
 | max | TensorFold 1.3.5, MTP on, recipe line, defaults, same-night start b | greedy, temperature 0 | 1K code | 2,048 | 217.6 | 192.3 to 267.1 | 5 | 2026-11-26 | `dd04a3121fd2` | [42](findings/42_tensorfold_135_refresh) |
 | max | TensorFold 1.3.4, MTP on, recipe line, defaults, same-night start, older release | greedy, temperature 0 | 1K code | 2,048 | 211.5 | 199.0 to 266.0 | 5 | 2026-11-23 | `51182015de42` | [27](findings/27_tensorfold_134_refresh) |
+| max | TensorFold 1.3.5, MTP on, defaults, 262144 context, one user, start b | greedy, temperature 0 | 4K code | 512 | 210.6 | 194.5 to 249.4 | 5 | 2026-11-27 | `2b3d0041ab7c` | [43](findings/43_tensorfold_135_tfq3) |
 | max | TensorFold 1.3.3, MTP on, recipe line, defaults, older release | greedy, temperature 0 | 4K code | 2,048 | 209.5 | 174.4 to 229.6 | 5 | 2026-11-22 | `58be1ddd40c3` | [19](findings/19_tensorfold_133_refresh) |
 | max | TensorFold 1.3.3, MTP on, recipe line, defaults, older release | greedy, temperature 0 | 1K code | 2,048 | 206.8 | 192.0 to 263.1 | 5 | 2026-11-22 | `58be1ddd40c3` | [19](findings/19_tensorfold_133_refresh) |
 | max | TensorFold 1.3.2, MTP on, recipe line, defaults, second start, older release | greedy, temperature 0 | 1K code | 2,048 | 206.8 | 191.7 to 257.5 | 5 | 2026-11-21 | `70284626631f` | [11](findings/11_qwen38_tensorfold_132) |
@@ -198,12 +202,14 @@ ELI5: Everything behind the tables above, including the setups that were not the
 | counting toy | TensorFold 1.3.3, MTP on, recipe line, defaults, older release | greedy, temperature 0 | 1K code | 512 | 369.5 | 360.5 to 370.2 | 5 | 2026-11-22 | `58be1ddd40c3` | [19](findings/19_tensorfold_133_refresh) |
 | counting toy | TensorFold 1.3.2, MTP on, recipe line, defaults, second start, older release | greedy, temperature 0 | 1K code | 512 | 369.3 | 359.4 to 370.0 | 5 | 2026-11-21 | `70284626631f` | [11](findings/11_qwen38_tensorfold_132) |
 | counting toy | TensorFold 1.3.0, MTP on, recipe line, defaults, older release | greedy, temperature 0 | 1K code | 512 | 344.7 | 336.2 to 344.9 | 5 | 2026-11-20 | `7bf80be3a997` | [7](findings/07_qwen38_tensorfold_130) |
+| median | TensorFold 1.3.5, MTP on, defaults, 262144 context, one user, start b | temperature 0.7, top-p 0.8, top-k 20 | 4K mixed | 512 | 150.9 | 144.7 to 158.3 | 5 | 2026-11-27 | `2b3d0041ab7c` | [43](findings/43_tensorfold_135_tfq3) |
 | median | TensorFold 1.3.5, MTP on, recipe line, defaults, same-night start b | temperature 0.7, top-p 0.8, top-k 20 | 4K mixed | 512 | 131.2 | 126.8 to 136.9 | 5 | 2026-11-26 | `dd04a3121fd2` | [42](findings/42_tensorfold_135_refresh) |
 | median | TensorFold 1.3.3, MTP on, recipe line, defaults, older release | temperature 0.7, top-p 0.8, top-k 20 | 4K mixed | 512 | 130.9 | 120.7 to 135.4 | 5 | 2026-11-22 | `58be1ddd40c3` | [19](findings/19_tensorfold_133_refresh) |
 | median | TensorFold 1.3.2, MTP on, recipe line, defaults, second start, older release | temperature 0.7, top-p 0.8, top-k 20 | 4K mixed | 512 | 129.7 | 123.5 to 134.1 | 5 | 2026-11-21 | `70284626631f` | [11](findings/11_qwen38_tensorfold_132) |
 | median | TensorFold 1.2.8, MTP on, recipe line, older release | temperature 0.7, top-p 0.8, top-k 20 | 4K mixed | 512 | 129.2 | 123.9 to 139.2 | 5 | 2026-11-17 | `72fae37b87f0` | [2](findings/02_ten_models_4k_to_1m) |
 | median | TensorFold 1.3.4, MTP on, recipe line, defaults, same-night start, older release | temperature 0.7, top-p 0.8, top-k 20 | 4K mixed | 512 | 128.4 | 122.7 to 134.1 | 5 | 2026-11-23 | `51182015de42` | [27](findings/27_tensorfold_134_refresh) |
 | median | TensorFold 1.3.0, MTP on, recipe line, defaults, older release | temperature 0.7, top-p 0.8, top-k 20 | 4K mixed | 512 | 126.7 | 115.9 to 131.9 | 5 | 2026-11-20 | `7bf80be3a997` | [7](findings/07_qwen38_tensorfold_130) |
+| code, own sampler | TensorFold 1.3.5, MTP on, defaults, 262144 context, one user, start b | temperature 0.7, top-p 0.8, top-k 20 | 4K code | 512 | 191.1 | 181.7 to 259.6 | 5 | 2026-11-27 | `2b3d0041ab7c` | [43](findings/43_tensorfold_135_tfq3) |
 | code, own sampler | TensorFold 1.3.5, MTP on, recipe line, defaults, same-night start b | temperature 0.7, top-p 0.8, top-k 20 | 4K code | 512 | 165.5 | 137.6 to 210.0 | 5 | 2026-11-26 | `dd04a3121fd2` | [42](findings/42_tensorfold_135_refresh) |
 | code, own sampler | TensorFold 1.3.4, MTP on, recipe line, defaults, older release | temperature 0.7, top-p 0.8, top-k 20 | 4K code | 512 | 165.5 | 148.2 to 204.4 | 5 | 2026-11-25 | `2ca592767578` | [40](findings/40_code_column) |
 
@@ -237,6 +243,24 @@ ELI5: Everything behind the tables above, including the setups that were not the
 | median | Strata 0.2.19, MTP off by setup's own rule, thinking off, older release | temperature 0.7, top-p 0.8, top-k 20 | 4K mixed | 512 | 96.4 | 96.2 to 96.4 | 5 | 2026-11-23 | `dff5db389042` | [24](findings/24_qwen38_flash_next_strata_0219) |
 | median | Strata 0.2.20, MTP off by setup's own rule, thinking off | temperature 0.7, top-p 0.8, top-k 20 | 4K mixed | 512 | 95.1 | 94.1 to 95.7 | 5 | 2026-11-23 | `651e54639f7c` | [28](findings/28_qwen38_flash_next_strata_0220) |
 | median | llama.cpp b12359, the same IQ3_S files, defaults, thinking off | temperature 0.7, top-p 0.8, top-k 20 | 4K mixed | 512 | 55.7 | 55.3 to 55.7 | 5 | 2026-11-23 | `37c6f64892e9` | [24](findings/24_qwen38_flash_next_strata_0219) |
+
+</details>
+
+<details>
+<summary><b>Qwen3.8 Flash Next, TFQ3</b>, 10 setups</summary>
+
+| Kind | Engine and setup | Sampler | Prompt | Reply tokens | Decode tok/s | Range | Runs | Date | Run | Finding |
+|---|---|---|---|---|---|---|---|---|---|---|
+| max | TensorFold 1.3.5, MTP on, defaults, the card's context 262144, one user, start b | greedy, temperature 0 | 1K code | 2,048 | 180.7 | 167.7 to 186.3 | 5 | 2026-11-27 | `01a33e97e798` | [43](findings/43_tensorfold_135_tfq3) |
+| max | TensorFold 1.3.5, MTP on, recipe line 1048576 and 2 users, defaults, start b | greedy, temperature 0 | 1K code | 2,048 | 174.6 | 159.4 to 185.1 | 5 | 2026-11-26 | `e76b38f9a661` | [43](findings/43_tensorfold_135_tfq3) |
+| max | TensorFold 1.3.5, MTP on, recipe line 1048576 and 2 users, defaults, start b | greedy, temperature 0 | 4K code | 2,048 | 173.8 | 149.1 to 191.5 | 5 | 2026-11-26 | `e76b38f9a661` | [43](findings/43_tensorfold_135_tfq3) |
+| max | TensorFold 1.3.5, MTP on, defaults, the card's context 262144, one user, start b | greedy, temperature 0 | 4K code | 2,048 | 167.2 | 150.2 to 176.7 | 5 | 2026-11-27 | `01a33e97e798` | [43](findings/43_tensorfold_135_tfq3) |
+| max | TensorFold 1.3.5, MTP on, defaults, the card's context 262144, one user, start b | greedy, temperature 0 | 4K code | 512 | 151.6 | 136.5 to 175.4 | 5 | 2026-11-27 | `01a33e97e798` | [43](findings/43_tensorfold_135_tfq3) |
+| max | TensorFold 1.3.5, MTP on, recipe line 1048576 and 2 users, defaults, start b | greedy, temperature 0 | 4K code | 512 | 139.6 | 137.2 to 171.1 | 5 | 2026-11-26 | `e76b38f9a661` | [43](findings/43_tensorfold_135_tfq3) |
+| median | TensorFold 1.3.5, MTP on, defaults, the card's context 262144, one user, start b | temperature 0.7, top-p 0.8, top-k 20 | 4K mixed | 512 | 115.3 | 113.8 to 119.1 | 5 | 2026-11-27 | `01a33e97e798` | [43](findings/43_tensorfold_135_tfq3) |
+| median | TensorFold 1.3.5, MTP on, recipe line 1048576 and 2 users, defaults, start b | temperature 0.7, top-p 0.8, top-k 20 | 4K mixed | 512 | 82.6 | 81.7 to 83.5 | 5 | 2026-11-26 | `e76b38f9a661` | [43](findings/43_tensorfold_135_tfq3) |
+| code, own sampler | TensorFold 1.3.5, MTP on, defaults, the card's context 262144, one user, start b | temperature 0.7, top-p 0.8, top-k 20 | 4K code | 512 | 150.2 | 141.3 to 172.6 | 5 | 2026-11-27 | `01a33e97e798` | [43](findings/43_tensorfold_135_tfq3) |
+| code, own sampler | TensorFold 1.3.5, MTP on, recipe line 1048576 and 2 users, defaults, start b | temperature 0.7, top-p 0.8, top-k 20 | 4K code | 512 | 89.8 | 88.4 to 95.9 | 5 | 2026-11-26 | `e76b38f9a661` | [43](findings/43_tensorfold_135_tfq3) |
 
 </details>
 
@@ -763,6 +787,10 @@ ELI5: Everything behind the tables above, including the setups that were not the
 ## Findings
 
 ELI5: Each finding is one question, one run of an hour or two, and one report. Newest first. Click a title for the full report and the raw rows.
+
+### 43. [TensorFold 1.3.5's Qwen3.8 Flash Next TFQ3 met its card and wrote 0.73 to 0.83 times the 4-bit build's speed](findings/43_tensorfold_135_tfq3)
+
+Runs of 26 and 27 Nov 2026. On TensorFold 1.3.5, Qwen3.8 Flash Next TFQ3 met its model card's speeds and wrote 0.73 to 0.83 times as fast as TensorFold's 4-bit MLX build at the card's setup. The 4-bit build was faster in 119 of 120 same-prompt pairs. TFQ3's files are 79.0 GiB against 105.5 GiB. Four fresh starts in the order TFQ3, 4-bit, 4-bit, TFQ3 on 27 Nov 2026, and the same order on 26 Nov gave 0.74 to 0.84.
 
 ### 42. [TensorFold 1.3.5 against 1.3.4 on four builds, no change I can call](findings/42_tensorfold_135_refresh)
 
