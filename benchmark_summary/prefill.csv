@@ -26,20 +26,26 @@ model,weights,shown,read_tps,low,high,requests,runs,text,prompt_target,engine,da
 Inkling 2 Small,mlx-community/Inkling-2-Small-oQ4e,,833.0,748.6,1025.1,20,1,code,1024,oMLX 0.8.2 with its kernels,2026-11-21,16_omlx_082_refresh,fd37c30fd993
 Inkling 2 Small,mlx-community/Inkling-2-Small-oQ4e,yes,1259.3,1182.1,1307.9,20,1,code,4096,oMLX 0.8.2 with its kernels,2026-11-21,16_omlx_082_refresh,fd37c30fd993
 Inkling 2 Small,mlx-community/Inkling-2-Small-oQ4e,,1196.5,1186.4,1225.7,5,1,mixed,4096,oMLX 0.8.2 with its kernels,2026-11-21,16_omlx_082_refresh,fd37c30fd993
-"Qwen3.8 27B, 4-bit",TensorFold/Qwen3.8-27B-MLX-4bit,,1780.9,1648.5,1868.2,30,3,code,1024,TensorFold 1.3.4,2026-11-23,27_tensorfold_134_refresh,2813d10958a6 52b0c20da4cb 9466f37f6182
+"Qwen3.8 27B, 4-bit",TensorFold/Qwen3.8-27B-MLX-4bit,,1801.3,1705.2,1860.5,10,1,code,1024,TensorFold 1.3.5,2026-11-26,42_tensorfold_135_refresh,2b0a3fd3c45a
+"Qwen3.8 27B, 4-bit",TensorFold/Qwen3.8-27B-MLX-4bit,,1771.6,1648.5,1868.2,20,1,code,1024,TensorFold 1.3.4,2026-11-23,27_tensorfold_134_refresh,9466f37f6182
 "Qwen3.8 27B, 4-bit",TensorFold/Qwen3.8-27B-MLX-4bit,,1576.5,1502.3,1814.9,10,1,code,1024,mlx-lm 0.32.2,2026-11-20,07_qwen38_tensorfold_130,0c5446c7acc1
 "Qwen3.8 27B, 4-bit",TensorFold/Qwen3.8-27B-MLX-4bit,,1627.6,269.3,1682.6,5,1,mixed,1024,mlx-lm 0.32.2,2026-11-13,01_tensorfold_qwen38-27b_4bit,3ad3a150c4d0
 "Qwen3.8 27B, 4-bit",TensorFold/Qwen3.8-27B-MLX-4bit,,1842.2,1818.6,1870.7,10,1,code,4096,mlx-lm 0.32.2,2026-11-20,07_qwen38_tensorfold_130,0c5446c7acc1
-"Qwen3.8 27B, 4-bit",TensorFold/Qwen3.8-27B-MLX-4bit,,1802.6,1633.2,1876.1,40,4,code,4096,TensorFold 1.3.4,2026-11-25,40_code_column,2813d10958a6 52b0c20da4cb 9466f37f6182 dddd7122c281
-"Qwen3.8 27B, 4-bit",TensorFold/Qwen3.8-27B-MLX-4bit,yes,1863.4,1777.3,1876.1,20,3,mixed,4096,TensorFold 1.3.4,2026-11-23,27_tensorfold_134_refresh,2813d10958a6 52b0c20da4cb 9466f37f6182
+"Qwen3.8 27B, 4-bit",TensorFold/Qwen3.8-27B-MLX-4bit,,1749.1,1633.2,1876.1,25,1,code,4096,TensorFold 1.3.4,2026-11-23,27_tensorfold_134_refresh,9466f37f6182
+"Qwen3.8 27B, 4-bit",TensorFold/Qwen3.8-27B-MLX-4bit,,1734.2,1574.5,1868.1,15,1,code,4096,TensorFold 1.3.5,2026-11-26,42_tensorfold_135_refresh,2b0a3fd3c45a
+"Qwen3.8 27B, 4-bit",TensorFold/Qwen3.8-27B-MLX-4bit,,1867.1,1864.3,1873.1,5,1,mixed,4096,TensorFold 1.3.4,2026-11-23,27_tensorfold_134_refresh,9466f37f6182
+"Qwen3.8 27B, 4-bit",TensorFold/Qwen3.8-27B-MLX-4bit,yes,1851.9,1666.5,1856.1,5,1,mixed,4096,TensorFold 1.3.5,2026-11-26,42_tensorfold_135_refresh,2b0a3fd3c45a
 "Qwen3.8 27B, 4-bit",TensorFold/Qwen3.8-27B-MLX-4bit,,1818.4,1122.6,1857.3,10,2,mixed,4096,mlx-lm 0.32.2,2026-11-20,07_qwen38_tensorfold_130,0c5446c7acc1 3ad3a150c4d0
 "Qwen3.8 27B, 4-bit",TensorFold/Qwen3.8-27B-MLX-4bit,,1689.1,1577.7,1711.0,5,1,mixed,32768,mlx-lm 0.32.2,2026-11-13,01_tensorfold_qwen38-27b_4bit,3ad3a150c4d0
 "Qwen3.8 27B, full",mlx-community/Qwen3.8-27B-bf16,,1726.0,1625.9,1911.3,5,1,code,1024,mlx-serve 26.11.3,2026-11-20,08_dsv41_mlxserve_26113,8594b4fe926a
 "Qwen3.8 27B, full",mlx-community/Qwen3.8-27B-bf16,yes,1885.2,1883.9,1892.4,5,1,code,4096,mlx-serve 26.11.3,2026-11-20,08_dsv41_mlxserve_26113,8594b4fe926a
 "Qwen3.8 27B, full",mlx-community/Qwen3.8-27B-bf16,,1873.1,1864.1,1888.9,10,2,mixed,4096,mlx-serve 26.11.3,2026-11-21,08_dsv41_mlxserve_26113,5619fdacb103 8594b4fe926a
-"Qwen3.8 Flash Next, 4-bit",TensorFold/Qwen3.8-Flash-Next-MLX-4bit-MTP,,2812.9,2574.9,3470.5,50,3,code,1024,TensorFold 1.3.4,2026-11-23,27_tensorfold_134_refresh,51182015de42 8d40d469c26c dd4ddf3cf8cd
-"Qwen3.8 Flash Next, 4-bit",TensorFold/Qwen3.8-Flash-Next-MLX-4bit-MTP,yes,4057.0,3727.7,4150.9,60,4,code,4096,TensorFold 1.3.4,2026-11-25,40_code_column,2ca592767578 51182015de42 8d40d469c26c dd4ddf3cf8cd
-"Qwen3.8 Flash Next, 4-bit",TensorFold/Qwen3.8-Flash-Next-MLX-4bit-MTP,,4040.5,4005.0,4143.3,10,2,mixed,4096,TensorFold 1.3.4,2026-11-23,27_tensorfold_134_refresh,51182015de42 8d40d469c26c
+"Qwen3.8 Flash Next, 4-bit",TensorFold/Qwen3.8-Flash-Next-MLX-4bit-MTP,,2817.8,2664.0,3468.2,10,1,code,1024,TensorFold 1.3.5,2026-11-26,42_tensorfold_135_refresh,dd04a3121fd2
+"Qwen3.8 Flash Next, 4-bit",TensorFold/Qwen3.8-Flash-Next-MLX-4bit-MTP,,2813.5,2626.9,3470.5,30,2,code,1024,TensorFold 1.3.4,2026-11-23,27_tensorfold_134_refresh,8d40d469c26c dd4ddf3cf8cd
+"Qwen3.8 Flash Next, 4-bit",TensorFold/Qwen3.8-Flash-Next-MLX-4bit-MTP,,4063.1,3905.7,4150.9,35,2,code,4096,TensorFold 1.3.4,2026-11-23,27_tensorfold_134_refresh,8d40d469c26c dd4ddf3cf8cd
+"Qwen3.8 Flash Next, 4-bit",TensorFold/Qwen3.8-Flash-Next-MLX-4bit-MTP,yes,4054.9,3912.6,4137.2,15,1,code,4096,TensorFold 1.3.5,2026-11-26,42_tensorfold_135_refresh,dd04a3121fd2
+"Qwen3.8 Flash Next, 4-bit",TensorFold/Qwen3.8-Flash-Next-MLX-4bit-MTP,,4040.1,4015.5,4143.3,5,1,mixed,4096,TensorFold 1.3.4,2026-11-23,27_tensorfold_134_refresh,8d40d469c26c
+"Qwen3.8 Flash Next, 4-bit",TensorFold/Qwen3.8-Flash-Next-MLX-4bit-MTP,,4035.0,4012.1,4122.3,5,1,mixed,4096,TensorFold 1.3.5,2026-11-26,42_tensorfold_135_refresh,dd04a3121fd2
 "Qwen3.8 Flash Next, 6-bit",TensorFold/Qwen3.8-Flash-Next-MLX-6bit-MTP,,2470.3,2209.0,3239.2,20,1,code,1024,TensorFold 1.3.3,2026-11-22,19_tensorfold_133_refresh,e4b66d27e9cb
 "Qwen3.8 Flash Next, 6-bit",TensorFold/Qwen3.8-Flash-Next-MLX-6bit-MTP,,3703.3,3524.2,3931.4,25,1,code,4096,TensorFold 1.3.3,2026-11-22,19_tensorfold_133_refresh,e4b66d27e9cb
 "Qwen3.8 Flash Next, 6-bit",TensorFold/Qwen3.8-Flash-Next-MLX-6bit-MTP,yes,3841.0,3805.9,3916.3,5,1,mixed,4096,TensorFold 1.3.3,2026-11-22,19_tensorfold_133_refresh,e4b66d27e9cb
@@ -66,18 +72,24 @@ Inkling 2 Small,mlx-community/Inkling-2-Small-oQ4e,,1196.5,1186.4,1225.7,5,1,mix
 "DeepSeek V4.1 Flash 1017, maker's files",deepseek-ai/DeepSeek-V4.1-Flash-1017,yes,1514.3,1503.4,1545.1,5,1,code,65536,TensorFold 1.3.4,2026-11-25,40_code_column,35a1123068ce
 "GLM-5.3 Flash, 4-bit",TensorFold/GLM-5.3-Flash-MLX-4bit-MTP,,1638.7,1610.5,1978.1,5,1,code,1024,TensorFold 1.3.2,2026-11-21,15_glm53_flash_two_builds,3b571bd4b948
 "GLM-5.3 Flash, 4-bit",TensorFold/GLM-5.3-Flash-MLX-4bit-MTP,,1351.3,1265.1,1820.9,25,2,code,1024,oMLX 0.8.1 with its kernels,2026-11-21,15_glm53_flash_two_builds,4f9da10c3691 5727fcf18ffb
-"GLM-5.3 Flash, 4-bit",TensorFold/GLM-5.3-Flash-MLX-4bit-MTP,,1148.7,1050.7,1340.2,30,2,code,1024,TensorFold 1.3.4,2026-11-23,27_tensorfold_134_refresh,2820399df996 5d827a9f83a1
+"GLM-5.3 Flash, 4-bit",TensorFold/GLM-5.3-Flash-MLX-4bit-MTP,,1138.3,1050.7,1339.2,20,1,code,1024,TensorFold 1.3.4,2026-11-23,27_tensorfold_134_refresh,5d827a9f83a1
+"GLM-5.3 Flash, 4-bit",TensorFold/GLM-5.3-Flash-MLX-4bit-MTP,,1105.2,882.6,1341.3,10,1,code,1024,TensorFold 1.3.5,2026-11-26,42_tensorfold_135_refresh,f3a0f5cee6a0
 "GLM-5.3 Flash, 4-bit",TensorFold/GLM-5.3-Flash-MLX-4bit-MTP,,2157.2,1979.2,2282.1,25,2,code,4096,oMLX 0.8.1 with its kernels,2026-11-21,15_glm53_flash_two_builds,4f9da10c3691 5727fcf18ffb
 "GLM-5.3 Flash, 4-bit",TensorFold/GLM-5.3-Flash-MLX-4bit-MTP,,2095.4,2093.7,2101.8,5,1,code,4096,TensorFold 1.3.2,2026-11-21,15_glm53_flash_two_builds,3b571bd4b948
-"GLM-5.3 Flash, 4-bit",TensorFold/GLM-5.3-Flash-MLX-4bit-MTP,,1158.4,1101.9,1318.1,35,3,code,4096,TensorFold 1.3.4,2026-11-25,40_code_column,2820399df996 5d827a9f83a1 df9d5aad61a8
+"GLM-5.3 Flash, 4-bit",TensorFold/GLM-5.3-Flash-MLX-4bit-MTP,,1158.5,1101.9,1317.4,20,1,code,4096,TensorFold 1.3.4,2026-11-23,27_tensorfold_134_refresh,5d827a9f83a1
+"GLM-5.3 Flash, 4-bit",TensorFold/GLM-5.3-Flash-MLX-4bit-MTP,,1057.7,971.3,1318.0,15,1,code,4096,TensorFold 1.3.5,2026-11-26,42_tensorfold_135_refresh,f3a0f5cee6a0
 "GLM-5.3 Flash, 4-bit",TensorFold/GLM-5.3-Flash-MLX-4bit-MTP,yes,2234.3,2033.9,2248.7,5,1,mixed,4096,oMLX 0.8.1 with its kernels,2026-11-21,15_glm53_flash_two_builds,4f9da10c3691
-"GLM-5.3 Flash, 4-bit",TensorFold/GLM-5.3-Flash-MLX-4bit-MTP,,1159.7,1156.4,1166.4,10,2,mixed,4096,TensorFold 1.3.4,2026-11-23,27_tensorfold_134_refresh,2820399df996 5d827a9f83a1
+"GLM-5.3 Flash, 4-bit",TensorFold/GLM-5.3-Flash-MLX-4bit-MTP,,1160.2,1157.4,1166.4,5,1,mixed,4096,TensorFold 1.3.4,2026-11-23,27_tensorfold_134_refresh,5d827a9f83a1
+"GLM-5.3 Flash, 4-bit",TensorFold/GLM-5.3-Flash-MLX-4bit-MTP,,1159.4,1157.5,1166.5,5,1,mixed,4096,TensorFold 1.3.5,2026-11-26,42_tensorfold_135_refresh,f3a0f5cee6a0
 "Hy4-flash, 4-bit",TensorFold/Hy4-flash-MLX-4bit-MTP,,1665.1,1647.4,1726.5,5,1,code,1024,TensorFold 1.3.2,2026-11-21,10_hy4_flash_tensorfold_132,df5b641735e6
-"Hy4-flash, 4-bit",TensorFold/Hy4-flash-MLX-4bit-MTP,yes,1649.2,1424.1,1728.9,20,2,code,1024,TensorFold 1.3.4,2026-11-23,27_tensorfold_134_refresh,0263bc06d9cf 3523a0e3371d
+"Hy4-flash, 4-bit",TensorFold/Hy4-flash-MLX-4bit-MTP,yes,1658.6,1628.2,1728.9,10,1,code,1024,TensorFold 1.3.4,2026-11-23,27_tensorfold_134_refresh,0263bc06d9cf
+"Hy4-flash, 4-bit",TensorFold/Hy4-flash-MLX-4bit-MTP,,1643.4,1608.2,1710.4,10,1,code,1024,TensorFold 1.3.5,2026-11-26,42_tensorfold_135_refresh,163b98382a23
+"Hy4-flash, 4-bit",TensorFold/Hy4-flash-MLX-4bit-MTP,,1426.6,1413.3,1489.8,10,1,code,4096,TensorFold 1.3.4,2026-11-23,27_tensorfold_134_refresh,0263bc06d9cf
+"Hy4-flash, 4-bit",TensorFold/Hy4-flash-MLX-4bit-MTP,,1422.4,1410.5,1484.9,15,1,code,4096,TensorFold 1.3.5,2026-11-26,42_tensorfold_135_refresh,163b98382a23
 "Hy4-flash, 4-bit",TensorFold/Hy4-flash-MLX-4bit-MTP,,1421.8,1416.4,1478.1,5,1,code,4096,TensorFold 1.3.2,2026-11-21,10_hy4_flash_tensorfold_132,df5b641735e6
-"Hy4-flash, 4-bit",TensorFold/Hy4-flash-MLX-4bit-MTP,,1416.4,1128.5,1489.8,25,3,code,4096,TensorFold 1.3.4,2026-11-25,40_code_column,0263bc06d9cf 3523a0e3371d 9e81bf39a949
 "Hy4-flash, 4-bit",TensorFold/Hy4-flash-MLX-4bit-MTP,,1436.9,1390.5,1446.9,5,1,mixed,4096,TensorFold 1.3.2,2026-11-21,10_hy4_flash_tensorfold_132,df5b641735e6
-"Hy4-flash, 4-bit",TensorFold/Hy4-flash-MLX-4bit-MTP,,1346.4,1073.5,1445.8,10,2,mixed,4096,TensorFold 1.3.4,2026-11-23,27_tensorfold_134_refresh,0263bc06d9cf 3523a0e3371d
+"Hy4-flash, 4-bit",TensorFold/Hy4-flash-MLX-4bit-MTP,,1436.4,1394.2,1445.8,5,1,mixed,4096,TensorFold 1.3.4,2026-11-23,27_tensorfold_134_refresh,0263bc06d9cf
+"Hy4-flash, 4-bit",TensorFold/Hy4-flash-MLX-4bit-MTP,,1431.7,1389.1,1441.4,5,1,mixed,4096,TensorFold 1.3.5,2026-11-26,42_tensorfold_135_refresh,163b98382a23
 "Hy4-flash, 8-bit",TensorFold/Hy4-flash-MLX-8bit-MTP,,1239.3,1213.5,1295.7,5,1,code,1024,TensorFold 1.3.2,2026-11-21,10_hy4_flash_tensorfold_132,b8e543b952e1
 "Hy4-flash, 8-bit",TensorFold/Hy4-flash-MLX-8bit-MTP,yes,1235.8,1079.0,1307.0,20,2,code,1024,TensorFold 1.3.3,2026-11-22,19_tensorfold_133_refresh,998afef57c31 bfcced24637c
 "Hy4-flash, 8-bit",TensorFold/Hy4-flash-MLX-8bit-MTP,,1130.7,1041.7,1177.1,20,2,code,4096,TensorFold 1.3.3,2026-11-22,19_tensorfold_133_refresh,998afef57c31 bfcced24637c

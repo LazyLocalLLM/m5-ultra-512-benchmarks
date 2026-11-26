@@ -8,14 +8,14 @@ ELI5: I'm a learner with one Mac Studio M5 Ultra 512 GB, and I time local AI mod
 
 ELI5: The page in seven lines. Every figure here is recomputed from the raw rows each time the page is built.
 
-Updated 2026-11-25 09:46 SGT. Decode speed in tok/s, one user, one Mac.
+Updated 26 Nov 2026 13:53 SGT. Decode speed in tok/s, one user, one Mac.
 
-- **Fastest on new code.** Qwen3.8 27B, 4-bit wrote 323.4 tok/s on TensorFold 1.3.4. Next are Qwen3.8 Flash Next, 4-bit at 211.5 and Qwen3.8 Flash Next, 6-bit at 201.3.
-- **Fastest in daily use.** Qwen3.8 27B, 4-bit wrote 149.6 tok/s on TensorFold 1.3.4. Next are Qwen3.8 Flash Next, 4-bit at 128.4 and Inkling 2 Mini, Bare Speed at 127.0 (reasoning text).
+- **Fastest on new code.** Qwen3.8 27B, 4-bit wrote 325.7 tok/s on TensorFold 1.3.5. Next are Qwen3.8 Flash Next, 4-bit at 217.6 and Qwen3.8 Flash Next, 6-bit at 201.3.
+- **Fastest in daily use.** Qwen3.8 27B, 4-bit wrote 156.9 tok/s on TensorFold 1.3.5. Next are Qwen3.8 Flash Next, 4-bit at 131.2 and Inkling 2 Mini, Bare Speed at 127.0 (reasoning text).
 - **Decode speeds.** Max is greedy at temperature 0 while the model writes new code. Median is the model's own sampler on mixed text, closer to daily use. Code is the model's own sampler on new code, closest to a coding agent, and is being filled in.
 - **Prefill too.** The table also has how fast each model read a cold prompt, with the prompt size.
-- **Coverage.** 28 models, 394 setups and 41 findings.
-- **Newest finding.** Finding 41, 25 Nov 2026. [Inkling 2 Mini on Rapid-MLX 1.1.1, 1.3 times as fast as 1.1.0](findings/41_inkling2_mini_rapidmlx_111).
+- **Coverage.** 28 models, 412 setups and 42 findings.
+- **Newest finding.** Finding 42, 26 Nov 2026. [TensorFold 1.3.5 against 1.3.4 on four builds, no change I can call](findings/42_tensorfold_135_refresh).
 - **Check it.** Every figure links to a folder with the rows it came from. If I have set an engine up wrong, [open an issue](https://github.com/LazyLocalLLM/m5-ultra-512-benchmarks/issues).
 
 ## Benchmark summary
@@ -38,14 +38,14 @@ The exact setup behind each figure is one click away, under "Every setup measure
 
 | Weights | Max decode tok/s, greedy, new code | Median decode tok/s, own sampler, mixed text | Code decode tok/s, own sampler, new code | Prefill tok/s, cold prompt | Reply text | Engine | Finding |
 |---|---|---|---|---|---|---|---|
-| [4-bit](https://huggingface.co/TensorFold/Qwen3.8-27B-MLX-4bit) | **323.4** | **149.6** | **196.2** | **1,863.4**, 4K mixed prompt | answer | TensorFold 1.3.4 | [27](findings/27_tensorfold_134_refresh), [40](findings/40_code_column) |
+| [4-bit](https://huggingface.co/TensorFold/Qwen3.8-27B-MLX-4bit) | **325.7** | **156.9** | **204.4** | **1,851.9**, 4K mixed prompt | answer | TensorFold 1.3.5 | [42](findings/42_tensorfold_135_refresh) |
 | [full](https://huggingface.co/mlx-community/Qwen3.8-27B-bf16) | **6.9** | **7.1** |  | **1,885.2**, 4K code prompt | answer | mlx-serve 26.11.3 | [8](findings/08_dsv41_mlxserve_26113) |
 
 #### Qwen3.8 Flash Next
 
 | Weights | Max decode tok/s, greedy, new code | Median decode tok/s, own sampler, mixed text | Code decode tok/s, own sampler, new code | Prefill tok/s, cold prompt | Reply text | Engine | Finding |
 |---|---|---|---|---|---|---|---|
-| [4-bit](https://huggingface.co/TensorFold/Qwen3.8-Flash-Next-MLX-4bit-MTP) | **211.5** | **128.4** | **165.5** | **4,057.0**, 4K code prompt | answer | TensorFold 1.3.4 | [27](findings/27_tensorfold_134_refresh), [40](findings/40_code_column) |
+| [4-bit](https://huggingface.co/TensorFold/Qwen3.8-Flash-Next-MLX-4bit-MTP) | **217.6** | **131.2** | **165.5** | **4,054.9**, 4K code prompt | answer | TensorFold 1.3.5 | [42](findings/42_tensorfold_135_refresh) |
 | [IQ3_S](https://huggingface.co/ISTA-DASLab/Qwen3.8-Flash-Next-GSQ-RCO-GGUF) | **196.4** | **126.0** |  | **2,884.2**, 4K code prompt | answer | Strata 0.2.20 | [28](findings/28_qwen38_flash_next_strata_0220) |
 | [6-bit](https://huggingface.co/TensorFold/Qwen3.8-Flash-Next-MLX-6bit-MTP) | **201.3** | **114.5** |  | **3,841.0**, 4K mixed prompt | answer | TensorFold 1.3.3 | [19](findings/19_tensorfold_133_refresh) |
 | [full](https://huggingface.co/Qwen/Qwen3.8-Flash-Next) | **54.5** | **34.4** | **45.2** | **3,211.1**, 4K code prompt | answer | oMLX 0.8.3 with its kernels | [26](findings/26_omlx_083_refresh), [40](findings/40_code_column) |
@@ -69,7 +69,7 @@ The exact setup behind each figure is one click away, under "Every setup measure
 
 | Weights | Max decode tok/s, greedy, new code | Median decode tok/s, own sampler, mixed text | Code decode tok/s, own sampler, new code | Prefill tok/s, cold prompt | Reply text | Engine | Finding |
 |---|---|---|---|---|---|---|---|
-| [4-bit](https://huggingface.co/TensorFold/GLM-5.3-Flash-MLX-4bit-MTP) | **104.7** | **85.9** | **87.6** | **2,234.3**, 4K mixed prompt, on oMLX 0.8.1 with its kernels | answer | TensorFold 1.3.4 | [27](findings/27_tensorfold_134_refresh), [40](findings/40_code_column), [15](findings/15_glm53_flash_two_builds) |
+| [4-bit](https://huggingface.co/TensorFold/GLM-5.3-Flash-MLX-4bit-MTP) | **102.5** | **83.2** | **93.7** | **2,234.3**, 4K mixed prompt, on oMLX 0.8.1 with its kernels | answer | TensorFold 1.3.4 for max, TensorFold 1.3.5 for median | [27](findings/27_tensorfold_134_refresh), [42](findings/42_tensorfold_135_refresh), [15](findings/15_glm53_flash_two_builds) |
 | [oQ4e](https://huggingface.co/Jundot/GLM-5.3-Flash-oQ4e-mtp) | **84.9** | **70.1** |  | **2,173.5**, 4K mixed prompt, on oMLX 0.8.3 with its kernels | answer for max, reasoning for median | TensorFold 1.3.4 for max, oMLX 0.8.3 with its kernels for median | [27](findings/27_tensorfold_134_refresh), [26](findings/26_omlx_083_refresh) |
 | [6-bit](https://huggingface.co/Jundot/GLM-5.3-Flash-oQ6e-mtp) | not run yet | **57.8** |  | **1,858.8**, 4K mixed prompt | reasoning | oMLX 0.7.3 with its kernels | [2](findings/02_ten_models_4k_to_1m) |
 
@@ -86,7 +86,7 @@ The exact setup behind each figure is one click away, under "Every setup measure
 | Weights | Max decode tok/s, greedy, new code | Median decode tok/s, own sampler, mixed text | Code decode tok/s, own sampler, new code | Prefill tok/s, cold prompt | Reply text | Engine | Finding |
 |---|---|---|---|---|---|---|---|
 | [oQ4h](https://huggingface.co/Jundot/Hy4-flash-oQ4h-mtp) | **76.2** | **54.0** |  | **2,302.3**, 4K mixed prompt | answer for max, reasoning for median | oMLX 0.8.3 with its kernels for max, oMLX 0.8.1 with its kernels for median | [26](findings/26_omlx_083_refresh), [12](findings/12_hy4_flash_omlx_081) |
-| [4-bit](https://huggingface.co/TensorFold/Hy4-flash-MLX-4bit-MTP) | **79.0** | **51.6** | **47.6** | **1,649.2**, 1K code prompt | reasoning | TensorFold 1.3.4 | [27](findings/27_tensorfold_134_refresh), [40](findings/40_code_column) |
+| [4-bit](https://huggingface.co/TensorFold/Hy4-flash-MLX-4bit-MTP) | **79.0** | **51.6** | **46.7** | **1,658.6**, 1K code prompt | reasoning | TensorFold 1.3.4 for max, TensorFold 1.3.5 for code | [27](findings/27_tensorfold_134_refresh), [42](findings/42_tensorfold_135_refresh) |
 | [8-bit](https://huggingface.co/TensorFold/Hy4-flash-MLX-8bit-MTP) | **55.2** | **44.8** |  | **1,235.8**, 1K code prompt | reasoning | TensorFold 1.3.3 | [19](findings/19_tensorfold_133_refresh) |
 
 #### Inkling 2 Small
@@ -125,21 +125,24 @@ ELI5: One test hands the model text it can guess almost perfectly, counting from
 ELI5: Everything behind the tables above, including the setups that were not the fastest. Click a model to open its lines. The range is the slowest and fastest single run.
 
 <details>
-<summary><b>Qwen3.8 27B, 4-bit</b>, 27 setups</summary>
+<summary><b>Qwen3.8 27B, 4-bit</b>, 32 setups</summary>
 
 | Kind | Engine and setup | Sampler | Prompt | Reply tokens | Decode tok/s | Range | Runs | Date | Run | Finding |
 |---|---|---|---|---|---|---|---|---|---|---|
 | max | TensorFold 1.3.0, DFlash2 drafter (z-lab), defaults, older release | greedy, temperature 0 | 1K code | 2,048 | 331.3 | 245.7 to 342.1 | 5 | 2026-11-20 | `f2d856e22771` | [7](findings/07_qwen38_tensorfold_130) |
 | max | TensorFold 1.3.2, DFlash2 drafter (z-lab), defaults, second start, older release | greedy, temperature 0 | 1K code | 2,048 | 328.9 | 301.3 to 349.7 | 5 | 2026-11-21 | `ab1caacd2961` | [11](findings/11_qwen38_tensorfold_132) |
-| max | TensorFold 1.3.4, DFlash2 drafter (z-lab), defaults, standard-block start | greedy, temperature 0 | 1K code | 2,048 | 323.4 | 264.2 to 347.6 | 5 | 2026-11-23 | `52b0c20da4cb` | [27](findings/27_tensorfold_134_refresh) |
+| max | TensorFold 1.3.5, DFlash2 drafter (z-lab), defaults, same-night start b | greedy, temperature 0 | 1K code | 2,048 | 325.7 | 272.0 to 355.2 | 5 | 2026-11-26 | `2b0a3fd3c45a` | [42](findings/42_tensorfold_135_refresh) |
+| max | TensorFold 1.3.4, DFlash2 drafter (z-lab), defaults, standard-block start, older release | greedy, temperature 0 | 1K code | 2,048 | 323.4 | 264.2 to 347.6 | 5 | 2026-11-23 | `52b0c20da4cb` | [27](findings/27_tensorfold_134_refresh) |
 | max | TensorFold 1.3.3, DFlash2 drafter (z-lab), defaults, older release | greedy, temperature 0 | 1K code | 2,048 | 315.3 | 286.3 to 366.3 | 5 | 2026-11-22 | `6a8e3b10559e` | [19](findings/19_tensorfold_133_refresh) |
 | max | TensorFold 1.3.3, DFlash2 drafter (z-lab), defaults, older release | greedy, temperature 0 | 1K code | 512 | 264.7 | 225.1 to 300.3 | 5 | 2026-11-22 | `6a8e3b10559e` | [19](findings/19_tensorfold_133_refresh) |
 | max | TensorFold 1.3.0, DFlash2 drafter (z-lab), defaults, older release | greedy, temperature 0 | 4K code | 2,048 | 250.8 | 217.1 to 332.2 | 5 | 2026-11-20 | `f2d856e22771` | [7](findings/07_qwen38_tensorfold_130) |
+| max | TensorFold 1.3.5, DFlash2 drafter (z-lab), defaults, same-night start b | greedy, temperature 0 | 4K code | 2,048 | 249.5 | 227.8 to 285.4 | 5 | 2026-11-26 | `2b0a3fd3c45a` | [42](findings/42_tensorfold_135_refresh) |
 | max | TensorFold 1.3.3, DFlash2 drafter (z-lab), defaults, older release | greedy, temperature 0 | 4K code | 2,048 | 247.7 | 203.6 to 302.4 | 5 | 2026-11-22 | `6a8e3b10559e` | [19](findings/19_tensorfold_133_refresh) |
-| max | TensorFold 1.3.4, DFlash2 drafter (z-lab), defaults, standard-block start | greedy, temperature 0 | 4K code | 2,048 | 246.9 | 212.7 to 299.7 | 5 | 2026-11-23 | `52b0c20da4cb` | [27](findings/27_tensorfold_134_refresh) |
+| max | TensorFold 1.3.4, DFlash2 drafter (z-lab), defaults, standard-block start, older release | greedy, temperature 0 | 4K code | 2,048 | 246.9 | 212.7 to 299.7 | 5 | 2026-11-23 | `52b0c20da4cb` | [27](findings/27_tensorfold_134_refresh) |
 | max | TensorFold 1.3.2, DFlash2 drafter (z-lab), defaults, second start, older release | greedy, temperature 0 | 1K code | 512 | 243.6 | 225.6 to 274.1 | 5 | 2026-11-21 | `ab1caacd2961` | [11](findings/11_qwen38_tensorfold_132) |
+| max | TensorFold 1.3.5, DFlash2 drafter (z-lab), defaults, same-night start b | greedy, temperature 0 | 1K code | 512 | 243.3 | 227.3 to 285.6 | 5 | 2026-11-26 | `2b0a3fd3c45a` | [42](findings/42_tensorfold_135_refresh) |
 | max | TensorFold 1.3.2, DFlash2 drafter (z-lab), defaults, second start, older release | greedy, temperature 0 | 4K code | 2,048 | 241.6 | 223.4 to 298.6 | 5 | 2026-11-21 | `ab1caacd2961` | [11](findings/11_qwen38_tensorfold_132) |
-| max | TensorFold 1.3.4, DFlash2 drafter (z-lab), defaults, same-night start | greedy, temperature 0 | 1K code | 512 | 230.1 | 209.2 to 271.7 | 5 | 2026-11-23 | `2813d10958a6` | [27](findings/27_tensorfold_134_refresh) |
+| max | TensorFold 1.3.4, DFlash2 drafter (z-lab), defaults, same-night start, older release | greedy, temperature 0 | 1K code | 512 | 230.1 | 209.2 to 271.7 | 5 | 2026-11-23 | `2813d10958a6` | [27](findings/27_tensorfold_134_refresh) |
 | max | TensorFold 1.3.0, DFlash2 drafter (z-lab), defaults, older release | greedy, temperature 0 | 1K code | 512 | 227.0 | 222.2 to 278.6 | 5 | 2026-11-20 | `f2d856e22771` | [7](findings/07_qwen38_tensorfold_130) |
 | max | mlx-lm 0.32.2, defaults, the baseline, 20 Nov run | greedy, temperature 0 | 1K code | 2,048 | 45.1 | 45.0 to 45.2 | 5 | 2026-11-20 | `0c5446c7acc1` | [7](findings/07_qwen38_tensorfold_130) |
 | counting toy | TensorFold 1.3.0, DFlash2 drafter (z-lab), defaults, older release | greedy, temperature 0 | 1K code | 512 | 450.8 | 169.0 to 454.8 | 5 | 2026-11-20 | `f2d856e22771` | [7](findings/07_qwen38_tensorfold_130) |
@@ -148,14 +151,16 @@ ELI5: Everything behind the tables above, including the setups that were not the
 | counting toy | TensorFold 1.3.2, DFlash2 drafter (z-lab), defaults, second start, older release | greedy, temperature 0 | 1K code | 512 | 448.9 | 163.8 to 453.2 | 5 | 2026-11-21 | `ab1caacd2961` | [11](findings/11_qwen38_tensorfold_132) |
 | median | TensorFold 1.3.3, DFlash2 drafter (z-lab), defaults, sixth start, older release | temperature 0.7, top-p 0.8, top-k 20 | 4K mixed | 512 | 164.1 | 133.1 to 184.0 | 5 | 2026-11-22 | `e2420150405f` | [19](findings/19_tensorfold_133_refresh) |
 | median | TensorFold 1.3.2, DFlash2 drafter (z-lab), defaults, second start, older release | temperature 0.7, top-p 0.8, top-k 20 | 4K mixed | 512 | 161.3 | 142.5 to 178.4 | 5 | 2026-11-21 | `ab1caacd2961` | [11](findings/11_qwen38_tensorfold_132) |
+| median | TensorFold 1.3.5, DFlash2 drafter (z-lab), defaults, same-night start b | temperature 0.7, top-p 0.8, top-k 20 | 4K mixed | 512 | 156.9 | 129.4 to 159.8 | 5 | 2026-11-26 | `2b0a3fd3c45a` | [42](findings/42_tensorfold_135_refresh) |
 | median | TensorFold 1.2.8, DFlash2 drafter (z-lab), older release | temperature 0.7, top-p 0.8, top-k 20 | 4K mixed | 512 | 154.2 | 136.9 to 219.4 | 5 | 2026-11-17 | `a798cea8b67e` | [2](findings/02_ten_models_4k_to_1m) |
-| median | TensorFold 1.3.4, DFlash2 drafter (z-lab), defaults, standard-block start | temperature 0.7, top-p 0.8, top-k 20 | 4K mixed | 512 | 149.6 | 133.3 to 161.7 | 5 | 2026-11-23 | `52b0c20da4cb` | [27](findings/27_tensorfold_134_refresh) |
+| median | TensorFold 1.3.4, DFlash2 drafter (z-lab), defaults, standard-block start, older release | temperature 0.7, top-p 0.8, top-k 20 | 4K mixed | 512 | 149.6 | 133.3 to 161.7 | 5 | 2026-11-23 | `52b0c20da4cb` | [27](findings/27_tensorfold_134_refresh) |
 | median | TensorFold 1.3.0, DFlash2 drafter (z-lab), defaults, older release | temperature 0.7, top-p 0.8, top-k 20 | 4K mixed | 512 | 148.2 | 128.2 to 178.6 | 5 | 2026-11-20 | `f2d856e22771` | [7](findings/07_qwen38_tensorfold_130) |
 | median | TensorFold 1.2.7, DFlash2 drafter (z-lab), older release | temperature 0.7, top-p 0.8, top-k 20 | 1K mixed | 512 | 145.7 | 138.4 to 182.9 | 5 | 2026-11-13 | `f6775745e273` | [1](findings/01_tensorfold_qwen38-27b_4bit) |
 | median | TensorFold 1.2.7, no draft model, older release | temperature 0.7, top-p 0.8, top-k 20 | 1K mixed | 512 | 48.7 | 48.6 to 48.7 | 5 | 2026-11-13 | `eabffb505d52` | [1](findings/01_tensorfold_qwen38-27b_4bit) |
 | median | mlx-lm 0.32.2, defaults, the baseline | temperature 0.7, top-p 0.8, top-k 20 | 1K mixed | 512 | 44.5 | 44.4 to 44.5 | 5 | 2026-11-13 | `3ad3a150c4d0` | [1](findings/01_tensorfold_qwen38-27b_4bit) |
 | median | mlx-lm 0.32.2, defaults, the baseline, 20 Nov run | temperature 0.7, top-p 0.8, top-k 20 | 4K mixed | 512 | 43.6 | 43.6 to 43.7 | 5 | 2026-11-20 | `0c5446c7acc1` | [7](findings/07_qwen38_tensorfold_130) |
-| code, own sampler | TensorFold 1.3.4, DFlash2 drafter (z-lab), defaults | temperature 0.7, top-p 0.8, top-k 20 | 4K code | 512 | 196.2 | 189.3 to 265.1 | 5 | 2026-11-25 | `dddd7122c281` | [40](findings/40_code_column) |
+| code, own sampler | TensorFold 1.3.5, DFlash2 drafter (z-lab), defaults, same-night start b | temperature 0.7, top-p 0.8, top-k 20 | 4K code | 512 | 204.4 | 190.0 to 286.2 | 5 | 2026-11-26 | `2b0a3fd3c45a` | [42](findings/42_tensorfold_135_refresh) |
+| code, own sampler | TensorFold 1.3.4, DFlash2 drafter (z-lab), defaults, older release | temperature 0.7, top-p 0.8, top-k 20 | 4K code | 512 | 196.2 | 189.3 to 265.1 | 5 | 2026-11-25 | `dddd7122c281` | [40](findings/40_code_column) |
 
 </details>
 
@@ -172,30 +177,35 @@ ELI5: Everything behind the tables above, including the setups that were not the
 </details>
 
 <details>
-<summary><b>Qwen3.8 Flash Next, 4-bit</b>, 20 setups</summary>
+<summary><b>Qwen3.8 Flash Next, 4-bit</b>, 25 setups</summary>
 
 | Kind | Engine and setup | Sampler | Prompt | Reply tokens | Decode tok/s | Range | Runs | Date | Run | Finding |
 |---|---|---|---|---|---|---|---|---|---|---|
-| max | TensorFold 1.3.4, MTP on, recipe line, defaults, same-night start | greedy, temperature 0 | 1K code | 2,048 | 211.5 | 199.0 to 266.0 | 5 | 2026-11-23 | `51182015de42` | [27](findings/27_tensorfold_134_refresh) |
+| max | TensorFold 1.3.5, MTP on, recipe line, defaults, same-night start b | greedy, temperature 0 | 1K code | 2,048 | 217.6 | 192.3 to 267.1 | 5 | 2026-11-26 | `dd04a3121fd2` | [42](findings/42_tensorfold_135_refresh) |
+| max | TensorFold 1.3.4, MTP on, recipe line, defaults, same-night start, older release | greedy, temperature 0 | 1K code | 2,048 | 211.5 | 199.0 to 266.0 | 5 | 2026-11-23 | `51182015de42` | [27](findings/27_tensorfold_134_refresh) |
 | max | TensorFold 1.3.3, MTP on, recipe line, defaults, older release | greedy, temperature 0 | 4K code | 2,048 | 209.5 | 174.4 to 229.6 | 5 | 2026-11-22 | `58be1ddd40c3` | [19](findings/19_tensorfold_133_refresh) |
 | max | TensorFold 1.3.3, MTP on, recipe line, defaults, older release | greedy, temperature 0 | 1K code | 2,048 | 206.8 | 192.0 to 263.1 | 5 | 2026-11-22 | `58be1ddd40c3` | [19](findings/19_tensorfold_133_refresh) |
 | max | TensorFold 1.3.2, MTP on, recipe line, defaults, second start, older release | greedy, temperature 0 | 1K code | 2,048 | 206.8 | 191.7 to 257.5 | 5 | 2026-11-21 | `70284626631f` | [11](findings/11_qwen38_tensorfold_132) |
-| max | TensorFold 1.3.4, MTP on, recipe line, defaults, same-night start | greedy, temperature 0 | 4K code | 2,048 | 205.1 | 176.4 to 232.5 | 5 | 2026-11-23 | `51182015de42` | [27](findings/27_tensorfold_134_refresh) |
+| max | TensorFold 1.3.4, MTP on, recipe line, defaults, same-night start, older release | greedy, temperature 0 | 4K code | 2,048 | 205.1 | 176.4 to 232.5 | 5 | 2026-11-23 | `51182015de42` | [27](findings/27_tensorfold_134_refresh) |
 | max | TensorFold 1.3.0, MTP on, recipe line, defaults, older release | greedy, temperature 0 | 1K code | 2,048 | 204.4 | 176.6 to 247.5 | 5 | 2026-11-20 | `7bf80be3a997` | [7](findings/07_qwen38_tensorfold_130) |
 | max | TensorFold 1.3.0, MTP on, recipe line, defaults, older release | greedy, temperature 0 | 4K code | 512 | 194.4 | 169.7 to 217.0 | 5 | 2026-11-20 | `7bf80be3a997` | [7](findings/07_qwen38_tensorfold_130) |
+| max | TensorFold 1.3.5, MTP on, recipe line, defaults, same-night start b | greedy, temperature 0 | 4K code | 2,048 | 193.1 | 181.2 to 235.6 | 5 | 2026-11-26 | `dd04a3121fd2` | [42](findings/42_tensorfold_135_refresh) |
 | max | TensorFold 1.3.3, MTP on, recipe line, defaults, older release | greedy, temperature 0 | 4K code | 512 | 188.9 | 172.9 to 200.7 | 5 | 2026-11-22 | `58be1ddd40c3` | [19](findings/19_tensorfold_133_refresh) |
-| max | TensorFold 1.3.4, MTP on, recipe line, defaults, same-night start | greedy, temperature 0 | 4K code | 512 | 185.4 | 167.8 to 205.9 | 5 | 2026-11-23 | `51182015de42` | [27](findings/27_tensorfold_134_refresh) |
+| max | TensorFold 1.3.5, MTP on, recipe line, defaults, same-night start b | greedy, temperature 0 | 4K code | 512 | 187.7 | 179.0 to 211.9 | 5 | 2026-11-26 | `dd04a3121fd2` | [42](findings/42_tensorfold_135_refresh) |
+| max | TensorFold 1.3.4, MTP on, recipe line, defaults, same-night start, older release | greedy, temperature 0 | 4K code | 512 | 185.4 | 167.8 to 205.9 | 5 | 2026-11-23 | `51182015de42` | [27](findings/27_tensorfold_134_refresh) |
 | max | TensorFold 1.3.2, MTP on, recipe line, defaults, second start, older release | greedy, temperature 0 | 4K code | 512 | 179.1 | 176.1 to 183.6 | 5 | 2026-11-21 | `70284626631f` | [11](findings/11_qwen38_tensorfold_132) |
 | counting toy | TensorFold 1.3.4, MTP on, recipe line, defaults, counting-check start | greedy, temperature 0 | 1K code | 512 | 377.8 | 367.2 to 377.9 | 5 | 2026-11-23 | `dd4ddf3cf8cd` | [27](findings/27_tensorfold_134_refresh) |
 | counting toy | TensorFold 1.3.3, MTP on, recipe line, defaults, older release | greedy, temperature 0 | 1K code | 512 | 369.5 | 360.5 to 370.2 | 5 | 2026-11-22 | `58be1ddd40c3` | [19](findings/19_tensorfold_133_refresh) |
 | counting toy | TensorFold 1.3.2, MTP on, recipe line, defaults, second start, older release | greedy, temperature 0 | 1K code | 512 | 369.3 | 359.4 to 370.0 | 5 | 2026-11-21 | `70284626631f` | [11](findings/11_qwen38_tensorfold_132) |
 | counting toy | TensorFold 1.3.0, MTP on, recipe line, defaults, older release | greedy, temperature 0 | 1K code | 512 | 344.7 | 336.2 to 344.9 | 5 | 2026-11-20 | `7bf80be3a997` | [7](findings/07_qwen38_tensorfold_130) |
+| median | TensorFold 1.3.5, MTP on, recipe line, defaults, same-night start b | temperature 0.7, top-p 0.8, top-k 20 | 4K mixed | 512 | 131.2 | 126.8 to 136.9 | 5 | 2026-11-26 | `dd04a3121fd2` | [42](findings/42_tensorfold_135_refresh) |
 | median | TensorFold 1.3.3, MTP on, recipe line, defaults, older release | temperature 0.7, top-p 0.8, top-k 20 | 4K mixed | 512 | 130.9 | 120.7 to 135.4 | 5 | 2026-11-22 | `58be1ddd40c3` | [19](findings/19_tensorfold_133_refresh) |
 | median | TensorFold 1.3.2, MTP on, recipe line, defaults, second start, older release | temperature 0.7, top-p 0.8, top-k 20 | 4K mixed | 512 | 129.7 | 123.5 to 134.1 | 5 | 2026-11-21 | `70284626631f` | [11](findings/11_qwen38_tensorfold_132) |
 | median | TensorFold 1.2.8, MTP on, recipe line, older release | temperature 0.7, top-p 0.8, top-k 20 | 4K mixed | 512 | 129.2 | 123.9 to 139.2 | 5 | 2026-11-17 | `72fae37b87f0` | [2](findings/02_ten_models_4k_to_1m) |
-| median | TensorFold 1.3.4, MTP on, recipe line, defaults, same-night start | temperature 0.7, top-p 0.8, top-k 20 | 4K mixed | 512 | 128.4 | 122.7 to 134.1 | 5 | 2026-11-23 | `51182015de42` | [27](findings/27_tensorfold_134_refresh) |
+| median | TensorFold 1.3.4, MTP on, recipe line, defaults, same-night start, older release | temperature 0.7, top-p 0.8, top-k 20 | 4K mixed | 512 | 128.4 | 122.7 to 134.1 | 5 | 2026-11-23 | `51182015de42` | [27](findings/27_tensorfold_134_refresh) |
 | median | TensorFold 1.3.0, MTP on, recipe line, defaults, older release | temperature 0.7, top-p 0.8, top-k 20 | 4K mixed | 512 | 126.7 | 115.9 to 131.9 | 5 | 2026-11-20 | `7bf80be3a997` | [7](findings/07_qwen38_tensorfold_130) |
-| code, own sampler | TensorFold 1.3.4, MTP on, recipe line, defaults | temperature 0.7, top-p 0.8, top-k 20 | 4K code | 512 | 165.5 | 148.2 to 204.4 | 5 | 2026-11-25 | `2ca592767578` | [40](findings/40_code_column) |
+| code, own sampler | TensorFold 1.3.5, MTP on, recipe line, defaults, same-night start b | temperature 0.7, top-p 0.8, top-k 20 | 4K code | 512 | 165.5 | 137.6 to 210.0 | 5 | 2026-11-26 | `dd04a3121fd2` | [42](findings/42_tensorfold_135_refresh) |
+| code, own sampler | TensorFold 1.3.4, MTP on, recipe line, defaults, older release | temperature 0.7, top-p 0.8, top-k 20 | 4K code | 512 | 165.5 | 148.2 to 204.4 | 5 | 2026-11-25 | `2ca592767578` | [40](findings/40_code_column) |
 
 </details>
 
@@ -465,20 +475,22 @@ ELI5: Everything behind the tables above, including the setups that were not the
 </details>
 
 <details>
-<summary><b>GLM-5.3 Flash, 4-bit</b>, 29 setups</summary>
+<summary><b>GLM-5.3 Flash, 4-bit</b>, 33 setups</summary>
 
 | Kind | Engine and setup | Sampler | Prompt | Reply tokens | Decode tok/s | Range | Runs | Date | Run | Finding |
 |---|---|---|---|---|---|---|---|---|---|---|
-| max | TensorFold 1.3.4, DFlash2 draft model (incoai), thinking off | greedy, temperature 0 | 1K code | 2,048 | 104.7 | 100.5 to 111.8 | 5 | 2026-11-23 | `2820399df996` | [27](findings/27_tensorfold_134_refresh) |
-| max | TensorFold 1.3.4, DFlash2 draft model (incoai), thinking off | greedy, temperature 0 | 4K code | 2,048 | 104.2 | 101.8 to 112.3 | 5 | 2026-11-23 | `2820399df996` | [27](findings/27_tensorfold_134_refresh) |
+| max | TensorFold 1.3.4, DFlash2 draft model (incoai), thinking off, older release | greedy, temperature 0 | 1K code | 2,048 | 104.7 | 100.5 to 111.8 | 5 | 2026-11-23 | `2820399df996` | [27](findings/27_tensorfold_134_refresh) |
+| max | TensorFold 1.3.4, DFlash2 draft model (incoai), thinking off, older release | greedy, temperature 0 | 4K code | 2,048 | 104.2 | 101.8 to 112.3 | 5 | 2026-11-23 | `2820399df996` | [27](findings/27_tensorfold_134_refresh) |
 | max | TensorFold 1.3.3, MTP drafts, thinking off, older release | greedy, temperature 0 | 4K code | 2,048 | 102.8 | 97.3 to 107.2 | 5 | 2026-11-22 | `3a880091476a` | [19](findings/19_tensorfold_133_refresh) |
 | max | TensorFold 1.3.4, MTP drafts, thinking off | greedy, temperature 0 | 1K code | 2,048 | 102.5 | 97.9 to 104.8 | 5 | 2026-11-23 | `5d827a9f83a1` | [27](findings/27_tensorfold_134_refresh) |
+| max | TensorFold 1.3.5, DFlash2 draft model (incoai), thinking off, same-night start b | greedy, temperature 0 | 1K code | 2,048 | 102.3 | 97.0 to 108.5 | 5 | 2026-11-26 | `f3a0f5cee6a0` | [42](findings/42_tensorfold_135_refresh) |
 | max | TensorFold 1.3.3, MTP drafts, thinking off, older release | greedy, temperature 0 | 1K code | 2,048 | 102.1 | 97.7 to 105.0 | 5 | 2026-11-22 | `3a880091476a` | [19](findings/19_tensorfold_133_refresh) |
 | max | TensorFold 1.3.2, MTP drafts, thinking off, older release | greedy, temperature 0 | 4K code | 2,048 | 102.0 | 95.2 to 108.5 | 5 | 2026-11-21 | `33ba6147e087` | [15](findings/15_glm53_flash_two_builds) |
 | max | TensorFold 1.3.3, DFlash2 draft model (incoai), thinking off, older release | greedy, temperature 0 | 1K code | 2,048 | 101.6 | 97.8 to 107.8 | 5 | 2026-11-22 | `1e3c46e52f5f` | [19](findings/19_tensorfold_133_refresh) |
 | max | TensorFold 1.3.2, MTP drafts, thinking off, older release | greedy, temperature 0 | 1K code | 2,048 | 101.4 | 99.6 to 104.4 | 5 | 2026-11-21 | `33ba6147e087` | [15](findings/15_glm53_flash_two_builds) |
 | max | TensorFold 1.3.3, DFlash2 draft model (incoai), thinking off, older release | greedy, temperature 0 | 4K code | 2,048 | 101.4 | 100.6 to 108.7 | 5 | 2026-11-22 | `1e3c46e52f5f` | [19](findings/19_tensorfold_133_refresh) |
 | max | TensorFold 1.3.4, MTP drafts, thinking off | greedy, temperature 0 | 4K code | 2,048 | 99.5 | 94.7 to 105.7 | 5 | 2026-11-23 | `5d827a9f83a1` | [27](findings/27_tensorfold_134_refresh) |
+| max | TensorFold 1.3.5, DFlash2 draft model (incoai), thinking off, same-night start b | greedy, temperature 0 | 4K code | 2,048 | 96.5 | 89.1 to 100.3 | 5 | 2026-11-26 | `f3a0f5cee6a0` | [42](findings/42_tensorfold_135_refresh) |
 | max | oMLX 0.8.1 with its kernels, MTP on, default depth, reply is reasoning text | greedy, temperature 0 | 4K code | 2,048 | 85.1 | 79.6 to 87.0 | 5 | 2026-11-21 | `4f9da10c3691` | [15](findings/15_glm53_flash_two_builds) |
 | max | oMLX 0.8.1 with its kernels, MTP on, default depth, reply is reasoning text | greedy, temperature 0 | 1K code | 2,048 | 82.3 | 79.4 to 99.7 | 5 | 2026-11-21 | `4f9da10c3691` | [15](findings/15_glm53_flash_two_builds) |
 | max | TensorFold 1.3.2, no drafts, thinking off | greedy, temperature 0 | 1K code | 512 | 73.4 | 72.4 to 73.6 | 5 | 2026-11-21 | `3b571bd4b948` | [15](findings/15_glm53_flash_two_builds) |
@@ -491,13 +503,15 @@ ELI5: Everything behind the tables above, including the setups that were not the
 | counting toy | TensorFold 1.3.4, MTP drafts, thinking off | greedy, temperature 0 | 1K code | 512 | 106.8 | 96.9 to 110.2 | 5 | 2026-11-23 | `5d827a9f83a1` | [27](findings/27_tensorfold_134_refresh) |
 | counting toy | TensorFold 1.3.2, MTP drafts, thinking off, older release | greedy, temperature 0 | 1K code | 512 | 105.6 | 98.0 to 107.6 | 5 | 2026-11-21 | `33ba6147e087` | [15](findings/15_glm53_flash_two_builds) |
 | counting toy | TensorFold 1.3.3, MTP drafts, thinking off, older release | greedy, temperature 0 | 1K code | 512 | 102.3 | 99.4 to 111.0 | 5 | 2026-11-22 | `3a880091476a` | [19](findings/19_tensorfold_133_refresh) |
-| median | TensorFold 1.3.4, DFlash2 draft model (incoai), thinking off | temperature 1.0, top-p 0.95 | 4K mixed | 512 | 85.9 | 83.9 to 86.2 | 5 | 2026-11-23 | `2820399df996` | [27](findings/27_tensorfold_134_refresh) |
+| median | TensorFold 1.3.4, DFlash2 draft model (incoai), thinking off, older release | temperature 1.0, top-p 0.95 | 4K mixed | 512 | 85.9 | 83.9 to 86.2 | 5 | 2026-11-23 | `2820399df996` | [27](findings/27_tensorfold_134_refresh) |
 | median | TensorFold 1.3.3, DFlash2 draft model (incoai), thinking off, older release | temperature 1.0, top-p 0.95 | 4K mixed | 512 | 84.2 | 83.6 to 85.4 | 5 | 2026-11-22 | `1e3c46e52f5f` | [19](findings/19_tensorfold_133_refresh) |
+| median | TensorFold 1.3.5, DFlash2 draft model (incoai), thinking off, same-night start b | temperature 1.0, top-p 0.95 | 4K mixed | 512 | 83.2 | 72.9 to 91.6 | 5 | 2026-11-26 | `f3a0f5cee6a0` | [42](findings/42_tensorfold_135_refresh) |
 | median | TensorFold 1.3.2, MTP drafts, thinking off, older release | temperature 1.0, top-p 0.95 | 4K mixed | 512 | 80.9 | 79.2 to 85.4 | 5 | 2026-11-21 | `33ba6147e087` | [15](findings/15_glm53_flash_two_builds) |
 | median | TensorFold 1.3.3, MTP drafts, thinking off, older release | temperature 1.0, top-p 0.95 | 4K mixed | 512 | 79.8 | 72.6 to 89.0 | 5 | 2026-11-22 | `3a880091476a` | [19](findings/19_tensorfold_133_refresh) |
 | median | TensorFold 1.3.4, MTP drafts, thinking off | temperature 1.0, top-p 0.95 | 4K mixed | 512 | 78.5 | 70.8 to 86.4 | 5 | 2026-11-23 | `5d827a9f83a1` | [27](findings/27_tensorfold_134_refresh) |
 | median | oMLX 0.8.1 with its kernels, MTP on, default depth, reply is reasoning text | temperature 1.0, top-p 0.95 | 4K mixed | 512 | 76.8 | 68.9 to 78.3 | 5 | 2026-11-21 | `4f9da10c3691` | [15](findings/15_glm53_flash_two_builds) |
-| code, own sampler | TensorFold 1.3.4, DFlash2 draft model (incoai), thinking off | temperature 1.0, top-p 0.95 | 4K code | 512 | 87.6 | 84.7 to 98.7 | 5 | 2026-11-25 | `df9d5aad61a8` | [40](findings/40_code_column) |
+| code, own sampler | TensorFold 1.3.5, DFlash2 draft model (incoai), thinking off, same-night start b | temperature 1.0, top-p 0.95 | 4K code | 512 | 93.7 | 87.0 to 98.4 | 5 | 2026-11-26 | `f3a0f5cee6a0` | [42](findings/42_tensorfold_135_refresh) |
+| code, own sampler | TensorFold 1.3.4, DFlash2 draft model (incoai), thinking off, older release | temperature 1.0, top-p 0.95 | 4K code | 512 | 87.6 | 84.7 to 98.7 | 5 | 2026-11-25 | `df9d5aad61a8` | [40](findings/40_code_column) |
 
 </details>
 
@@ -653,7 +667,7 @@ ELI5: Everything behind the tables above, including the setups that were not the
 </details>
 
 <details>
-<summary><b>Hy4-flash, 4-bit</b>, 22 setups</summary>
+<summary><b>Hy4-flash, 4-bit</b>, 26 setups</summary>
 
 | Kind | Engine and setup | Sampler | Prompt | Reply tokens | Decode tok/s | Range | Runs | Date | Run | Finding |
 |---|---|---|---|---|---|---|---|---|---|---|
@@ -665,20 +679,24 @@ ELI5: Everything behind the tables above, including the setups that were not the
 | max | TensorFold 1.3.2, DFly2 drafts on, TF_HY4_DRAFT_BITS=8 (a switch from the source), thinking on, reply is reasoning text, second start, older release | greedy, temperature 0 | 4K code | 2,048 | 70.7 | 61.1 to 77.4 | 5 | 2026-11-21 | `b09695c3eab1` | [10](findings/10_hy4_flash_tensorfold_132) |
 | max | TensorFold 1.3.2, DFly2 drafts on, thinking on, reply is reasoning text, third start, older release | greedy, temperature 0 | 1K code | 2,048 | 64.6 | 56.4 to 78.8 | 5 | 2026-11-21 | `5498d94e70db` | [10](findings/10_hy4_flash_tensorfold_132) |
 | max | TensorFold 1.3.3, DFly2 drafts on, thinking on, reply is reasoning text, older release | greedy, temperature 0 | 4K code | 2,048 | 63.8 | 56.8 to 64.6 | 5 | 2026-11-22 | `9e3d9e5dce53` | [19](findings/19_tensorfold_133_refresh) |
-| max | TensorFold 1.3.4, DFly2 drafts on, thinking on, reply is reasoning text | greedy, temperature 0 | 1K code | 2,048 | 63.8 | 59.9 to 93.4 | 5 | 2026-11-23 | `3523a0e3371d` | [27](findings/27_tensorfold_134_refresh) |
+| max | TensorFold 1.3.4, DFly2 drafts on, thinking on, reply is reasoning text, older release | greedy, temperature 0 | 1K code | 2,048 | 63.8 | 59.9 to 93.4 | 5 | 2026-11-23 | `3523a0e3371d` | [27](findings/27_tensorfold_134_refresh) |
+| max | TensorFold 1.3.5, DFly2 drafts on, thinking on, reply is reasoning text, same-night start b | greedy, temperature 0 | 4K code | 2,048 | 63.2 | 53.4 to 93.9 | 5 | 2026-11-26 | `163b98382a23` | [42](findings/42_tensorfold_135_refresh) |
 | max | TensorFold 1.3.3, DFly2 drafts on, thinking on, reply is reasoning text, older release | greedy, temperature 0 | 1K code | 2,048 | 61.8 | 57.3 to 73.0 | 5 | 2026-11-22 | `9e3d9e5dce53` | [19](findings/19_tensorfold_133_refresh) |
+| max | TensorFold 1.3.5, DFly2 drafts on, thinking on, reply is reasoning text, same-night start b | greedy, temperature 0 | 1K code | 2,048 | 60.5 | 55.6 to 79.7 | 5 | 2026-11-26 | `163b98382a23` | [42](findings/42_tensorfold_135_refresh) |
 | max | TensorFold 1.3.2, DFly2 drafts on, thinking on, reply is reasoning text, third start, older release | greedy, temperature 0 | 4K code | 2,048 | 60.4 | 56.9 to 65.9 | 5 | 2026-11-21 | `5498d94e70db` | [10](findings/10_hy4_flash_tensorfold_132) |
-| max | TensorFold 1.3.4, DFly2 drafts on, thinking on, reply is reasoning text | greedy, temperature 0 | 4K code | 2,048 | 60.2 | 53.5 to 62.4 | 5 | 2026-11-23 | `3523a0e3371d` | [27](findings/27_tensorfold_134_refresh) |
+| max | TensorFold 1.3.4, DFly2 drafts on, thinking on, reply is reasoning text, older release | greedy, temperature 0 | 4K code | 2,048 | 60.2 | 53.5 to 62.4 | 5 | 2026-11-23 | `3523a0e3371d` | [27](findings/27_tensorfold_134_refresh) |
 | max | TensorFold 1.3.2, drafts off, thinking on, reply is reasoning text, 512-token replies | greedy, temperature 0 | 1K code | 512 | 43.0 | 41.1 to 43.0 | 5 | 2026-11-21 | `df5b641735e6` | [10](findings/10_hy4_flash_tensorfold_132) |
 | max | TensorFold 1.3.2, drafts off, thinking on, reply is reasoning text, 512-token replies | greedy, temperature 0 | 4K code | 512 | 42.2 | 42.1 to 42.4 | 5 | 2026-11-21 | `df5b641735e6` | [10](findings/10_hy4_flash_tensorfold_132) |
 | median | TensorFold 1.3.3, DFly2 drafts on, TF_HY4_DRAFT_BITS=8 (a switch from the source), thinking on, reply is reasoning text, older release | temperature 0.9, top-p 1.0 | 4K mixed | 512 | 54.5 | 51.6 to 107.8 | 5 | 2026-11-22 | `95019a9ea00a` | [19](findings/19_tensorfold_133_refresh) |
 | median | TensorFold 1.3.4, DFly2 drafts on, TF_HY4_DRAFT_BITS=8 (a switch from the source), thinking on, reply is reasoning text | temperature 0.9, top-p 1.0 | 4K mixed | 512 | 51.6 | 46.3 to 57.8 | 5 | 2026-11-23 | `0263bc06d9cf` | [27](findings/27_tensorfold_134_refresh) |
 | median | TensorFold 1.3.2, DFly2 drafts on, thinking on, reply is reasoning text, third start, older release | temperature 0.9, top-p 1.0 | 4K mixed | 512 | 51.3 | 44.0 to 70.4 | 5 | 2026-11-21 | `5498d94e70db` | [10](findings/10_hy4_flash_tensorfold_132) |
 | median | TensorFold 1.3.2, DFly2 drafts on, TF_HY4_DRAFT_BITS=8 (a switch from the source), thinking on, reply is reasoning text, second start, older release | temperature 0.9, top-p 1.0 | 4K mixed | 512 | 51.0 | 49.4 to 59.1 | 5 | 2026-11-21 | `b09695c3eab1` | [10](findings/10_hy4_flash_tensorfold_132) |
-| median | TensorFold 1.3.4, DFly2 drafts on, thinking on, reply is reasoning text | temperature 0.9, top-p 1.0 | 4K mixed | 512 | 48.0 | 44.0 to 84.0 | 5 | 2026-11-23 | `3523a0e3371d` | [27](findings/27_tensorfold_134_refresh) |
+| median | TensorFold 1.3.4, DFly2 drafts on, thinking on, reply is reasoning text, older release | temperature 0.9, top-p 1.0 | 4K mixed | 512 | 48.0 | 44.0 to 84.0 | 5 | 2026-11-23 | `3523a0e3371d` | [27](findings/27_tensorfold_134_refresh) |
+| median | TensorFold 1.3.5, DFly2 drafts on, thinking on, reply is reasoning text, same-night start b | temperature 0.9, top-p 1.0 | 4K mixed | 512 | 46.6 | 39.9 to 56.5 | 5 | 2026-11-26 | `163b98382a23` | [42](findings/42_tensorfold_135_refresh) |
 | median | TensorFold 1.3.3, DFly2 drafts on, thinking on, reply is reasoning text, older release | temperature 0.9, top-p 1.0 | 4K mixed | 512 | 44.2 | 43.3 to 71.6 | 5 | 2026-11-22 | `9e3d9e5dce53` | [19](findings/19_tensorfold_133_refresh) |
 | median | TensorFold 1.3.2, drafts off, thinking on, reply is reasoning text | temperature 0.9, top-p 1.0 | 4K mixed | 512 | 41.3 | 41.1 to 41.4 | 5 | 2026-11-21 | `df5b641735e6` | [10](findings/10_hy4_flash_tensorfold_132) |
-| code, own sampler | TensorFold 1.3.4, DFly2 drafts on, thinking on, reply is reasoning text | temperature 0.9, top-p 1.0 | 4K code | 512 | 47.6 | 44.4 to 52.7 | 5 | 2026-11-25 | `9e81bf39a949` | [40](findings/40_code_column) |
+| code, own sampler | TensorFold 1.3.4, DFly2 drafts on, thinking on, reply is reasoning text, older release | temperature 0.9, top-p 1.0 | 4K code | 512 | 47.6 | 44.4 to 52.7 | 5 | 2026-11-25 | `9e81bf39a949` | [40](findings/40_code_column) |
+| code, own sampler | TensorFold 1.3.5, DFly2 drafts on, thinking on, reply is reasoning text, same-night start b | temperature 0.9, top-p 1.0 | 4K code | 512 | 46.7 | 43.6 to 50.7 | 5 | 2026-11-26 | `163b98382a23` | [42](findings/42_tensorfold_135_refresh) |
 
 </details>
 
@@ -745,6 +763,10 @@ ELI5: Everything behind the tables above, including the setups that were not the
 ## Findings
 
 ELI5: Each finding is one question, one run of an hour or two, and one report. Newest first. Click a title for the full report and the raw rows.
+
+### 42. [TensorFold 1.3.5 against 1.3.4 on four builds, no change I can call](findings/42_tensorfold_135_refresh)
+
+Runs of 26 Nov 2026. TensorFold 1.3.5 showed no speed change I can call against the 1.3.4 keg on Qwen3.8 27B, Qwen3.8 Flash Next, GLM-5.3 Flash and Hy4-flash, all 4-bit, run new, old, old, new on one day. Pair ratios sat between 0.93 and 1.04, inside the spread between two starts of one release. 1,000 of 1,000 short greedy answers match. The summary moves each rerun setup to 1.3.5.
 
 ### 41. [Inkling 2 Mini on Rapid-MLX 1.1.1, 1.3 times as fast as 1.1.0](findings/41_inkling2_mini_rapidmlx_111)
 
