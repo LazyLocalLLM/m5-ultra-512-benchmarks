@@ -6,14 +6,15 @@ ELI5: I'm a learner with one Mac Studio M5 Ultra 512 GB, and I time local AI mod
 
 ## Executive summary
 
-ELI5: The page in seven lines. Every figure here is recomputed from the raw rows each time the page is built.
+ELI5: The page in eight lines. Every figure here is recomputed from the raw rows each time the page is built.
 
-Updated 27 Nov 2026 16:30 SGT. Decode speed in tok/s, one user, one Mac.
+Updated 28 Nov 2026 00:44 SGT. Decode speed in tok/s, one user, one Mac.
 
 - **Fastest on new code.** Qwen3.8 27B, 4-bit wrote 325.7 tok/s on TensorFold 1.3.5. Next are Qwen3.8 Flash Next, 4-bit at 223.4 and Qwen3.8 Flash Next, 6-bit at 201.3.
 - **Fastest in daily use.** Qwen3.8 27B, 4-bit wrote 156.9 tok/s on TensorFold 1.3.5. Next are Qwen3.8 Flash Next, 4-bit at 150.9 and Inkling 2 Mini, Bare Speed at 127.0 (reasoning text).
 - **Decode speeds.** Max is greedy at temperature 0 while the model writes new code. Median is the model's own sampler on mixed text, closer to daily use. Code is the model's own sampler on new code, closest to a coding agent, and is being filled in.
 - **Prefill too.** The table also has how fast each model read a cold prompt, with the prompt size.
+- **Pictures and video.** 5 models timed in seconds per picture or per clip, in their own tables under "Pictures and video".
 - **Coverage.** 29 models, 438 setups and 44 findings.
 - **Newest finding.** Finding 44, 27 Nov 2026. [Inkling 2 Mini on oMLX 0.8.4, 1.4 to 1.6 times as fast as 0.8.3](findings/44_inkling2_mini_omlx_084).
 - **Check it.** Every figure links to a folder with the rows it came from. If I have set an engine up wrong, [open an issue](https://github.com/LazyLocalLLM/m5-ultra-512-benchmarks/issues).
@@ -121,9 +122,75 @@ ELI5: One test hands the model text it can guess almost perfectly, counting from
 | [DeepSeek V4.1 Flash 1017, oQ4e-mtp](https://huggingface.co/mlx-community/DeepSeek-V4.1-Flash-1017-oQ4e-mtp) | **114.0** | oMLX 0.8.0 with its kernels | [5](findings/05_dsv41_omlx_080_max_push) |
 | [Hy4-flash, oQ4h](https://huggingface.co/Jundot/Hy4-flash-oQ4h-mtp) | **94.0** | oMLX 0.8.3 with its kernels | [26](findings/26_omlx_083_refresh) |
 
+### Pictures and video
+
+ELI5: Some models draw pictures or make short videos. Their speed is the seconds one picture or one clip takes, so lower is faster.
+
+- **Seconds, lower is faster.** Each cell is the middle of the timed outputs of one setup, made one at a time, with how many there were. A clip is 124 frames at 24 fps, about 5 seconds.
+- **Not a ranking.** The engines read different weights, adapters and step counts, so a gap is not one engine's speed alone. Each line names its weights and steps.
+- **Dates.** These ran from 22 Nov 2026 to 24 Nov 2026. Each line names its engine release.
+- **Timings only.** The finding folders hold one row per picture or clip, with a hash of each output, not the pictures or clips.
+- **Releases.** The Rapid-MLX lines ran on 1.1.0 and the TensorFold line on 1.3.4. They have not been rerun on Rapid-MLX 1.1.1 or TensorFold 1.3.5. h3.c is a main commit with no release.
+- **mlx-serve's int8 path** is on by default on this Mac, and lossy. A line says where it was off.
+
+#### [MiniMax H3](https://huggingface.co/MiniMaxAI/MiniMax-H3)
+
+A 5-second clip with sound from a text prompt, seed 42. 1344 by 768 is H3's native size.
+
+| Engine and setting | Weights | Steps | 832 by 480, seconds | 1344 by 768, seconds | Finding |
+|---|---|---|---|---|---|
+| mlx-serve 26.11.3, Turbo | [author's 8-bit pack, Turbo LoRA](https://huggingface.co/ddalcu/MiniMax-H3-FL2VA-MLX-Serve-8bit) | 4 | **35.1**, 3 clips | **135.1**, 4 clips | [34](findings/34_minimax_h3_video_mlxserve_round2) |
+| mlx-serve 26.11.3, Turbo | [author's 4-bit pack, Turbo LoRA](https://huggingface.co/ddalcu/MiniMax-H3-FL2VA-MLX-Serve-4bit) | 4 | **35.0**, 3 clips | **136.1**, 4 clips | [34](findings/34_minimax_h3_video_mlxserve_round2) |
+| mlx-serve 26.11.3, its default | [author's 8-bit pack](https://huggingface.co/ddalcu/MiniMax-H3-FL2VA-MLX-Serve-8bit) | 30, step cache | **109.3**, 2 clips | **471.4**, 1 clip | [33](findings/33_minimax_h3_video_mlxserve_rapidmlx) |
+| Rapid-MLX 1.1.0, Turbo LoRA merged | [maker's bf16](https://huggingface.co/MiniMaxAI/MiniMax-H3) | 9 | **116.6**, 2 clips | **446.2**, 2 clips | [33](findings/33_minimax_h3_video_mlxserve_rapidmlx) |
+| h3.c main 8974cc05, 4 steps | [maker's bf16, int8 at load](https://huggingface.co/MiniMaxAI/MiniMax-H3) | 4 | **61.5**, 5 clips | **211.7**, 3 clips | [36](findings/36_minimax_h3_video_h3c) |
+| h3.c main 8974cc05, its README's balanced preset | [maker's bf16, int8 at load](https://huggingface.co/MiniMaxAI/MiniMax-H3) | 20, 11 fresh | **103.3**, 2 clips | **413.0**, 2 clips | [36](findings/36_minimax_h3_video_h3c) |
+| h3.c main 8974cc05, its defaults | [maker's bf16, int8 at load](https://huggingface.co/MiniMaxAI/MiniMax-H3) | 20 | **170.0**, 3 clips | **749.3**, 1 clip | [36](findings/36_minimax_h3_video_h3c) |
+
+#### [HyperFlow H3 Flash](https://huggingface.co/VideoRebirthAI/hyperflow-h3-flash)
+
+A 5-second clip with sound, given a first and a last frame, seed 42.
+
+| Engine and setting | Weights | Steps | 832 by 480, seconds | 1344 by 768, seconds | Finding |
+|---|---|---|---|---|---|
+| mlx-serve 26.11.3, first and last frame | [hancheng-ai's 8-bit pack](https://huggingface.co/hancheng-ai/HyperFlow-H3-Flash-FL2VA-MLX-Serve-8bit) | 6 | **43.5**, 3 clips | **180.4**, 2 clips | [34](findings/34_minimax_h3_video_mlxserve_round2) |
+
+#### [MiniMax-H3-Image](https://huggingface.co/MiniMaxAI/MiniMax-H3-Image)
+
+One picture, 6 steps, seed 42. 2048 by 2048 is the model's own canvas. At 1024 and 2048 the engines were within 0.5 s, too close to rank.
+
+| Engine and setting | Weights | Steps | 1024 by 1024, seconds | 2048 by 2048, seconds | 4096 by 4096, seconds | Finding |
+|---|---|---|---|---|---|---|
+| TensorFold 1.3.4, model kept loaded | [maker's bf16](https://huggingface.co/MiniMaxAI/MiniMax-H3-Image) | 6 | **13.4**, 3 pictures | **12.9**, 5 pictures | **76.0**, 2 pictures | [35](findings/35_minimax_h3_image_three_engines) |
+| Rapid-MLX 1.1.0, 4-bit at load | [maker's weights](https://huggingface.co/MiniMaxAI/MiniMax-H3-Image) | 6 | **13.2**, 3 pictures | **13.3**, 5 pictures | refused the size | [35](findings/35_minimax_h3_image_three_engines) |
+| Rapid-MLX 1.1.0, 8-bit at load | [maker's weights](https://huggingface.co/MiniMaxAI/MiniMax-H3-Image) | 6 | **14.8**, 3 pictures | **14.6**, 5 pictures | refused the size | [35](findings/35_minimax_h3_image_three_engines) |
+| mlx-serve 26.11.3, its default | [author's 4-bit pack](https://huggingface.co/ddalcu/MiniMax-H3-Image-MLX-Serve-4bit) | 6 | **13.1**, 3 pictures | **13.4**, 5 pictures | **51.8**, 2 pictures | [35](findings/35_minimax_h3_image_three_engines) |
+| mlx-serve 26.11.3, its default | [author's 8-bit pack](https://huggingface.co/ddalcu/MiniMax-H3-Image-MLX-Serve-8bit) | 6 | **14.8**, 3 pictures | **14.9**, 5 pictures | **55.5**, 2 pictures | [35](findings/35_minimax_h3_image_three_engines) |
+
+#### [Qwen-Image 2.1](https://huggingface.co/Qwen/Qwen-Image-2.1)
+
+One picture, 20 steps. One pass a step is guidance 1.0, or Rapid-MLX at guidance 3.5 with no negative prompt. Two passes a step is mlx-serve at guidance 3.5, or Rapid-MLX at guidance 3.5 with a negative prompt. Compare lines with the same passes.
+
+| Engine and setting | Weights | Steps | 1024 by 1024, seconds | 2048 by 2048, seconds | Finding |
+|---|---|---|---|---|---|
+| mlx-serve 26.11.3, one pass a step | [author's 8-bit pack](https://huggingface.co/ddalcu/Qwen-Image-2.1-MLX-Serve-8bit) | 20 | **8.3**, 5 pictures | **53.3**, 3 pictures | [25](findings/25_qwen_image_mlxserve_26113) |
+| mlx-serve 26.11.3, one pass a step, int8 path off | [author's 8-bit pack](https://huggingface.co/ddalcu/Qwen-Image-2.1-MLX-Serve-8bit) | 20 | **15.1**, 5 pictures | not run | [25](findings/25_qwen_image_mlxserve_26113) |
+| Rapid-MLX 1.1.0, one pass a step | [maker's bf16](https://huggingface.co/Qwen/Qwen-Image-2.1) | 20 | **17.2**, 3 pictures | **105.4**, 6 pictures | [25](findings/25_qwen_image_mlxserve_26113), [22](findings/22_image_video_rapidmlx_110) |
+| mlx-serve 26.11.3, two passes a step | [author's 8-bit pack](https://huggingface.co/ddalcu/Qwen-Image-2.1-MLX-Serve-8bit) | 20 | **18.4**, 5 pictures | **111.8**, 3 pictures | [25](findings/25_qwen_image_mlxserve_26113) |
+| Rapid-MLX 1.1.0, two passes a step | [maker's bf16](https://huggingface.co/Qwen/Qwen-Image-2.1) | 20 | **33.4**, 3 pictures | not run | [25](findings/25_qwen_image_mlxserve_26113) |
+
+#### [Qwen-Image 2.1 Turbo](https://huggingface.co/Qwen/Qwen-Image-2.1-Turbo)
+
+One picture, 8 steps, one pass a step.
+
+| Engine and setting | Weights | Steps | 1024 by 1024, seconds | Finding |
+|---|---|---|---|---|
+| mlx-serve 26.11.3, its default | [author's 8-bit pack](https://huggingface.co/ddalcu/Qwen-Image-2.1-Turbo-MLX-Serve-8bit) | 8 | **3.9**, 5 pictures | [25](findings/25_qwen_image_mlxserve_26113) |
+| Rapid-MLX 1.1.0, its default | [maker's bf16](https://huggingface.co/Qwen/Qwen-Image-2.1-Turbo) | 8 | **8.7**, 3 pictures | [25](findings/25_qwen_image_mlxserve_26113) |
+
 ### Every setup measured
 
-ELI5: Everything behind the tables above, including the setups that were not the fastest. Click a model to open its lines. The range is the slowest and fastest single run.
+ELI5: Every decode line behind the tables above, including the setups that were not the fastest. Click a model to open its lines. The range is the slowest and fastest single run.
 
 <details>
 <summary><b>Qwen3.8 27B, 4-bit</b>, 32 setups</summary>
