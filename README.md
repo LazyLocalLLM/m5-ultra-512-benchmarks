@@ -8,14 +8,14 @@ ELI5: I'm a learner with one Mac Studio M5 Ultra 512 GB, and I time local AI mod
 
 ELI5: The page in seven lines. Every figure here is recomputed from the raw rows each time the page is built.
 
-Updated 27 Nov 2026 01:11 SGT. Decode speed in tok/s, one user, one Mac.
+Updated 27 Nov 2026 16:30 SGT. Decode speed in tok/s, one user, one Mac.
 
 - **Fastest on new code.** Qwen3.8 27B, 4-bit wrote 325.7 tok/s on TensorFold 1.3.5. Next are Qwen3.8 Flash Next, 4-bit at 223.4 and Qwen3.8 Flash Next, 6-bit at 201.3.
 - **Fastest in daily use.** Qwen3.8 27B, 4-bit wrote 156.9 tok/s on TensorFold 1.3.5. Next are Qwen3.8 Flash Next, 4-bit at 150.9 and Inkling 2 Mini, Bare Speed at 127.0 (reasoning text).
 - **Decode speeds.** Max is greedy at temperature 0 while the model writes new code. Median is the model's own sampler on mixed text, closer to daily use. Code is the model's own sampler on new code, closest to a coding agent, and is being filled in.
 - **Prefill too.** The table also has how fast each model read a cold prompt, with the prompt size.
-- **Coverage.** 29 models, 427 setups and 43 findings.
-- **Newest finding.** Finding 43, 26 and 27 Nov 2026. [TensorFold 1.3.5's Qwen3.8 Flash Next TFQ3 met its card and wrote 0.73 to 0.83 times the 4-bit build's speed](findings/43_tensorfold_135_tfq3).
+- **Coverage.** 29 models, 438 setups and 44 findings.
+- **Newest finding.** Finding 44, 27 Nov 2026. [Inkling 2 Mini on oMLX 0.8.4, 1.4 to 1.6 times as fast as 0.8.3](findings/44_inkling2_mini_omlx_084).
 - **Check it.** Every figure links to a folder with the rows it came from. If I have set an engine up wrong, [open an issue](https://github.com/LazyLocalLLM/m5-ultra-512-benchmarks/issues).
 
 ## Benchmark summary
@@ -56,11 +56,11 @@ The exact setup behind each figure is one click away, under "Every setup measure
 | Weights | Max decode tok/s, greedy, new code | Median decode tok/s, own sampler, mixed text | Code decode tok/s, own sampler, new code | Prefill tok/s, cold prompt | Reply text | Engine | Finding |
 |---|---|---|---|---|---|---|---|
 | [Bare Speed](https://huggingface.co/Youssofal/Inkling-2-Mini-MTPLX-Bare-Speed) | **154.8** | **127.0** | **125.4** | **4,684.1**, 4K code prompt | reasoning | MTPLX 2.13.3 | [39](findings/39_inkling2_mini_mtplx_2133), [40](findings/40_code_column) |
+| [oQ3e](https://huggingface.co/mlx-community/Inkling-2-Mini-oQ3e-mtp) | **169.2** | **122.1** | **130.7** | **4,649.6**, 4K code prompt | reasoning | oMLX 0.8.4 with its kernels | [44](findings/44_inkling2_mini_omlx_084) |
+| [oQ4e](https://huggingface.co/mlx-community/Inkling-2-Mini-oQ4e-mtp) | **165.9** | **116.6** | **122.6** | **4,871.4**, 4K code prompt | reasoning | oMLX 0.8.4 with its kernels | [44](findings/44_inkling2_mini_omlx_084) |
 | [Optimized Speed](https://huggingface.co/Youssofal/Inkling-2-Mini-MTPLX-Optimized-Speed) | **152.0** | **113.0** | **127.2** | **4,675.6**, 4K code prompt | reasoning | MTPLX 2.13.2 for max, MTPLX 2.13.3 for code | [29](findings/29_inkling2_mini_mtplx_2132), [40](findings/40_code_column) |
 | [Optimized Quality](https://huggingface.co/Youssofal/Inkling-2-Mini-MTPLX-Optimized-Quality) | **133.8** | **105.6** | **118.9** | **4,675.6**, 4K code prompt | reasoning | MTPLX 2.13.2 for max, MTPLX 2.13.3 for code | [29](findings/29_inkling2_mini_mtplx_2132), [40](findings/40_code_column) |
 | [8-bit](https://huggingface.co/ddalcu/Inkling-2-Mini-MLX-8bit) | **146.8** | **105.2** | **105.2** | **4,931.8**, 4K code prompt | reasoning | mlx-serve 26.11.4-pre-release.1, main at 2fe9be83 | [20](findings/20_inkling2_mini_mlxserve_pre), [40](findings/40_code_column) |
-| [oQ4e](https://huggingface.co/mlx-community/Inkling-2-Mini-oQ4e-mtp) | **108.1** | **83.3** | **84.8** | **3,249.8**, 4K code prompt | reasoning | oMLX 0.8.3 with its kernels | [26](findings/26_omlx_083_refresh), [40](findings/40_code_column) |
-| [oQ3e](https://huggingface.co/mlx-community/Inkling-2-Mini-oQ3e-mtp) | **105.1** | **67.1** | **90.0** | **3,096.8**, 4K code prompt, on oMLX 0.8.3 with its kernels | reasoning | oMLX 0.8.1 with its kernels for max, oMLX 0.8.3 with its kernels for code | [14](findings/14_inkling2_mini_omlx_081), [40](findings/40_code_column) |
 | [maker's release](https://huggingface.co/thinkingmachines/Inkling-2-Mini) | **82.3** | **61.7** | **67.1** | **2,127.8**, 4K code prompt | reasoning | Ollama 0.40.17 | [31](findings/31_inkling2_mini_ollama_04017), [40](findings/40_code_column) |
 | [SQ-20](https://huggingface.co/strata-engine/Inkling-2-Mini-Strata) | **106.1** | **59.3** | **58.6** | **3,386.8**, 4K mixed prompt | answer | Strata 0.2.20 | [30](findings/30_inkling2_mini_strata_0220), [40](findings/40_code_column) |
 | [UD-Q8_K_XL](https://huggingface.co/unsloth/Inkling-2-Mini-GGUF) | **60.1** | **58.2** | **57.2** | **3,216.4**, 4K mixed prompt | answer | Strata 0.2.20 | [30](findings/30_inkling2_mini_strata_0220), [40](findings/40_code_column) |
@@ -348,6 +348,55 @@ ELI5: Everything behind the tables above, including the setups that were not the
 </details>
 
 <details>
+<summary><b>Inkling 2 Mini, oQ3e</b>, 8 setups</summary>
+
+| Kind | Engine and setup | Sampler | Prompt | Reply tokens | Decode tok/s | Range | Runs | Date | Run | Finding |
+|---|---|---|---|---|---|---|---|---|---|---|
+| max | oMLX 0.8.4 with its kernels, DSpark draft on, default depth, thinking switched off, reply is reasoning text, same-morning start b | greedy, temperature 0 | 1K code | 2,048 | 169.2 | 144.5 to 185.8 | 5 | 2026-11-27 | `2bd52e23895b` | [44](findings/44_inkling2_mini_omlx_084) |
+| max | oMLX 0.8.4 with its kernels, DSpark draft on, default depth, thinking switched off, reply is reasoning text, same-morning start b | greedy, temperature 0 | 4K code | 2,048 | 158.1 | 147.9 to 183.9 | 5 | 2026-11-27 | `2bd52e23895b` | [44](findings/44_inkling2_mini_omlx_084) |
+| max | oMLX 0.8.1 with its kernels, DSpark draft on, default depth, reply is reasoning text, older release | greedy, temperature 0 | 4K code | 2,048 | 105.1 | 92.2 to 111.9 | 5 | 2026-11-21 | `472bfd081962` | [14](findings/14_inkling2_mini_omlx_081) |
+| max | oMLX 0.8.1 with its kernels, DSpark draft on, default depth, reply is reasoning text, older release | greedy, temperature 0 | 1K code | 2,048 | 100.6 | 87.6 to 105.7 | 5 | 2026-11-21 | `472bfd081962` | [14](findings/14_inkling2_mini_omlx_081) |
+| median | oMLX 0.8.4 with its kernels, DSpark draft on, default depth, thinking switched off, reply is reasoning text, same-morning start b | temperature 1.0, top-p 1.0 | 4K mixed | 512 | 122.1 | 108.7 to 131.9 | 5 | 2026-11-27 | `2bd52e23895b` | [44](findings/44_inkling2_mini_omlx_084) |
+| median | oMLX 0.8.1 with its kernels, DSpark draft on, default depth, reply is reasoning text, older release | temperature 1.0, top-p 1.0 | 4K mixed | 512 | 67.1 | 61.3 to 83.1 | 5 | 2026-11-21 | `472bfd081962` | [14](findings/14_inkling2_mini_omlx_081) |
+| code, own sampler | oMLX 0.8.4 with its kernels, DSpark draft on, default depth, thinking switched off, reply is reasoning text, same-morning start b | temperature 1.0, top-p 1.0 | 4K code | 512 | 130.7 | 124.9 to 140.3 | 5 | 2026-11-27 | `2bd52e23895b` | [44](findings/44_inkling2_mini_omlx_084) |
+| code, own sampler | oMLX 0.8.3 with its kernels, DSpark draft on, default depth, reply is reasoning text, older release | temperature 1.0, top-p 1.0 | 4K code | 512 | 90.0 | 89.5 to 105.3 | 5 | 2026-11-25 | `273cb2e18022` | [40](findings/40_code_column) |
+
+</details>
+
+<details>
+<summary><b>Inkling 2 Mini, oQ4e</b>, 25 setups</summary>
+
+| Kind | Engine and setup | Sampler | Prompt | Reply tokens | Decode tok/s | Range | Runs | Date | Run | Finding |
+|---|---|---|---|---|---|---|---|---|---|---|
+| max | oMLX 0.8.4 with its kernels, DSpark draft on, default depth, reply is reasoning text, default thinking effort, same-morning start b | greedy, temperature 0 | 1K code | 2,048 | 165.9 | 152.2 to 224.3 | 5 | 2026-11-27 | `8aa06119f472` | [44](findings/44_inkling2_mini_omlx_084) |
+| max | oMLX 0.8.4 with its kernels, DSpark draft on, default depth, thinking switched off, reply mostly reasoning text, same-morning start b | greedy, temperature 0 | 1K code | 2,048 | 153.9 | 143.6 to 168.3 | 5 | 2026-11-27 | `f92fdb3c535b` | [44](findings/44_inkling2_mini_omlx_084) |
+| max | oMLX 0.8.4 with its kernels, DSpark draft on, default depth, reply is reasoning text, default thinking effort, same-morning start b | greedy, temperature 0 | 4K code | 2,048 | 145.5 | 139.7 to 159.9 | 5 | 2026-11-27 | `8aa06119f472` | [44](findings/44_inkling2_mini_omlx_084) |
+| max | oMLX 0.8.4 with its kernels, DSpark draft on, default depth, thinking switched off, reply mostly reasoning text, same-morning start b | greedy, temperature 0 | 4K code | 2,048 | 135.9 | 128.7 to 152.2 | 5 | 2026-11-27 | `f92fdb3c535b` | [44](findings/44_inkling2_mini_omlx_084) |
+| max | oMLX 0.8.3 with its kernels, DSpark draft on, default depth, reply is reasoning text, default thinking effort, older release | greedy, temperature 0 | 1K code | 2,048 | 108.1 | 93.7 to 117.8 | 5 | 2026-11-23 | `af8afe759506` | [26](findings/26_omlx_083_refresh) |
+| max | oMLX 0.8.3 with its kernels, DSpark draft on, default depth, thinking switched off (effort 0), reply mostly reasoning text, older release | greedy, temperature 0 | 1K code | 2,048 | 104.2 | 97.3 to 115.0 | 5 | 2026-11-23 | `0f8455f8a46f` | [26](findings/26_omlx_083_refresh) |
+| max | oMLX 0.8.3 with its kernels, DSpark draft on, default depth, reply is reasoning text, default thinking effort, older release | greedy, temperature 0 | 4K code | 2,048 | 102.0 | 91.6 to 117.3 | 5 | 2026-11-23 | `af8afe759506` | [26](findings/26_omlx_083_refresh) |
+| max | oMLX 0.8.1 with its kernels, DSpark draft on, default depth, reply is reasoning text, older release | greedy, temperature 0 | 1K code | 2,048 | 96.3 | 83.1 to 97.3 | 5 | 2026-11-21 | `a3cf6857c4b5` | [14](findings/14_inkling2_mini_omlx_081) |
+| max | oMLX 0.8.3 with its kernels, DSpark draft on, default depth, thinking switched off (effort 0), reply mostly reasoning text, older release | greedy, temperature 0 | 4K code | 2,048 | 92.8 | 89.0 to 110.1 | 5 | 2026-11-23 | `0f8455f8a46f` | [26](findings/26_omlx_083_refresh) |
+| max | oMLX 0.8.2 with its kernels, DSpark draft on, default depth, reply is reasoning text, third start, older release | greedy, temperature 0 | 1K code | 2,048 | 85.3 | 81.3 to 94.1 | 5 | 2026-11-22 | `a7944f4eab8a` | [16](findings/16_omlx_082_refresh) |
+| max | oMLX 0.8.1 with its kernels, DSpark draft on, default depth, reply is reasoning text, older release | greedy, temperature 0 | 4K code | 2,048 | 80.1 | 79.5 to 98.3 | 5 | 2026-11-21 | `a3cf6857c4b5` | [14](findings/14_inkling2_mini_omlx_081) |
+| max | oMLX 0.8.2 with its kernels, DSpark draft on, default depth, reply is reasoning text, third start, older release | greedy, temperature 0 | 4K code | 2,048 | 78.1 | 73.7 to 87.1 | 5 | 2026-11-22 | `a7944f4eab8a` | [16](findings/16_omlx_082_refresh) |
+| max | oMLX 0.8.3 with its kernels, DSpark draft off, thinking switched off (effort 0), reply mostly reasoning text | greedy, temperature 0 | 1K code | 2,048 | 62.4 | 62.2 to 62.5 | 5 | 2026-11-23 | `1e9d52ecfc69` | [26](findings/26_omlx_083_refresh) |
+| max | oMLX 0.8.3 with its kernels, DSpark draft off, thinking switched off (effort 0), reply mostly reasoning text | greedy, temperature 0 | 4K code | 2,048 | 61.6 | 61.5 to 61.9 | 5 | 2026-11-23 | `1e9d52ecfc69` | [26](findings/26_omlx_083_refresh) |
+| max | oMLX 0.8.1 with its kernels, DSpark draft off, reply is reasoning text | greedy, temperature 0 | 1K code | 2,048 | 54.5 | 54.3 to 54.5 | 5 | 2026-11-21 | `fe2a52ddebd0` | [14](findings/14_inkling2_mini_omlx_081) |
+| max | oMLX 0.8.1 with its kernels, DSpark draft off, reply is reasoning text | greedy, temperature 0 | 4K code | 2,048 | 53.7 | 53.6 to 53.9 | 5 | 2026-11-21 | `fe2a52ddebd0` | [14](findings/14_inkling2_mini_omlx_081) |
+| median | oMLX 0.8.4 with its kernels, DSpark draft on, default depth, reply is reasoning text, default thinking effort, same-morning start b | temperature 1.0, top-p 1.0 | 4K mixed | 512 | 116.6 | 103.6 to 133.8 | 5 | 2026-11-27 | `8aa06119f472` | [44](findings/44_inkling2_mini_omlx_084) |
+| median | oMLX 0.8.4 with its kernels, DSpark draft on, default depth, thinking switched off, reply mostly reasoning text, same-morning start b | temperature 1.0, top-p 1.0 | 4K mixed | 512 | 109.1 | 98.5 to 128.2 | 5 | 2026-11-27 | `f92fdb3c535b` | [44](findings/44_inkling2_mini_omlx_084) |
+| median | oMLX 0.8.3 with its kernels, DSpark draft on, default depth, reply is reasoning text, default thinking effort, older release | temperature 1.0, top-p 1.0 | 4K mixed | 512 | 83.3 | 78.6 to 87.6 | 5 | 2026-11-23 | `af8afe759506` | [26](findings/26_omlx_083_refresh) |
+| median | oMLX 0.8.3 with its kernels, DSpark draft on, default depth, thinking switched off (effort 0), reply mostly reasoning text, older release | temperature 1.0, top-p 1.0 | 4K mixed | 512 | 80.1 | 72.5 to 82.3 | 5 | 2026-11-23 | `d066e1456e61` | [26](findings/26_omlx_083_refresh) |
+| median | oMLX 0.8.1 with its kernels, DSpark draft on, default depth, reply is reasoning text, older release | temperature 1.0, top-p 1.0 | 4K mixed | 512 | 65.9 | 59.2 to 67.7 | 5 | 2026-11-21 | `a3cf6857c4b5` | [14](findings/14_inkling2_mini_omlx_081) |
+| median | oMLX 0.8.2 with its kernels, DSpark draft on, default depth, reply is reasoning text, third start, older release | temperature 1.0, top-p 1.0 | 4K mixed | 512 | 60.3 | 50.8 to 72.2 | 5 | 2026-11-22 | `a7944f4eab8a` | [16](findings/16_omlx_082_refresh) |
+| median | oMLX 0.8.1 with its kernels, DSpark draft off, reply is reasoning text | temperature 1.0, top-p 1.0 | 4K mixed | 512 | 54.4 | 54.3 to 54.6 | 5 | 2026-11-21 | `fe2a52ddebd0` | [14](findings/14_inkling2_mini_omlx_081) |
+| code, own sampler | oMLX 0.8.4 with its kernels, DSpark draft on, default depth, reply is reasoning text, default thinking effort, same-morning start b | temperature 1.0, top-p 1.0 | 4K code | 512 | 122.6 | 116.1 to 129.4 | 5 | 2026-11-27 | `8aa06119f472` | [44](findings/44_inkling2_mini_omlx_084) |
+| code, own sampler | oMLX 0.8.3 with its kernels, DSpark draft on, default depth, reply is reasoning text, default thinking effort, older release | temperature 1.0, top-p 1.0 | 4K code | 512 | 84.8 | 83.2 to 95.0 | 5 | 2026-11-25 | `7e7d1190cde0` | [40](findings/40_code_column) |
+
+</details>
+
+<details>
 <summary><b>Inkling 2 Mini, Optimized Speed</b>, 13 setups</summary>
 
 | Kind | Engine and setup | Sampler | Prompt | Reply tokens | Decode tok/s | Range | Runs | Date | Run | Finding |
@@ -402,44 +451,6 @@ ELI5: Everything behind the tables above, including the setups that were not the
 | median | mlx-serve 26.11.4-pre-release.1, main at 2fe9be83, drafts on as the engine picks them, reply is reasoning text | temperature 1.0, top-p 1.0 | 4K mixed | 512 | 104.5 | 102.9 to 107.3 | 5 | 2026-11-22 | `338b6385675f` | [20](findings/20_inkling2_mini_mlxserve_pre) |
 | code, own sampler | mlx-serve 26.11.4-pre-release.1, main at 2fe9be83, drafts on as the engine picks them, reply is reasoning text | temperature 1.0, top-p 1.0 | 4K code | 512 | 105.2 | 103.9 to 123.0 | 5 | 2026-11-25 | `2e9be2070510` | [40](findings/40_code_column) |
 | code, own sampler | mlx-serve 26.11.4-pre-release.1, main at 2fe9be83, drafts off (--no-mtp --no-drafter --no-pld), reply is reasoning text | temperature 1.0, top-p 1.0 | 4K code | 512 | 104.2 | 103.5 to 105.1 | 5 | 2026-11-25 | `efc4664b216c` | [40](findings/40_code_column) |
-
-</details>
-
-<details>
-<summary><b>Inkling 2 Mini, oQ4e</b>, 18 setups</summary>
-
-| Kind | Engine and setup | Sampler | Prompt | Reply tokens | Decode tok/s | Range | Runs | Date | Run | Finding |
-|---|---|---|---|---|---|---|---|---|---|---|
-| max | oMLX 0.8.3 with its kernels, DSpark draft on, default depth, reply is reasoning text, default thinking effort | greedy, temperature 0 | 1K code | 2,048 | 108.1 | 93.7 to 117.8 | 5 | 2026-11-23 | `af8afe759506` | [26](findings/26_omlx_083_refresh) |
-| max | oMLX 0.8.3 with its kernels, DSpark draft on, default depth, thinking switched off (effort 0), reply mostly reasoning text | greedy, temperature 0 | 1K code | 2,048 | 104.2 | 97.3 to 115.0 | 5 | 2026-11-23 | `0f8455f8a46f` | [26](findings/26_omlx_083_refresh) |
-| max | oMLX 0.8.3 with its kernels, DSpark draft on, default depth, reply is reasoning text, default thinking effort | greedy, temperature 0 | 4K code | 2,048 | 102.0 | 91.6 to 117.3 | 5 | 2026-11-23 | `af8afe759506` | [26](findings/26_omlx_083_refresh) |
-| max | oMLX 0.8.1 with its kernels, DSpark draft on, default depth, reply is reasoning text, older release | greedy, temperature 0 | 1K code | 2,048 | 96.3 | 83.1 to 97.3 | 5 | 2026-11-21 | `a3cf6857c4b5` | [14](findings/14_inkling2_mini_omlx_081) |
-| max | oMLX 0.8.3 with its kernels, DSpark draft on, default depth, thinking switched off (effort 0), reply mostly reasoning text | greedy, temperature 0 | 4K code | 2,048 | 92.8 | 89.0 to 110.1 | 5 | 2026-11-23 | `0f8455f8a46f` | [26](findings/26_omlx_083_refresh) |
-| max | oMLX 0.8.2 with its kernels, DSpark draft on, default depth, reply is reasoning text, third start, older release | greedy, temperature 0 | 1K code | 2,048 | 85.3 | 81.3 to 94.1 | 5 | 2026-11-22 | `a7944f4eab8a` | [16](findings/16_omlx_082_refresh) |
-| max | oMLX 0.8.1 with its kernels, DSpark draft on, default depth, reply is reasoning text, older release | greedy, temperature 0 | 4K code | 2,048 | 80.1 | 79.5 to 98.3 | 5 | 2026-11-21 | `a3cf6857c4b5` | [14](findings/14_inkling2_mini_omlx_081) |
-| max | oMLX 0.8.2 with its kernels, DSpark draft on, default depth, reply is reasoning text, third start, older release | greedy, temperature 0 | 4K code | 2,048 | 78.1 | 73.7 to 87.1 | 5 | 2026-11-22 | `a7944f4eab8a` | [16](findings/16_omlx_082_refresh) |
-| max | oMLX 0.8.3 with its kernels, DSpark draft off, thinking switched off (effort 0), reply mostly reasoning text | greedy, temperature 0 | 1K code | 2,048 | 62.4 | 62.2 to 62.5 | 5 | 2026-11-23 | `1e9d52ecfc69` | [26](findings/26_omlx_083_refresh) |
-| max | oMLX 0.8.3 with its kernels, DSpark draft off, thinking switched off (effort 0), reply mostly reasoning text | greedy, temperature 0 | 4K code | 2,048 | 61.6 | 61.5 to 61.9 | 5 | 2026-11-23 | `1e9d52ecfc69` | [26](findings/26_omlx_083_refresh) |
-| max | oMLX 0.8.1 with its kernels, DSpark draft off, reply is reasoning text | greedy, temperature 0 | 1K code | 2,048 | 54.5 | 54.3 to 54.5 | 5 | 2026-11-21 | `fe2a52ddebd0` | [14](findings/14_inkling2_mini_omlx_081) |
-| max | oMLX 0.8.1 with its kernels, DSpark draft off, reply is reasoning text | greedy, temperature 0 | 4K code | 2,048 | 53.7 | 53.6 to 53.9 | 5 | 2026-11-21 | `fe2a52ddebd0` | [14](findings/14_inkling2_mini_omlx_081) |
-| median | oMLX 0.8.3 with its kernels, DSpark draft on, default depth, reply is reasoning text, default thinking effort | temperature 1.0, top-p 1.0 | 4K mixed | 512 | 83.3 | 78.6 to 87.6 | 5 | 2026-11-23 | `af8afe759506` | [26](findings/26_omlx_083_refresh) |
-| median | oMLX 0.8.3 with its kernels, DSpark draft on, default depth, thinking switched off (effort 0), reply mostly reasoning text | temperature 1.0, top-p 1.0 | 4K mixed | 512 | 80.1 | 72.5 to 82.3 | 5 | 2026-11-23 | `d066e1456e61` | [26](findings/26_omlx_083_refresh) |
-| median | oMLX 0.8.1 with its kernels, DSpark draft on, default depth, reply is reasoning text, older release | temperature 1.0, top-p 1.0 | 4K mixed | 512 | 65.9 | 59.2 to 67.7 | 5 | 2026-11-21 | `a3cf6857c4b5` | [14](findings/14_inkling2_mini_omlx_081) |
-| median | oMLX 0.8.2 with its kernels, DSpark draft on, default depth, reply is reasoning text, third start, older release | temperature 1.0, top-p 1.0 | 4K mixed | 512 | 60.3 | 50.8 to 72.2 | 5 | 2026-11-22 | `a7944f4eab8a` | [16](findings/16_omlx_082_refresh) |
-| median | oMLX 0.8.1 with its kernels, DSpark draft off, reply is reasoning text | temperature 1.0, top-p 1.0 | 4K mixed | 512 | 54.4 | 54.3 to 54.6 | 5 | 2026-11-21 | `fe2a52ddebd0` | [14](findings/14_inkling2_mini_omlx_081) |
-| code, own sampler | oMLX 0.8.3 with its kernels, DSpark draft on, default depth, reply is reasoning text, default thinking effort | temperature 1.0, top-p 1.0 | 4K code | 512 | 84.8 | 83.2 to 95.0 | 5 | 2026-11-25 | `7e7d1190cde0` | [40](findings/40_code_column) |
-
-</details>
-
-<details>
-<summary><b>Inkling 2 Mini, oQ3e</b>, 4 setups</summary>
-
-| Kind | Engine and setup | Sampler | Prompt | Reply tokens | Decode tok/s | Range | Runs | Date | Run | Finding |
-|---|---|---|---|---|---|---|---|---|---|---|
-| max | oMLX 0.8.1 with its kernels, DSpark draft on, default depth, reply is reasoning text | greedy, temperature 0 | 4K code | 2,048 | 105.1 | 92.2 to 111.9 | 5 | 2026-11-21 | `472bfd081962` | [14](findings/14_inkling2_mini_omlx_081) |
-| max | oMLX 0.8.1 with its kernels, DSpark draft on, default depth, reply is reasoning text | greedy, temperature 0 | 1K code | 2,048 | 100.6 | 87.6 to 105.7 | 5 | 2026-11-21 | `472bfd081962` | [14](findings/14_inkling2_mini_omlx_081) |
-| median | oMLX 0.8.1 with its kernels, DSpark draft on, default depth, reply is reasoning text | temperature 1.0, top-p 1.0 | 4K mixed | 512 | 67.1 | 61.3 to 83.1 | 5 | 2026-11-21 | `472bfd081962` | [14](findings/14_inkling2_mini_omlx_081) |
-| code, own sampler | oMLX 0.8.3 with its kernels, DSpark draft on, default depth, reply is reasoning text | temperature 1.0, top-p 1.0 | 4K code | 512 | 90.0 | 89.5 to 105.3 | 5 | 2026-11-25 | `273cb2e18022` | [40](findings/40_code_column) |
 
 </details>
 
@@ -787,6 +798,17 @@ ELI5: Everything behind the tables above, including the setups that were not the
 ## Findings
 
 ELI5: Each finding is one question, one run of an hour or two, and one report. Newest first. Click a title for the full report and the raw rows.
+
+### 44. [Inkling 2 Mini on oMLX 0.8.4, 1.4 to 1.6 times as fast as 0.8.3](findings/44_inkling2_mini_omlx_084)
+
+Runs of 27 Nov 2026. oMLX 0.8.4 wrote Inkling 2 Mini oQ4e at 165.3 tok/s against 0.8.3's 103.9, on greedy code at a 1K prompt with 2,048-token replies, faster on 20 of 20 same-prompt pairs, middle ratio 1.59. Three setups, oQ4e with no thinking field and with thinking off and oQ3e with thinking off, read the same way, 240 of 240 pairs and middle ratios 1.43 to 1.61. The greedy text changed, 8 to 18 of 100 short replies match across releases.
+
+<details>
+<summary>Chart</summary>
+
+![Bar chart of Inkling 2 Mini oQ4e writing speed on oMLX 0.8.3 and 0.8.4. Greedy code 103.9 and 165.3 tok/s. Sampled code 87.2 and 124.3. Sampled mixed 84.6 and 119.4.](findings/44_inkling2_mini_omlx_084/chart_write.png)
+
+</details>
 
 ### 43. [TensorFold 1.3.5's Qwen3.8 Flash Next TFQ3 met its card and wrote 0.73 to 0.83 times the 4-bit build's speed](findings/43_tensorfold_135_tfq3)
 
